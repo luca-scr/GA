@@ -1,0 +1,17 @@
+exportPattern("^[^\\.]")
+
+import("stats", "graphics", "methods", "foreach", "iterators")
+importFrom("grDevices", "adjustcolor", "colorRampPalette")
+importFrom("utils", "str")
+
+exportClasses("ga")
+exportMethods("print", "show", "summary", "plot")
+
+export("ga", "gaControl", 
+       # "summary.ga", "plot.ga",
+       "gaMonitor", "gaSummary")
+
+S3method("plot", "ga")
+S3method("summary", "ga")
+S3method("print", "summary.ga")
+

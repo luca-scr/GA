@@ -1,0 +1,52 @@
+Version 2.3 (2014-07)
+
+  o Added documentation vignette.
+
+Version 2.2 (2014-10)
+
+  o Slight modification to plot method.
+  o Included link in main ga documentation to genetic operators.
+  o Added ga_pmutation() function to allow GAs having variable mutation probability.
+  o pdf files (previously included as vignettes) moved to inst/doc with 
+    corresponding index.html.
+  
+Version 2.1 (2014-05)
+
+  o .printShortMatrix is a function to print part of rows/columns of a matrix
+  o print.summary.ga accept arguments to be passed to .printShortMatrix. This
+    allow to shorten the printed output in case of large dimensions for the 
+    matrices containing the suggestions and the final solutions.
+  o plot.ga now shadowed the area between the max and the median of fitness values 
+    at each iteration. Changed to pch from 17 to 1 for means.
+  o Function gaSummary() is embedded in the code, so it cannot be defined by the user.
+  o Added function ga_pmutation for computing variable mutation probability. 
+  o Modified main function ga() to allow for pmutation to be a function. This enables
+    the use of variable mutation rate.
+  o Export plot.ga class in NAMESPACE and used as S4 method.
+  o Computing summaries at each step is done by function gaSummary(), but it
+    may be defined by the user.
+  o Export summary.ga class in NAMESPACE and used as S4 method.
+  o Default for suggestions argument in ga() is set to NULL.
+  o Fixed a bug in gabin_uCrossover.
+  o Added description of slots in the help page for ga-class.
+  o Bug fix on setting maxfitness.
+  o Bug fix on passing seed argument when "snow" parallel is used.
+  o Add explicitly stop clusters if parallel is used.
+  o Parallel computing improving set up of clusters.
+
+Version 2.0 (2013-08)
+
+   o Option for parallel computing.
+
+Version 1.2 (2013-04, not on CRAN)
+
+   o Added argument keepBest to include the best solution at each iteration.
+   o Bug fix when using suggestions argument.
+
+Version 1.1 (2013-04)
+
+   o Update citation and references to JSS paper.
+
+Version 1.0 (2012-06)
+
+   o First release on CRAN.

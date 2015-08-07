@@ -1,0 +1,115 @@
+---
+title: "A quick tour of **GA**"
+author: "Luca Scrucca"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{A quick tour of GA}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align="center",
+               fig.width=5, fig.height=4.5,
+               dev.args=list(pointsize=8))
+```
+
+## Introduction
+
+Genetic algorithms (GAs) are stochastic search algorithms inspired by the basic principles of biological evolution and natural selection. GAs simulate the evolution of living organisms, where the fittest individuals dominate over the weaker ones, by mimicking the biological mechanisms of evolution, such as selection, crossover and mutation.
+
+The R package **GA** provides a collection of general purpose functions for optimization using genetic algorithms. The pakage includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Finally, GAs can be run sequentially or in parallel.
+
+This document gives a quick tour of **GA** (version `r packageVersion("GA")`) functionalities. It was written in R Markdown, using the [knitr](http://cran.r-project.org/package=knitr) package for production. 
+See the `help(package="GA")` for further details and references provided by `citation("GA")`.
+
+```{r, message=FALSE}
+library(GA)
+```
+
+## Function optimisation on one dimension
+
+Consider the function $f(x) = (x^2+x)\cos(x)$ defined over the range $-10 \le x \le 10$:
+```{r}
+f <- function(x)  (x^2+x)*cos(x)
+min <- -10; max <- 10
+curve(f, min, max, n = 1000)
+
+GA <- ga(type = "real-valued", fitness = f, min = min, max = max, 
+         monitor = FALSE)
+summary(GA)
+plot(GA)
+
+curve(f, min, max, n = 1000)
+points(GA@solution, GA@fitnessValue, col = 2, pch = 19)
+```
+
+## Function optimisation on two dimensions
+
+Consider the *Rastrigin function*, a non-convex function often used as a test problem for optimization algorithms because it is a difficult problem due to its large number of local minima. In two dimensions it is defined as
+$$
+f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
+$$
+with $x_i \in [-5.12, 5.12]$ for $i=1,2$. It has a global minimum at $(0,0)$ where $f(0,0) = 0$. 
+\begin{CodeInput}
+R> x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
+R> f <- outer(x1, x2, Rastrigin)
+R> persp3D(x1, x2, f, theta = 50, phi = 20)
+R> filled.contour(x1, x2, f, color.palette = jet.colors)
+\end{CodeInput}
+
+```{r}
+Rastrigin <- function(x1, x2)
+{
+  20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
+}
+
+x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
+f <- outer(x1, x2, Rastrigin)
+persp3D(x1, x2, f, theta = 50, phi = 20)
+filled.contour(x1, x2, f, color.palette = jet.colors)
+```
+
+Define a monitoring function of the space searched at each GA iteration:
+```{r}
+monitor <- function(obj) 
+{ 
+  contour(x1, x2, f, drawlabels = FALSE, col = grey(0.5))
+  title(paste("iteration =", obj@iter), font.main = 1)
+  points(obj@population, pch = 20, col = 2)
+  Sys.sleep(0.2)
+}
+```
+Then, run a GA minimisation search (note the minus sign in local fitness function definition) in an interactive R session as:
+```{r, eval=FALSE}
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 100, 
+         monitor = monitor)
+```
+
+```{r, echo=FALSE}
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 100, 
+         monitor = FALSE)
+```
+
+```{r}
+summary(GA)
+plot(GA)
+```
+
+```{r}
+filled.contour(x1, x2, f, color.palette = jet.colors, 
+  plot.axes = { axis(1); axis(2); 
+                points(GA@solution[,1], GA@solution[,2], 
+                       pch = 3, cex = 2, col = "white", lwd = 2) }
+)
+```

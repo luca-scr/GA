@@ -1,0 +1,19 @@
+citHeader("To cite GA in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{GA}: A Package for Genetic Algorithms in {R}",
+  author       = personList(as.person("Luca Scrucca")),
+  journal      = "Journal of Statistical Software",
+  year         = "2013",
+  volume       = "53",
+  number       = "4",
+  pages        = "1--37",
+  url          = "http://www.jstatsoft.org/v53/i04/",
+
+  textVersion  =
+  paste("Luca Scrucca (2013).",
+        "GA: A Package for Genetic Algorithms in R.",
+        "Journal of Statistical Software, 53(4), 1-37.",
+        "URL http://www.jstatsoft.org/v53/i04/.")
+)
+

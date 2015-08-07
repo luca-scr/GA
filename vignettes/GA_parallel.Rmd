@@ -1,0 +1,83 @@
+---
+title: "A note on using parallel computing in **GA** package"
+author: "Luca Scrucca"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{A note on using parallel computing in GA package}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align="center",
+               fig.width=5, fig.height=4.5,
+               dev.args=list(pointsize=8))
+```
+
+## Introduction
+
+By default searches performed using the **GA** package occour sequentially. 
+In some cases, particularly when the evaluation of the fitness function is time consuming, parallelization of the search algorithm may be able to speedup computing time.
+Starting with version 2.0, the **GA** package provides facilities for implementing parallelization of genetic algorithms. 
+
+Parallel computing with **GA** requires the following packages to be installed: **parallel** (available in base R), [doParallel](http://cran.r-project.org/package=doParallel),  [foreach](http://cran.r-project.org/package=foreach), and [iterators](http://cran.r-project.org/package=iterators). 
+
+
+## Usage
+
+To use parallel computing with the **GA** package is simple as manipulating the optional argument `parallel` in the `ga()` function call.
+
+The argument `parallel` can be a logical argument specifying if parallel computing should be used (`TRUE`) or not (`FALSE`, default) for evaluating the fitness function. This argument could also be used to specify the number of cores to employ; by default, this is taken from `detectCores()` function in **parallel** package. 
+
+Two types of parallel functionality are implemented depending on system OS: on Windows only *snow* type functionality is available, while on POSIX operating systems, such as Unix, GNU/Linux, and Mac OSX, both *snow* and *multicore* (default) functionalities are available. In the latter case a string can be used to specify which parallelization method should be used.
+
+## Example
+
+Consider the following simple example where we artificially introduced a pause statement to simulate an expensive fitness function. 
+
+```{r, eval=FALSE}
+Rastrigin <- function(x1, x2)
+{
+  Sys.sleep(0.1)
+  20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
+}
+
+system.time(GA1 <- ga(type = "real-valued", 
+                     fitness =  function(x) -Rastrigin(x[1], x[2]),
+                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                     popSize = 50, maxiter = 100, monitor = FALSE,
+                     seed = 12345))
+
+system.time(GA2 <- ga(type = "real-valued", 
+                     fitness =  function(x) -Rastrigin(x[1], x[2]),
+                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                     popSize = 50, maxiter = 100, monitor = FALSE,
+                     seed = 12345, parallel = TRUE))
+
+system.time(GA3 <- ga(type = "real-valued", 
+                     fitness =  function(x) -Rastrigin(x[1], x[2]),
+                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                     popSize = 50, maxiter = 100, monitor = FALSE,
+                     seed = 12345, parallel = 2))
+
+system.time(GA4 <- ga(type = "real-valued", 
+                     fitness =  function(x) -Rastrigin(x[1], x[2]),
+                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                     popSize = 50, maxiter = 100, monitor = FALSE,
+                     seed = 12345, parallel = "snow"))
+```
+
+The following table summarizes the results and show the improvement achieved by using parallelization in GAs:
+```{r, echo=FALSE}
+tab = data.frame(c(415.489, 222.454, 124.345, 143.913))
+tab = cbind(c("1", "2 (multicore)", "4 (multicore)", "4 (snow)"),
+            tab, round(tab[,1]/tab[1,1], 2))
+colnames(tab) = c("Num. cores", "System time", "Gain")
+kable(tab)
+```
+
+The system times reported above refer to a MacBook Pro, Intel Core i5 at 2.3 GHz, with 4 cores and 4 GB RAM, running OSX 10.8.3.

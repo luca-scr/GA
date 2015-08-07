@@ -1,0 +1,15 @@
+Package: GA
+Version: 2.3
+Date: 2015-07-02
+Title: Genetic Algorithms
+Description: An R package for optimization using genetic algorithms. The package provides a flexible general-purpose set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. GAs can be run sequentially or in parallel.
+URL: http://www.jstatsoft.org/v53/i04/
+Authors@R: c(person("Luca", "Scrucca", role = c("aut", "cre"),
+                    email = "luca@stat.unipg.it"))
+Depends: R (>= 3.0), methods, foreach, iterators
+Imports: stats, graphics, grDevices, utils
+Suggests: parallel, doParallel, knitr (>= 1.8), markdown (>= 0.7)
+License: GPL (>= 2)
+ByteCompile: true
+LazyLoad: yes
+VignetteBuilder: knitr
