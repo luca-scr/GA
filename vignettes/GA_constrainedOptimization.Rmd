@@ -1,0 +1,120 @@
+---
+title: "Constrained optimization using genetic algorithms in **GA** package"
+author: "Luca Scrucca"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Constrained optimization using genetic algorithms in GA package}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align="center",
+               fig.width=5, fig.height=4.5,
+               dev.args=list(pointsize=8))
+```
+
+## Introduction
+
+This example shows how to minimize an objective function subject to nonlinear inequality constraints and bounds using Genetic Algorithms.
+
+Source: http://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html
+
+## Constrained minimization problem
+
+We want to minimize a simple function of two variables $x_1$ and $x_2$
+$$
+\min_x f(x) = 100 (x_1^2 - x_2)^2 + (1 - x_1)^2;
+$$
+subject to the following nonlinear inequality constraints and bounds:
+
+- $x_1x_2 + x_1 - x_2 + 1.5 \le 0$ (nonlinear inequality constraint),  
+- $10 - x_1x_2 \le 0$ (nonlinear inequality constraint),  
+- $0 \le x1 \le 1$ (bound), and  
+- $0 \le x2 \le 13$ (bound).
+
+The above fitness function is known as "cam" as described in L.C.W. Dixon and G.P. Szego (eds.), **Towards Global Optimisation 2**, North-Holland, Amsterdam, 1978.
+
+```{r}
+f <- function(x)
+  { 100 * (x[1]^2 - x[2])^2 + (1 - x[1])^2 }
+
+c1 <- function(x) 
+  { x[1]*x[2] + x[1] - x[2] + 1.5 }
+
+c2 <- function(x) 
+  { 10 - x[1]*x[2] }
+```
+
+Plot the function and the feasible regions (dark areas):
+```{r}
+ngrid = 250
+x1 = seq(0, 1, length = ngrid)
+x2 = seq(0, 13, length = ngrid)
+x12 = expand.grid(x1, x2)
+plot(x1, x2, type = "n", xaxs = "i", yaxs = "i")
+image(x1, x2, matrix(ifelse(apply(x12, 1, c1) <= 0, 0, NA), ngrid, ngrid), 
+      col = adjustcolor("grey50", alpha = 0.3), add = TRUE)
+image(x1, x2, matrix(ifelse(apply(x12, 1, c2) <= 0, 0, NA), ngrid, ngrid), 
+      col = adjustcolor("grey50", alpha = 0.3), add = TRUE)
+contour(x1, x2, matrix(apply(x12, 1, f), ngrid, ngrid), 
+        nlevels = 21, add = TRUE)
+```
+
+MATLAB solution:
+```{r}
+x = c(0.8122, 12.3104)
+f(x)
+```
+However, note that the provided solution does not satisfy inequality constraints:
+```{r}
+c1(x)
+c2(x)
+```
+
+## GA solution
+
+```{r, warning=FALSE}
+library(GA)
+```
+
+Define a penalised fitness function:
+```{r}
+fitness <- function(x) 
+{ 
+  f <- -f(x)
+  pen <- sqrt(.Machine$double.xmax)
+  penalty1 <- max(c1(x),0)*pen
+  penalty2 <- max(c2(x),0)*pen
+  f - penalty1 - penalty2 
+}
+# contour(x1, x2, matrix(apply(x12, 1, fitness), ngrid, ngrid))
+```
+
+```{r}
+GA = ga("real-valued", fitness, min = c(0,0), max = c(1,13), 
+        pmutation = 0.2, maxiter = 5000, run = 1000,
+        monitor = FALSE, seed = 123)
+summary(GA)
+
+fitness(GA@solution)
+f(GA@solution)
+c1(GA@solution)
+c2(GA@solution)
+```
+
+```{r}
+plot(x1, x2, type = "n", xaxs = "i", yaxs = "i")
+image(x1, x2, matrix(ifelse(apply(x12, 1, c1) <= 0, 0, NA), ngrid, ngrid), 
+      col = adjustcolor("grey50", alpha = 0.3), add = TRUE)
+image(x1, x2, matrix(ifelse(apply(x12, 1, c2) <= 0, 0, NA), ngrid, ngrid), 
+      col = adjustcolor("grey50", alpha = 0.3), add = TRUE)
+contour(x1, x2, matrix(apply(x12, 1, f), ngrid, ngrid), 
+        nlevels = 21, add = TRUE)
+# GA solution
+points(GA@solution[1], GA@solution[2], col = "red", pch = 3)
+```
