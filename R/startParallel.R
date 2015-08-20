@@ -37,6 +37,8 @@ startParallel <- function(parallel = TRUE, ...)
   { 
     if(parallelType == "snow")
       { 
+        if(requireNamespace("snow", quietly = TRUE))
+            stop("package 'snow' required for parallel option 'snow'!")
         # snow functionality on Unix-like systems & Windows
         cl <- parallel::makeCluster(numCores, type = "PSOCK")
         attr(parallel, "cluster") <- cl

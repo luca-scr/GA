@@ -8,7 +8,7 @@ Authors@R: c(person("Luca", "Scrucca", role = c("aut", "cre"),
                     email = "luca@stat.unipg.it"))
 Depends: R (>= 3.0), methods, foreach, iterators
 Imports: stats, graphics, grDevices, utils
-Suggests: parallel, doParallel, knitr (>= 1.8), markdown (>= 0.7)
+Suggests: parallel, doParallel, snow, knitr (>= 1.8), markdown (>= 0.7)
 License: GPL (>= 2)
 ByteCompile: true
 LazyLoad: yes
