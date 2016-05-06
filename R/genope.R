@@ -95,7 +95,9 @@ ga_spCrossover <- function(object, parents, ...)
 gabin_Population <- function(object, ...)
 {
 # Generate a random population of nBits 0/1 values of size popSize
-  population <- matrix(as.double(NA), nrow = object@popSize, ncol = object@nBits)
+  population <- matrix(as.double(NA), 
+                       nrow = object@popSize, 
+                       ncol = object@nBits)
   for(j in 1:object@nBits) 
      { population[,j] <- round(runif(object@popSize)) }
   return(population)
@@ -257,6 +259,43 @@ gareal_blxCrossover <- function(object, parents, ...)
   return(out)
 }
 
+# Laplace crossover(a, b)
+#
+# a is the location parameter and b > 0 is the scaling parameter of a Laplace
+# distribution, which is generated as described in 
+# Krishnamoorthy K. (2006) Handbook of Statistical Distributions with 
+#   Applications, Chapman & Hall/CRC.
+#
+# For smaller values of b offsprings are likely to be produced nearer to 
+# parents, and for larger values of b offsprings are expected to be produced
+# far from parents.
+# Deep et al. (2009) suggests to use a = 0, b = 0.15 for real-valued 
+# variables, and b = 0.35 for integer variables.
+#
+# References
+#
+# Deep K., Singh K.P., Kansal M.L., Mohan C. (2009) A real coded genetic
+#   algorithm for solving integer and mixed integer optimization problems.
+#   Applied Mathematics and Computation, 212(2), pp. 505-518.
+
+
+gareal_laplaceCrossover <- function (object, parents, a = 0, b = 0.35, ...) 
+{
+  parents <- object@population[parents, , drop = FALSE]
+  n <- ncol(parents)
+  children <- matrix(as.double(NA), nrow = 2, ncol = n)
+  u <- runif(n)
+  beta <- a + ifelse(u > 0.5, 
+                     -b*log(2*(1 - u)), 
+                     +b*log(2*u))
+  bpar <- beta*abs(parents[1,] - parents[2,])
+  children[1,] <- pmin(pmax(parents[1,] + bpar, object@min), object@max)
+  children[2,] <- pmin(pmax(parents[2,] + bpar, object@min), object@max)
+  out <- list(children = children, fitness = rep(NA, 2))
+  return(out)
+}
+
+
 gareal_raMutation <- function(object, parent, ...)
 {
 # Uniform random mutation
@@ -294,6 +333,39 @@ gareal_rsMutation <- function(object, parent, ...)
   outside <- (mutate < object@min | mutate > object@max)
   for(j in which(outside))
      { mutate[j] <- runif(1, object@min[j], object@max[j]) }
+  return(mutate)
+}
+
+# Power mutation(pow)
+#
+# a is the location parameter and b > 0 is the scaling parameter of a Laplace
+# distribution, which is generated as described in 
+# Krishnamoorthy K. (2006) Handbook of Statistical Distributions with 
+#   Applications, Chapman & Hall/CRC.
+#
+# For smaller values of b offsprings are likely to be produced nearer to 
+# parents, and for larger values of b offsprings are expected to be produced
+# far from parents.
+
+# Deep et al. (2009) suggests to use pow = 10 for real-valued variables, and
+# pow = 4 for integer variables.
+#
+# References
+#
+# Deep K., Singh K.P., Kansal M.L., Mohan C. (2009) A real coded genetic
+#   algorithm for solving integer and mixed integer optimization problems.
+#   Applied Mathematics and Computation, 212(2), pp. 505-518.
+
+gareal_powMutation <- function(object, parent, pow = 4, ...)
+{
+  mutate <- parent <- as.vector(object@population[parent,])
+  n <- length(parent)
+  s <- runif(1)^pow
+  t <- (parent - object@min)/(object@max - parent)
+  r <- runif(n)
+  mutate <- parent + ifelse(r > t, 
+                            +s*(object@max - parent), 
+                            -s*(parent - object@min))
   return(mutate)
 }
 
@@ -466,7 +538,8 @@ gaperm_scrMutation <- function(object, parent, ...)
   return(mutate)
 } 
 
-ga_pmutation <- function(object,  p0 = 0.5, p = 0.01, T = round(object@maxiter/2), ...)
+ga_pmutation <- function(object, p0 = 0.5, p = 0.01, 
+                         T = round(object@maxiter/2), ...)
 {
 # variable probability of mutation
 # p0 = initial pmutation
@@ -489,3 +562,23 @@ ga_pmutation <- function(object,  p0 = 0.5, p = 0.01, T = round(object@maxiter/2
   #
   return(pm)
 }
+
+# Probability of selection based on fitness values in vector x with
+# selection pressure given by q in (0,1).
+# This is used in optim() local search to select which solution should
+# be used for starting the algorithm.
+optimProbsel <- function(x, q = 0.25)
+{
+  x <- as.vector(x)
+  n <- length(x)
+  # selection pressure parameter
+  q <- min(max(sqrt(.Machine$double.eps), q), 
+           1 - sqrt(.Machine$double.eps))
+  rank <- (n + 1) - rank(x, ties.method = "random", na.last = FALSE)
+  # prob <- q*(1-q)^(rank-1) * 1/(1-(1-q)^n)
+  prob <- q*(1-q)^(rank-1)
+  prob[is.na(x)] <- 0
+  prob <- prob/sum(prob)
+  return(prob)
+}
+  

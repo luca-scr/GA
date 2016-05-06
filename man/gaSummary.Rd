@@ -2,8 +2,9 @@
 \alias{gaSummary}
 
 \title{Summarize genetic algorithm evolution}
-\description{A function which returns fitness summary statistics at each iteration of GA search.
-}
+
+\description{A function which returns fitness summary statistics at each iteration of GA search.}
+
 \usage{
 gaSummary(x, \dots)
 }

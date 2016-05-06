@@ -6,6 +6,7 @@
 \alias{gareal_raMutation}
 \alias{gareal_nraMutation}
 \alias{gareal_rsMutation}
+\alias{gareal_powMutation}
 %
 \alias{gaperm_simMutation}
 \alias{gaperm_ismMutation}
@@ -18,17 +19,18 @@
 \description{Functions implementing mutation genetic operator.}
 
 \usage{
-gabin_raMutation(object, parent, ...)
+gabin_raMutation(object, parent, \dots)
 
-gareal_raMutation(object, parent, ...)
-gareal_nraMutation(object, parent, ...)
-gareal_rsMutation(object, parent, ...)
+gareal_raMutation(object, parent, \dots)
+gareal_nraMutation(object, parent, \dots)
+gareal_rsMutation(object, parent, \dots)
+gareal_powMutation(object, parent, pow = 4, \dots)
 
-gaperm_simMutation(object, parent, ...)
-gaperm_ismMutation(object, parent, ...)
-gaperm_swMutation(object, parent, ...)
-gaperm_dmMutation(object, parent, ...)
-gaperm_scrMutation(object, parent, ...)
+gaperm_simMutation(object, parent, \dots)
+gaperm_ismMutation(object, parent, \dots)
+gaperm_swMutation(object, parent, \dots)
+gaperm_dmMutation(object, parent, \dots)
+gaperm_scrMutation(object, parent, \dots)
 
 }
 %- maybe also 'usage' for other objects documented here.
@@ -38,6 +40,8 @@ gaperm_scrMutation(object, parent, ...)
   \item{parent}{A vector of values for the parent from the current population where mutation should occur.}
   
   \item{\dots}{Further arguments passed to or from other methods.}
+
+  \item{pow}{Parameters of genetic operators.}
 }
 
 %\details{}
@@ -50,7 +54,7 @@ gaperm_scrMutation(object, parent, ...)
 
 %\note{}
 
-\seealso{\code{\link{ga}}}
+%\seealso{\code{\link{ga}}}
 
 %\examples{}
 

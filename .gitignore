@@ -1,5 +1,6 @@
-.DS_Store
-.Rproj.user
-.Rhistory
-.RData
+**/.DS_Store
+**/.Rproj.user
+**/.Rhistory
+**/.RData
 misc/
+**/.Rapp.history

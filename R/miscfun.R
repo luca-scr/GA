@@ -52,8 +52,9 @@ binary2gray <- function(x)
   n <- length(x)
   g <- vector(mode = "logical", length = n)
   g[1] <- x[1]
-  for(i in 2:n)
-     { g[i] <- xor(x[i-1], x[i]) }
+  if(n > 1)
+    for(i in 2:n)
+       { g[i] <- xor(x[i-1], x[i]) }
   g <- as.numeric(g)
   return(g)
 }
@@ -64,16 +65,89 @@ gray2binary <- function(x)
   n <- length(x)
   b <- vector(mode = "logical", length = n)
   b[1] <- value <- x[1]
-  for(i in 2:n)
+  if(n > 1)
+    for(i in 2:n)
      { if(x[i]) value <- !value
        b[i] <- value }
   b <- as.numeric(b)
   return(b)
 }
 
-##
-## Other functions
-##
+#############################################################################
+
+clearConsoleLine <- function()
+{
+  cat(paste0(rep("\b", getOption("width")), collapse = ""))
+  flush.console()
+}
+
+#############################################################################
+
+repairSolution <- function(x, lo, up) 
+{
+# Repair solutions to the specified bound of decision variables
+#
+# Gilli, M., Maringer, D. & Schumann, E. (2011) Numerical Methods and 
+#   Optimization in Finance, Academic Press, p. 551, algorithm 66
+#
+# x = n-length vector of solutions for n decision variables
+# lo, up = n-length vector of upper and lower boundaries for each decision
+#          variable
+#
+# Example:  
+# set.seed(1)
+# lo <- c(0, 0, 0, 0)
+# up <- c(1, 1, 2, 1)
+# x <- rnorm(4)
+# x
+# repairSolution(x, lo, up)
+
+  xl <- lo - x
+  xl <- xl + abs(xl)
+  xu <- x - up
+  xu <- xu + abs(xu)
+  x <- x - (xu - xl)/2
+  return(x)
+}
+
+#############################################################################
+
+reflectSolution <- function(x, lo, up, tol = sqrt(.Machine$double.eps)) 
+{
+# Reflects solution values that are too large or too small around the boundary. 
+# It restricts the change in a variable x[i] to the range up[i] - lo[i].
+#  
+# x = n-length vector of solutions for n decision variables
+# lo, up = n-length vector of upper and lower boundaries for each decision
+#          variable
+#
+# Example:
+# set.seed(1)
+# lo <- rep(0,4)
+# up <- rep(1,4)
+# x <- rnorm(4)
+# x
+# reflectSolution(x, lo, up)
+
+  done <- TRUE
+  e <- sum(x - up + abs(x - up) + lo - x + abs(lo - x)) 
+  if(e > tol) done <- FALSE
+  r <- up - lo
+  while(!done) 
+  { xu <- x - up
+    xu <- xu + abs(xu)
+    xu <- xu + r - abs(xu - r)
+    xl <- lo - x
+    xl <- xl + abs(xl)
+    xl <- xl + r - abs(xl - r)
+    x <- x - (xu - xl)/2
+    e <- sum(x - up + abs(x - up) + lo - x + abs(lo - x)) 
+    if(e < tol) done <- TRUE
+  }
+  return(x)  
+}
+
+#############################################################################
 
 jet.colors <- function(n)
 {
@@ -83,6 +157,23 @@ jet.colors <- function(n)
   palette <- colorRampPalette(c("#00007F", "blue", "#007FFF", 
                                 "cyan", "#7FFF7F", "yellow", 
                                 "#FF7F00", "red", "#7F0000"))
+  palette(n)
+}
+
+spectral.colors <- function (n) 
+{
+  col <- c("#2B83BA", "#ABDDA4", "#FFFFBF", "#FDAE61", "#D7191C")
+  # colors obtained as rev(brewer.pal(5, "Spectral"))
+  palette <- grDevices::colorRampPalette(col)
+  palette(n)
+}
+
+bl2gr.colors <- function (n) 
+{
+  palette <- grDevices::colorRampPalette(c("#084081", "#0868AC", "#2B8CBE", 
+                                "#4EB3D3", "#7BCCC4", "#A8DDB5", 
+                                "#CCEBC5", "#E0F3DB"), 
+                              space = "Lab")
   palette(n)
 }
 

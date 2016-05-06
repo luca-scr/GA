@@ -2,11 +2,10 @@
 \alias{ga}
 \alias{show,ga-method}
 \alias{print,ga-method}
-\alias{startParallel}
 
 \title{Genetic Algorithms}
 
-\description{Maximization of a \code{fitness} function using genetic algorithms.}
+\description{Maximization of a fitness function using genetic algorithms (GAs). Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. The algorithm can be run sequentially or in parallel using an explicit master-slave parallelisation.}
 
 \usage{
 ga(type = c("binary", "real-valued", "permutation"), 
@@ -20,19 +19,33 @@ ga(type = c("binary", "real-valued", "permutation"),
    pcrossover = 0.8, 
    pmutation = 0.1, 
    elitism = base::max(1, round(popSize*0.05)), 
+   updatePop = FALSE,
+   postFitness = NULL,
    maxiter = 100,
    run = maxiter,
-   maxfitness = Inf,
+   maxFitness = Inf,
    names = NULL,
    suggestions = NULL, 
+   optim = FALSE,
+   optimArgs = list(method = "L-BFGS-B", 
+                    poptim = 0.05,
+                    pressel = 0.5,
+                    control = list(fnscale = -1, maxit = 100)),
    keepBest = FALSE,
    parallel = FALSE,
-   monitor = gaMonitor,
+   monitor = if(interactive()) gaMonitor else FALSE,
    seed = NULL)
 }
 
 \arguments{
-\item{type}{the type of genetic algorithm to be run depending on the nature of decision variables. Possible values are: \code{"binary"} for binary representations of decision variables; \code{"real-valued"} for optimization problems where the decision variables are floating-point representations of real numbers; \code{"permutation"} for problems that involves reordering of a list.}
+\item{type}{the type of genetic algorithm to be run depending on the nature of decision variables. Possible values are: 
+
+\tabular{ll}{
+\code{"binary"} \tab for binary representations of decision variables. \cr
+\code{"real-valued"} \tab for optimization problems where the decision variables are floating-point representations of real numbers. \cr
+\code{"permutation"} \tab for problems that involves reordering of a list.
+}
+}
 
 \item{fitness}{the fitness function, any allowable R function which takes as input an individual \code{string} representing a potential solution, and returns a numerical value describing its ``fitness''.}
 
@@ -46,13 +59,19 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \item{population}{an R function for randomly generating an initial population. See \code{\link{ga_Population}} for available functions.}
 
-\item{selection}{an R function performing selection, i.e., a function which generates a new population of individuals from the current population probabilistically according to individual fitness. See \code{\link{ga_Selection}} for available functions.}
+\item{selection}{an R function performing selection, i.e. a function which generates a new population of individuals from the current population probabilistically according to individual fitness. See \code{\link{ga_Selection}} for available functions.}
 
-\item{crossover}{an R function performing crossover, i.e., a function which forms offsprings by combining part of the genetic information from their parents. See \code{\link{ga_Crossover}} for available functions.}
+\item{crossover}{an R function performing crossover, i.e. a function which forms offsprings by combining part of the genetic information from their parents. See \code{\link{ga_Crossover}} for available functions.}
 
-\item{mutation}{an R function performing mutation, i.e., a function which randomly alters the values of some genes in a parent chromosome. See \code{\link{ga_Mutation}} for available functions.}
+\item{mutation}{an R function performing mutation, i.e. a function which randomly alters the values of some genes in a parent chromosome. See \code{\link{ga_Mutation}} for available functions.}
 
 \item{popSize}{the population size.}
+
+\item{updatePop}{a logical defaulting to \code{FALSE}. If set at \code{TRUE} the first attribute attached to the value returned by the user-defined fitness function is used to update the population. \cr
+\emph{Be careful though, this is an experimental feature!}}
+
+\item{postFitness}{a user-defined function which, if provided, receives the current \code{ga-class} object as input, performs post fitness-evaluation steps, then returns an updated version of the object which is used to update the GA search.\cr
+\emph{Be careful though, this is an experimental feature!}}
 
 \item{pcrossover}{the probability of crossover between pairs of chromosomes. Typically this is a large value and by default is set to 0.8.}
 
@@ -64,17 +83,29 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \item{run}{the number of consecutive generations without any improvement in the best fitness value before the GA is stopped.}
 
-\item{maxfitness}{the upper bound on the fitness function after that the GA search is interrupted.}
+\item{maxFitness}{the upper bound on the fitness function after that the GA search is interrupted.}
 
 \item{names}{a vector of character strings providing the names of decision variables.}
 
 \item{suggestions}{a matrix of solutions strings to be included in the initial population. If provided the number of columns must match the number of decision variables.}
 
+\item{optim}{a logical defaulting to \code{FALSE} determining whether or not a local search using general-purpose optimisation algorithms should be used. See argument \code{optimArgs} for further details and finer control.}
+
+\item{optimArgs}{a list controlling the local search algorithm with the following components:
+
+\describe{
+\item{\code{method}}{a string specifying the general-purpose optimisation method to be used, by default is set to \code{"L-BFGS-B"}. Other possible methods are those reported in \code{\link[stats]{optim}}.}
+\item{\code{poptim}}{a value in the range [0,1] specifying the probability of performing a local search at each iteration of GA (default 0.1).}
+\item{\code{pressel}}{a value in the range [0,1] specifying the pressure selection (default 0.5). The local search is started from a random solution selected with probability proportional to fitness. High values of \code{pressel} tend to select the solutions with the largest fitness, whereas low values of \code{pressel} assign quasi-uniform probabilities to any solution.}
+\item{\code{control}}{a list of control parameters. See 'Details' section in \code{\link[stats]{optim}}.}
+}
+}
+
 \item{keepBest}{a logical argument specifying if best solutions at each iteration should be saved in a slot called \code{bestSol}. See \code{\link{ga-class}}.}
 
 \item{parallel}{a logical argument specifying if parallel computing should be used (\code{TRUE}) or not (\code{FALSE}, default) for evaluating the fitness function. This argument could also be used to specify the number of cores to employ; by default, this is taken from \code{\link[parallel]{detectCores}}. Finally, the functionality of parallelization depends on system OS: on Windows only 'snow' type functionality is available, while on Unix/Linux/Mac OSX both 'snow' and 'multicore' (default) functionalities are available.}
 
-\item{monitor}{an R function which takes as input the current state of the \code{ga} object and show the evolution of the search. By default, the function \code{\link{gaMonitor}} prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument.}
+\item{monitor}{a logical or an R function which takes as input the current state of the \code{ga-class} object and show the evolution of the search. By default, for interactive sessions, the function \code{\link{gaMonitor}} prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
 
 \item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a GA search.}
 
@@ -97,27 +128,34 @@ Default genetic operators are set via \code{\link{gaControl}}. To retrieve the c
 
 \references{
 
-Back T, Fogel D, Michalewicz Z (2000). \emph{Evolutionary Computation 1: Basic Algorithms and Operators}. IOP Publishing Ltd., Bristol and Philadelphia.
+Back T., Fogel D., Michalewicz Z. (2000). \emph{Evolutionary Computation 1: Basic Algorithms and Operators}. IOP Publishing Ltd., Bristol and Philadelphia.
 
-Back T, Fogel D, Michalewicz Z (2000b). \emph{Evolutionary Computation 2: Advanced Algorithms and Operators}. IOP Publishing Ltd., Bristol and Philadelphia.
+Back T., Fogel D., Michalewicz Z. (2000b). \emph{Evolutionary Computation 2: Advanced Algorithms and Operators}. IOP Publishing Ltd., Bristol and Philadelphia.
 
-Coley D (1999). \emph{An Introduction to Genetic Algorithms for Scientists and Engineers}. World Scientific Pub. Co. Inc., Singapore.
+Coley D. (1999). \emph{An Introduction to Genetic Algorithms for Scientists and Engineers}. World Scientific Pub. Co. Inc., Singapore.
 
-Eiben A, Smith J (2003). \emph{Introduction to Evolutionary Computing}. Springer-Verlag, Berlin Heidelberg.
+Eiben A., Smith J. (2003). \emph{Introduction to Evolutionary Computing}. Springer-Verlag, Berlin Heidelberg.
 
-Goldberg D (1989). \emph{Genetic Algorithms in Search, Optimization, and Machine Learning}. Addison-Wesley Professional, Boston, MA.
+Goldberg D. (1989). \emph{Genetic Algorithms in Search, Optimization, and Machine Learning}. Addison-Wesley Professional, Boston, MA.
 
-Haupt RL, Haupt SE (2004). \emph{Practical Genetic Algorithms}. 2nd edition. John Wiley & Sons, New York.
+Haupt R. L., Haupt S. E. (2004). \emph{Practical Genetic Algorithms}. 2nd edition. John Wiley & Sons, New York.
 
-Scrucca L (2013). GA: A Package for Genetic Algorithms in R.
+Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. Freely available at \url{http://cs.gmu.edu/~sean/book/metaheuristics/}.
+
+Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
 \emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
 
-Sivanandam S, Deepa S (2007). \emph{Introduction to Genetic Algorithms}. Springer-Verlag, Berlin Heidelberg.
+Scrucca L. (2016). On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to \emph{R Journal}.
 
-Yu X, Gen M (2010). \emph{Introduction to Evolutionary Algorithms}. Springer-Verlag, Berlin Heidelberg.
+Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
+
+Sivanandam S., Deepa S. (2007). \emph{Introduction to Genetic Algorithms}. Springer-Verlag, Berlin Heidelberg.
+
+Yu X., Gen M. (2010). \emph{Introduction to Evolutionary Algorithms}. Springer-Verlag, Berlin Heidelberg.
+
 }
   
-\author{Luca Scrucca \email{luca@stat.unipg.it}}
+\author{Luca Scrucca \email{luca.scrucca@unipg.it}}
 
 %\note{}
 
@@ -185,7 +223,7 @@ GA <- ga(type = "real-valued", fitness =  function(x) -Rastrigin(x[1], x[2]),
 summary(GA)
 plot(GA)
 
-## Parallel GA #######
+# 4) Parallel GA
 # Simple example of an expensive fitness function obtained artificially by
 # introducing a pause statement. 
 \dontrun{
@@ -196,17 +234,32 @@ Rastrigin <- function(x1, x2)
 }
 
 system.time(GA1 <- ga(type = "real-valued", 
-                     fitness =  function(x) -Rastrigin(x[1], x[2]),
-                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
-                     popSize = 50, maxiter = 100, monitor = FALSE,
-                     seed = 12345))
+                      fitness =  function(x) -Rastrigin(x[1], x[2]),
+                      min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                      popSize = 50, maxiter = 100, monitor = FALSE,
+                      seed = 12345))
 
 system.time(GA2 <- ga(type = "real-valued", 
-                     fitness =  function(x) -Rastrigin(x[1], x[2]),
-                     min = c(-5.12, -5.12), max = c(5.12, 5.12), 
-                     popSize = 50, maxiter = 100, monitor = FALSE,
-                     seed = 12345, parallel = TRUE))
+                      fitness =  function(x) -Rastrigin(x[1], x[2]),
+                      min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                      popSize = 50, maxiter = 100, monitor = FALSE,
+                      seed = 12345, parallel = TRUE))
 }
+
+# 5) Hybrid GA
+# Example of GA with local search 
+
+Rastrigin <- function(x1, x2)
+{
+  20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
+}
+
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 100,
+         optim = TRUE)
+summary(GA)
 
 }
 

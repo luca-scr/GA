@@ -1,0 +1,385 @@
+---
+title: "A quick tour of GA"
+author: "Luca Scrucca"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: false
+    css: "vignette.css"
+vignette: >
+  %\VignetteIndexEntry{A quick tour of GA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align="center",
+               fig.width=5, fig.height=4,
+               dev.args=list(pointsize=8),
+               par=TRUE)
+
+knit_hooks$set(par = function(before, options, envir)
+  { if(before && options$fig.show != "none") 
+       par(mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
+})
+```
+
+
+# Introduction
+
+Genetic algorithms (GAs) are stochastic search algorithms inspired by the basic principles of biological evolution and natural selection. GAs simulate the evolution of living organisms, where the fittest individuals dominate over the weaker ones, by mimicking the biological mechanisms of evolution, such as selection, crossover and mutation.
+
+The R package **GA** provides a collection of general purpose functions for optimization using genetic algorithms. The pakage includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
+
+This document gives a quick tour of **GA** (version `r packageVersion("GA")`) functionalities. It was written in R Markdown, using the [knitr](http://cran.r-project.org/package=knitr) package for production. 
+Futher details are provided in Scrucca (2013) and Scrucca (2016). See also `help(package="GA")` for a list of available functions and methods. 
+
+```{r, message=FALSE, results='asis'}
+library(GA)
+```
+```{}
+#   ____    _    
+#  / ___|  / \     Genetic 
+# | |  _  / _ \    Algorithms
+# | |_| |/ ___ \   
+#  \____/_/   \_\  version 3.0
+# Type 'citation("GA")' for citing this R package in publications.
+```
+
+
+# Function optimisation in one dimension
+
+Consider the function $f(x) = (x^2+x)\cos(x)$ defined over the range $-10 \le x \le 10$:
+```{r}
+f <- function(x)  (x^2+x)*cos(x)
+min <- -10; max <- 10
+curve(f, min, max, n = 1000)
+
+GA <- ga(type = "real-valued", fitness = f, min = min, max = max, 
+         monitor = FALSE)
+summary(GA)
+plot(GA)
+
+curve(f, min, max, n = 1000)
+points(GA@solution, GA@fitnessValue, col = 2, pch = 19)
+```
+
+# Function optimisation in two dimensions
+
+Consider the *Rastrigin function*, a non-convex function often used as a test problem for optimization algorithms because it is a difficult problem due to its large number of local minima. In two dimensions it is defined as
+$$
+f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
+$$
+with $x_i \in [-5.12, 5.12]$ for $i=1,2$. It has a global minimum at $(0,0)$ where $f(0,0) = 0$. 
+
+```{r}
+Rastrigin <- function(x1, x2)
+{
+  20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
+}
+
+x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
+f <- outer(x1, x2, Rastrigin)
+persp3D(x1, x2, f, theta = 50, phi = 20, color.palette = bl2gr.colors)
+filled.contour(x1, x2, f, color.palette = bl2gr.colors)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+# Define a monitoring function of the space searched at each GA iteration:
+monitor <- function(obj) 
+{ 
+  contour(x1, x2, f, drawlabels = FALSE, col = grey(0.5))
+  title(paste("iteration =", obj@iter), font.main = 1)
+  points(obj@population, pch = 20, col = 2)
+  Sys.sleep(0.2)
+}
+
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 100, 
+         monitor = monitor)
+```
+
+A GA minimisation search is obtained as follows (note the minus sign used in the  definition of the local fitness function):
+```{r}
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 1000, run = 100)
+summary(GA)
+plot(GA)
+```
+
+```{r}
+filled.contour(x1, x2, f, color.palette = bl2gr.colors, 
+  plot.axes = { axis(1); axis(2); 
+                points(GA@solution[,1], GA@solution[,2], 
+                       pch = 3, cex = 2, col = "white", lwd = 2) }
+)
+```
+
+
+# Constrained optimisation
+
+This example shows how to minimize an objective function subject to nonlinear inequality constraints and bounds using GAs. Source: http://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html
+
+We want to minimize a simple function of two variables $x_1$ and $x_2$
+$$
+\min_x f(x) = 100 (x_1^2 - x_2)^2 + (1 - x_1)^2;
+$$
+subject to the following nonlinear inequality constraints and bounds:
+
+- $x_1x_2 + x_1 - x_2 + 1.5 \le 0$ (*inequality constraint*),  
+- $10 - x_1x_2 \le 0$ (*inequality constraint*),  
+- $0 \le x1 \le 1$ (*bounds*), and  
+- $0 \le x2 \le 13$ (*bounds*).
+
+The above fitness function is known as "cam" as described in L.C.W. Dixon and G.P. Szego (eds.), **Towards Global Optimisation 2**, North-Holland, Amsterdam, 1978.
+
+```{r}
+f <- function(x)
+  { 100 * (x[1]^2 - x[2])^2 + (1 - x[1])^2 }
+
+c1 <- function(x) 
+  { x[1]*x[2] + x[1] - x[2] + 1.5 }
+
+c2 <- function(x) 
+  { 10 - x[1]*x[2] }
+```
+
+Plot the function and the feasible regions (coloured areas):
+```{r}
+ngrid = 250
+x1 = seq(0, 1, length = ngrid)
+x2 = seq(0, 13, length = ngrid)
+x12 = expand.grid(x1, x2)
+col = adjustcolor(bl2gr.colors(4)[2:3], alpha = 0.2)
+plot(x1, x2, type = "n", xaxs = "i", yaxs = "i")
+image(x1, x2, matrix(ifelse(apply(x12, 1, c1) <= 0, 0, NA), ngrid, ngrid), 
+      col = col[1], add = TRUE)
+image(x1, x2, matrix(ifelse(apply(x12, 1, c2) <= 0, 0, NA), ngrid, ngrid), 
+      col = col[2], add = TRUE)
+contour(x1, x2, matrix(apply(x12, 1, f), ngrid, ngrid), 
+        nlevels = 21, add = TRUE)
+```
+
+MATLAB solution:
+```{r}
+x = c(0.8122, 12.3104)
+f(x)
+```
+However, note that the provided solution does not satisfy the inequality constraints:
+```{r}
+c1(x)
+c2(x)
+```
+
+A GA solution can be obtained by defining a penalised fitness function:
+```{r}
+fitness <- function(x) 
+{ 
+  f <- -f(x)                         # we need to maximise -f(x)
+  pen <- sqrt(.Machine$double.xmax)  # penalty term
+  penalty1 <- max(c1(x),0)*pen       # penalisation for 1st inequality constraint
+  penalty2 <- max(c2(x),0)*pen       # penalisation for 2nd inequality constraint
+  f - penalty1 - penalty2            # fitness function value
+}
+```
+Then
+```{r}
+GA = ga("real-valued", fitness = fitness, 
+        min = c(0,0), max = c(1,13), 
+        maxiter = 5000, run = 1000, seed = 123)
+summary(GA)
+
+fitness(GA@solution)
+f(GA@solution)
+c1(GA@solution)
+c2(GA@solution)
+```
+
+A graph showing the solution found is obtained as:
+```{r}
+plot(x1, x2, type = "n", xaxs = "i", yaxs = "i")
+image(x1, x2, matrix(ifelse(apply(x12, 1, c1) <= 0, 0, NA), ngrid, ngrid), 
+      col = col[1], add = TRUE)
+image(x1, x2, matrix(ifelse(apply(x12, 1, c2) <= 0, 0, NA), ngrid, ngrid), 
+      col = col[2], add = TRUE)
+contour(x1, x2, matrix(apply(x12, 1, f), ngrid, ngrid), 
+        nlevels = 21, add = TRUE)
+points(GA@solution[1], GA@solution[2], col = "dodgerblue3", pch = 3)  # GA solution
+```
+
+
+# Hybrid GAs
+
+Hybrid Genetic Algorithms (HGAs) incorporate efficient local search algorithms into GAs. In case of real-valued optimisation problems, the **GA** package provides a simple way to start local searches from GA solutions after a certain number of iterations, so that, once a promising region is identified, the convergence to the global optimum can be speed up. 
+
+The use of HGAs is controlled by the optional argument `optim = TRUE` (by default is set to `FALSE`). 
+Local searches are executed using the base R function `optim()`, which makes available general-purpose optimisation methods, such as Nelder–Mead, quasi-Newton with and without box constraints, and conjugate-gradient algorithms. 
+The local search method to be used and other parameters are controlled with the optional argument `optimArgs`, which must be a list with the following structure and defaults:
+```{}
+optimArgs = list(method = "L-BFGS-B", 
+                 poptim = 0.05,
+                 pressel = 0.5,
+                 control = list(fnscale = -1, maxit = 100))
+```
+For more details see `help(ga)`.
+
+Consider again the two-dimensional *Rastrigin function* defined previously. A HGA search is obtained as follows:
+```{r}
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         popSize = 50, maxiter = 1000, run = 100,
+         optim = TRUE)
+summary(GA)
+plot(GA)
+```
+
+Note the improved solution obtained. 
+
+
+# Parallel computing
+
+By default searches performed using the **GA** package occour sequentially. In some cases, particularly when the evaluation of the fitness function is time consuming, parallelisation of the search algorithm may be able to speedup computing time. 
+Starting with version 2.0, the **GA** package provides facilities for implementing parallelisation of genetic algorithms. 
+
+Parallel computing with **GA** requires the following packages to be installed: 
+**parallel** (available in base R), [doParallel](http://cran.r-project.org/package=doParallel),
+[foreach](http://cran.r-project.org/package=foreach), and 
+[iterators](http://cran.r-project.org/package=iterators). 
+
+To use parallel computing with the **GA** package on a *single machine with multiple cores* is simple as manipulating the optional argument `parallel` in the `ga()` function call.
+
+The argument `parallel` can be a logical argument specifying if parallel computing should be used (`TRUE`) or not (`FALSE`, default) for evaluating the fitness function. This argument could also be used to specify the number of cores to employ; by default, this is taken from `detectCores()` function in **parallel** package. 
+
+Two types of parallel functionality are implemented depending on system OS: on Windows only *snow* type functionality is available, while on POSIX operating systems, such as Unix, GNU/Linux, and Mac OSX, both *snow* and *multicore* (default) functionalities are available. In the latter case a string can be used to specify which parallelisation method should be used.
+
+Consider the following simple example where a pause statement is introduced to simulate an expensive fitness function. 
+```{r, eval=FALSE}
+library(GA)
+fitness <- function(x)
+{
+  Sys.sleep(0.01)
+  x*runif(1)
+}
+
+library(rbenchmark)
+out <- benchmark(GA1 = ga(type = "real-valued", 
+                          fitness = fitness, min = 0, max = 1,
+                          popSize = 50, maxiter = 100, monitor = FALSE,
+                          seed = 12345),
+                 GA2 = ga(type = "real-valued", 
+                          fitness = fitness, min = 0, max = 1,
+                          popSize = 50, maxiter = 100, monitor = FALSE,
+                          seed = 12345, parallel = TRUE),
+                 GA3 = ga(type = "real-valued", 
+                          fitness = fitness, min = 0, max = 1,
+                          popSize = 50, maxiter = 100, monitor = FALSE,
+                          seed = 12345, parallel = 2),
+                 GA4 = ga(type = "real-valued", 
+                          fitness = fitness, min = 0, max = 1,
+                          popSize = 50, maxiter = 100, monitor = FALSE,
+                          seed = 12345, parallel = "snow"),
+                 columns = c("test", "replications", "elapsed", "relative"),
+                 order = "test", 
+                 replications = 10)
+out$average <- with(out, average <- elapsed/replications)
+out[,c(1:3,5,4)]
+```
+```
+#   test replications elapsed average relative
+# 1  GA1           10 565.075 56.5075    3.975
+# 2  GA2           10 142.174 14.2174    1.000
+# 3  GA3           10 263.285 26.3285    1.852
+# 4  GA4           10 155.777 15.5777    1.096
+```
+
+The results above have been obtained on an iMac, Intel Core i5 at 2.8GHz, with 4 cores and 16 GB RAM, running OSX 10.11.
+
+If a *cluster of multiple machines* is available, `ga()` can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
+
+For instance, suppose that we want to create a cluster of two computers having IP addresses `141.250.100.1` and `141.250.105.3`, respectively. For each computer we require 8 cores, so we aim at having a cluster of 16 cores evenly distributed on the two machines.
+Note that comunication between the master worker and the cluster nodes is done via SSH, so you should configure ssh to use password-less login. For more details see McCallum and Weston (2011, Chapter 2). 
+
+```{r, eval=FALSE}
+library(doParallel)
+workers <- rep(c("141.250.100.1", "141.250.105.3"), each = 8)
+cl <- makeCluster(workers, type = "PSOCK")
+registerDoParallel(cl)
+```
+The code above defines a vector of `workers` containing the IP address for each node of the cluster. This is used by 
+`makeCluster()` to create a *PSOCK Snow cluster* object named `cl`.
+At this point, objects and functions, but also R packages, required during the evaluation of fitness function must be *exported* along the nodes of the cluster. For example, the following code export the vector `x`, the fitness function `fun`, and load the R package `mclust`, on each node of the socket cluster:
+```{r, eval=FALSE}
+clusterExport(cl, varlist = c("x", "fun"))
+clusterCall(cl, library, package = "mclust", character.only = TRUE)
+```
+
+At this point a `ga()` function call can be executed by providing the argument `parallel = cl`. At the end of GA iterations the cluster is automatically stopped by shutting down the workers.
+
+
+
+# Island evolution
+
+GAs can be designed to evolve using an Island evolution approach. Here the population is partitioned in a set of subpopulations (islands) in which isolated GAs are executed on separated processor runs. Occasionally, some individuals from an island migrate to another island, thus allowing subpopulations to share genetic material
+
+This approach is implemented in the `gaisl()` function, which has the same input arguments as the `ga()` function, with the addition of the following argument:
+
+- `numIslands`: an integer value specifying the number of islands to use (by default is set to 4)
+
+- `migrationRate`: a value in the range (0,1) which gives the proportion of individuals that undergo migration between islands in every exchange (by default equal to 0.10)
+
+- `migrationInterval`: an integer value specifying the number of iterations at which exchange of individuals takes place (by default set at 10).
+
+Parallel computing is used by default in the Island evolution approach. Hybridisation by local search is also available as discussed previously.
+
+As an example, consider again the two-dimensional *Rastrigin function*. An Island GA search is obtained as follows:
+```{r, echo=FALSE}
+# run not in parallel because it is not allowed in CRAN checks
+GA <- gaisl(type = "real-valued", 
+            fitness =  function(x) -Rastrigin(x[1], x[2]),
+            min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+            popSize = 100, 
+            maxiter = 1000, run = 100, 
+            numIslands = 4, 
+            migrationRate = 0.2, 
+            migrationInterval = 50,
+            parallel = FALSE)
+```
+
+```{r, eval=FALSE}
+GA <- gaisl(type = "real-valued", 
+            fitness =  function(x) -Rastrigin(x[1], x[2]),
+            min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+            popSize = 100, 
+            maxiter = 1000, run = 100,
+            numIslands = 4, 
+            migrationRate = 0.2,
+            migrationInterval = 50)
+```
+```{r}
+summary(GA)
+plot(GA, log = "x")
+```
+
+
+
+--------------------
+```{r}
+sessionInfo()
+```
+--------------------
+
+# References
+
+McCallum, E. and Weston, S. (2011) *Parallel R*. O’Reilly Media.
+
+Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. *Journal of Statistical Software*, 53(4), 1-37. URL http://www.jstatsoft.org/v53/i04/
+
+Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to *R Journal*.
+

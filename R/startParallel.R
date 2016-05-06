@@ -8,6 +8,16 @@ startParallel <- function(parallel = TRUE, ...)
         requireNamespace("doParallel", quietly = TRUE)))     
      stop("packages 'parallel' and 'doParallel' required for parallelization!")
 
+  # if a cluster is provided as input argument use that cluster and exit
+  if(any(class(parallel) == "cluster"))
+    { cl <- parallel
+      parallel <- TRUE
+      attr(parallel, "type") <- getDoParName()
+      attr(parallel, "cores") <- getDoParWorkers()
+      attr(parallel, "cluster") <- cl
+      return(parallel)
+  }
+    
   # set default parallel functionality depending on system OS:
   # - snow functionality on Windows OS
   # - multicore functionality on Unix-like systems (Unix/Linux & Mac OSX)

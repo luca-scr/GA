@@ -10,6 +10,7 @@
 \alias{gareal_waCrossover}
 \alias{gareal_laCrossover}
 \alias{gareal_blxCrossover}
+\alias{gareal_laplaceCrossover}
 %
 \alias{gaperm_cxCrossover}
 \alias{gaperm_pmxCrossover}
@@ -21,20 +22,21 @@
 \description{Functions implementing crossover genetic operator.}
 
 \usage{
-ga_spCrossover(object, parents, ...)
+ga_spCrossover(object, parents, \dots)
 
-gabin_spCrossover(object, parents, ...)
-gabin_uCrossover(object, parents, ...)
+gabin_spCrossover(object, parents, \dots)
+gabin_uCrossover(object, parents, \dots)
 
-gareal_spCrossover(object, parents, ...)
-gareal_waCrossover(object, parents, ...)
-gareal_laCrossover(object, parents, ...)
-gareal_blxCrossover(object, parents, ...)
+gareal_spCrossover(object, parents, \dots)
+gareal_waCrossover(object, parents, \dots)
+gareal_laCrossover(object, parents, \dots)
+gareal_blxCrossover(object, parents, \dots)
+gareal_laplaceCrossover(object, parents, a = 0, b = 0.35, \dots)
 
-gaperm_cxCrossover(object, parents, ...)
-gaperm_pmxCrossover(object, parents, ...)
-gaperm_oxCrossover(object, parents, ...)
-gaperm_pbxCrossover(object, parents, ...)
+gaperm_cxCrossover(object, parents, \dots)
+gaperm_pmxCrossover(object, parents, \dots)
+gaperm_oxCrossover(object, parents, \dots)
+gaperm_pbxCrossover(object, parents, \dots)
 
 }
 
@@ -44,6 +46,8 @@ gaperm_pbxCrossover(object, parents, ...)
   \item{parents}{A two-rows matrix of values indexing the parents from the current population.}
   
   \item{\dots}{Further arguments passed to or from other methods.}
+  
+  \item{a, b}{Parameters of genetic operators.}
 }
 
 %\details{}

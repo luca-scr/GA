@@ -7,7 +7,7 @@
 
 \title{Summary for Genetic Algorithms}
 
-\description{Summary method for class \code{"GA"}.}
+\description{Summary method for class \code{\link{ga-class}}.}
 
 \usage{
 \S4method{summary}{ga}(object, \dots)
@@ -39,7 +39,9 @@
 
 \examples{
 f <- function(x)  abs(x)+cos(x)
-GA <- ga(type = "real-valued", fitness = function(x) -f(x), min = -20, max = 20)
+GA <- ga(type = "real-valued", 
+         fitness = function(x) -f(x), 
+         min = -20, max = 20, run = 50)
 out <- summary(GA)
 print(out)
 str(out)

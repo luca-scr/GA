@@ -1,6 +1,11 @@
-Version 2.3.1 (2015-07, NOT ON CRAN)
+Version 3.0 (2016-04 NOT ON CRAN)
 
-  o Added vignette for constrained optimization.
+  o Added option to provide a cluster for parallelisation.
+  o Added GA-hybrid using optim() for local search.
+  o Added GA Islands model in gaisl().
+  o Rewrite of gaMonitor() to clear the previous output before printing the 
+    info about the current iteration. Old version is available in gaMonitor2().
+    Same behaviour for gaislMonitor() and gaislMonitor2().
 
 Version 2.3 (2015-07)
 
@@ -10,7 +15,8 @@ Version 2.2 (2014-10)
 
   o Slight modification to plot method.
   o Included link in main ga documentation to genetic operators.
-  o Added ga_pmutation() function to allow GAs having variable mutation probability.
+  o Added ga_pmutation() function to allow GAs having variable mutation 
+    probability.
   o pdf files (previously included as vignettes) moved to inst/doc with 
     corresponding index.html.
   
