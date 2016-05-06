@@ -1,6 +1,6 @@
 exportPattern("^[^\\.]")
 
-import("stats", "graphics", "methods", "foreach", "iterators")
+import("stats", "graphics", "methods", "foreach", "iterators", "doRNG")
 importFrom("grDevices", "adjustcolor", "colorRampPalette")
 importFrom("utils", "str")
 

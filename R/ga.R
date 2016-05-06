@@ -141,7 +141,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                { Fitness[i] <- fitness(Pop[i,], ...) } 
       }
       else
-        { Fitness <- foreach(i = seq_len(popSize), .combine = "c") %dopar%
+        { if (!is.null(seed)) doRNG::registerDoRNG(as.integer(runif(1) * 1e9))
+          Fitness <- foreach(i = seq_len(popSize), .combine = "c") %dopar%
                      { if(is.na(Fitness[i])) fitness(Pop[i,], ...) 
                        else                  Fitness[i] }
         }
