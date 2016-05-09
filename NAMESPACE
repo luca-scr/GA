@@ -1,6 +1,6 @@
 import("stats", "graphics", "methods", "foreach", "iterators", "doRNG")
 importFrom("grDevices", "adjustcolor", "colorRampPalette")
-importFrom("utils", "str")
+importFrom("utils", "str", "flush.console")
 
 export("ga", "gaControl", "gaMonitor", "gaSummary")
 

@@ -34,7 +34,7 @@ Genetic algorithms (GAs) are stochastic search algorithms inspired by the basic 
 The R package **GA** provides a collection of general purpose functions for optimization using genetic algorithms. The pakage includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 
 This document gives a quick tour of **GA** (version `r packageVersion("GA")`) functionalities. It was written in R Markdown, using the [knitr](http://cran.r-project.org/package=knitr) package for production. 
-Futher details are provided in Scrucca (2013) and Scrucca (2016). See also `help(package="GA")` for a list of available functions and methods. 
+Futher details are provided in the papers Scrucca (2013) and Scrucca (2016). See also `help(package="GA")` for a list of available functions and methods. 
 
 ```{r, message=FALSE, results='asis'}
 library(GA)
@@ -367,6 +367,64 @@ summary(GA)
 plot(GA, log = "x")
 ```
 
+# Memoization
+
+In certain circumstances, particularly with binary GAs, [memoization](https://en.wikipedia.org/wiki/Memoization) can 
+be used to speed up calculations by using cached results. This is easily obtained using the [memoise](http://cran.r-project.org/package=memoise) package.
+
+```{r, eval = FALSE}
+data(fat, package = "UsingR")
+mod <- lm(body.fat.siri ~ age + weight + height + neck + chest + abdomen +
+          hip + thigh + knee + ankle + bicep + forearm + wrist, data = fat)
+summary(mod)
+x <- model.matrix(mod)[,-1]
+y <- model.response(mod$model)
+
+fitness <- function(string)
+{ 
+  inc <- which(string==1)
+  X <- cbind(1, x[,inc])
+  mod <- lm.fit(X, y)
+  class(mod) <- "lm"
+  -BIC(mod)
+}
+
+library(memoise)
+mfitness <- memoise(fitness)
+
+is.memoised(fitness)
+```
+```
+# [1] FALSE
+```
+```{r, eval = FALSE}
+is.memoised(mfitness)
+```
+```
+# [1] TRUE
+```
+```{r, eval = FALSE}
+library(rbenchmark)
+tab = benchmark(GA1 = ga("binary", fitness = fitness, nBits = ncol(x), 
+                         popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
+                GA2 = ga("binary", fitness = mfitness, nBits = ncol(x), 
+                         popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
+                columns = c("test", "replications", "elapsed", "relative"), 
+                replications = 10)
+tab$average = with(tab, elapsed/replications)
+tab
+```
+```
+#   test replications elapsed relative average
+# 1  GA1           10  11.483    1.449  1.1483
+# 2  GA2           10   7.927    1.000  0.7927
+```
+```{r, eval=FALSE}
+# To clear cache use
+forget(mfitness)
+```
+
+
 
 
 --------------------
@@ -381,5 +439,6 @@ McCallum, E. and Weston, S. (2011) *Parallel R*. O’Reilly Media.
 
 Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. *Journal of Statistical Software*, 53(4), 1-37. URL http://www.jstatsoft.org/v53/i04/
 
-Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to *R Journal*.
+Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to *R Journal*. Pre-print available at http://arxiv.org/abs/1605.01931.
+
 

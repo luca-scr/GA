@@ -1,4 +1,4 @@
-citHeader("To cite GA in publications use:")
+citHeader("To cite package 'GA' in publications use:")
 
 citEntry(entry = "Article",
   title        = "{GA}: A Package for Genetic Algorithms in {R}",
@@ -17,3 +17,20 @@ citEntry(entry = "Article",
         "URL http://www.jstatsoft.org/v53/i04/.")
 )
 
+citEntry(entry = "Article",
+  title        = "On some extensions to {GA} package: hybrid optimisation, parallelisation and islands evolution",
+  author       = personList(as.person("Luca Scrucca")),
+  journal      = "Submitted to R Journal",
+  year         = "2016",
+  volume       = "",
+  number       = "",
+  pages        = "",
+  url          = "http://arxiv.org/abs/1605.01931",
+  note         = "Pre-print available at arXiv",
+
+  textVersion  =
+  paste("Luca Scrucca (2016).",
+        "On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution.",
+        "Submitted to R Journal.",
+        "Pre-print available at arXiv URL http://arxiv.org/abs/1605.01931.")
+)

@@ -5,4 +5,6 @@ An R package for optimization using genetic algorithms. The package provides a f
 
 Reference:
 
-Luca Scrucca (2013) GA: A Package for Genetic Algorithms in R. **Journal of Statistical Software**, 53(4), 1-37. URL http://www.jstatsoft.org/v53/i04/.
+Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. **Journal of Statistical Software**, 53(4), 1-37. URL http://www.jstatsoft.org/v53/i04/.
+
+Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to *R Journal*. Pre-print available at http://arxiv.org/abs/1605.01931.

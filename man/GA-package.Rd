@@ -21,7 +21,7 @@ For a quick intro to GA package see the \href{../doc/index.html}{vignette} accom
 \section{References}{
 Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. \emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
 
-Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to \emph{R Journal}.
+Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to \emph{R Journal}. Pre-print available at \url{http://arxiv.org/abs/1605.01931}.
 }
 
 % \examples{}
