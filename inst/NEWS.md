@@ -1,4 +1,4 @@
-Version 3.0 (2016-04 NOT ON CRAN)
+# Version 3.0 (2016-05)
 
   o Added option to provide a cluster for parallelisation.
   o Added GA-hybrid using optim() for local search.
@@ -7,11 +7,11 @@ Version 3.0 (2016-04 NOT ON CRAN)
     info about the current iteration. Old version is available in gaMonitor2().
     Same behaviour for gaislMonitor() and gaislMonitor2().
 
-Version 2.3 (2015-07)
+# Version 2.3 (2015-07)
 
   o Added documentation vignettes.
 
-Version 2.2 (2014-10)
+# Version 2.2 (2014-10)
 
   o Slight modification to plot method.
   o Included link in main ga documentation to genetic operators.
@@ -20,7 +20,7 @@ Version 2.2 (2014-10)
   o pdf files (previously included as vignettes) moved to inst/doc with 
     corresponding index.html.
   
-Version 2.1 (2014-05)
+# Version 2.1 (2014-05)
 
   o .printShortMatrix is a function to print part of rows/columns of a matrix
   o print.summary.ga accept arguments to be passed to .printShortMatrix. This
@@ -44,19 +44,19 @@ Version 2.1 (2014-05)
   o Add explicitly stop clusters if parallel is used.
   o Parallel computing improving set up of clusters.
 
-Version 2.0 (2013-08)
+# Version 2.0 (2013-08)
 
    o Option for parallel computing.
 
-Version 1.2 (2013-04, not on CRAN)
+# Version 1.2 (2013-04, not on CRAN)
 
    o Added argument keepBest to include the best solution at each iteration.
    o Bug fix when using suggestions argument.
 
-Version 1.1 (2013-04)
+# Version 1.1 (2013-04)
 
    o Update citation and references to JSS paper.
 
-Version 1.0 (2012-06)
+# Version 1.0 (2012-06)
 
    o First release on CRAN.

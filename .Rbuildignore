@@ -1,7 +1,8 @@
 .DS_Store
-misc/
+^misc$
 aux$
 log$
 ^\.Rproj\.user$
 ^.*\.Rproj$
 ^Makefile$
+^revdep$

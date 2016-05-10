@@ -148,6 +148,7 @@ Scrucca L. (2016). On some extensions to GA package: hybrid optimisation, parall
 }
 
 \examples{
+\dontrun{
 # two-dimensional Rastrigin function
 Rastrigin <- function(x1, x2)
 {
@@ -163,10 +164,10 @@ GA <- gaisl(type = "real-valued",
             fitness =  function(x) -Rastrigin(x[1], x[2]),
             min = c(-5.12, -5.12), max = c(5.12, 5.12), 
             popSize = 80, maxiter = 500, 
-            numIslands = 4, migrationInterval = 50,
-            parallel = 2) # CRAN check limits ncores = 2
+            numIslands = 4, migrationInterval = 50)
 summary(GA)
 plot(GA)
+}
 }
 
 \keyword{optimize}
