@@ -133,7 +133,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   on.exit(if(parallel)
           parallel::stopCluster(attr(parallel, "cluster")) )
   # define operator to use depending on parallel being TRUE or FALSE
-  `%DO%` <- if(parallel) `%dorng%` else `%do%`
+  `%DO%` <- if(parallel && requireNamespace("doRNG", quietly = TRUE)) 
+                              doRNG::`%dorng%`
+            else if(parallel) `%dopar%` else `%do%`
   # set seed for reproducibility  
   if(!is.null(seed)) set.seed(seed)
   i. <- NULL # dummy to trick R CMD check 
@@ -347,7 +349,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         { object@population[i,] <- opt$par
           object@fitness[i] <- opt$value }
   }
-   
+  if(is.function(monitor)) cat("\n")
+  
   # in case of premature convergence remove NAs from summary 
   # fitness evalutations
   object@summary <- na.exclude(object@summary)

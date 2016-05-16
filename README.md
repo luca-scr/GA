@@ -1,5 +1,7 @@
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/qcc)](https://cran.r-project.org/package=GA)
-[![](http://cranlogs.r-pkg.org/badges/qcc)](http://cran.rstudio.com/web/packages/GA/index.html)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/GA)](https://cran.r-project.org/package=GA)
+[![](http://cranlogs.r-pkg.org/badges/GA)](https://cran.r-project.org/package=GA)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/GA)](https://cran.r-project.org/package=GA)
+
 
 # GA
 
@@ -34,6 +36,6 @@ vignette("GA")
 
 Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. **Journal of Statistical Software**, 53(4), 1-37. URL http://www.jstatsoft.org/v53/i04/.
 
-Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to *R Journal*. Pre-print available at http://arxiv.org/abs/1605.01931.
+Scrucca, L. (2016) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to **R Journal**. Pre-print available at http://arxiv.org/abs/1605.01931.
 
 

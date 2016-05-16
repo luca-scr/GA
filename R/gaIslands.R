@@ -114,9 +114,10 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
   on.exit(if(parallel)
           parallel::stopCluster(attr(parallel, "cluster")) )
   # define operator to use depending on parallel being TRUE or FALSE
-  # `%DO%` <- if(parallel & (!is.null(seed))) `%dorng%`
-  #           else if(parallel) `%dopar%` else `%do%`
-  `%DO%` <- if(parallel) `%dorng%` else `%do%`
+  # `%DO%` <- if(parallel) `%dorng%` else `%do%`
+  `%DO%` <- if(parallel && requireNamespace("doRNG", quietly = TRUE)) 
+                               doRNG::`%dorng%`
+            else if(parallel) `%dopar%` else `%do%`
   # set seed for reproducibility    
   if(!is.null(seed)) set.seed(seed)
   i. <- NULL # dummy to trick R CMD check 
@@ -183,8 +184,7 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
                        monitor = FALSE,
                        seed = NULL)
                   }
-    # attr(GAs, "rng") <- NULL
-    
+
     for(i in seq_len(numIslands))
     { 
       # get summary of GAs evolution

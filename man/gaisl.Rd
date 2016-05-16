@@ -114,8 +114,7 @@ gaisl(type = c("binary", "real-valued", "permutation"),
 
 \item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
 
-\item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a ISLGA search.}
-
+\item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a ISLGA search. Note that if parallel computing is required, the \pkg{doRNG} package must be installed.}
 }
 
 \details{
