@@ -244,6 +244,13 @@ persp3D <- function(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3, xlim = r
 }
 
 #----------------------------------------------------------------------------#
+
+is.RStudio <- function () 
+{
+  Sys.getenv("RSTUDIO") == "1"
+}
+
+#----------------------------------------------------------------------------#
 # print a short version of a matrix by allowing to select the number of 
 # head/tail rows and columns to display
 

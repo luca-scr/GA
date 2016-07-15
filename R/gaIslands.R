@@ -31,7 +31,9 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
                                    pressel = 0.5,
                                    control = list(fnscale = -1, maxit = 100)),
                   parallel = TRUE,
-                  monitor = if(interactive()) gaislMonitor else FALSE,
+                  monitor = if(interactive()) 
+                              { if(is.RStudio()) gaislMonitor else gaislMonitor2 } 
+                            else FALSE,
                   seed = NULL)
 {
 
@@ -405,11 +407,9 @@ gaislMonitor <- function(object, digits = getOption("digits"), ...)
   sumryStat <- lapply(object@summary, na.omit)
   iter <- nrow(sumryStat[[1]])
   epoch <- iter/object@migrationInterval
-  # max_epoch <- object@maxiter/object@migrationInterval
   sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
                       digits = digits)
-  # print info
-  replicate(object@numIslands+2, clearConsoleLine())
+  replicate(object@numIslands+2, clearConsoleLine()) 
   cat(paste("\rIslands GA | epoch =", epoch, "\n"))
   for(i in 1:ncol(sumryStat))
      cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))

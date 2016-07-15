@@ -1,3 +1,9 @@
+Version 3.0.2 (2016-06)
+
+  o In interactive sessions use different monitor functions depending on whether
+    or not is an RStudio session. This is due to different capabilities of the
+    several consoles from which R can be run. 
+
 Version 3.0.1 (2016-05)
 
   o doRNG moved from Depends to Suggests due to the unavailability of the binary

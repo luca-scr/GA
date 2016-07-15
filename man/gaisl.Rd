@@ -35,7 +35,9 @@ gaisl(type = c("binary", "real-valued", "permutation"),
                        pressel = 0.5,
                        control = list(fnscale = -1, maxit = 100)),
       parallel = TRUE,
-      monitor = if(interactive()) gaislMonitor else FALSE,
+      monitor = if(interactive()) 
+                  { if(is.RStudio()) gaislMonitor else gaislMonitor2 } 
+                else FALSE,
       seed = NULL)
 }
 
@@ -112,7 +114,7 @@ gaisl(type = c("binary", "real-valued", "permutation"),
 \item{parallel}{a logical argument specifying if GAs evolution should be performed in parallel (\code{TRUE}, default) or sequentially (\code{FALSE}). This argument could also be used to specify the number of cores to employ; by default, this is taken from \code{\link[parallel]{detectCores}}. Note that it is possible to specify a number of islands larger than the number of available cores. In such a case, the parallel algorithm will be run using blocks of islands, with the block size depending on the maximal number of cores available or the number of processors as specified by the user. Finally, the functionality of parallelization depends on system OS: on Windows only 'snow' type functionality is available, while on Unix/Linux/Mac OSX both 'snow' and 'multicore' (default) functionalities are available.
 }
 
-\item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
+\item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} or \code{\link{gaislMonitor2}}, depending on whether or not is an RStudio session, prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
 
 \item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a ISLGA search. Note that if parallel computing is required, the \pkg{doRNG} package must be installed.}
 }

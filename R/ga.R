@@ -29,7 +29,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                 control = list(fnscale = -1, maxit = 100)),
                keepBest = FALSE,
                parallel = FALSE,
-               monitor = if(interactive()) gaMonitor else FALSE,
+               monitor = if(interactive()) 
+                           { if(is.RStudio()) gaMonitor else gaMonitor2 } 
+                         else FALSE,
                seed = NULL) 
 {
 
@@ -226,9 +228,10 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                      silent = TRUE)
           if(is.function(monitor))
             { if(!inherits(opt, "try-error"))
-                cat(" | Local search =", 
+                cat("\b | Local search =", 
                     format(opt$value, digits = getOption("digits")))
-              else cat(" |", opt[1]) }
+              else cat(" |", opt[1]) 
+              cat("\n") }
           if(!inherits(opt, "try-error"))
             { Pop[i,] <- opt$par
               Fitness[i] <- opt$value }
@@ -253,12 +256,6 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       # check stopping criteria
       if(iter > 1)
         object@run <- garun(fitnessSummary[seq(iter),1])
-        # TODO: remove 
-        # { if(fitnessSummary[iter,1] > fitnessSummary[iter-1,1]+gaControl("eps")) 
-        #        object@run <- 1 
-        #   else 
-        #        object@run <- object@run + 1 
-        # }
       if(object@run >= run) break  
       if(max(Fitness, na.rm = TRUE) >= maxFitness) break
       if(object@iter == maxiter) break  
@@ -342,15 +339,14 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                  silent = TRUE)
       if(is.function(monitor))
         { if(!inherits(opt, "try-error"))
-            cat(" | Final local search =",
-                format(opt$value, digits = getOption("digits")) , "\n")
+            cat("\b | Final local search =",
+                format(opt$value, digits = getOption("digits")))
           else cat(" |", opt[1]) }
       if(!inherits(opt, "try-error"))
         { object@population[i,] <- opt$par
           object@fitness[i] <- opt$value }
   }
-  if(is.function(monitor)) cat("\n")
-  
+
   # in case of premature convergence remove NAs from summary 
   # fitness evalutations
   object@summary <- na.exclude(object@summary)
@@ -523,9 +519,12 @@ plot.ga <- function(x, y, ylim, cex.points = 0.7,
   else
     { title(paste("Iteration", object@iter), font.main = 1) }
   if(is.final & legend)
-    { legend("bottomright", legend = c("Best", "Mean", "Median"), 
-             col = col, pch = c(pch,NA), lty = c(lty,1), 
-             lwd = c(1,1,10), pt.cex = c(rep(cex.points,2), 2), 
+    { inc <- !is.na(col)
+      legend("bottomright", 
+             legend = c("Best", "Mean", "Median")[inc], 
+             col = col[inc], pch = c(pch,NA)[inc], 
+             lty = c(lty,1)[inc], lwd = c(1,1,10)[inc], 
+             pt.cex = c(rep(cex.points,2), 2)[inc], 
              inset = 0.02) }
   
   out <- data.frame(iter = iters, summary)
@@ -548,28 +547,28 @@ function(object, ...)
   return(names)
 })
 
-# old function for monitoring
-gaMonitor2 <- function(object, digits = getOption("digits"), ...)
-{ 
- fitness <- na.exclude(object@fitness)
- cat(paste("\nIter =", object@iter, 
-           " | Mean =", format(mean(fitness), digits = digits), 
-           " | Best =", format(max(fitness), digits = digits)))
- flush.console()
-}
 
-# new function (default) for monitoring
+# new function for monitoring within RStudio
 gaMonitor <- function(object, digits = getOption("digits"), ...)
 { 
   fitness <- na.exclude(object@fitness)
   sumryStat <- c(mean(fitness), max(fitness))
   sumryStat <- format(sumryStat, digits = digits)
-  replicate(2, clearConsoleLine())
-  cat(paste("\rGA | iter =", object@iter,
-            # formatC(object@iter, width = nchar(object@maxiter)), 
-            "\n"))
-  cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2]))
+  replicate(2, clearConsoleLine()) 
+  cat(paste("\rGA | iter =", object@iter, "\n")) 
+  cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
   flush.console()
+}
+
+# old function for monitoring used outside from RStudio
+gaMonitor2 <- function(object, digits = getOption("digits"), ...)
+{ 
+ fitness <- na.exclude(object@fitness)
+ cat(paste("GA | Iter =", object@iter, 
+           " | Mean =", format(mean(fitness), digits = digits), 
+           " | Best =", format(max(fitness), digits = digits), 
+           "\n"))
+ flush.console()
 }
 
 gaSummary <- function(x, ...)
