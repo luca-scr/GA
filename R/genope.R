@@ -138,14 +138,12 @@ gabin_raMutation <- function(object, parent, ...)
 
 gareal_Population <- function(object, ...)
 {
-# Generate a random population of size popSize in the range [min, max]  
+  # Generate a random population of size popSize in the range [min, max]
   min <- object@min
   max <- object@max
   nvars <- length(min)
-  population <- matrix(as.double(NA), nrow = object@popSize, ncol = nvars)
-  for(j in 1:nvars) 
-     { population[,j] <- runif(object@popSize, min[j], max[j]) }
-  return(population)
+  popSize <- object@popSize
+  matrix(runif(popSize * nvars, min, max), nrow = popSize, byrow = TRUE)
 }
 
 gareal_lrSelection <- ga_lrSelection
