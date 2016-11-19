@@ -369,13 +369,11 @@ gareal_powMutation <- function(object, parent, pow = 4, ...)
 
 gaperm_Population <- function(object, ...)
 {
-# Generate a random permutation of size popSize in the range [min, max]  
+  # Generate popSize random permutations in the range [min, max]
   min <- object@min
   max <- object@max
-  population <- matrix(as.double(NA), nrow = object@popSize, ncol = max)
-  for(i in 1:object@popSize)
-     population[i,] <- sample(min:max, size = max, replace = FALSE)
-  return(population)
+  popSize <- object@popSize
+  t(replicate(popSize, sample(min:max)))
 }
 
 gaperm_lrSelection <- ga_lrSelection
