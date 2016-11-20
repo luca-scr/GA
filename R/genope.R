@@ -94,13 +94,9 @@ ga_spCrossover <- function(object, parents, ...)
 
 gabin_Population <- function(object, ...)
 {
-# Generate a random population of nBits 0/1 values of size popSize
-  population <- matrix(as.double(NA), 
-                       nrow = object@popSize, 
-                       ncol = object@nBits)
-  for(j in 1:object@nBits) 
-     { population[,j] <- round(runif(object@popSize)) }
-  return(population)
+  # Generate a random population of nBits 0/1 values of size popSize (i.e. a 
+  # matrix of size popSize x nBits)
+  replicate(object@nBits, sample(0:1, size = object@popSize, replace = TRUE))
 }
 
 gabin_lrSelection <- ga_lrSelection
@@ -142,14 +138,12 @@ gabin_raMutation <- function(object, parent, ...)
 
 gareal_Population <- function(object, ...)
 {
-# Generate a random population of size popSize in the range [min, max]  
+  # Generate a random population of size popSize in the range [min, max]
   min <- object@min
   max <- object@max
   nvars <- length(min)
-  population <- matrix(as.double(NA), nrow = object@popSize, ncol = nvars)
-  for(j in 1:nvars) 
-     { population[,j] <- runif(object@popSize, min[j], max[j]) }
-  return(population)
+  popSize <- object@popSize
+  matrix(runif(popSize * nvars, min, max), nrow = popSize, byrow = TRUE)
 }
 
 gareal_lrSelection <- ga_lrSelection
@@ -375,13 +369,11 @@ gareal_powMutation <- function(object, parent, pow = 4, ...)
 
 gaperm_Population <- function(object, ...)
 {
-# Generate a random permutation of size popSize in the range [min, max]  
+  # Generate popSize random permutations in the range [min, max]
   min <- object@min
   max <- object@max
-  population <- matrix(as.double(NA), nrow = object@popSize, ncol = max)
-  for(i in 1:object@popSize)
-     population[i,] <- sample(min:max, size = max, replace = FALSE)
-  return(population)
+  popSize <- object@popSize
+  t(replicate(popSize, sample(min:max)))
 }
 
 gaperm_lrSelection <- ga_lrSelection
