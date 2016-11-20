@@ -94,8 +94,8 @@ ga_spCrossover <- function(object, parents, ...)
 
 gabin_Population <- function(object, ...)
 {
-  # Generate a random population of nBits 0/1 values of size popSize, 
-  # i.e. a matrix of size popSize x nBits
+  # Generate a random population of nBits 0/1 values of size popSize (i.e. a 
+  # matrix of size popSize x nBits)
   replicate(object@nBits, sample(0:1, size = object@popSize, replace = TRUE))
 }
 
