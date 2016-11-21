@@ -64,7 +64,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   }
   if(missing(min) & missing(max) & missing(nBits))
     { stop("A min and max range of values (for 'real-valued' or 'permutation' GA) or nBits (for 'binary' GA) must be provided!") }
-  
+
   # check GA search type 
   switch(type, 
          "binary"      = { nBits <- as.vector(nBits)[1]
@@ -81,7 +81,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
          "permutation" = { min <- as.vector(min)[1]
                            max <- as.vector(max)[1]
                            nBits <- NA
-                           nvars <- length(seq(min,max)) 
+                           nvars <- length(seq.int(min,max)) 
                          }
         )
 
@@ -167,7 +167,10 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                 fitness = Fitness, 
                 summary = fitnessSummary,
                 bestSol = bestSol)
-
+  
+  if(maxiter == 0)
+    return(object)
+  
   # generate beginning population
   Pop <- matrix(as.double(NA), nrow = popSize, ncol = nvars)
   ng <- min(nrow(suggestions), popSize)

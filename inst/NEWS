@@ -1,3 +1,7 @@
+Version 3.0.999 (2016-11)
+
+  o Bug fix in 'gaperm_Population()' when min > 1. Thanks to Romero Barata.
+
 Version 3.0.2 (2016-06)
 
   o In interactive sessions use different monitor functions depending on whether
