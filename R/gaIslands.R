@@ -110,10 +110,18 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
   numiter <- max(1, floor(maxiter/migrationInterval))
 
   # Start parallel computing (if needed)
-  parallel <- if(is.logical(parallel)) 
-                { if(parallel) startParallel(numIslands) else FALSE }
-              else { startParallel(parallel) }
-  on.exit(if(parallel)
+  if(is.logical(parallel))
+    { if(parallel) 
+        { parallel <- startParallel(numIslands)
+          stopCluster <- TRUE }
+      else
+      { parallel <- stopCluster <- FALSE } 
+    }
+  else
+    { stopCluster <- if(inherits(parallel, "cluster")) FALSE else TRUE
+      parallel <- startParallel(parallel) 
+    }
+  on.exit(if(parallel & stopCluster)
           parallel::stopCluster(attr(parallel, "cluster")) )
   # define operator to use depending on parallel being TRUE or FALSE
   # `%DO%` <- if(parallel) `%dorng%` else `%do%`

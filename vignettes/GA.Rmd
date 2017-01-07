@@ -259,6 +259,8 @@ The argument `parallel` can be a logical argument specifying if parallel computi
 
 Two types of parallel functionality are implemented depending on system OS: on Windows only *snow* type functionality is available, while on POSIX operating systems, such as Unix, GNU/Linux, and Mac OSX, both *snow* and *multicore* (default) functionalities are available. In the latter case a string can be used to specify which parallelisation method should be used.
 
+In all cases described above, at the end of GA iterations the cluster is automatically stopped by shutting down the workers.
+
 Consider the following simple example where a pause statement is introduced to simulate an expensive fitness function. 
 ```{r, eval=FALSE}
 library(GA)
@@ -312,16 +314,24 @@ workers <- rep(c("141.250.100.1", "141.250.105.3"), each = 8)
 cl <- makeCluster(workers, type = "PSOCK")
 registerDoParallel(cl)
 ```
-The code above defines a vector of `workers` containing the IP address for each node of the cluster. This is used by 
-`makeCluster()` to create a *PSOCK Snow cluster* object named `cl`.
+The code above defines a vector of `workers` containing the IP address for each node of the cluster. This is used by `makeCluster()` to create a *PSOCK Snow cluster* object named `cl`.
 At this point, objects and functions, but also R packages, required during the evaluation of fitness function must be *exported* along the nodes of the cluster. For example, the following code export the vector `x`, the fitness function `fun`, and load the R package `mclust`, on each node of the socket cluster:
 ```{r, eval=FALSE}
 clusterExport(cl, varlist = c("x", "fun"))
 clusterCall(cl, library, package = "mclust", character.only = TRUE)
 ```
 
-At this point a `ga()` function call can be executed by providing the argument `parallel = cl`. At the end of GA iterations the cluster is automatically stopped by shutting down the workers.
-
+At this point a `ga()` function call can be executed by providing the argument `parallel = cl`. For instance:
+```{r, eval=FALSE}
+GA5 = ga(type = "real-valued", 
+         fitness = fitness, min = 0, max = 1,
+         popSize = 50, maxiter = 100, monitor = FALSE,
+         seed = 12345, parallel = cl)
+```
+Note that in this case the cluster must be explicitely stopped with the command:
+```{r, eval=FALSE}
+stopCluster(cl)
+```
 
 
 # Island evolution

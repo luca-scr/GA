@@ -1,6 +1,10 @@
-Version 3.0.999 (2016-11)
+Version 3.0.999 (2017-01)
 
+  o A parallel cluster is automatically stopped unless a registered parallel
+    back end is provided as argument to 'parallel' argument in the ga() or 
+    gaisl() function call.
   o Bug fix in 'gaperm_Population()' when min > 1. Thanks to Romero Barata.
+  o Update "A quick tour of GA" vignette.
 
 Version 3.0.2 (2016-06)
 
