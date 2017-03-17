@@ -188,7 +188,7 @@ gareal_lsSelection <- function(object, ...)
       b <- -1*fmin*fave/delta 
     }
   fscaled <- a*f + b
-  prob <- abs(fscaled)/sum(abs(fscaled))
+  prob <- abs(fscaled)/sum(abs(fscaled), na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
                 prob = pmin(pmax(0, prob), 1, na.rm = TRUE), 
                 replace = TRUE)
@@ -237,7 +237,7 @@ gareal_laCrossover <- function(object, parents, ...)
   a <- runif(n)
   children[1,] <- a*parents[1,] + (1-a)*parents[2,]
   children[2,] <- a*parents[2,] + (1-a)*parents[1,]
-  out <- list(children = children, fitness = rep(NA,2))
+  out <- list(children = children, fitness = rep(as.double(NA),2))
   return(out)
 }
 

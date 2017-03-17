@@ -111,7 +111,18 @@ gaisl(type = c("binary", "real-valued", "permutation"),
 }
 }
 
-\item{parallel}{a logical argument specifying if GAs evolution should be performed in parallel (\code{TRUE}, default) or sequentially (\code{FALSE}). This argument could also be used to specify the number of cores to employ; by default, this is taken from \code{\link[parallel]{detectCores}}. Note that it is possible to specify a number of islands larger than the number of available cores. In such a case, the parallel algorithm will be run using blocks of islands, with the block size depending on the maximal number of cores available or the number of processors as specified by the user. Finally, the functionality of parallelization depends on system OS: on Windows only 'snow' type functionality is available, while on Unix/Linux/Mac OSX both 'snow' and 'multicore' (default) functionalities are available.
+\item{parallel}{An optional argument which allows to specify if the Islands Genetic Algorithm should be run sequentially or in parallel. 
+
+For a single machine with multiple cores, possible values are: 
+\itemize{
+  \item a logical value specifying if parallel computing should be used (\code{TRUE}) or not (\code{FALSE}, default) for running GAs on each island;
+  \item a numerical value which gives the number of cores to employ. By default, this is obtained from the function \code{\link[parallel]{detectCores}}; 
+  \item a character string specifying the type of parallelisation to use. This depends on system OS: on Windows OS only \code{"snow"} type functionality is available, while on Unix/Linux/Mac OSX both \code{"snow"} and \code{"multicore"} (default) functionalities are available.
+}
+In all the cases described above, at the end of the search the cluster is automatically stopped by shutting down the workers.
+
+If a cluster of multiple machines is available, evolution of GAs on each island can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
+In this case the cluster must be explicitely stopped with \code{\link[parallel]{stopCluster}}.
 }
 
 \item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} or \code{\link{gaislMonitor2}}, depending on whether or not is an RStudio session, prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}

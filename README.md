@@ -16,11 +16,11 @@ Get the released version from CRAN:
 install.packages("GA")
 ```
 
-Or the development version from github:
+Or the development version from GitHub:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("luca/GA")
+devtools::install_github("luca-scr/GA")
 ```
 
 ## How to Use This Package
@@ -30,6 +30,12 @@ A quick intro vignette is also available, which can be accessed using
 
 ```R
 vignette("GA")
+```
+
+Note that if the package is installed from GitHub the vignette is not automatically created. However, it can be created when installing from GitHub with the code:
+
+```R
+devtools::install_github("luca-scr/GA", build_vignettes = TRUE)
 ```
 
 ## References:
