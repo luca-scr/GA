@@ -241,24 +241,44 @@ gareal_laCrossover <- function(object, parents, ...)
   return(out)
 }
 
+# gareal_blxCrossover <- function(object, parents, ...)
+# {
+# # Blend crossover
+#   parents <- object@population[parents,,drop = FALSE]
+#   n <- ncol(parents)
+#   a <- 0.5
+#   # a <- exp(-pi*iter/max(iter)) # annealing factor
+#   children <- matrix(as.double(NA), nrow = 2, ncol = n)
+#   for(i in 1:n)
+#      { x <- sort(parents[,i])
+#        xl <- max(x[1] - a*(x[2]-x[1]), object@min[i])
+#        xu <- min(x[2] + a*(x[2]-x[1]), object@max[i])
+#        children[,i] <- runif(2, xl, xu) 
+#      }
+#   out <- list(children = children, fitness = rep(NA,2))
+#   return(out)
+# }
+
+# versione ottimizzata 
 gareal_blxCrossover <- function(object, parents, ...)
 {
 # Blend crossover
   parents <- object@population[parents,,drop = FALSE]
   n <- ncol(parents)
   a <- 0.5
-  # a <- exp(-pi*iter/max(iter)) # annealing factor
+  x <- apply(parents, 2, range)
+  xl <- pmax(x[1,] - a*(x[2,]-x[1,]), object@min)
+  xu <- pmin(x[2,] + a*(x[2,]-x[1,]), object@max)
   children <- matrix(as.double(NA), nrow = 2, ncol = n)
   for(i in 1:n)
-     { x <- sort(parents[,i])
-       xl <- max(x[1] - a*(x[2]-x[1]), object@min[i])
-       xu <- min(x[2] + a*(x[2]-x[1]), object@max[i])
-       children[,i] <- runif(2, xl, xu) 
-     }
+    children[,i] <- runif(2, xl[i], xu[i]) 
   out <- list(children = children, fitness = rep(NA,2))
   return(out)
 }
 
+
+gareal_laplaceCrossover <- function (object, parents, a = 0, b = 0.15, ...) 
+{
 # Laplace crossover(a, b)
 #
 # a is the location parameter and b > 0 is the scaling parameter of a Laplace
@@ -274,20 +294,18 @@ gareal_blxCrossover <- function(object, parents, ...)
 #
 # References
 #
+# Deep K., Thakur M. (2007) A new crossover operator for real coded genetic
+#   algorithms, Applied Mathematics and Computation, 188, 895–912.
 # Deep K., Singh K.P., Kansal M.L., Mohan C. (2009) A real coded genetic
 #   algorithm for solving integer and mixed integer optimization problems.
 #   Applied Mathematics and Computation, 212(2), pp. 505-518.
-
-
-gareal_laplaceCrossover <- function (object, parents, a = 0, b = 0.35, ...) 
-{
+  
   parents <- object@population[parents, , drop = FALSE]
   n <- ncol(parents)
   children <- matrix(as.double(NA), nrow = 2, ncol = n)
+  r <- runif(n)
   u <- runif(n)
-  beta <- a + ifelse(u > 0.5, 
-                     -b*log(2*(1 - u)), 
-                     +b*log(2*u))
+  beta <- a + ifelse(r > 0.5, b*log(u), -b*log(u))
   bpar <- beta*abs(parents[1,] - parents[2,])
   children[1,] <- pmin(pmax(parents[1,] + bpar, object@min), object@max)
   children[2,] <- pmin(pmax(parents[2,] + bpar, object@min), object@max)
@@ -336,17 +354,10 @@ gareal_rsMutation <- function(object, parent, ...)
   return(mutate)
 }
 
+gareal_powMutation <- function(object, parent, pow = 10, ...)
+{
 # Power mutation(pow)
 #
-# a is the location parameter and b > 0 is the scaling parameter of a Laplace
-# distribution, which is generated as described in 
-# Krishnamoorthy K. (2006) Handbook of Statistical Distributions with 
-#   Applications, Chapman & Hall/CRC.
-#
-# For smaller values of b offsprings are likely to be produced nearer to 
-# parents, and for larger values of b offsprings are expected to be produced
-# far from parents.
-
 # Deep et al. (2009) suggests to use pow = 10 for real-valued variables, and
 # pow = 4 for integer variables.
 #
@@ -355,17 +366,17 @@ gareal_rsMutation <- function(object, parent, ...)
 # Deep K., Singh K.P., Kansal M.L., Mohan C. (2009) A real coded genetic
 #   algorithm for solving integer and mixed integer optimization problems.
 #   Applied Mathematics and Computation, 212(2), pp. 505-518.
+# Deep K., Thakur M. (2007) A new mutation operator for real coded genetic
+#  algorithms, Applied Mathematics and Computation, 193, pp. 211–230.
 
-gareal_powMutation <- function(object, parent, pow = 4, ...)
-{
   mutate <- parent <- as.vector(object@population[parent,])
   n <- length(parent)
   s <- runif(1)^pow
   t <- (parent - object@min)/(object@max - parent)
   r <- runif(n)
-  mutate <- parent + ifelse(r > t, 
-                            +s*(object@max - parent), 
-                            -s*(parent - object@min))
+  mutate <- parent + ifelse(r < t, 
+                            -s*(parent - object@min),
+                            +s*(object@max - parent))
   return(mutate)
 }
 

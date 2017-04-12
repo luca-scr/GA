@@ -455,9 +455,9 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
 {
   dotargs <- list(...)
   if(is.null(dotargs$head)) dotargs$head <- 10
-  if(is.null(dotargs$tail)) dotargs$tail <- 1
-  if(is.null(dotargs$chead)) dotargs$chead <- 20
-  if(is.null(dotargs$ctail)) dotargs$ctail <- 1
+  if(is.null(dotargs$tail)) dotargs$tail <- 2
+  if(is.null(dotargs$chead)) dotargs$chead <- 10
+  if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
   cat("+-----------------------------------+\n")
   cat("|         Genetic Algorithm         |\n")
@@ -469,20 +469,21 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
   cat(paste("Elitism               = ", x$elitism, "\n"))
   cat(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
   cat(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
-  
+  #
   if(x$type == "real-valued")
     { cat(paste("Search domain = \n"))
-      print(x$domain, digits = digits)
+      do.call(".printShortMatrix", 
+              c(list(x$domain, digits = digits), 
+                dotargs[c("head", "tail", "chead", "ctail")]))
     }
-
+  #
   if(!is.null(x$suggestions))
     { cat(paste("Suggestions =", "\n"))
       do.call(".printShortMatrix", 
               c(list(x$suggestions, digits = digits), 
                 dotargs[c("head", "tail", "chead", "ctail")]))
-      # print(x$suggestions, digits = digits, ...)
     }
-
+  #
   cat("\nGA results: \n")
   cat(paste("Iterations             =", format(x$iter, digits = digits), "\n"))
   cat(paste("Fitness function value =", format(x$fitness, digits = digits), "\n"))
@@ -493,8 +494,7 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
   do.call(".printShortMatrix", 
           c(list(x$solution, digits = digits), 
             dotargs[c("head", "tail", "chead", "ctail")]))
-  # print(x$solution, digits = digits, ...)
-
+  #
   invisible()
 }
 

@@ -271,7 +271,7 @@ is.RStudio <- function ()
       x <- rbind(x[1:head,,drop=FALSE], 
                  rep(NA, nc), 
                  x[(nr-tail+1):nr,,drop=FALSE])
-      rownames(x) <- c(rnames[1:head], "...", rnames[(nr-tail+1):nr])
+      rownames(x) <- c(rnames[1:head], " ... ", rnames[(nr-tail+1):nr])
   }
   if(nc > (chead + ctail + 1))
     { cnames <- colnames(x)
@@ -280,7 +280,7 @@ is.RStudio <- function ()
       x <- cbind(x[,1:chead,drop=FALSE], 
                  rep(NA, nrow(x)), 
                  x[,(nc-ctail+1):nc,drop=FALSE])
-      colnames(x) <- c(cnames[1:chead], "...", cnames[(nc-ctail+1):nc])
+      colnames(x) <- c(cnames[1:chead], " ... ", cnames[(nc-ctail+1):nc])
   }
           
   print(x, na.print = "", ...)
