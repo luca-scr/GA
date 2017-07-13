@@ -122,7 +122,7 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
       parallel <- startParallel(parallel) 
     }
   on.exit(if(parallel & stopCluster)
-          parallel::stopCluster(attr(parallel, "cluster")) )
+          stopParallel(attr(parallel, "cluster")) )
   # define operator to use depending on parallel being TRUE or FALSE
   # `%DO%` <- if(parallel) `%dorng%` else `%do%`
   `%DO%` <- if(parallel && requireNamespace("doRNG", quietly = TRUE)) 

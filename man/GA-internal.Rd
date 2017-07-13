@@ -3,6 +3,7 @@
 \alias{clearConsoleLine}
 \alias{is.RStudio}
 \alias{startParallel}
+\alias{stopParallel}
 \alias{garun}
 \alias{optimProbsel}
 \alias{reflectSolution}
@@ -19,6 +20,7 @@ Internal functions not intended to be called directly by users.
 clearConsoleLine()
 is.RStudio()
 startParallel(parallel = TRUE, \dots) 
+stopParallel(cluster, \dots)
 garun(x)
 optimProbsel(x, q = 0.25)
 reflectSolution(x, lo, up, tol = sqrt(.Machine$double.eps))

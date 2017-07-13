@@ -145,7 +145,7 @@ Luque G., Alba E. (2011) \emph{Parallel Genetic Algorithms: Theory and Real Worl
 
 Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. Freely available at \url{http://cs.gmu.edu/~sean/book/metaheuristics/}.
 
-Scrucca L. (2016). On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to \emph{R Journal}.
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187–206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
 }
   
 \author{Luca Scrucca \email{luca.scrucca@unipg.it}}

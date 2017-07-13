@@ -24,7 +24,7 @@ gabin_raMutation(object, parent, \dots)
 gareal_raMutation(object, parent, \dots)
 gareal_nraMutation(object, parent, \dots)
 gareal_rsMutation(object, parent, \dots)
-gareal_powMutation(object, parent, pow = 4, \dots)
+gareal_powMutation(object, parent, pow = 10, \dots)
 
 gaperm_simMutation(object, parent, \dots)
 gaperm_ismMutation(object, parent, \dots)

@@ -81,3 +81,11 @@ startParallel <- function(parallel = TRUE, ...)
 
   return(parallel)
 }
+
+stopParallel <- function(cluster, ...)
+{ 
+# Stop parallel computing for GA package
+  parallel::stopCluster(cluster)
+  foreach::registerDoSEQ()
+  invisible()
+}

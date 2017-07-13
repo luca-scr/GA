@@ -14,23 +14,22 @@ citEntry(entry = "Article",
   paste("Luca Scrucca (2013).",
         "GA: A Package for Genetic Algorithms in R.",
         "Journal of Statistical Software, 53(4), 1-37.",
-        "URL http://www.jstatsoft.org/v53/i04/.")
+        "URL http://www.jstatsoft.org/v53/i04/")
 )
 
 citEntry(entry = "Article",
   title        = "On some extensions to {GA} package: hybrid optimisation, parallelisation and islands evolution",
   author       = personList(as.person("Luca Scrucca")),
-  journal      = "Submitted to R Journal",
-  year         = "2016",
-  volume       = "",
-  number       = "",
-  pages        = "",
-  url          = "http://arxiv.org/abs/1605.01931",
-  note         = "Pre-print available at arXiv",
+  journal      = "The R Journal",
+  year         = "2017",
+  volume       = "9",
+  number       = "1",
+  pages        = "187--206",
+  url          = "https://journal.r-project.org/archive/2017/RJ-2017-008",
 
   textVersion  =
-  paste("Luca Scrucca (2016).",
+  paste("Luca Scrucca (2017).",
         "On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution.",
-        "Submitted to R Journal.",
-        "Pre-print available at arXiv URL http://arxiv.org/abs/1605.01931.")
+        "The R Journal,  9/1, 187–206.",
+        "https://journal.r-project.org/archive/2017/RJ-2017-008")
 )

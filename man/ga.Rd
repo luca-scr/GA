@@ -160,7 +160,7 @@ Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. Freely av
 Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
 \emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
 
-Scrucca L. (2016). On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. Submitted to \emph{R Journal}. Pre-print available at \url{http://arxiv.org/abs/1605.01931}.
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187–206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
 
 Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
 

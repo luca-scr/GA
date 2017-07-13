@@ -1,10 +1,15 @@
-Version 3.0.999 (2017-01)
+Version 3.0.3 (2017-07) NOT ON CRAN
 
+  o Add stopParallel() function to stop a cluster if parallel = TRUE, including
+    registerDoSEQ() to avoid problems if foreach loop is used after.
   o A parallel cluster is automatically stopped unless a registered parallel
     back end is provided as argument to 'parallel' argument in the ga() or 
     gaisl() function call.
   o Bug fix in 'gaperm_Population()' when min > 1. Thanks to Romero Barata.
   o Update "A quick tour of GA" vignette.
+  o Add README.Rmd that is shown in GitHub and CRAN.
+  o Create a sticker for the package.
+  
 
 Version 3.0.2 (2016-06)
 

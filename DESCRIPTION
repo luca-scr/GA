@@ -1,6 +1,6 @@
 Package: GA
-Version: 3.0.999
-Date: 2017-01-07
+Version: 3.0.3
+Date: 2017-07-13
 Title: Genetic Algorithms
 Description: An R package for optimisation using genetic algorithms. The package provides a flexible general-purpose set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 Authors@R: c(person("Luca", "Scrucca", role = c("aut", "cre"),
