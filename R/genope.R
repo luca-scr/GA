@@ -16,9 +16,9 @@ ga_lrSelection <- function(object,
 # Michalewicz (1996) Genetic Algorithms + Data Structures = Evolution Programs. p. 60
   rank <- (object@popSize+1) - rank(object@fitness, ties.method = "min")
   prob <- q - (rank-1)*r
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
-                prob = pmin(pmax(0, prob), 1, na.rm = TRUE),
-                replace = TRUE)
+                prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -30,10 +30,9 @@ ga_nlrSelection <- function(object, q = 0.25, ...)
 # Michalewicz (1996) Genetic Algorithms + Data Structures = Evolution Programs. p. 60
   rank <- (object@popSize + 1) - rank(object@fitness, ties.method = "random")
   prob <- q*(1-q)^(rank-1)
-  prob <- prob/sum(prob)
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
-                prob = pmin(pmax(0, prob), 1, na.rm = TRUE),
-                replace = TRUE)
+                prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -43,9 +42,9 @@ ga_rwSelection <- function(object, ...)
 {
 # Proportional (roulette wheel) selection
   prob <- abs(object@fitness)/sum(abs(object@fitness))
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
-                prob = pmin(pmax(0, prob), 1, na.rm = TRUE),
-                replace = TRUE)
+                prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -190,9 +189,9 @@ gareal_lsSelection <- function(object, ...)
     }
   fscaled <- a*f + b
   prob <- abs(fscaled)/sum(abs(fscaled), na.rm = TRUE)
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
-                prob = pmin(pmax(0, prob), 1, na.rm = TRUE), 
-                replace = TRUE)
+                prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -206,9 +205,9 @@ gareal_sigmaSelection <- function(object, ...)
   sf <- sd(object@fitness, na.rm = TRUE)
   fscaled <- pmax(object@fitness - (mf - 2*sf), 0, na.rm = TRUE)
   prob <- abs(fscaled)/sum(abs(fscaled))
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize,
-                prob = pmin(pmax(0, prob), 1, na.rm = TRUE),
-                replace = TRUE)
+                prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -590,7 +589,7 @@ optimProbsel <- function(x, q = 0.25)
   # prob <- q*(1-q)^(rank-1) * 1/(1-(1-q)^n)
   prob <- q*(1-q)^(rank-1)
   prob[is.na(x)] <- 0
-  prob <- prob/sum(prob)
+  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   return(prob)
 }
   
