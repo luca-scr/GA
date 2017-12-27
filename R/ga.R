@@ -29,9 +29,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                 control = list(fnscale = -1, maxit = 100)),
                keepBest = FALSE,
                parallel = FALSE,
-               monitor = if(interactive()) 
-                           { if(is.RStudio()) gaMonitor else gaMonitor2 } 
-                         else FALSE,
+               monitor = if(interactive()) gaMonitor2 else FALSE,
                seed = NULL) 
 {
 
@@ -70,18 +68,28 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
          "binary"      = { nBits <- as.vector(nBits)[1]
                            min <- max <- NA
                            nvars <- nBits 
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          },
          "real-valued" = { min <- as.vector(min)
                            max <- as.vector(max)
                            nBits <- NA
                            if(length(min) != length(max))
-                             { stop("min and max must be vector of the same length!") }
-                           nvars <- length(max) 
+                             stop("min and max must be vector of the same length!")
+                           nvars <- length(max)
+                           if(is.null(names) & !is.null(names(min)))
+                             names <- names(min)
+                           if(is.null(names) & !is.null(names(max)))
+                             names <- names(max)
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          },
          "permutation" = { min <- as.vector(min)[1]
                            max <- as.vector(max)[1]
                            nBits <- NA
-                           nvars <- length(seq.int(min,max)) 
+                           nvars <- length(seq.int(min,max))
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          }
         )
 
@@ -238,10 +246,11 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                      silent = TRUE)
           if(is.function(monitor))
             { if(!inherits(opt, "try-error"))
-                cat("\b | Local search =", 
+                cat("\b\b | Local search =", 
                     format(opt$value, digits = getOption("digits")))
               else cat(" |", opt[1]) 
-              cat("\n") }
+              cat("\n") 
+            }
           if(!inherits(opt, "try-error"))
             { Pop[i,] <- opt$par
               Fitness[i] <- opt$value }
@@ -349,7 +358,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                  silent = TRUE)
       if(is.function(monitor))
         { if(!inherits(opt, "try-error"))
-            cat("\b | Final local search =",
+            cat("\b\b | Final local search =",
                 format(opt$value, digits = getOption("digits")))
           else cat(" |", opt[1]) }
       if(!inherits(opt, "try-error"))
@@ -559,13 +568,27 @@ function(object, ...)
 
 
 # new function for monitoring within RStudio
+# gaMonitor <- function(object, digits = getOption("digits"), ...)
+# { 
+#   fitness   <- na.exclude(object@fitness)
+#   sumryStat <- c(mean(fitness), max(fitness))
+#   sumryStat <- format(sumryStat, digits = digits)
+#   clearConsoleLine()
+#   cat(paste("GA | iter =", object@iter, 
+#             "| Mean =", sumryStat[1], 
+#             "| Best =", sumryStat[2]))
+#   flush.console()
+# }
+
+# old version
 gaMonitor <- function(object, digits = getOption("digits"), ...)
-{ 
+{
   fitness <- na.exclude(object@fitness)
   sumryStat <- c(mean(fitness), max(fitness))
   sumryStat <- format(sumryStat, digits = digits)
-  replicate(2, clearConsoleLine()) 
-  cat(paste("\rGA | iter =", object@iter, "\n")) 
+  if(object@iter > 1) 
+    replicate(2, clearPrevConsoleLine())
+  cat(paste("GA | iter =", object@iter, "\n"))
   cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
   flush.console()
 }
@@ -573,10 +596,12 @@ gaMonitor <- function(object, digits = getOption("digits"), ...)
 # old function for monitoring used outside from RStudio
 gaMonitor2 <- function(object, digits = getOption("digits"), ...)
 { 
- fitness <- na.exclude(object@fitness)
- cat(paste("GA | Iter =", object@iter, 
-           " | Mean =", format(mean(fitness), digits = digits), 
-           " | Best =", format(max(fitness), digits = digits), 
+ fitness   <- na.exclude(object@fitness)
+ sumryStat <- c(mean(fitness), max(fitness))
+ sumryStat <- format(sumryStat, digits = digits)
+ cat(paste("GA | iter =", object@iter, 
+           "| Mean =", sumryStat[1], 
+           "| Best =", sumryStat[2],
            "\n"))
  flush.console()
 }

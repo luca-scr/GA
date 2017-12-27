@@ -33,9 +33,7 @@ ga(type = c("binary", "real-valued", "permutation"),
                     control = list(fnscale = -1, maxit = 100)),
    keepBest = FALSE,
    parallel = FALSE,
-   monitor = if(interactive()) 
-               { if(is.RStudio()) gaMonitor else gaMonitor2 } 
-             else FALSE,
+   monitor = if(interactive()) gaMonitor else FALSE,
    seed = NULL)
 }
 
@@ -120,7 +118,7 @@ If a cluster of multiple machines is available, evaluation of the fitness functi
 In this case the cluster must be explicitely stopped with \code{\link[parallel]{stopCluster}}.
 }
 
-\item{monitor}{a logical or an R function which takes as input the current state of the \code{ga-class} object and show the evolution of the search. By default, for interactive sessions, the function \code{\link{gaMonitor}} or \code{\link{gaMonitor2}}, depending on whether or not is an RStudio session, prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
+\item{monitor}{a logical or an R function which takes as input the current state of the \code{ga-class} object and show the evolution of the search. By default, for interactive sessions the function \code{\link{gaMonitor}} prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
 
 \item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a GA search. Note that if parallel computing is required, the \pkg{doRNG} package must be installed.}
 

@@ -28,7 +28,7 @@ ga_nlrSelection <- function(object, q = 0.25, ...)
 {
 # Nonlinear-rank selection
 # Michalewicz (1996) Genetic Algorithms + Data Structures = Evolution Programs. p. 60
-  rank <- (object@popSize + 1) - rank(object@fitness, ties.method = "random")
+  rank <- (object@popSize + 1) - rank(object@fitness, ties.method = "min")
   prob <- q*(1-q)^(rank-1)
   prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   sel <- sample(1:object@popSize, size = object@popSize, 
@@ -205,9 +205,8 @@ gareal_sigmaSelection <- function(object, ...)
   sf <- sd(object@fitness, na.rm = TRUE)
   fscaled <- pmax(object@fitness - (mf - 2*sf), 0, na.rm = TRUE)
   prob <- abs(fscaled)/sum(abs(fscaled))
-  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
-  sel <- sample(1:object@popSize, size = object@popSize,
-                prob = prob, replace = TRUE)
+  prob <- pmin(pmax(0, prob, na.rm = TRUE), 1, na.rm = TRUE)
+  sel <- sample(1:popSize, size = popSize, prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
               fitness = object@fitness[sel])
   return(out)
@@ -569,7 +568,7 @@ ga_pmutation <- function(object, p0 = 0.5, p = 0.01,
   # linear decay
   # pm <- if(t > T) p else p0 - (p0-p)/T * (t-1)
   # exponential decay
-  pm = (p0 - p)*exp(-2*(t-1)/T) + p
+  pm <- (p0 - p)*exp(-2*(t-1)/T) + p
   #
   return(pm)
 }

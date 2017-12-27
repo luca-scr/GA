@@ -75,10 +75,23 @@ gray2binary <- function(x)
 
 #############################################################################
 
-clearConsoleLine <- function()
+# clearConsoleLine <- function()
+# {
+#   cat(paste0(rep("\b", getOption("width")), collapse = ""))
+#   flush.console()
+# }
+
+clearConsoleLine <- function() 
 {
-  cat(paste0(rep("\b", getOption("width")), collapse = ""))
+  cat("\r")
+  cat(paste0(rep(" ", getOption("width")), collapse = ""))
+  cat("\r")
   flush.console()
+}
+
+clearPrevConsoleLine <- function() 
+{
+  cat("\b");clearConsoleLine()
 }
 
 #############################################################################
