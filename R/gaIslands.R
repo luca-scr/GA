@@ -6,7 +6,7 @@
 
 gaisl <- function(type = c("binary", "real-valued", "permutation"), 
                   fitness, ...,
-                  min, max, nBits,
+                  lower, upper, nBits,
                   population = gaControl(type)$population,
                   selection = gaControl(type)$selection,
                   crossover = gaControl(type)$crossover, 
@@ -31,7 +31,7 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
                                    pressel = 0.5,
                                    control = list(fnscale = -1, maxit = 100)),
                   parallel = TRUE,
-                  monitor = if(interactive()) gaislMonitor2 else FALSE,
+                  monitor = if(interactive()) gaislMonitor else FALSE,
                   seed = NULL)
 {
 
@@ -62,26 +62,54 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
       else if(!is.function(population))
              { stop("pmutation must be a numeric value in (0,1) or a function.") }
   }
-  if(missing(min) & missing(max) & missing(nBits))
-    { stop("A min and max range of values (for 'real-valued' or 'permutation' GA) or nBits (for 'binary' GA) must be provided!") }
+  
+  # check for min and max arguments instead of lower and upper
+  callArgs <- list(...)
+  if(any("min" %in% names(callArgs)))
+  {
+    lower <- callArgs$min
+    callArgs$min <- NULL
+    warning("'min' arg is deprecated. Use 'lower' instead.")
+  }
+  if(any("max" %in% names(callArgs)))
+  {
+    upper <- callArgs$max
+    callArgs$max <- NULL
+    warning("'max' arg is deprecated. Use 'upper' instead.")
+  }
+
+  if(missing(lower) & missing(upper) & missing(nBits))
+    { stop("A lower and upper range of values (for 'real-valued' or 'permutation' GA) or nBits (for 'binary' GA) must be provided!") }
   
   # check GA search type 
   switch(type, 
          "binary"      = { nBits <- as.vector(nBits)[1]
-                           min <- max <- NA
+                           lower <- upper <- NA
                            nvars <- nBits 
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          },
-         "real-valued" = { min <- as.vector(min)
-                           max <- as.vector(max)
+         "real-valued" = { lnames <- names(lower)
+                           unames <- names(upper)
+                           lower <- as.vector(lower)
+                           upper <- as.vector(upper)
                            nBits <- NA
-                           if(length(min) != length(max))
-                             { stop("min and max must be vector of the same length!") }
-                           nvars <- length(max) 
+                           if(length(lower) != length(upper))
+                             stop("lower and upper must be vector of the same length!")
+                           nvars <- length(upper)
+                           if(is.null(names) & !is.null(lnames))
+                             names <- lnames
+                           if(is.null(names) & !is.null(unames))
+                             names <- unames
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          },
-         "permutation" = { min <- as.vector(min)[1]
-                           max <- as.vector(max)[1]
+         "permutation" = { lower <- as.vector(lower)[1]
+                           upper <- as.vector(upper)[1]
                            nBits <- NA
-                           nvars <- length(seq(min,max)) 
+                           nvars <- length(seq(lower,upper))
+                           if(is.null(names))
+                             names <- paste0("x", 1:nvars)
                          }
         )
 
@@ -133,8 +161,8 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
   object <- new("gaisl", 
                 call = call, 
                 type = type,
-                min = min, 
-                max = max, 
+                lower = lower, 
+                upper = upper, 
                 nBits = nBits, 
                 names = if(is.null(names)) character() else names,
                 popSize = popSize,
@@ -169,7 +197,7 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
                    # .options.multicore = list(set.seed = seed)
                   { ga(type = type, 
                        fitness = fitness, ...,
-                       min = min, max = max, nBits = nBits,
+                       lower = lower, upper = upper, nBits = nBits,
                        suggestions = POPs[[i.]],
                        population = population,
                        selection = selection, 
@@ -254,8 +282,8 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
 setClass(Class = "gaisl", 
          representation(call = "language",
                         type = "character",
-                        min = "numericOrNA", 
-                        max = "numericOrNA", 
+                        lower = "numericOrNA", 
+                        upper = "numericOrNA", 
                         nBits = "numericOrNA", 
                         names = "character",
                         popSize = "numeric",
@@ -303,9 +331,9 @@ summary.gaisl <- function(object, ...)
               pcrossover = object@pcrossover,
               pmutation = object@pmutation,
               domain = if(object@type == "real-valued") 
-                         { domain <- rbind(object@min, 
-                                           object@max)
-                           rownames(domain) <- c("Min", "Max")
+                         { domain <- rbind(object@lower, 
+                                           object@upper)
+                           rownames(domain) <- c("lower", "upper")
                            if(ncol(domain) == nvars) 
                              colnames(domain) <- varnames 
                            domain }              
@@ -332,10 +360,12 @@ print.summary.gaisl <- function(x, digits = getOption("digits"), ...)
     dotargs$chead <- 20
   if (is.null(dotargs$ctail)) 
     dotargs$ctail <- 1
-  cat("+-----------------------------------+\n")
-  cat("|         Genetic Algorithm         |\n")
-  cat("|           Islands Model           |\n")
-  cat("+-----------------------------------+\n\n")
+  
+  cat(cli::rule(left = crayon::bold("Islands Genetic Algorithm")), "\n\n")
+  # cat("+-----------------------------------+\n")
+  # cat("|         Genetic Algorithm         |\n")
+  # cat("|           Islands Model           |\n")
+  # cat("+-----------------------------------+\n\n")
   cat("GA settings: \n")
   cat(paste("Type                  = ", x$type, "\n"))
   cat(paste("Number of islands     = ", x$numIslands, "\n"))
@@ -393,65 +423,4 @@ plot.gaisl <- function(x, ...)
 }
 
 setMethod("plot", "gaisl", plot.gaisl)
-
-# matplot(sumryMax, type = "l")
-# matplot(sumryStat[[1]][,1:2], type = "l", xlim = c(0,200),
-#         col = c("green3", "dodgerblue3"), pch = c(16, 1), lty = c(1,2))
-# abline(v = seq(from = 1, to = maxiter, by = migrationInterval), lty = 3)
-
-garun <- function(x)
-{
-  x <- as.vector(x)
-  sum(rev(x) >= (max(x, na.rm = TRUE) - gaControl("eps")))
-}
-
-# Monitoring functions
-
-gaislMonitor <- function(object, digits = getOption("digits"), ...)
-{
-  # collect info
-  sumryStat <- lapply(object@summary, na.omit)
-  iter <- nrow(sumryStat[[1]])
-  epoch <- iter/object@migrationInterval
-  sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
-                      digits = digits)
-  replicate(object@numIslands+1, clearPrevConsoleLine()) 
-  cat(paste("Islands GA | epoch =", epoch, "\n"))
-  for(i in 1:ncol(sumryStat))
-    cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
-  flush.console()
-}
-
-# old
-# gaislMonitor <- function(object, digits = getOption("digits"), ...)
-# {
-#   # collect info
-#   sumryStat <- lapply(object@summary, na.omit)
-#   iter <- nrow(sumryStat[[1]])
-#   epoch <- iter/object@migrationInterval
-#   sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
-#                       digits = digits)
-#   replicate(object@numIslands+2, clearConsoleLine()) 
-#   cat(paste("\rIslands GA | epoch =", epoch, "\n"))
-#   for(i in 1:ncol(sumryStat))
-#      cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
-#   flush.console()
-# }
-
-gaislMonitor2 <- function(object, digits = getOption("digits"), ...)
-{
-  # collect info
-  sumryStat <- lapply(object@summary, na.omit)
-  iter <- nrow(sumryStat[[1]])
-  epoch <- iter/object@migrationInterval
-  # max_epoch <- object@maxiter/object@migrationInterval
-  sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
-                      digits = digits)
-  # print info
-  cat(paste("Islands GA | epoch =", epoch, "\n"))
-  for(i in 1:ncol(sumryStat))
-     cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
-  flush.console()
-}
-
 

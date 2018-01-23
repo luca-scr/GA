@@ -1,21 +1,60 @@
+useDynLib("GA", .registration = TRUE)
+# exportPattern("^[[:alpha:]]+")
+# importFrom("Rcpp", evalCpp)
+importFrom("Rcpp", sourceCpp)
+# import("RcppArmadillo")
+
 import("stats", "graphics", "methods", "foreach", "iterators")
 importFrom("grDevices", "adjustcolor", "colorRampPalette")
-importFrom("utils", "str", "flush.console")
+importFrom("utils", "str", "flush.console", "packageVersion")
+importFrom("cli", "rule")
+importFrom("crayon", "bold")
 
 export("ga", "gaControl", "gaMonitor", "gaSummary")
-
 exportClasses("ga")
 exportMethods("print", "show", "summary", "plot")
-
 S3method("plot", "ga")
 S3method("summary", "ga")
 S3method("print", "summary.ga")
 
+export("gaisl", "gaislMonitor")
 exportClasses("gaisl")
 exportMethods("print", "show", "summary", "plot")
-
 S3method("plot", "gaisl")
 S3method("summary", "gaisl")
 S3method("print", "summary.gaisl")
 
-exportPattern("^[^\\.]")
+export("gabin_Population", "gareal_Population", "gaperm_Population")
+
+export("ga_lrSelection", "ga_nlrSelection", "ga_rwSelection", 
+       "ga_tourSelection",
+       "gabin_lrSelection", "gabin_nlrSelection", "gabin_rwSelection", 
+       "gabin_tourSelection",
+       "gareal_lrSelection", "gareal_nlrSelection",
+       "gareal_rwSelection", "gareal_tourSelection",
+       "gareal_lsSelection", "gareal_sigmaSelection",
+       "gaperm_lrSelection", "gaperm_nlrSelection",
+       "gaperm_rwSelection", "gaperm_tourSelection")
+
+export("ga_spCrossover", 
+       "gabin_spCrossover", "gabin_uCrossover", 
+       "gareal_spCrossover", "gareal_waCrossover",
+       "gareal_laCrossover", "gareal_blxCrossover",
+       "gareal_laplaceCrossover", 
+       "gaperm_cxCrossover", "gaperm_pmxCrossover",
+       "gaperm_oxCrossover", "gaperm_pbxCrossover")
+
+export("gabin_raMutation", 
+       "gareal_raMutation", "gareal_nraMutation", "gareal_rsMutation", 
+       "gareal_powMutation", 
+       "gaperm_simMutation", "gaperm_ismMutation",
+       "gaperm_swMutation", "gaperm_dmMutation", "gaperm_scrMutation")
+
+export("binary2decimal", "decimal2binary", 
+       "binary2gray", "gray2binary", 
+       "ga_pmutation", "persp3D", ".printShortMatrix",
+       "startParallel", "stopParallel", 
+       "garun", "optimProbsel", 
+       "reflectSolution", "repairSolution", 
+       "GAStartupMessage", 
+       "jet.colors", "spectral.colors", "bl2gr.colors")

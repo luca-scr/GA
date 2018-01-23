@@ -30,6 +30,6 @@ citEntry(entry = "Article",
   textVersion  =
   paste("Luca Scrucca (2017).",
         "On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution.",
-        "The R Journal,  9/1, 187–206.",
+        "The R Journal,  9/1, 187-206.",
         "https://journal.r-project.org/archive/2017/RJ-2017-008")
 )

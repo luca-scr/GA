@@ -1,21 +1,47 @@
 \name{ga_Crossover}
 \alias{ga_Crossover}
+\alias{ga_Crossover_R}
+\alias{ga_Crossover_Rcpp}
 %
 \alias{ga_spCrossover}
+\alias{ga_spCrossover_R}
+\alias{ga_spCrossover_Rcpp}
 %
 \alias{gabin_spCrossover}
+\alias{gabin_spCrossover_R}
+\alias{gabin_spCrossover_Rcpp}
 \alias{gabin_uCrossover}
+\alias{gabin_uCrossover_R}
+\alias{gabin_uCrossover_Rcpp}
 %
 \alias{gareal_spCrossover}
+\alias{gareal_spCrossover_R}
+\alias{gareal_spCrossover_Rcpp}
 \alias{gareal_waCrossover}
+\alias{gareal_waCrossover_R}
+\alias{gareal_waCrossover_Rcpp}
 \alias{gareal_laCrossover}
+\alias{gareal_laCrossover_R}
+\alias{gareal_laCrossover_Rcpp}
 \alias{gareal_blxCrossover}
+\alias{gareal_blxCrossover_R}
+\alias{gareal_blxCrossover_Rcpp}
 \alias{gareal_laplaceCrossover}
+\alias{gareal_laplaceCrossover_R}
+\alias{gareal_laplaceCrossover_Rcpp}
 %
 \alias{gaperm_cxCrossover}
+\alias{gaperm_cxCrossover_R}
+\alias{gaperm_cxCrossover_Rcpp}
 \alias{gaperm_pmxCrossover}
+\alias{gaperm_pmxCrossover_R}
+\alias{gaperm_pmxCrossover_Rcpp}
 \alias{gaperm_oxCrossover}
+\alias{gaperm_oxCrossover_R}
+\alias{gaperm_oxCrossover_Rcpp}
 \alias{gaperm_pbxCrossover}
+\alias{gaperm_pbxCrossover_R}
+\alias{gaperm_pbxCrossover_Rcpp}
 
 \title{Crossover operators in genetic algorithms}
 

@@ -93,5 +93,6 @@ gaControl <- function(...)
                                          selection  = "gaperm_lrSelection",
                                          crossover  = "gaperm_oxCrossover",
                                          mutation   = "gaperm_simMutation"),
-                    "eps" = sqrt(.Machine$double.eps)                     
+                    "eps" = sqrt(.Machine$double.eps),
+                    "useRcpp" = TRUE
                    )

@@ -15,10 +15,13 @@ vignette: >
 
 ```{r setup, include=FALSE}
 library(knitr)
-opts_chunk$set(fig.align="center",
-               fig.width=5, fig.height=4,
+opts_chunk$set(fig.align = "center", 
+               # out.width = "90%",
+               fig.width = 5, fig.height = 4.5,
                dev.args=list(pointsize=8),
-               par=TRUE)
+               par = TRUE, # needed for setting hook 
+               collapse = TRUE, # collapse input & ouput code in chunks
+               warning = FALSE)
 
 knit_hooks$set(par = function(before, options, envir)
   { if(before && options$fig.show != "none") 
@@ -36,33 +39,24 @@ The R package **GA** provides a collection of general purpose functions for opti
 This document gives a quick tour of **GA** (version `r packageVersion("GA")`) functionalities. It was written in R Markdown, using the [knitr](http://cran.r-project.org/package=knitr) package for production. 
 Futher details are provided in the papers Scrucca (2013) and Scrucca (2017). See also `help(package="GA")` for a list of available functions and methods. 
 
-```{r, message=FALSE, results='asis'}
+```{r, message = FALSE, echo=1}
 library(GA)
+cat(GA:::GAStartupMessage(), sep="")
 ```
-```{}
-#   ____    _    
-#  / ___|  / \     Genetic 
-# | |  _  / _ \    Algorithms
-# | |_| |/ ___ \   
-#  \____/_/   \_\  version 3.0
-# Type 'citation("GA")' for citing this R package in publications.
-```
-
 
 # Function optimisation in one dimension
 
 Consider the function $f(x) = (x^2+x)\cos(x)$ defined over the range $-10 \le x \le 10$:
 ```{r}
 f <- function(x)  (x^2+x)*cos(x)
-min <- -10; max <- 10
-curve(f, min, max, n = 1000)
+lbound <- -10; ubound <- 10
+curve(f, from = lbound, to = ubound, n = 1000)
 
-GA <- ga(type = "real-valued", fitness = f, min = min, max = max, 
-         monitor = FALSE)
+GA <- ga(type = "real-valued", fitness = f, lower = c(th = lbound), upper = ubound)
 summary(GA)
 plot(GA)
 
-curve(f, min, max, n = 1000)
+curve(f, from = lbound, to = ubound, n = 1000)
 points(GA@solution, GA@fitnessValue, col = 2, pch = 19)
 ```
 
@@ -86,28 +80,11 @@ persp3D(x1, x2, f, theta = 50, phi = 20, color.palette = bl2gr.colors)
 filled.contour(x1, x2, f, color.palette = bl2gr.colors)
 ```
 
-```{r, eval=FALSE, echo=FALSE}
-# Define a monitoring function of the space searched at each GA iteration:
-monitor <- function(obj) 
-{ 
-  contour(x1, x2, f, drawlabels = FALSE, col = grey(0.5))
-  title(paste("iteration =", obj@iter), font.main = 1)
-  points(obj@population, pch = 20, col = 2)
-  Sys.sleep(0.2)
-}
-
-GA <- ga(type = "real-valued", 
-         fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
-         popSize = 50, maxiter = 100, 
-         monitor = monitor)
-```
-
 A GA minimisation search is obtained as follows (note the minus sign used in the  definition of the local fitness function):
 ```{r}
 GA <- ga(type = "real-valued", 
          fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 1000, run = 100)
 summary(GA)
 plot(GA)
@@ -121,6 +98,22 @@ filled.contour(x1, x2, f, color.palette = bl2gr.colors,
 )
 ```
 
+The GA search process can be visualised by defining a monitoring function as follows:
+```{r, eval=FALSE}
+monitor <- function(obj) 
+{ 
+  contour(x1, x2, f, drawlabels = FALSE, col = grey(0.5))
+  title(paste("iteration =", obj@iter), font.main = 1)
+  points(obj@population, pch = 20, col = 2)
+  Sys.sleep(0.2)
+}
+
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
+         popSize = 50, maxiter = 100, 
+         monitor = monitor)
+```
 
 # Constrained optimisation
 
@@ -152,11 +145,11 @@ c2 <- function(x)
 
 Plot the function and the feasible regions (coloured areas):
 ```{r}
-ngrid = 250
-x1 = seq(0, 1, length = ngrid)
-x2 = seq(0, 13, length = ngrid)
-x12 = expand.grid(x1, x2)
-col = adjustcolor(bl2gr.colors(4)[2:3], alpha = 0.2)
+ngrid <- 250
+x1 <- seq(0, 1, length = ngrid)
+x2 <- seq(0, 13, length = ngrid)
+x12 <- expand.grid(x1, x2)
+col <- adjustcolor(bl2gr.colors(4)[2:3], alpha = 0.2)
 plot(x1, x2, type = "n", xaxs = "i", yaxs = "i")
 image(x1, x2, matrix(ifelse(apply(x12, 1, c1) <= 0, 0, NA), ngrid, ngrid), 
       col = col[1], add = TRUE)
@@ -168,7 +161,7 @@ contour(x1, x2, matrix(apply(x12, 1, f), ngrid, ngrid),
 
 MATLAB solution:
 ```{r}
-x = c(0.8122, 12.3104)
+x <- c(0.8122, 12.3104)
 f(x)
 ```
 However, note that the provided solution does not satisfy the inequality constraints:
@@ -190,9 +183,9 @@ fitness <- function(x)
 ```
 Then
 ```{r}
-GA = ga("real-valued", fitness = fitness, 
-        min = c(0,0), max = c(1,13), 
-        maxiter = 5000, run = 1000, seed = 123)
+GA <- ga("real-valued", fitness = fitness, 
+         lower = c(0,0), upper = c(1,13), 
+         maxiter = 1000, run = 200, seed = 123)
 summary(GA)
 
 fitness(GA@solution)
@@ -233,7 +226,7 @@ Consider again the two-dimensional *Rastrigin function* defined previously. A HG
 ```{r}
 GA <- ga(type = "real-valued", 
          fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 1000, run = 100,
          optim = TRUE)
 summary(GA)
@@ -272,19 +265,19 @@ fitness <- function(x)
 
 library(rbenchmark)
 out <- benchmark(GA1 = ga(type = "real-valued", 
-                          fitness = fitness, min = 0, max = 1,
+                          fitness = fitness, lower = 0, upper = 1,
                           popSize = 50, maxiter = 100, monitor = FALSE,
                           seed = 12345),
                  GA2 = ga(type = "real-valued", 
-                          fitness = fitness, min = 0, max = 1,
+                          fitness = fitness, lower = 0, upper = 1,
                           popSize = 50, maxiter = 100, monitor = FALSE,
                           seed = 12345, parallel = TRUE),
                  GA3 = ga(type = "real-valued", 
-                          fitness = fitness, min = 0, max = 1,
+                          fitness = fitness, lower = 0, upper = 1,
                           popSize = 50, maxiter = 100, monitor = FALSE,
                           seed = 12345, parallel = 2),
                  GA4 = ga(type = "real-valued", 
-                          fitness = fitness, min = 0, max = 1,
+                          fitness = fitness, lower = 0, upper = 1,
                           popSize = 50, maxiter = 100, monitor = FALSE,
                           seed = 12345, parallel = "snow"),
                  columns = c("test", "replications", "elapsed", "relative"),
@@ -323,10 +316,10 @@ clusterCall(cl, library, package = "mclust", character.only = TRUE)
 
 At this point a `ga()` function call can be executed by providing the argument `parallel = cl`. For instance:
 ```{r, eval=FALSE}
-GA5 = ga(type = "real-valued", 
-         fitness = fitness, min = 0, max = 1,
-         popSize = 50, maxiter = 100, monitor = FALSE,
-         seed = 12345, parallel = cl)
+GA5 <- ga(type = "real-valued", 
+          fitness = fitness, lower = 0, upper = 1,
+          popSize = 50, maxiter = 100, monitor = FALSE,
+          seed = 12345, parallel = cl)
 ```
 Note that in this case the cluster must be explicitely stopped with the command:
 ```{r, eval=FALSE}
@@ -353,7 +346,7 @@ As an example, consider again the two-dimensional *Rastrigin function*. An Islan
 # run not in parallel because it is not allowed in CRAN checks
 GA <- gaisl(type = "real-valued", 
             fitness =  function(x) -Rastrigin(x[1], x[2]),
-            min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+            lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
             popSize = 100, 
             maxiter = 1000, run = 100, 
             numIslands = 4, 
@@ -365,7 +358,7 @@ GA <- gaisl(type = "real-valued",
 ```{r, eval=FALSE}
 GA <- gaisl(type = "real-valued", 
             fitness =  function(x) -Rastrigin(x[1], x[2]),
-            min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+            lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
             popSize = 100, 
             maxiter = 1000, run = 100,
             numIslands = 4, 
@@ -392,10 +385,7 @@ y <- model.response(mod$model)
 
 fitness <- function(string)
 { 
-  inc <- which(string==1)
-  X <- cbind(1, x[,inc])
-  mod <- lm.fit(X, y)
-  class(mod) <- "lm"
+  mod <- lm(y ~ x[,string==1])
   -BIC(mod)
 }
 
@@ -415,19 +405,19 @@ is.memoised(mfitness)
 ```
 ```{r, eval = FALSE}
 library(rbenchmark)
-tab = benchmark(GA1 = ga("binary", fitness = fitness, nBits = ncol(x), 
-                         popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
-                GA2 = ga("binary", fitness = mfitness, nBits = ncol(x), 
-                         popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
-                columns = c("test", "replications", "elapsed", "relative"), 
-                replications = 10)
-tab$average = with(tab, elapsed/replications)
+tab <- benchmark(GA1 = ga("binary", fitness = fitness, nBits = ncol(x), 
+                          popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
+                 GA2 = ga("binary", fitness = mfitness, nBits = ncol(x), 
+                          popSize = 100, maxiter = 100, seed = 1, monitor = FALSE),
+                 columns = c("test", "replications", "elapsed", "relative"), 
+                 replications = 10)
+tab$average <- with(tab, elapsed/replications)
 tab
 ```
 ```
 #   test replications elapsed relative average
-# 1  GA1           10  11.483    1.449  1.1483
-# 2  GA2           10   7.927    1.000  0.7927
+# 1  GA1           10  59.071    5.673  5.9071
+# 2  GA2           10  10.413    1.000  1.0413
 ```
 ```{r, eval=FALSE}
 # To clear cache use

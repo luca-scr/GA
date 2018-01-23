@@ -1,5 +1,7 @@
 \name{ga_pmutation}
 \alias{ga_pmutation}
+\alias{ga_pmutation_R}
+\alias{ga_pmutation_Rcpp}
 
 \title{Variable mutation probability in genetic algorithms}
 
@@ -39,14 +41,14 @@ Rastrigin <- function(x1, x2)
 
 GA <- ga(type = "real-valued", 
          fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 500, run = 100,
          pmutation = ga_pmutation)
 plot(GA)
 
 GA <- ga(type = "real-valued", 
          fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 500, run = 100,
          pmutation = function(...) ga_pmutation(..., p0 = 0.1))
 plot(GA)

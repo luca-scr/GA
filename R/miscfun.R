@@ -75,6 +75,14 @@ gray2binary <- function(x)
 
 #############################################################################
 
+garun <- function(x)
+{
+  x <- as.vector(x)
+  sum(rev(x) >= (max(x, na.rm = TRUE) - gaControl("eps")))
+}
+
+#############################################################################
+
 # clearConsoleLine <- function()
 # {
 #   cat(paste0(rep("\b", getOption("width")), collapse = ""))
@@ -92,6 +100,84 @@ clearConsoleLine <- function()
 clearPrevConsoleLine <- function() 
 {
   cat("\b");clearConsoleLine()
+}
+
+clearConsoleLine <- function() 
+{
+  cat("\r")
+  cat(paste0(rep(" ", getOption("width")), collapse = ""))
+  cat("\r")
+  flush.console()
+}
+
+# Monitoring functions ----
+
+# old version
+# gaMonitor <- function(object, digits = getOption("digits"), ...)
+# {
+#   fitness <- na.exclude(object@fitness)
+#   sumryStat <- c(mean(fitness), max(fitness))
+#   sumryStat <- format(sumryStat, digits = digits)
+#   if(object@iter > 1) 
+#     replicate(2, clearPrevConsoleLine())
+#   cat(paste("GA | iter =", object@iter, "\n"))
+#   cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
+#   flush.console()
+# }
+
+# monitoring function (this works in all consoles)
+gaMonitor <- function(object, digits = getOption("digits"), ...)
+{ 
+ fitness   <- na.exclude(object@fitness)
+ sumryStat <- c(mean(fitness), max(fitness))
+ sumryStat <- format(sumryStat, digits = digits)
+ cat(paste("GA | iter =", object@iter, 
+           "| Mean =", sumryStat[1], 
+           "| Best =", sumryStat[2]))
+}
+
+# old
+# gaMonitor2 <- function(object, digits = getOption("digits"), ...)
+# {
+#   fitness   <- na.exclude(object@fitness)
+#   sumryStat <- c(mean(fitness), max(fitness))
+#   sumryStat <- format(sumryStat, digits = digits)
+#   clearConsoleLine()
+#   cat(paste("GA | iter =", object@iter,
+#             "| Mean =", sumryStat[1],
+#             "| Best =", sumryStat[2]))
+# }
+
+# old
+# gaislMonitor <- function(object, digits = getOption("digits"), ...)
+# {
+#   # collect info
+#   sumryStat <- lapply(object@summary, na.omit)
+#   iter <- nrow(sumryStat[[1]])
+#   epoch <- iter/object@migrationInterval
+#   sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
+#                       digits = digits)
+#   replicate(object@numIslands+1, clearPrevConsoleLine()) 
+#   cat(paste("Islands GA | epoch =", epoch, "\n"))
+#   for(i in 1:ncol(sumryStat))
+#     cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
+#   flush.console()
+# }
+
+gaislMonitor <- function(object, digits = getOption("digits"), ...)
+{
+  # collect info
+  sumryStat <- lapply(object@summary, na.omit)
+  iter <- nrow(sumryStat[[1]])
+  epoch <- iter/object@migrationInterval
+  # max_epoch <- object@maxiter/object@migrationInterval
+  sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
+                      digits = digits)
+  # print info
+  cat(paste("Islands GA | epoch =", epoch, "\n"))
+  for(i in 1:ncol(sumryStat))
+     cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
+  flush.console()
 }
 
 #############################################################################

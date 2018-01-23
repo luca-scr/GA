@@ -14,8 +14,8 @@ Objects can be created by calls to the \code{\link{gaisl}} function.
   \describe{
     \item{\code{call}}{an object of class \code{"call"} representing the matched call;}
     \item{\code{type}}{a character string specifying the type of genetic algorithm used;}
-    \item{\code{min}}{a vector providing for each decision variable the minimum of the search space in case of real-valued or permutation encoded optimizations;}
-    \item{\code{max}}{a vector providing for each decision variable the maximum of the search space in case of real-valued or permutation encoded optimizations;}
+    \item{\code{lower}}{a vector providing for each decision variable the lower bounds of the search space in case of real-valued or permutation encoded optimisations. Formerly this slot was named \code{min};}
+    \item{\code{upper}}{a vector providing for each decision variable the upper bounds of the search space in case of real-valued or permutation encoded optimizations. Formerly this slot was named \code{max};}
     \item{\code{nBits}}{a value specifying the number of bits to be used in binary encoded optimizations;}
     \item{\code{names}}{a vector of character strings providing the names of decision variables (optional);}
     \item{\code{popSize}}{the population size;}

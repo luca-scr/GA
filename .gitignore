@@ -1,7 +1,21 @@
-**/.DS_Store
-**/.Rproj.user
-**/.Rhistory
-**/.RData
-misc/
-**/.Rapp.history
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+src/*.o
+src/*.so
+src/*.dll
+
+# knitr and R markdown default cache directories
+/*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+**/.DS_Store
+
+misc/
+revdep/

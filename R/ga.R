@@ -6,7 +6,7 @@
 
 ga <- function(type = c("binary", "real-valued", "permutation"), 
                fitness, ...,
-               min, max, nBits,
+               lower, upper, nBits,
                population = gaControl(type)$population,
                selection = gaControl(type)$selection,
                crossover = gaControl(type)$crossover, 
@@ -29,7 +29,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                 control = list(fnscale = -1, maxit = 100)),
                keepBest = FALSE,
                parallel = FALSE,
-               monitor = if(interactive()) gaMonitor2 else FALSE,
+               monitor = if(interactive()) gaMonitor else FALSE,
                seed = NULL) 
 {
 
@@ -55,39 +55,58 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   if(pcrossover < 0 | pcrossover > 1)
     { stop("Probability of crossover must be between 0 and 1.") }
   if(is.numeric(pmutation))
-    { if(pmutation < 0 | pmutation > 1)
-        { stop("If numeric probability of mutation must be between 0 and 1.") }
-      else if(!is.function(population))
-             { stop("pmutation must be a numeric value in (0,1) or a function.") }
+  { 
+    if(pmutation < 0 | pmutation > 1)
+      { stop("If numeric probability of mutation must be between 0 and 1.") }
+    else if(!is.function(population))
+           { stop("pmutation must be a numeric value in (0,1) or a function.") }
   }
-  if(missing(min) & missing(max) & missing(nBits))
-    { stop("A min and max range of values (for 'real-valued' or 'permutation' GA) or nBits (for 'binary' GA) must be provided!") }
+
+  # check for min and max arguments instead of lower and upper
+  callArgs <- list(...)
+  if(any("min" %in% names(callArgs)))
+  {
+    lower <- callArgs$min
+    callArgs$min <- NULL
+    warning("'min' arg is deprecated. Use 'lower' instead.")
+  }
+  if(any("max" %in% names(callArgs)))
+  {
+    upper <- callArgs$max
+    callArgs$max <- NULL
+    warning("'max' arg is deprecated. Use 'upper' instead.")
+  }
+
+  if(missing(lower) & missing(upper) & missing(nBits))
+    { stop("A lower and upper range of values (for 'real-valued' or 'permutation' GA) or nBits (for 'binary' GA) must be provided!") }
 
   # check GA search type 
   switch(type, 
          "binary"      = { nBits <- as.vector(nBits)[1]
-                           min <- max <- NA
+                           lower <- upper <- NA
                            nvars <- nBits 
                            if(is.null(names))
                              names <- paste0("x", 1:nvars)
                          },
-         "real-valued" = { min <- as.vector(min)
-                           max <- as.vector(max)
+         "real-valued" = { lnames <- names(lower)
+                           unames <- names(upper)
+                           lower <- as.vector(lower)
+                           upper <- as.vector(upper)
                            nBits <- NA
-                           if(length(min) != length(max))
-                             stop("min and max must be vector of the same length!")
-                           nvars <- length(max)
-                           if(is.null(names) & !is.null(names(min)))
-                             names <- names(min)
-                           if(is.null(names) & !is.null(names(max)))
-                             names <- names(max)
+                           if(length(lower) != length(upper))
+                             stop("lower and upper must be vector of the same length!")
+                           nvars <- length(upper)
+                           if(is.null(names) & !is.null(lnames))
+                             names <- lnames
+                           if(is.null(names) & !is.null(unames))
+                             names <- unames
                            if(is.null(names))
                              names <- paste0("x", 1:nvars)
                          },
-         "permutation" = { min <- as.vector(min)[1]
-                           max <- as.vector(max)[1]
+         "permutation" = { lower <- as.vector(lower)[1]
+                           upper <- as.vector(upper)[1]
                            nBits <- NA
-                           nvars <- length(seq.int(min,max))
+                           nvars <- length(seq.int(lower,upper))
                            if(is.null(names))
                              names <- paste0("x", 1:nvars)
                          }
@@ -120,8 +139,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       optimArgs.default[names(optimArgs)] <- optimArgs
       optimArgs <- optimArgs.default; rm(optimArgs.default)
       if(any(optimArgs$method == c("L-BFGS-B", "Brent")))
-        { optimArgs$lower <- min
-          optimArgs$upper <- max }
+        { optimArgs$lower <- lower
+          optimArgs$upper <- upper }
       else
         { optimArgs$lower <- -Inf
           optimArgs$upper <- Inf }
@@ -166,8 +185,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   object <- new("ga", 
                 call = call, 
                 type = type,
-                min = min, 
-                max = max, 
+                lower = lower, 
+                upper = upper, 
                 nBits = nBits, 
                 names = if(is.null(names)) character() else names,
                 popSize = popSize,
@@ -205,7 +224,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       if(!parallel)
         { for(i in seq_len(popSize))
              if(is.na(Fitness[i]))
-               { fit <- fitness(Pop[i,], ...) 
+               { fit <- do.call(fitness, c(list(Pop[i,]), callArgs)) 
                  if(updatePop)
                    Pop[i,] <- attributes(fit)[[1]]
                  Fitness[i] <- fit
@@ -213,8 +232,11 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       }
       else
         { Fitness <- foreach(i. = seq_len(popSize), .combine = "c") %DO%
-                     { if(is.na(Fitness[i.])) fitness(Pop[i.,], ...) 
-                       else                   Fitness[i.] }
+                     { if(is.na(Fitness[i.])) 
+                         do.call(fitness, c(list(Pop[i.,]), callArgs)) 
+                       else                   
+                         Fitness[i.] 
+                     }
         }
       
       # update object
@@ -237,19 +259,26 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                       prob = optimProbsel(Fitness, q = optimArgs$pressel))
           # run local search
           opt <- try(suppressWarnings(
-                     optim(fn = fitness, ...,
-                           par = Pop[i,],
-                           method = optimArgs$method,
-                           lower = optimArgs$lower,
-                           upper = optimArgs$upper,
-                           control = optimArgs$control)),
-                     silent = TRUE)
+                      do.call(stats::optim, 
+                              c(list(fn = fitness,
+                                     par = Pop[i,],
+                                     method = optimArgs$method,
+                                     lower = optimArgs$lower,
+                                     upper = optimArgs$upper,
+                                     control = optimArgs$control), 
+                                callArgs))
+                      # optim(fn = fitness, ...,
+                      #      par = Pop[i,],
+                      #      method = optimArgs$method,
+                      #      lower = optimArgs$lower,
+                      #      upper = optimArgs$upper,
+                      #      control = optimArgs$control)
+                      ), silent = TRUE)
           if(is.function(monitor))
             { if(!inherits(opt, "try-error"))
                 cat("\b\b | Local search =", 
                     format(opt$value, digits = getOption("digits")))
               else cat(" |", opt[1]) 
-              cat("\n") 
             }
           if(!inherits(opt, "try-error"))
             { Pop[i,] <- opt$par
@@ -267,7 +296,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       
       # apply a user's defined function to update the GA object
       if(is.function(postFitness))
-        { object <- postFitness(object, ...) 
+        { 
+          # object <- postFitness(object, ...) 
+          object <- do.call(postFitness, c(object, callArgs)) 
           Fitness <- object@fitness
           Pop <- object@population
       }
@@ -337,30 +368,42 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
           object@fitness <- Fitness
         } 
 
+      if(is.function(monitor)) 
+        { cat("\n"); flush.console() }
   }
   
   # if optim is required perform a local search from the best 
   # solution at the end of GA iterations
   if(optim & (type == "real-valued"))
-    { optimArgs$control$maxit <- rev(optimArgs$control$maxit)[1]
+    { 
+      optimArgs$control$maxit <- rev(optimArgs$control$maxit)[1]
       i <- which.max(object@fitness)
       # if not provided suggest approx parscale
       # if(is.null(optimArgs$control$parscale))
       #   optimArgs$control$parscale <- 10^round(log10(abs(object@population[i,])+1))
       # run local search
       opt <- try(suppressWarnings(
-                 optim(fn = fitness, ...,
-                       par = object@population[i,],
-                       method = optimArgs$method,
-                       lower = optimArgs$lower,
-                       upper = optimArgs$upper,
-                       control = optimArgs$control)),
-                 silent = TRUE)
+                 do.call(stats::optim, 
+                         c(list(fn = fitness,
+                                par = object@population[i,],
+                                method = optimArgs$method,
+                                lower = optimArgs$lower,
+                                upper = optimArgs$upper,
+                                control = optimArgs$control), 
+                           callArgs))
+                 # optim(fn = fitness, ...,
+                 #       par = object@population[i,],
+                 #       method = optimArgs$method,
+                 #       lower = optimArgs$lower,
+                 #       upper = optimArgs$upper,
+                 #       control = optimArgs$control)
+                   ), silent = TRUE)
       if(is.function(monitor))
         { if(!inherits(opt, "try-error"))
             cat("\b\b | Final local search =",
                 format(opt$value, digits = getOption("digits")))
-          else cat(" |", opt[1]) }
+          else cat(" |", opt[1])
+        }
       if(!inherits(opt, "try-error"))
         { object@population[i,] <- opt$par
           object@fitness[i] <- opt$value }
@@ -394,8 +437,8 @@ setClassUnion("numericOrNA", members = c("numeric", "logical"))
 setClass(Class = "ga", 
          representation(call = "language",
                         type = "character",
-                        min = "numericOrNA", 
-                        max = "numericOrNA", 
+                        lower = "numericOrNA", 
+                        upper = "numericOrNA", 
                         nBits = "numericOrNA", 
                         names = "character",
                         popSize = "numeric",
@@ -432,8 +475,8 @@ summary.ga <- function(object, ...)
   varnames <- parNames(object)
   domain <- NULL
   if(object@type == "real-valued")
-    { domain <- rbind(object@min, object@max)
-      rownames(domain) <- c("Min", "Max")
+    { domain <- rbind(object@lower, object@upper)
+      rownames(domain) <- c("lower", "upper")
       if(ncol(domain) == nvars) 
          colnames(domain) <- varnames
     }
@@ -468,9 +511,11 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
   if(is.null(dotargs$chead)) dotargs$chead <- 10
   if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
-  cat("+-----------------------------------+\n")
-  cat("|         Genetic Algorithm         |\n")
-  cat("+-----------------------------------+\n\n")
+  cat(cli::rule(left = crayon::bold("Genetic Algorithm")), "\n\n")
+  # cat("+-----------------------------------+\n")
+  # cat("|         Genetic Algorithm         |\n")
+  # cat("+-----------------------------------+\n\n")
+  
   cat("GA settings: \n")
   cat(paste("Type                  = ", x$type, "\n"))
   cat(paste("Population size       = ", x$popSize, "\n"))
@@ -565,46 +610,6 @@ function(object, ...)
     { names <- paste("x", 1:nvars, sep = "") }
   return(names)
 })
-
-
-# new function for monitoring within RStudio
-# gaMonitor <- function(object, digits = getOption("digits"), ...)
-# { 
-#   fitness   <- na.exclude(object@fitness)
-#   sumryStat <- c(mean(fitness), max(fitness))
-#   sumryStat <- format(sumryStat, digits = digits)
-#   clearConsoleLine()
-#   cat(paste("GA | iter =", object@iter, 
-#             "| Mean =", sumryStat[1], 
-#             "| Best =", sumryStat[2]))
-#   flush.console()
-# }
-
-# old version
-gaMonitor <- function(object, digits = getOption("digits"), ...)
-{
-  fitness <- na.exclude(object@fitness)
-  sumryStat <- c(mean(fitness), max(fitness))
-  sumryStat <- format(sumryStat, digits = digits)
-  if(object@iter > 1) 
-    replicate(2, clearPrevConsoleLine())
-  cat(paste("GA | iter =", object@iter, "\n"))
-  cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
-  flush.console()
-}
-
-# old function for monitoring used outside from RStudio
-gaMonitor2 <- function(object, digits = getOption("digits"), ...)
-{ 
- fitness   <- na.exclude(object@fitness)
- sumryStat <- c(mean(fitness), max(fitness))
- sumryStat <- format(sumryStat, digits = digits)
- cat(paste("GA | iter =", object@iter, 
-           "| Mean =", sumryStat[1], 
-           "| Best =", sumryStat[2],
-           "\n"))
- flush.console()
-}
 
 gaSummary <- function(x, ...)
 {

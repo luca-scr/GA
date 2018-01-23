@@ -10,7 +10,7 @@
 \usage{
 gaisl(type = c("binary", "real-valued", "permutation"), 
       fitness, \dots,
-      min, max, nBits,
+      lower, upper, nBits,
       population = gaControl(type)$population,
       selection = gaControl(type)$selection,
       crossover = gaControl(type)$crossover, 
@@ -35,9 +35,7 @@ gaisl(type = c("binary", "real-valued", "permutation"),
                        pressel = 0.5,
                        control = list(fnscale = -1, maxit = 100)),
       parallel = TRUE,
-      monitor = if(interactive()) 
-                  { if(is.RStudio()) gaislMonitor else gaislMonitor2 } 
-                else FALSE,
+      monitor = if(interactive()) gaislMonitor else FALSE,
       seed = NULL)
 }
 
@@ -55,9 +53,9 @@ gaisl(type = c("binary", "real-valued", "permutation"),
 
 \item{\dots}{additional arguments to be passed to the fitness function. This allows to write fitness functions that keep some variables fixed during the search.}
 
-\item{min}{a vector of length equal to the decision variables providing the minimum of the search space in case of real-valued or permutation encoded optimizations.}
+\item{lower}{a vector of length equal to the decision variables providing the lower bounds of the search space in case of real-valued or permutation encoded optimizations. Formerly this argument was named \code{min}; its usage is allowed but deprecated.}
 
-\item{max}{a vector of length equal to the decision variables providing the maximum of the search space in case of real-valued or permutation encoded optimizations.}
+\item{upper}{a vector of length equal to the decision variables providing the upper bounds of the search space in case of real-valued or permutation encoded optimizations. Formerly this argument was named \code{max}; its usage is allowed but deprecated.}
 
 \item{nBits}{a value specifying the number of bits to be used in binary encoded optimizations.}
 
@@ -125,7 +123,7 @@ If a cluster of multiple machines is available, evolution of GAs on each island 
 In this case the cluster must be explicitely stopped with \code{\link[parallel]{stopCluster}}.
 }
 
-\item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} or \code{\link{gaislMonitor2}}, depending on whether or not is an RStudio session, prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
+\item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
 
 \item{seed}{an integer value containing the random number generator state. This argument can be used to replicate the results of a ISLGA search. Note that if parallel computing is required, the \pkg{doRNG} package must be installed.}
 }
@@ -145,7 +143,7 @@ Luque G., Alba E. (2011) \emph{Parallel Genetic Algorithms: Theory and Real Worl
 
 Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. Freely available at \url{http://cs.gmu.edu/~sean/book/metaheuristics/}.
 
-Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187–206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187-206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
 }
   
 \author{Luca Scrucca \email{luca.scrucca@unipg.it}}
@@ -174,7 +172,7 @@ filled.contour(x1, x2, f, color.palette = jet.colors)
 
 GA <- gaisl(type = "real-valued", 
             fitness =  function(x) -Rastrigin(x[1], x[2]),
-            min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+            lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
             popSize = 80, maxiter = 500, 
             numIslands = 4, migrationInterval = 50)
 summary(GA)

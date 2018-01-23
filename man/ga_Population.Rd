@@ -2,8 +2,16 @@
 \alias{ga_Population}
 %
 \alias{gabin_Population}
+\alias{gabin_Population_R}
+\alias{gabin_Population_Rcpp}
+%
 \alias{gareal_Population}
+\alias{gareal_Population_R}
+\alias{gareal_Population_Rcpp}
+%
 \alias{gaperm_Population}
+\alias{gaperm_Population_R}
+\alias{gaperm_Population_Rcpp}
 
 \title{Population initialization in genetic algorithms}
 

@@ -10,7 +10,7 @@
 \usage{
 ga(type = c("binary", "real-valued", "permutation"), 
    fitness, \dots,
-   min, max, nBits,
+   lower, upper, nBits,
    population = gaControl(type)$population,
    selection = gaControl(type)$selection,
    crossover = gaControl(type)$crossover, 
@@ -51,9 +51,9 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \item{\dots}{additional arguments to be passed to the fitness function. This allows to write fitness functions that keep some variables fixed during the search.}
 
-\item{min}{a vector of length equal to the decision variables providing the minimum of the search space in case of real-valued or permutation encoded optimizations.}
+\item{lower}{a vector of length equal to the decision variables providing the lower bounds of the search space in case of real-valued or permutation encoded optimizations. Formerly this argument was named \code{min}; its usage is allowed but deprecated.}
 
-\item{max}{a vector of length equal to the decision variables providing the maximum of the search space in case of real-valued or permutation encoded optimizations.}
+\item{upper}{a vector of length equal to the decision variables providing the upper bounds of the search space in case of real-valued or permutation encoded optimizations. Formerly this argument was named \code{max}; its usage is allowed but deprecated.}
 
 \item{nBits}{a value specifying the number of bits to be used in binary encoded optimizations.}
 
@@ -158,7 +158,7 @@ Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. Freely av
 Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
 \emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
 
-Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187–206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187-206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008}
 
 Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
 
@@ -189,7 +189,7 @@ f <- function(x)  abs(x)+cos(x)
 curve(f, -20, 20)
 
 fitness <- function(x) -f(x)
-GA <- ga(type = "real-valued", fitness = fitness, min = -20, max = 20)
+GA <- ga(type = "real-valued", fitness = fitness, lower = -20, upper = 20)
 summary(GA)
 plot(GA)
 
@@ -209,10 +209,10 @@ monitor <- function(obj)
   Sys.sleep(0.2)
 }
 \dontrun{
-GA <- ga(type = "real-valued", fitness = f, min = -10, max = 10, monitor = monitor)
+GA <- ga(type = "real-valued", fitness = f, lower = -10, upper = 10, monitor = monitor)
 }
 # or if you want to suppress the tracing
-GA <- ga(type = "real-valued", fitness = f, min = -10, max = 10, monitor = NULL)
+GA <- ga(type = "real-valued", fitness = f, lower = -10, upper = 10, monitor = NULL)
 summary(GA)
 
 monitor(GA)
@@ -231,7 +231,7 @@ persp3D(x1, x2, f, theta = 50, phi = 20)
 filled.contour(x1, x2, f, color.palette = jet.colors)
 
 GA <- ga(type = "real-valued", fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 100)
 summary(GA)
 plot(GA)
@@ -248,13 +248,13 @@ Rastrigin <- function(x1, x2)
 
 system.time(GA1 <- ga(type = "real-valued", 
                       fitness =  function(x) -Rastrigin(x[1], x[2]),
-                      min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                      lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
                       popSize = 50, maxiter = 100, monitor = FALSE,
                       seed = 12345))
 
 system.time(GA2 <- ga(type = "real-valued", 
                       fitness =  function(x) -Rastrigin(x[1], x[2]),
-                      min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+                      lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
                       popSize = 50, maxiter = 100, monitor = FALSE,
                       seed = 12345, parallel = TRUE))
 }
@@ -269,7 +269,7 @@ Rastrigin <- function(x1, x2)
 
 GA <- ga(type = "real-valued", 
          fitness =  function(x) -Rastrigin(x[1], x[2]),
-         min = c(-5.12, -5.12), max = c(5.12, 5.12), 
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
          popSize = 50, maxiter = 100,
          optim = TRUE)
 summary(GA)

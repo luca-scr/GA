@@ -1,8 +1,6 @@
 \name{gaMonitor}
 \alias{gaMonitor}
-\alias{gaMonitor2}
 \alias{gaislMonitor}
-\alias{gaislMonitor2}
 
 \title{Monitor genetic algorithm evolution}
 
@@ -11,11 +9,7 @@
 \usage{
 gaMonitor(object, digits = getOption("digits"), \dots)
 
-gaMonitor2(object, digits = getOption("digits"), \dots)
-
 gaislMonitor(object, digits = getOption("digits"), \dots)
-
-gaislMonitor2(object, digits = getOption("digits"), \dots)
 }
 
 \arguments{
