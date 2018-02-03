@@ -119,8 +119,8 @@ List ga_lrSelection_Rcpp(RObject object, double r = NA_REAL, double q = NA_REAL)
   int           popSize = pop.nrow();
   int           n       = pop.ncol();
   NumericMatrix newpop(popSize, n);
-  if(isnan(r))  r = 2.0/(popSize*(popSize-1));
-  if(isnan(q))  q = 2.0/popSize;
+  if(std::isnan(r))  r = 2.0/(popSize*(popSize-1));
+  if(std::isnan(q))  q = 2.0/popSize;
   double eps = std::numeric_limits<double>::epsilon();
   NumericVector rank = as<NumericVector>(rank_asR(fitness, true));
   NumericVector prob = 1 + q - (rank-1)*r;
@@ -162,7 +162,7 @@ microbenchmark(ga_lrSelection_R(GA),
 // [[Rcpp::export]]
 List ga_nlrSelection_Rcpp(RObject object, double q = NA_REAL)
 {
-  if(isnan(q))  q = 0.25;
+  if(std::isnan(q))  q = 0.25;
   NumericVector fitness = object.slot("fitness");
   NumericMatrix pop = object.slot("population");
   int           popSize = pop.nrow();
@@ -269,7 +269,7 @@ microbenchmark(ga_rwSelection_R(GA),
 // [[Rcpp::export]]
 List ga_tourSelection_Rcpp(RObject object, double k = NA_REAL)
 {
-  if(isnan(k))  k = 3;
+  if(std::isnan(k))  k = 3;
   NumericVector fitness = object.slot("fitness");
   NumericMatrix pop = object.slot("population");
   int           popSize = pop.nrow();
@@ -806,8 +806,8 @@ microbenchmark(gareal_blxCrossover_R(GA, 1:2),
 List gareal_laplaceCrossover_Rcpp(RObject object, IntegerVector parents, 
                                   double a = NA_REAL, double b = NA_REAL)
 {
-  if(isnan(a)) a = 0.0;
-  if(isnan(b)) b = 0.15;
+  if(std::isnan(a)) a = 0.0;
+  if(std::isnan(b)) b = 0.15;
   NumericMatrix pop = object.slot("population");
   int           n = pop.ncol();
   NumericVector lower = object.slot("lower");
@@ -980,7 +980,7 @@ microbenchmark(gareal_rsMutation_R(GA, 10),
 NumericVector gareal_powMutation_Rcpp(RObject object, int parent, 
                                       double pow = NA_REAL)
 {
-  if(isnan(pow)) pow = 10;
+  if(std::isnan(pow)) pow = 10;
   NumericMatrix  pop = object.slot("population");
   int            n = pop.ncol();
   NumericVector  lower = object.slot("lower");
@@ -1646,9 +1646,9 @@ double ga_pmutation_Rcpp(RObject object, double p0 = NA_REAL,
 {
   double        maxiter = object.slot("maxiter");
   double        iter = object.slot("iter");
-  if(isnan(p0)) p0 = 0.5;
-  if(isnan(p))  p = 0.01;
-  if(isnan(T))  T = std::round(maxiter/2);
+  if(std::isnan(p0)) p0 = 0.5;
+  if(std::isnan(p))  p = 0.01;
+  if(std::isnan(T))  T = std::round(maxiter/2);
   // linear decay ----------------------
   // double pmutation = p;
   // if(iter <= T) pmutation = p0 - (p0-p)/T * (iter-1)
@@ -1673,7 +1673,7 @@ microbenchmark(ga_pmutation_R(GA),
 // [[Rcpp::export]]
 NumericVector optimProbsel_Rcpp(NumericVector x, double q = NA_REAL)
 {
-  if(isnan(q))  q = 0.25;
+  if(std::isnan(q))  q = 0.25;
   double        eps = sqrt(std::numeric_limits<double>::epsilon());
   // selection pressure parameter
                 q = std::min(std::max(eps, q), 1.0-eps);
