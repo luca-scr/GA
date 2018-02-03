@@ -47,6 +47,7 @@ extern SEXP _GA_gareal_waCrossover_Rcpp(SEXP, SEXP);
 extern SEXP _GA_intersect_asR(SEXP, SEXP);
 extern SEXP _GA_optimProbsel_Rcpp(SEXP, SEXP);
 extern SEXP _GA_rank_asR(SEXP, SEXP);
+extern SEXP _GA_round_double(SEXP, SEXP);
 extern SEXP _GA_setdiff_asR(SEXP, SEXP);
 extern SEXP _GA_which_asR(SEXP);
 
@@ -86,6 +87,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_GA_intersect_asR",                (DL_FUNC) &_GA_intersect_asR,                2},
     {"_GA_optimProbsel_Rcpp",            (DL_FUNC) &_GA_optimProbsel_Rcpp,            2},
     {"_GA_rank_asR",                     (DL_FUNC) &_GA_rank_asR,                     2},
+    {"_GA_round_double",                 (DL_FUNC) &_GA_round_double,                 2},
     {"_GA_setdiff_asR",                  (DL_FUNC) &_GA_setdiff_asR,                  2},
     {"_GA_which_asR",                    (DL_FUNC) &_GA_which_asR,                    1},
     {NULL, NULL, 0}

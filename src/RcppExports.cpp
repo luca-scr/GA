@@ -77,6 +77,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// round_double
+double round_double(double x, int n);
+RcppExport SEXP _GA_round_double(SEXP xSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(round_double(x, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ga_lrSelection_Rcpp
 List ga_lrSelection_Rcpp(RObject object, double r, double q);
 RcppExport SEXP _GA_ga_lrSelection_Rcpp(SEXP objectSEXP, SEXP rSEXP, SEXP qSEXP) {

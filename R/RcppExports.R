@@ -25,6 +25,10 @@ intersect_asR <- function(x, y) {
     .Call(`_GA_intersect_asR`, x, y)
 }
 
+round_double <- function(x, n) {
+    .Call(`_GA_round_double`, x, n)
+}
+
 ga_lrSelection_Rcpp <- function(object, r = NA_real_, q = NA_real_) {
     .Call(`_GA_ga_lrSelection_Rcpp`, object, r, q)
 }

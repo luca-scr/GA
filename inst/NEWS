@@ -3,6 +3,8 @@ Version 3.1 (2018-01) NOT ON CRAN
   o Genetic operators available in C++ using 'Rcpp' package.
   o Add parameter "useRcpp" in gaControl() to control if the C++ implementation
     of genetic operators should be used. By default is set to TRUE.
+  o Renamed input parameters 'min' and 'max' to 'lower' and 'upper'. The old
+    nomenclature is still accepted but deprecated.
   o Add stopParallel() function to stop a cluster if parallel = TRUE, including
     registerDoSEQ() to avoid problems if foreach loop is used after.
   o A parallel cluster is automatically stopped unless a registered parallel
