@@ -427,7 +427,7 @@ gareal_blxCrossover_R <- function(object, parents)
 #   algorithm for solving integer and mixed integer optimization problems.
 #   Applied Mathematics and Computation, 212(2), pp. 505-518.
 
-gareal_laplaceCrossover <- function (object, parents, a = 0, b = 0.15, ...) 
+gareal_laplaceCrossover <- function(object, parents, a = 0, b = 0.15, ...) 
 {
   if(gaControl("useRcpp"))
     gareal_laplaceCrossover_Rcpp(object, parents, a, b)
@@ -435,12 +435,14 @@ gareal_laplaceCrossover <- function (object, parents, a = 0, b = 0.15, ...)
     gareal_laplaceCrossover_R(object, parents, a, b)
 }
 
-gareal_laplaceCrossover_R <- function (object, parents, a, b) 
+gareal_laplaceCrossover_R <- function(object, parents, a, b) 
 {
   if(missing(a)) a <- 0.00
   if(missing(b)) b <- 0.15
-  parents <- object@population[parents, , drop = FALSE]
+  parents <- object@population[parents,,drop = FALSE]
   n <- ncol(parents)
+  if(length(a) == 1) a <- rep(a, n)
+  if(length(b) == 1) b <- rep(b, n)
   children <- matrix(as.double(NA), nrow = 2, ncol = n)
   r <- runif(n)
   u <- runif(n)
@@ -545,6 +547,7 @@ gareal_powMutation_R <- function(object, parent, pow)
   if(missing(pow)) pow <- 10
   mutate <- parent <- as.vector(object@population[parent,])
   n <- length(parent)
+  if(length(pow) == 1) pow <- rep(pow, n)
   s <- runif(1)^pow
   t <- (parent - object@lower)/(object@upper - parent)
   r <- runif(n)

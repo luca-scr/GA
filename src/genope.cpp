@@ -813,13 +813,15 @@ microbenchmark(gareal_blxCrossover_R(GA, 1:2),
 */
 
 // [[Rcpp::export]]
-List gareal_laplaceCrossover_Rcpp(RObject object, IntegerVector parents, 
-                                  double a = NA_REAL, double b = NA_REAL)
+List gareal_laplaceCrossover_Rcpp(RObject object, 
+                                  IntegerVector parents, 
+                                  NumericVector a,
+                                  NumericVector b)
 {
-  if(std::isnan(a))  a = 0.0;
-  if(std::isnan(b))  b = 0.15;
   NumericMatrix pop = object.slot("population");
   int           n = pop.ncol();
+  if(a.length() == 1)  a = rep(a(0), n);
+  if(b.length() == 1)  b = rep(b(0), n);
   NumericVector lower = object.slot("lower");
   NumericVector upper = object.slot("upper");
   NumericVector fitness(2, NA_REAL);
@@ -845,13 +847,13 @@ f <- function(x) { 20 + x[1]^2 + x[2]^2 - 10*(cos(2*pi*x[1]) + cos(2*pi*x[2])) }
 GA <- ga(type = "real-valued", fitness = f, lower = c(-5.12,-5.12), upper = c(5.12,5.12), maxiter = 10, seed = 1)
 
 set.seed(123)
-(out1 = gareal_laplaceCrossover_R(GA, c(11,44), a = 1, b = 0.1))
+(out1 = GA:::gareal_laplaceCrossover_R(GA, c(11,44), a = 1, b = 0.1))
 set.seed(123)
 (out2 = gareal_laplaceCrossover_Rcpp(GA, c(11,44), a = 1, b = 0.1))
 identical(out1$children, out2$children)
 
-microbenchmark(gareal_laplaceCrossover_R(GA, 1:2),
-               gareal_laplaceCrossover_Rcpp(GA, 1:2),
+microbenchmark(GA:::gareal_laplaceCrossover_R(GA, 1:2, a = 1, b = 0.1),
+               gareal_laplaceCrossover_Rcpp(GA, 1:2, a = 1, b = 0.1),
                unit = "relative")
 */
 
@@ -987,19 +989,22 @@ microbenchmark(gareal_rsMutation_R(GA, 10),
 */
 
 // [[Rcpp::export]]
-NumericVector gareal_powMutation_Rcpp(RObject object, int parent, 
-                                      double pow = NA_REAL)
+NumericVector gareal_powMutation_Rcpp(RObject object, 
+                                      int parent, 
+                                      NumericVector pow)
 {
-  if(std::isnan(pow))  pow = 10;
   NumericMatrix  pop = object.slot("population");
   int            n = pop.ncol();
+  if(pow.length() == 1)  pow = rep(pow(0), n);
   NumericVector  lower = object.slot("lower");
   NumericVector  upper = object.slot("upper");
   NumericVector  mutate = pop(parent-1,_);
-  double         s = std::pow(R::runif(0,1), pow);
   NumericVector  t = (mutate - lower)/(upper - mutate);
+  double         u = R::runif(0,1);
+  double         s;
   for(int j=0; j < n; j++) 
   {
+    s = std::pow(u, pow(j));
     if(R::runif(0,1) < t[j])
       mutate[j] += -s*(mutate[j] - lower[j]);
     else
@@ -1019,13 +1024,13 @@ GA@maxiter <- 100
 
 i = 30
 set.seed(123)
-(out1 = gareal_powMutation_R(GA, i))
+(out1 = GA:::gareal_powMutation_R(GA, i, 10))
 set.seed(123)
-(out2 = gareal_powMutation_Rcpp(GA, i))
+(out2 = gareal_powMutation_Rcpp(GA, i, 10))
 identical(out1, out2)
 
-microbenchmark(gareal_powMutation_R(GA, i),
-               gareal_powMutation_Rcpp(GA, i),
+microbenchmark(GA:::gareal_powMutation_R(GA, i, 10),
+               gareal_powMutation_Rcpp(GA, i, 10),
                unit = "relative")
 */
 

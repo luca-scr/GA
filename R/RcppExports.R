@@ -85,7 +85,7 @@ gareal_blxCrossover_Rcpp <- function(object, parents) {
     .Call(`_GA_gareal_blxCrossover_Rcpp`, object, parents)
 }
 
-gareal_laplaceCrossover_Rcpp <- function(object, parents, a = NA_real_, b = NA_real_) {
+gareal_laplaceCrossover_Rcpp <- function(object, parents, a, b) {
     .Call(`_GA_gareal_laplaceCrossover_Rcpp`, object, parents, a, b)
 }
 
@@ -101,7 +101,7 @@ gareal_rsMutation_Rcpp <- function(object, parent) {
     .Call(`_GA_gareal_rsMutation_Rcpp`, object, parent)
 }
 
-gareal_powMutation_Rcpp <- function(object, parent, pow = NA_real_) {
+gareal_powMutation_Rcpp <- function(object, parent, pow) {
     .Call(`_GA_gareal_powMutation_Rcpp`, object, parent, pow)
 }
 

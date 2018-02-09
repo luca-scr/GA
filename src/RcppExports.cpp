@@ -254,15 +254,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // gareal_laplaceCrossover_Rcpp
-List gareal_laplaceCrossover_Rcpp(RObject object, IntegerVector parents, double a, double b);
+List gareal_laplaceCrossover_Rcpp(RObject object, IntegerVector parents, NumericVector a, NumericVector b);
 RcppExport SEXP _GA_gareal_laplaceCrossover_Rcpp(SEXP objectSEXP, SEXP parentsSEXP, SEXP aSEXP, SEXP bSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< RObject >::type object(objectSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type parents(parentsSEXP);
-    Rcpp::traits::input_parameter< double >::type a(aSEXP);
-    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
     rcpp_result_gen = Rcpp::wrap(gareal_laplaceCrossover_Rcpp(object, parents, a, b));
     return rcpp_result_gen;
 END_RCPP
@@ -304,14 +304,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // gareal_powMutation_Rcpp
-NumericVector gareal_powMutation_Rcpp(RObject object, int parent, double pow);
+NumericVector gareal_powMutation_Rcpp(RObject object, int parent, NumericVector pow);
 RcppExport SEXP _GA_gareal_powMutation_Rcpp(SEXP objectSEXP, SEXP parentSEXP, SEXP powSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< RObject >::type object(objectSEXP);
     Rcpp::traits::input_parameter< int >::type parent(parentSEXP);
-    Rcpp::traits::input_parameter< double >::type pow(powSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type pow(powSEXP);
     rcpp_result_gen = Rcpp::wrap(gareal_powMutation_Rcpp(object, parent, pow));
     return rcpp_result_gen;
 END_RCPP
