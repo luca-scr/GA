@@ -39,8 +39,11 @@ devtools::install_github("luca-scr/GA")
 
 ## Usage
 
-See the papers in the references section below. A quick intro vignette
-is also available, which can be accessed using
+Usage of the main functions and several examples are included in the
+papers shown in the references section below.
+
+For an intro see the vignette **A quick tour of GA**, which is available
+as
 
 ``` r
 vignette("GA")
@@ -53,6 +56,9 @@ GitHub with the code:
 ``` r
 devtools::install_github("luca-scr/GA", build_vignettes = TRUE)
 ```
+
+The vignette is also available in the *Get Started* section on the
+GitHub web page of the package at <http://luca-scr.github.io/GA/>.
 
 ## References
 
