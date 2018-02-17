@@ -511,7 +511,8 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
   if(is.null(dotargs$chead)) dotargs$chead <- 10
   if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
-  cat(cli::rule(left = crayon::bold("Genetic Algorithm")), "\n\n")
+  cat(cli::rule(left = crayon::bold("Genetic Algorithm"), 
+                width = cli::console_width()-1), "\n\n")
   # cat("+-----------------------------------+\n")
   # cat("|         Genetic Algorithm         |\n")
   # cat("+-----------------------------------+\n\n")

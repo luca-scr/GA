@@ -361,7 +361,8 @@ print.summary.gaisl <- function(x, digits = getOption("digits"), ...)
   if (is.null(dotargs$ctail)) 
     dotargs$ctail <- 1
   
-  cat(cli::rule(left = crayon::bold("Islands Genetic Algorithm")), "\n\n")
+  cat(cli::rule(left = crayon::bold("Islands Genetic Algorithm"),
+                width = cli::console_width()-1), "\n\n")
   # cat("+-----------------------------------+\n")
   # cat("|         Genetic Algorithm         |\n")
   # cat("|           Islands Model           |\n")
