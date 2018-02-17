@@ -39,11 +39,10 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \arguments{
 \item{type}{the type of genetic algorithm to be run depending on the nature of decision variables. Possible values are: 
-
-\tabular{ll}{
-\code{"binary"} \tab for binary representations of decision variables. \cr
-\code{"real-valued"} \tab for optimization problems where the decision variables are floating-point representations of real numbers. \cr
-\code{"permutation"} \tab for problems that involves reordering of a list.
+\describe{
+\item{\code{"binary"}}{for binary representations of decision variables.}
+\item{\code{"real-valued"}}{for optimization problems where the decision variables are floating-point representations of real numbers.}
+\item{\code{"permutation"}}{for problems that involves reordering of a list of objects.}
 }
 }
 
@@ -92,7 +91,6 @@ ga(type = c("binary", "real-valued", "permutation"),
 \item{optim}{a logical defaulting to \code{FALSE} determining whether or not a local search using general-purpose optimisation algorithms should be used. See argument \code{optimArgs} for further details and finer control.}
 
 \item{optimArgs}{a list controlling the local search algorithm with the following components:
-
 \describe{
 \item{\code{method}}{a string specifying the general-purpose optimisation method to be used, by default is set to \code{"L-BFGS-B"}. Other possible methods are those reported in \code{\link[stats]{optim}}.}
 \item{\code{poptim}}{a value in the range [0,1] specifying the probability of performing a local search at each iteration of GA (default 0.1).}

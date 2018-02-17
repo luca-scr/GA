@@ -6,3 +6,7 @@ log$
 ^.*\.Rproj$
 ^Makefile$
 ^revdep$
+^README\.Rmd$
+^README-.*\.png$
+^docs$
+sticker.png

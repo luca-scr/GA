@@ -41,11 +41,11 @@ gaisl(type = c("binary", "real-valued", "permutation"),
 
 \arguments{
 \item{type}{the type of genetic algorithm to be run depending on the nature of decision variables. Possible values are: 
-
-\tabular{ll}{
-\code{"binary"} \tab for binary representations of decision variables. \cr
-\code{"real-valued"} \tab for optimization problems where the decision variables are floating-point representations of real numbers. \cr
-\code{"permutation"} \tab for problems that involves reordering of a list.
+\describe{
+\item{\code{"binary"}}{for binary representations of decision variables.}
+\item{\code{"real-valued"}}{for optimization problems where the decision variables are floating-point representations of real numbers.}
+\item{\code{"permutation"}}{for problems that involves reordering of a list.
+}
 }
 }
 
