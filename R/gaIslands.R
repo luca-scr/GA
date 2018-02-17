@@ -362,11 +362,12 @@ print.summary.gaisl <- function(x, digits = getOption("digits"), ...)
     dotargs$ctail <- 1
   
   cat(cli::rule(left = crayon::bold("Islands Genetic Algorithm"),
-                width = cli::console_width()-1), "\n\n")
+                width = min(getOption("width"),40)), "\n\n")
   # cat("+-----------------------------------+\n")
   # cat("|         Genetic Algorithm         |\n")
   # cat("|           Islands Model           |\n")
   # cat("+-----------------------------------+\n\n")
+  
   cat("GA settings: \n")
   cat(paste("Type                  = ", x$type, "\n"))
   cat(paste("Number of islands     = ", x$numIslands, "\n"))

@@ -294,108 +294,10 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># 1) one-dimensional function</span>
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  <span class='fu'>abs</span>(<span class='no'>x</span>)+<span class='fu'>cos</span>(<span class='no'>x</span>)
-<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='img'><img src='ga-65.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='img'><img src='ga-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='no'>fitness</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>f</span>(<span class='no'>x</span>)
-<span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'>ga</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>, <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='no'>fitness</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; GA | iter = 1 | Mean = -9.289844 | Best = -1.045110
-#&gt; GA | iter = 2 | Mean = -4.816422 | Best = -1.025204
-#&gt; GA | iter = 3 | Mean = -3.628468 | Best = -1.022387
-#&gt; GA | iter = 4 | Mean = -2.396585 | Best = -1.021526
-#&gt; GA | iter = 5 | Mean = -2.509506 | Best = -1.004651
-#&gt; GA | iter = 6 | Mean = -1.787341 | Best = -1.001734
-#&gt; GA | iter = 7 | Mean = -2.120509 | Best = -1.001734
-#&gt; GA | iter = 8 | Mean = -2.430962 | Best = -1.001734
-#&gt; GA | iter = 9 | Mean = -2.752652 | Best = -1.001734
-#&gt; GA | iter = 10 | Mean = -2.362619 | Best = -1.000401
-#&gt; GA | iter = 11 | Mean = -2.896692 | Best = -1.000401
-#&gt; GA | iter = 12 | Mean = -2.766199 | Best = -1.000401
-#&gt; GA | iter = 13 | Mean = -2.979144 | Best = -1.000401
-#&gt; GA | iter = 14 | Mean = -1.861879 | Best = -1.000401
-#&gt; GA | iter = 15 | Mean = -2.169051 | Best = -1.000401
-#&gt; GA | iter = 16 | Mean = -1.869984 | Best = -1.000401
-#&gt; GA | iter = 17 | Mean = -2.140688 | Best = -1.000401
-#&gt; GA | iter = 18 | Mean = -2.684804 | Best = -1.000401
-#&gt; GA | iter = 19 | Mean = -1.976564 | Best = -1.000401
-#&gt; GA | iter = 20 | Mean = -2.154102 | Best = -1.000401
-#&gt; GA | iter = 21 | Mean = -1.586392 | Best = -1.000287
-#&gt; GA | iter = 22 | Mean = -2.140880 | Best = -1.000287
-#&gt; GA | iter = 23 | Mean = -2.094791 | Best = -1.000287
-#&gt; GA | iter = 24 | Mean = -1.633475 | Best = -1.000287
-#&gt; GA | iter = 25 | Mean = -2.396762 | Best = -1.000287
-#&gt; GA | iter = 26 | Mean = -2.480570 | Best = -1.000287
-#&gt; GA | iter = 27 | Mean = -1.809139 | Best = -1.000287
-#&gt; GA | iter = 28 | Mean = -2.877234 | Best = -1.000287
-#&gt; GA | iter = 29 | Mean = -2.318320 | Best = -1.000133
-#&gt; GA | iter = 30 | Mean = -2.584422 | Best = -1.000133
-#&gt; GA | iter = 31 | Mean = -1.592386 | Best = -1.000133
-#&gt; GA | iter = 32 | Mean = -2.066955 | Best = -1.000133
-#&gt; GA | iter = 33 | Mean = -2.303506 | Best = -1.000133
-#&gt; GA | iter = 34 | Mean = -1.667399 | Best = -1.000067
-#&gt; GA | iter = 35 | Mean = -1.570326 | Best = -1.000067
-#&gt; GA | iter = 36 | Mean = -1.895785 | Best = -1.000067
-#&gt; GA | iter = 37 | Mean = -1.504478 | Best = -1.000067
-#&gt; GA | iter = 38 | Mean = -1.735907 | Best = -1.000067
-#&gt; GA | iter = 39 | Mean = -2.710604 | Best = -1.000067
-#&gt; GA | iter = 40 | Mean = -2.005599 | Best = -1.000067
-#&gt; GA | iter = 41 | Mean = -1.989707 | Best = -1.000014
-#&gt; GA | iter = 42 | Mean = -2.109714 | Best = -1.000014
-#&gt; GA | iter = 43 | Mean = -2.864933 | Best = -1.000014
-#&gt; GA | iter = 44 | Mean = -1.730755 | Best = -1.000014
-#&gt; GA | iter = 45 | Mean = -2.772582 | Best = -1.000014
-#&gt; GA | iter = 46 | Mean = -2.576388 | Best = -1.000014
-#&gt; GA | iter = 47 | Mean = -2.937540 | Best = -1.000014
-#&gt; GA | iter = 48 | Mean = -1.983997 | Best = -1.000014
-#&gt; GA | iter = 49 | Mean = -1.970976 | Best = -1.000014
-#&gt; GA | iter = 50 | Mean = -1.540813 | Best = -1.000014
-#&gt; GA | iter = 51 | Mean = -1.751778 | Best = -1.000014
-#&gt; GA | iter = 52 | Mean = -2.229987 | Best = -1.000014
-#&gt; GA | iter = 53 | Mean = -2.231983 | Best = -1.000014
-#&gt; GA | iter = 54 | Mean = -1.808254 | Best = -1.000014
-#&gt; GA | iter = 55 | Mean = -2.628110 | Best = -1.000014
-#&gt; GA | iter = 56 | Mean = -2.609235 | Best = -1.000014
-#&gt; GA | iter = 57 | Mean = -3.975592 | Best = -1.000014
-#&gt; GA | iter = 58 | Mean = -1.566735 | Best = -1.000014
-#&gt; GA | iter = 59 | Mean = -1.476959 | Best = -1.000014
-#&gt; GA | iter = 60 | Mean = -1.893063 | Best = -1.000014
-#&gt; GA | iter = 61 | Mean = -1.870879 | Best = -1.000014
-#&gt; GA | iter = 62 | Mean = -3.080354 | Best = -1.000014
-#&gt; GA | iter = 63 | Mean = -1.346251 | Best = -1.000014
-#&gt; GA | iter = 64 | Mean = -2.088095 | Best = -1.000014
-#&gt; GA | iter = 65 | Mean = -1.979453 | Best = -1.000014
-#&gt; GA | iter = 66 | Mean = -1.792202 | Best = -1.000014
-#&gt; GA | iter = 67 | Mean = -1.644843 | Best = -1.000014
-#&gt; GA | iter = 68 | Mean = -2.253460 | Best = -1.000014
-#&gt; GA | iter = 69 | Mean = -2.735662 | Best = -1.000014
-#&gt; GA | iter = 70 | Mean = -2.694501 | Best = -1.000014
-#&gt; GA | iter = 71 | Mean = -2.599065 | Best = -1.000014
-#&gt; GA | iter = 72 | Mean = -2.505042 | Best = -1.000014
-#&gt; GA | iter = 73 | Mean = -1.696338 | Best = -1.000014
-#&gt; GA | iter = 74 | Mean = -3.044310 | Best = -1.000014
-#&gt; GA | iter = 75 | Mean = -1.891012 | Best = -1.000014
-#&gt; GA | iter = 76 | Mean = -2.167674 | Best = -1.000014
-#&gt; GA | iter = 77 | Mean = -2.486808 | Best = -1.000014
-#&gt; GA | iter = 78 | Mean = -2.205420 | Best = -1.000014
-#&gt; GA | iter = 79 | Mean = -2.646090 | Best = -1.000014
-#&gt; GA | iter = 80 | Mean = -2.284021 | Best = -1.000014
-#&gt; GA | iter = 81 | Mean = -2.894676 | Best = -1.000014
-#&gt; GA | iter = 82 | Mean = -2.044986 | Best = -1.000014
-#&gt; GA | iter = 83 | Mean = -1.816664 | Best = -1.000014
-#&gt; GA | iter = 84 | Mean = -1.671748 | Best = -1.000014
-#&gt; GA | iter = 85 | Mean = -1.737595 | Best = -1.000014
-#&gt; GA | iter = 86 | Mean = -2.432423 | Best = -1.000014
-#&gt; GA | iter = 87 | Mean = -2.241086 | Best = -1.000014
-#&gt; GA | iter = 88 | Mean = -2.755083 | Best = -1.000014
-#&gt; GA | iter = 89 | Mean = -2.683710 | Best = -1.000014
-#&gt; GA | iter = 90 | Mean = -1.312036 | Best = -1.000014
-#&gt; GA | iter = 91 | Mean = -1.983080 | Best = -1.000014
-#&gt; GA | iter = 92 | Mean = -2.088338 | Best = -1.000014
-#&gt; GA | iter = 93 | Mean = -2.147273 | Best = -1.000014
-#&gt; GA | iter = 94 | Mean = -2.651671 | Best = -1.000014
-#&gt; GA | iter = 95 | Mean = -2.908720 | Best = -1.000014
-#&gt; GA | iter = 96 | Mean = -2.363003 | Best = -1.000014
-#&gt; GA | iter = 97 | Mean = -2.048636 | Best = -1.000014
-#&gt; GA | iter = 98 | Mean = -2.350431 | Best = -1.000014
-#&gt; GA | iter = 99 | Mean = -1.580022 | Best = -1.000014
-#&gt; GA | iter = 100 | Mean = -1.796875 | Best = -1.000014</div><div class='input'><span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────────────────────────────────────────────────── 
+<span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'>ga</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>, <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='no'>fitness</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>)
+<span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────── 
 #&gt; 
 #&gt; GA settings: 
 #&gt; Type                  =  real-valued 
@@ -413,12 +315,12 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 #&gt; Iterations             = 100 
 #&gt; Fitness function value = -1.000014 
 #&gt; Solution = 
-#&gt;                x1
-#&gt; [1,] 0.0000136497</div><div class='input'><span class='fu'>plot</span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-66.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
-<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-67.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+#&gt;               x1
+#&gt; [1,] 1.36497e-05</div><div class='input'><span class='fu'>plot</span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='co'># 2) one-dimensional function</span>
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  (<span class='no'>x</span>^<span class='fl'>2</span>+<span class='no'>x</span>)*<span class='fu'>cos</span>(<span class='no'>x</span>) <span class='co'># -10 &lt; x &lt; 10</span>
-<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>10</span>, <span class='fl'>10</span>)</div><div class='img'><img src='ga-68.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>curve</span>(<span class='no'>f</span>, -<span class='fl'>10</span>, <span class='fl'>10</span>)</div><div class='img'><img src='ga-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='co'># write your own tracing function</span>
 <span class='no'>monitor</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>obj</span>)
 {
@@ -430,7 +332,7 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'>ga</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>, <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='no'>f</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>monitor</span> <span class='kw'>=</span> <span class='no'>monitor</span>)
 <span class='co'># }</span><div class='input'><span class='co'># or if you want to suppress the tracing</span>
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'>ga</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>, <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='no'>f</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>monitor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-<span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────────────────────────────────────────────────── 
+<span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────── 
 #&gt; 
 #&gt; GA settings: 
 #&gt; Type                  =  real-valued 
@@ -450,7 +352,7 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 #&gt; Solution = 
 #&gt;            x1
 #&gt; [1,] 6.560483</div><div class='input'>
-<span class='fu'>monitor</span>(<span class='no'>GA</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-69.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>monitor</span>(<span class='no'>GA</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='co'># 3) two-dimensional Rastrigin function</span>
 
 <span class='no'>Rastrigin</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>)
@@ -460,109 +362,11 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 
 <span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(-<span class='fl'>5.12</span>, <span class='fl'>5.12</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'>outer</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>Rastrigin</span>)
-<span class='fu'><a href='persp3D.html'>persp3D</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='img'><img src='ga-70.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>filled.contour</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>color.palette</span> <span class='kw'>=</span> <span class='no'>jet.colors</span>)</div><div class='img'><img src='ga-71.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'><a href='persp3D.html'>persp3D</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='img'><img src='ga-6.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>filled.contour</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>color.palette</span> <span class='kw'>=</span> <span class='no'>jet.colors</span>)</div><div class='img'><img src='ga-7.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'>ga</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>, <span class='kw'>fitness</span> <span class='kw'>=</span>  <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>Rastrigin</span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>]),
          <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>5.12</span>, -<span class='fl'>5.12</span>), <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>5.12</span>, <span class='fl'>5.12</span>),
-         <span class='kw'>popSize</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; GA | iter = 1 | Mean = -35.30202 | Best =  -6.63342
-#&gt; GA | iter = 2 | Mean = -27.087203 | Best =  -4.744248
-#&gt; GA | iter = 3 | Mean = -23.860744 | Best =  -2.903478
-#&gt; GA | iter = 4 | Mean = -19.714490 | Best =  -2.803415
-#&gt; GA | iter = 5 | Mean = -16.216047 | Best =  -1.066667
-#&gt; GA | iter = 6 | Mean = -15.761357 | Best =  -1.066667
-#&gt; GA | iter = 7 | Mean = -13.983552 | Best =  -1.026629
-#&gt; GA | iter = 8 | Mean = -15.016208 | Best =  -1.026629
-#&gt; GA | iter = 9 | Mean = -13.822691 | Best =  -1.026629
-#&gt; GA | iter = 10 | Mean = -11.783262 | Best =  -1.026629
-#&gt; GA | iter = 11 | Mean = -8.895227 | Best = -1.026419
-#&gt; GA | iter = 12 | Mean = -9.014286 | Best = -1.026419
-#&gt; GA | iter = 13 | Mean = -10.006494 | Best =  -1.026419
-#&gt; GA | iter = 14 | Mean = -7.212479 | Best = -1.026419
-#&gt; GA | iter = 15 | Mean = -5.3264039 | Best = -0.4233527
-#&gt; GA | iter = 16 | Mean = -6.9209813 | Best = -0.4233527
-#&gt; GA | iter = 17 | Mean = -5.9740779 | Best = -0.4233527
-#&gt; GA | iter = 18 | Mean = -4.8720608 | Best = -0.4233527
-#&gt; GA | iter = 19 | Mean = -4.6567881 | Best = -0.4233527
-#&gt; GA | iter = 20 | Mean = -5.7875700 | Best = -0.4233527
-#&gt; GA | iter = 21 | Mean = -6.0184119 | Best = -0.4233527
-#&gt; GA | iter = 22 | Mean = -5.2041417 | Best = -0.4233527
-#&gt; GA | iter = 23 | Mean = -6.6050344 | Best = -0.4233527
-#&gt; GA | iter = 24 | Mean = -5.8444084 | Best = -0.4233527
-#&gt; GA | iter = 25 | Mean = -7.9067034 | Best = -0.4233527
-#&gt; GA | iter = 26 | Mean = -5.9480325 | Best = -0.4233527
-#&gt; GA | iter = 27 | Mean = -4.4999254 | Best = -0.4233527
-#&gt; GA | iter = 28 | Mean = -8.0571279 | Best = -0.4233527
-#&gt; GA | iter = 29 | Mean = -7.5610529 | Best = -0.4233527
-#&gt; GA | iter = 30 | Mean = -5.9736053 | Best = -0.4233527
-#&gt; GA | iter = 31 | Mean = -6.2373789 | Best = -0.4233527
-#&gt; GA | iter = 32 | Mean = -6.8072966 | Best = -0.3328114
-#&gt; GA | iter = 33 | Mean = -10.3642528 | Best =  -0.3328114
-#&gt; GA | iter = 34 | Mean = -10.2865095 | Best =  -0.2737745
-#&gt; GA | iter = 35 | Mean = -10.5558588 | Best =  -0.2063575
-#&gt; GA | iter = 36 | Mean = -9.7607193 | Best = -0.2063575
-#&gt; GA | iter = 37 | Mean = -10.0486809 | Best =  -0.2063575
-#&gt; GA | iter = 38 | Mean = -11.7407707 | Best =  -0.2063575
-#&gt; GA | iter = 39 | Mean = -12.0264632 | Best =  -0.1574825
-#&gt; GA | iter = 40 | Mean = -13.4884471 | Best =  -0.1574825
-#&gt; GA | iter = 41 | Mean = -20.0785300 | Best =  -0.1574825
-#&gt; GA | iter = 42 | Mean = -12.996325591 | Best =  -0.004078746
-#&gt; GA | iter = 43 | Mean = -13.101481089 | Best =  -0.004078746
-#&gt; GA | iter = 44 | Mean = -11.538784011 | Best =  -0.004078746
-#&gt; GA | iter = 45 | Mean = -6.604709111 | Best = -0.004078746
-#&gt; GA | iter = 46 | Mean = -6.768047484 | Best = -0.004078746
-#&gt; GA | iter = 47 | Mean = -6.535782076 | Best = -0.004078746
-#&gt; GA | iter = 48 | Mean = -5.875332663 | Best = -0.004078746
-#&gt; GA | iter = 49 | Mean = -5.053972495 | Best = -0.004078746
-#&gt; GA | iter = 50 | Mean = -3.366953479 | Best = -0.004078746
-#&gt; GA | iter = 51 | Mean = -3.777366565 | Best = -0.004078746
-#&gt; GA | iter = 52 | Mean = -3.684841789 | Best = -0.004078746
-#&gt; GA | iter = 53 | Mean = -3.018238956 | Best = -0.000575363
-#&gt; GA | iter = 54 | Mean = -5.403007893 | Best = -0.000575363
-#&gt; GA | iter = 55 | Mean = -3.982595000 | Best = -0.000575363
-#&gt; GA | iter = 56 | Mean = -1.820200708 | Best = -0.000575363
-#&gt; GA | iter = 57 | Mean = -2.923569311 | Best = -0.000575363
-#&gt; GA | iter = 58 | Mean = -4.145723242 | Best = -0.000575363
-#&gt; GA | iter = 59 | Mean = -3.537339788 | Best = -0.000575363
-#&gt; GA | iter = 60 | Mean = -1.173283669 | Best = -0.000575363
-#&gt; GA | iter = 61 | Mean = -2.012935496 | Best = -0.000575363
-#&gt; GA | iter = 62 | Mean = -3.771540218 | Best = -0.000575363
-#&gt; GA | iter = 63 | Mean = -2.9462656794 | Best = -0.0002668733
-#&gt; GA | iter = 64 | Mean = -2.2634355580 | Best = -0.0002668733
-#&gt; GA | iter = 65 | Mean = -2.3388972854 | Best = -0.0002668733
-#&gt; GA | iter = 66 | Mean = -2.1727936714 | Best = -0.0002668733
-#&gt; GA | iter = 67 | Mean = -5.62973053421 | Best = -0.00006926274
-#&gt; GA | iter = 68 | Mean = -6.34621464120 | Best = -0.00006926274
-#&gt; GA | iter = 69 | Mean = -8.28996496720 | Best = -0.00006926274
-#&gt; GA | iter = 70 | Mean = -7.85187850531 | Best = -0.00006926274
-#&gt; GA | iter = 71 | Mean = -6.49673021678 | Best = -0.00006926274
-#&gt; GA | iter = 72 | Mean = -5.22352980672 | Best = -0.00006926274
-#&gt; GA | iter = 73 | Mean = -4.15749934933 | Best = -0.00006926274
-#&gt; GA | iter = 74 | Mean = -2.53476117036 | Best = -0.00006926274
-#&gt; GA | iter = 75 | Mean = -4.50714704638 | Best = -0.00006926274
-#&gt; GA | iter = 76 | Mean = -3.23986092678 | Best = -0.00006926274
-#&gt; GA | iter = 77 | Mean = -1.15410286460 | Best = -0.00006926274
-#&gt; GA | iter = 78 | Mean = -0.94006053435 | Best = -0.00006926274
-#&gt; GA | iter = 79 | Mean = -1.260072681000 | Best = -0.000001442858
-#&gt; GA | iter = 80 | Mean = -2.255874730591 | Best = -0.000001442858
-#&gt; GA | iter = 81 | Mean = -2.778961958463 | Best = -0.000001442858
-#&gt; GA | iter = 82 | Mean = -2.350187859515 | Best = -0.000001442858
-#&gt; GA | iter = 83 | Mean = -2.985945484233 | Best = -0.000001442858
-#&gt; GA | iter = 84 | Mean = -4.579179964236 | Best = -0.000001442858
-#&gt; GA | iter = 85 | Mean = -2.623901067273 | Best = -0.000001442858
-#&gt; GA | iter = 86 | Mean = -5.161045285122 | Best = -0.000001442858
-#&gt; GA | iter = 87 | Mean = -3.096352845169 | Best = -0.000001442858
-#&gt; GA | iter = 88 | Mean = -2.346957410490 | Best = -0.000001442858
-#&gt; GA | iter = 89 | Mean = -3.778880023627 | Best = -0.000001442858
-#&gt; GA | iter = 90 | Mean = -2.381158008559 | Best = -0.000001442858
-#&gt; GA | iter = 91 | Mean = -3.668216647835 | Best = -0.000001442858
-#&gt; GA | iter = 92 | Mean = -2.246160545644 | Best = -0.000001442858
-#&gt; GA | iter = 93 | Mean = -1.752796857213 | Best = -0.000001442858
-#&gt; GA | iter = 94 | Mean = -1.501983825229 | Best = -0.000001442858
-#&gt; GA | iter = 95 | Mean = -3.728011338119 | Best = -0.000001442858
-#&gt; GA | iter = 96 | Mean = -2.081923276729 | Best = -0.000001442858
-#&gt; GA | iter = 97 | Mean = -4.465927340492 | Best = -0.000001442858
-#&gt; GA | iter = 98 | Mean = -2.732513103495 | Best = -0.000001442858
-#&gt; GA | iter = 99 | Mean = -2.784725081956 | Best = -0.000001442858
-#&gt; GA | iter = 100 | Mean = -2.1353969739527 | Best = -0.0000001243575</div><div class='input'><span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────────────────────────────────────────────────── 
+         <span class='kw'>popSize</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>)
+<span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────── 
 #&gt; 
 #&gt; GA settings: 
 #&gt; Type                  =  real-valued 
@@ -578,10 +382,10 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 #&gt; 
 #&gt; GA results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -0.0000001243575 
+#&gt; Fitness function value = -1.243575e-07 
 #&gt; Solution = 
-#&gt;                   x1            x2
-#&gt; [1,] -0.000008890527 0.00002340482</div><div class='input'><span class='fu'>plot</span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-72.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+#&gt;                 x1           x2
+#&gt; [1,] -8.890527e-06 2.340482e-05</div><div class='input'><span class='fu'>plot</span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-8.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 # 4) Parallel GA
 # Simple example of an expensive fitness function obtained artificially by
 # introducing a pause statement. 
@@ -616,106 +420,8 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
          <span class='kw'>fitness</span> <span class='kw'>=</span>  <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>Rastrigin</span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>]),
          <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>5.12</span>, -<span class='fl'>5.12</span>), <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>5.12</span>, <span class='fl'>5.12</span>),
          <span class='kw'>popSize</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-         <span class='kw'>optim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; GA | iter = 1 | Mean = -34.413935 | Best =  -9.722431
-#&gt; GA | iter = 2 | Mean = -31.872884 | Best =  -5.730162
-#&gt; GA | iter = 3 | Mean = -22.695456 | Best =  -5.730162
-#&gt; GA | iter = 4 | Mean = -22.877690 | Best =  -5.730162 | Local search = -7.959662
-#&gt; GA | iter = 5 | Mean = -21.555094 | Best =  -3.633053
-#&gt; GA | iter = 6 | Mean = -19.3587976 | Best =  -0.4394306
-#&gt; GA | iter = 7 | Mean = -17.2718107 | Best =  -0.4394306
-#&gt; GA | iter = 8 | Mean = -13.6160674 | Best =  -0.4394306
-#&gt; GA | iter = 9 | Mean = -12.3642255 | Best =  -0.4394306
-#&gt; GA | iter = 10 | Mean = -13.5288924 | Best =  -0.4394306
-#&gt; GA | iter = 11 | Mean = -15.4786002 | Best =  -0.4394306
-#&gt; GA | iter = 12 | Mean = -12.6279961 | Best =  -0.3617206
-#&gt; GA | iter = 13 | Mean = -13.0095358 | Best =  -0.3617206
-#&gt; GA | iter = 14 | Mean = -13.0392104 | Best =  -0.3617206
-#&gt; GA | iter = 15 | Mean = -14.8440686 | Best =  -0.3617206
-#&gt; GA | iter = 16 | Mean = -12.3029544 | Best =  -0.3352464
-#&gt; GA | iter = 17 | Mean = -11.5704581 | Best =  -0.3352464
-#&gt; GA | iter = 18 | Mean = -7.3013490 | Best = -0.2630043
-#&gt; GA | iter = 19 | Mean = -5.3252962 | Best = -0.2347363
-#&gt; GA | iter = 20 | Mean = -5.506756 | Best = -0.118043
-#&gt; GA | iter = 21 | Mean = -5.309631337 | Best = -0.006647098
-#&gt; GA | iter = 22 | Mean = -6.266137048 | Best = -0.006647098
-#&gt; GA | iter = 23 | Mean = -5.306710050 | Best = -0.006647098
-#&gt; GA | iter = 24 | Mean = -6.704363692 | Best = -0.006647098
-#&gt; GA | iter = 25 | Mean = -7.136049135 | Best = -0.006647098
-#&gt; GA | iter = 26 | Mean = -6.266236279 | Best = -0.006647098
-#&gt; GA | iter = 27 | Mean = -5.373767482 | Best = -0.006647098
-#&gt; GA | iter = 28 | Mean = -6.481595374 | Best = -0.006647098
-#&gt; GA | iter = 29 | Mean = -7.446616463 | Best = -0.006647098
-#&gt; GA | iter = 30 | Mean = -4.290156483 | Best = -0.006647098
-#&gt; GA | iter = 31 | Mean = -2.948351558 | Best = -0.004015509
-#&gt; GA | iter = 32 | Mean = -3.402297818 | Best = -0.004015509
-#&gt; GA | iter = 33 | Mean = -3.081861023 | Best = -0.004015509
-#&gt; GA | iter = 34 | Mean = -3.803042048 | Best = -0.004015509
-#&gt; GA | iter = 35 | Mean = -5.618721668 | Best = -0.004015509
-#&gt; GA | iter = 36 | Mean = -3.900098029 | Best = -0.004015509
-#&gt; GA | iter = 37 | Mean = -4.369459758 | Best = -0.001049368
-#&gt; GA | iter = 38 | Mean = -4.864388876 | Best = -0.001049368
-#&gt; GA | iter = 39 | Mean = -4.842763243 | Best = -0.001049368
-#&gt; GA | iter = 40 | Mean = -5.667685427 | Best = -0.001049368
-#&gt; GA | iter = 41 | Mean = -4.978018564 | Best = -0.001049368
-#&gt; GA | iter = 42 | Mean = -9.539360622 | Best = -0.001049368
-#&gt; GA | iter = 43 | Mean = -8.624038824 | Best = -0.001049368
-#&gt; GA | iter = 44 | Mean = -7.745976809 | Best = -0.001049368
-#&gt; GA | iter = 45 | Mean = -8.108271985 | Best = -0.001049368
-#&gt; GA | iter = 46 | Mean = -6.061814781 | Best = -0.001049368
-#&gt; GA | iter = 47 | Mean = -7.459877961 | Best = -0.001049368
-#&gt; GA | iter = 48 | Mean = -4.163493001 | Best = -0.001049368
-#&gt; GA | iter = 49 | Mean = -5.523234825 | Best = -0.001049368
-#&gt; GA | iter = 50 | Mean = -5.348467574 | Best = -0.001049368
-#&gt; GA | iter = 51 | Mean = -4.239679055 | Best = -0.001049368
-#&gt; GA | iter = 52 | Mean = -4.047664425 | Best = -0.001049368 | Local search = 0
-#&gt; GA | iter = 53 | Mean = -6.137486 | Best =  0.000000
-#&gt; GA | iter = 54 | Mean = -6.520279 | Best =  0.000000
-#&gt; GA | iter = 55 | Mean = -5.355958 | Best =  0.000000
-#&gt; GA | iter = 56 | Mean = -3.351716 | Best =  0.000000
-#&gt; GA | iter = 57 | Mean = -4.866191 | Best =  0.000000
-#&gt; GA | iter = 58 | Mean = -1.452467 | Best =  0.000000
-#&gt; GA | iter = 59 | Mean = -0.5475041 | Best =  0.0000000
-#&gt; GA | iter = 60 | Mean = -1.979198 | Best =  0.000000
-#&gt; GA | iter = 61 | Mean = -4.713283 | Best =  0.000000
-#&gt; GA | iter = 62 | Mean = -4.570124 | Best =  0.000000
-#&gt; GA | iter = 63 | Mean = -4.379057 | Best =  0.000000
-#&gt; GA | iter = 64 | Mean = -4.056287 | Best =  0.000000
-#&gt; GA | iter = 65 | Mean = -2.902647 | Best =  0.000000
-#&gt; GA | iter = 66 | Mean = -3.268083 | Best =  0.000000
-#&gt; GA | iter = 67 | Mean = -2.078103 | Best =  0.000000
-#&gt; GA | iter = 68 | Mean = -1.152319 | Best =  0.000000
-#&gt; GA | iter = 69 | Mean = -3.077821 | Best =  0.000000
-#&gt; GA | iter = 70 | Mean = -2.878926 | Best =  0.000000
-#&gt; GA | iter = 71 | Mean = -3.790693 | Best =  0.000000
-#&gt; GA | iter = 72 | Mean = -3.02291 | Best =  0.00000
-#&gt; GA | iter = 73 | Mean = -1.5311 | Best =  0.0000
-#&gt; GA | iter = 74 | Mean = -4.045037 | Best =  0.000000
-#&gt; GA | iter = 75 | Mean = -2.446893 | Best =  0.000000
-#&gt; GA | iter = 76 | Mean = -3.64567 | Best =  0.00000
-#&gt; GA | iter = 77 | Mean = -4.251634 | Best =  0.000000
-#&gt; GA | iter = 78 | Mean = -4.153804 | Best =  0.000000
-#&gt; GA | iter = 79 | Mean = -3.489337 | Best =  0.000000
-#&gt; GA | iter = 80 | Mean = -4.767921 | Best =  0.000000
-#&gt; GA | iter = 81 | Mean = -5.995782 | Best =  0.000000
-#&gt; GA | iter = 82 | Mean = -4.331599 | Best =  0.000000
-#&gt; GA | iter = 83 | Mean = -6.305789 | Best =  0.000000
-#&gt; GA | iter = 84 | Mean = -5.685486 | Best =  0.000000
-#&gt; GA | iter = 85 | Mean = -4.235987 | Best =  0.000000
-#&gt; GA | iter = 86 | Mean = -2.577244 | Best =  0.000000
-#&gt; GA | iter = 87 | Mean = -4.804355 | Best =  0.000000
-#&gt; GA | iter = 88 | Mean = -4.663081 | Best =  0.000000
-#&gt; GA | iter = 89 | Mean = -4.480725 | Best =  0.000000
-#&gt; GA | iter = 90 | Mean = -6.405044 | Best =  0.000000
-#&gt; GA | iter = 91 | Mean = -4.39711 | Best =  0.00000
-#&gt; GA | iter = 92 | Mean = -3.896517 | Best =  0.000000
-#&gt; GA | iter = 93 | Mean = -1.650858 | Best =  0.000000
-#&gt; GA | iter = 94 | Mean = -2.528911 | Best =  0.000000
-#&gt; GA | iter = 95 | Mean = -3.094203 | Best =  0.000000
-#&gt; GA | iter = 96 | Mean = -4.327205 | Best =  0.000000
-#&gt; GA | iter = 97 | Mean = -4.350358 | Best =  0.000000
-#&gt; GA | iter = 98 | Mean = -4.66806 | Best =  0.00000
-#&gt; GA | iter = 99 | Mean = -3.817126 | Best =  0.000000
-#&gt; GA | iter = 100 | Mean = -3.738854 | Best =  0.000000 | Final local search = 0</div><div class='input'><span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────────────────────────────────────────────────── 
+         <span class='kw'>optim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>summary</span>(<span class='no'>GA</span>)</div><div class='output co'>#&gt; ── Genetic Algorithm ─────────────────── 
 #&gt; 
 #&gt; GA settings: 
 #&gt; Type                  =  real-valued 
@@ -733,8 +439,8 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 #&gt; Iterations             = 100 
 #&gt; Fitness function value = 0 
 #&gt; Solution = 
-#&gt;                       x1                   x2
-#&gt; [1,] -0.0000000000197952 -0.00000000004678766</div><div class='input'>
+#&gt;                x1            x2
+#&gt; [1,] -1.97952e-11 -4.678766e-11</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -760,7 +466,7 @@ In this case the cluster must be explicitely stopped with <code><a href='http://
 
       <footer>
       <div class="copyright">
-  <p>Developed by Luca Scrucca.</p>
+  <p>Developed by <a href='http://www.stat.unipg.it/luca'>Luca Scrucca</a>.</p>
 </div>
 
 <div class="pkgdown">

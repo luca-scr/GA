@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# GA <img src="sticker.png" align="right" width="120px" />
+# GA <img src="images/logo.png" align="right" width="100px" />
 
 An R package for optimisation using **Genetic
 Algorithms**

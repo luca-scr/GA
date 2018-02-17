@@ -25,7 +25,7 @@ opts_chunk$set(fig.align = "center",
 
 knit_hooks$set(par = function(before, options, envir)
   { if(before && options$fig.show != "none") 
-       par(mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
+       par(family = "sans", mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
 })
 ```
 
@@ -127,8 +127,8 @@ subject to the following nonlinear inequality constraints and bounds:
 
 - $x_1x_2 + x_1 - x_2 + 1.5 \le 0$ (*inequality constraint*),  
 - $10 - x_1x_2 \le 0$ (*inequality constraint*),  
-- $0 \le x1 \le 1$ (*bounds*), and  
-- $0 \le x2 \le 13$ (*bounds*).
+- $0 \le x_1 \le 1$ (*bounds*), and  
+- $0 \le x_2 \le 13$ (*bounds*).
 
 The above fitness function is known as "cam" as described in L.C.W. Dixon and G.P. Szego (eds.), **Towards Global Optimisation 2**, North-Holland, Amsterdam, 1978.
 
@@ -287,11 +287,11 @@ out$average <- with(out, average <- elapsed/replications)
 out[,c(1:3,5,4)]
 ```
 ```
-#   test replications elapsed average relative
-# 1  GA1           10 565.075 56.5075    3.975
-# 2  GA2           10 142.174 14.2174    1.000
-# 3  GA3           10 263.285 26.3285    1.852
-# 4  GA4           10 155.777 15.5777    1.096
+##   test replications elapsed average relative
+## 1  GA1           10 565.075 56.5075    3.975
+## 2  GA2           10 142.174 14.2174    1.000
+## 3  GA3           10 263.285 26.3285    1.852
+## 4  GA4           10 155.777 15.5777    1.096
 ```
 
 The results above have been obtained on an iMac, Intel Core i5 at 2.8GHz, with 4 cores and 16 GB RAM, running OSX 10.11.
@@ -395,13 +395,13 @@ mfitness <- memoise(fitness)
 is.memoised(fitness)
 ```
 ```
-# [1] FALSE
+## [1] FALSE
 ```
 ```{r, eval = FALSE}
 is.memoised(mfitness)
 ```
 ```
-# [1] TRUE
+## [1] TRUE
 ```
 ```{r, eval = FALSE}
 library(rbenchmark)
@@ -415,9 +415,9 @@ tab$average <- with(tab, elapsed/replications)
 tab
 ```
 ```
-#   test replications elapsed relative average
-# 1  GA1           10  59.071    5.673  5.9071
-# 2  GA2           10  10.413    1.000  1.0413
+##   test replications elapsed relative average
+## 1  GA1           10  59.071    5.673  5.9071
+## 2  GA2           10  10.413    1.000  1.0413
 ```
 ```{r, eval=FALSE}
 # To clear cache use

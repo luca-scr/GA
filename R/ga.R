@@ -512,11 +512,11 @@ print.summary.ga <- function(x, digits = getOption("digits"), ...)
   if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
   cat(cli::rule(left = crayon::bold("Genetic Algorithm"), 
-                width = cli::console_width()-1), "\n\n")
+                width = min(getOption("width"),40)), "\n\n")
   # cat("+-----------------------------------+\n")
   # cat("|         Genetic Algorithm         |\n")
   # cat("+-----------------------------------+\n\n")
-  
+
   cat("GA settings: \n")
   cat(paste("Type                  = ", x$type, "\n"))
   cat(paste("Population size       = ", x$popSize, "\n"))

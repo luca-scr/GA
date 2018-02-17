@@ -87,9 +87,7 @@
 
     <div class="contents">
     <div class="section level1">
-<h1>GA 3.1 News</h1>
-<div class="section level2">
-<h2>Version 3.1 (2018-01) NOT ON CRAN</h2>
+<h1>GA 3.1 (2018-02) NOT ON CRAN</h1>
 <ul>
 <li>Genetic operators available in C++ using <code>Rcpp</code> package.</li>
 <li>Add parameter “useRcpp” in gaControl() to control if the C++ implementation of genetic operators should be used. By default is set to TRUE.</li>
@@ -102,20 +100,20 @@
 <li>Create a sticker for the package.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 3.0.2 (2016-06)</h2>
+    <div class="section level1">
+<h1>GA 3.0.2 (2016-06)</h1>
 <ul>
 <li>In interactive sessions use different monitor functions depending on whether or not is an RStudio session. This is due to different capabilities of the several consoles from which R can be run.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 3.0.1 (2016-05)</h2>
+    <div class="section level1">
+<h1>GA 3.0.1 (2016-05)</h1>
 <ul>
 <li>doRNG moved from Depends to Suggests due to the unavailability of the binary version of the package on Windows. As a consequence, GA package can be installed even without doRNG being installed, but in this case results are not reproducible by setting the seed if GAs are executed in parallel.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 3.0 (2016-05)</h2>
+    <div class="section level1">
+<h1>GA 3.0 (2016-05)</h1>
 <ul>
 <li>Added option to provide a cluster for parallelisation.</li>
 <li>Added GA-hybrid using optim() for local search.</li>
@@ -123,14 +121,14 @@
 <li>Rewrite of gaMonitor() to clear the previous output before printing the info about the current iteration. Old version is available in gaMonitor2(). Same behaviour for gaislMonitor() and gaislMonitor2().</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 2.3 (2015-07)</h2>
+    <div class="section level1">
+<h1>GA 2.3 (2015-07)</h1>
 <ul>
 <li>Added documentation vignettes.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 2.2 (2014-10)</h2>
+    <div class="section level1">
+<h1>GA 2.2 (2014-10)</h1>
 <ul>
 <li>Slight modification to plot method.</li>
 <li>Included link in main ga documentation to genetic operators.</li>
@@ -138,8 +136,8 @@
 <li>pdf files (previously included as vignettes) moved to inst/doc with corresponding index.html.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 2.1 (2014-05)</h2>
+    <div class="section level1">
+<h1>GA 2.1 (2014-05)</h1>
 <ul>
 <li>.printShortMatrix is a function to print part of rows/columns of a matrix</li>
 <li>print.summary.ga accept arguments to be passed to .printShortMatrix. This allow to shorten the printed output in case of large dimensions for the matrices containing the suggestions and the final solutions.</li>
@@ -159,26 +157,25 @@
 <li>Parallel computing improving set up of clusters.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 2.0 (2013-08)</h2>
+    <div class="section level1">
+<h1>GA 2.0 (2013-08)</h1>
 <ul>
 <li>Option for parallel computing.</li>
 <li>Added argument keepBest to include the best solution at each iteration.</li>
 <li>Bug fix when using suggestions argument.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 1.1 (2013-04)</h2>
+    <div class="section level1">
+<h1>GA 1.1 (2013-04)</h1>
 <ul>
 <li>Update citation and references to JSS paper.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2>Version 1.0 (2012-06)</h2>
+    <div class="section level1">
+<h1>GA 1.0 (2012-06)</h1>
 <ul>
 <li>First release on CRAN.</li>
 </ul>
-</div>
 </div>
     </div>
   </div>
@@ -188,6 +185,15 @@
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
         <li><a href="#NA">3.1</a></li>
+        <li><a href="#NA">3.0.2</a></li>
+        <li><a href="#NA">3.0.1</a></li>
+        <li><a href="#NA">3.0</a></li>
+        <li><a href="#NA">2.3</a></li>
+        <li><a href="#NA">2.2</a></li>
+        <li><a href="#NA">2.1</a></li>
+        <li><a href="#NA">2.0</a></li>
+        <li><a href="#NA">1.1</a></li>
+        <li><a href="#NA">1.0</a></li>
       </ul>
     </div>
   </div>
@@ -196,7 +202,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Luca Scrucca.</p>
+  <p>Developed by <a href='http://www.stat.unipg.it/luca'>Luca Scrucca</a>.</p>
 </div>
 
 <div class="pkgdown">

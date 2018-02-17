@@ -18,3 +18,4 @@ VignetteBuilder: knitr
 URL: http://luca-scr.github.io/GA/
 Repository: CRAN
 BugReports: https://github.com/luca-scr/GA/issues
+RoxygenNote: 6.0.1

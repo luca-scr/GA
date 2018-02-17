@@ -9,4 +9,4 @@ log$
 ^README\.Rmd$
 ^README-.*\.png$
 ^docs$
-sticker.png
+_pkgdown.yaml

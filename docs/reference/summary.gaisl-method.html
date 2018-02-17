@@ -129,37 +129,9 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gaisl.html'>gaisl</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>,
             <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>f</span>(<span class='no'>x</span>),
             <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>run</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># CRAN check limits ncores = 2</span></div><div class='output co'>#&gt; Islands GA | epoch = 1 
-#&gt; Mean = -2.860151 | Best = -1.002753 
-#&gt; Mean = -2.063236 | Best = -1.000244 
-#&gt; Mean = -2.253634 | Best = -1.020024 
-#&gt; Mean = -2.260865 | Best = -1.002627 
-#&gt; Islands GA | epoch = 2 
-#&gt; Mean = -1.801093 | Best = -1.000477 
-#&gt; Mean = -2.498584 | Best = -1.000244 
-#&gt; Mean = -2.060571 | Best = -1.000028 
-#&gt; Mean = -3.773238 | Best = -1.000054 
-#&gt; Islands GA | epoch = 3 
-#&gt; Mean = -4.412606 | Best = -1.000054 
-#&gt; Mean = -1.194030 | Best = -1.000244 
-#&gt; Mean = -3.478520 | Best = -1.000028 
-#&gt; Mean = -1.399374 | Best = -1.000028 
-#&gt; Islands GA | epoch = 4 
-#&gt; Mean = -2.286719 | Best = -1.000028 
-#&gt; Mean = -1.132496 | Best = -1.000032 
-#&gt; Mean = -3.358972 | Best = -1.000028 
-#&gt; Mean = -3.769517 | Best = -1.000028 
-#&gt; Islands GA | epoch = 5 
-#&gt; Mean = -1.369604 | Best = -1.000028 
-#&gt; Mean = -3.203861 | Best = -1.000028 
-#&gt; Mean = -1.555339 | Best = -1.000028 
-#&gt; Mean = -3.418042 | Best = -1.000028 
-#&gt; Islands GA | epoch = 6 
-#&gt; Mean = -2.667235 | Best = -1.000028 
-#&gt; Mean = -2.655299 | Best = -1.000028 
-#&gt; Mean = -2.638718 | Best = -1.000028 
-#&gt; Mean = -2.539922 | Best = -1.000028 </div><div class='input'><span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
-<span class='fu'>print</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; ── Islands Genetic Algorithm ─────────────────────────────────────────────────────── 
+            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># CRAN check limits ncores = 2</span>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
+<span class='fu'>print</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; ── Islands Genetic Algorithm ─────────── 
 #&gt; 
 #&gt; GA settings: 
 #&gt; Type                  =  real-valued 
@@ -180,11 +152,11 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 #&gt; Epochs                  = 6 
 #&gt; Fitness function values = -1.000028 -1.000028 -1.000028 -1.000028 
 #&gt; Solutions = 
-#&gt;                  x1
-#&gt; [1,] -0.00002836022
-#&gt; [2,] -0.00002836022
-#&gt; [3,] -0.00002835691
-#&gt; [4,] -0.00002836022</div><div class='input'><span class='fu'>str</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; List of 13
+#&gt;                 x1
+#&gt; [1,] -2.836022e-05
+#&gt; [2,] -2.836022e-05
+#&gt; [3,] -2.835691e-05
+#&gt; [4,] -2.836022e-05</div><div class='input'><span class='fu'>str</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; List of 13
 #&gt;  $ type             : chr "real-valued"
 #&gt;  $ numIslands       : num 4
 #&gt;  $ popSizeIslands   : num 25
@@ -200,7 +172,7 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 #&gt;  $ iter             : int 60
 #&gt;  $ epoch            : num 6
 #&gt;  $ fitnessValues    : num [1:4] -1 -1 -1 -1
-#&gt;  $ solutions        : num [1:4, 1] -0.0000284 -0.0000284 -0.0000284 -0.0000284
+#&gt;  $ solutions        : num [1:4, 1] -2.84e-05 -2.84e-05 -2.84e-05 -2.84e-05
 #&gt;   ..- attr(*, "dimnames")=List of 2
 #&gt;   .. ..$ : NULL
 #&gt;   .. ..$ : chr "x1"
@@ -225,7 +197,7 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Luca Scrucca.</p>
+  <p>Developed by <a href='http://www.stat.unipg.it/luca'>Luca Scrucca</a>.</p>
 </div>
 
 <div class="pkgdown">
