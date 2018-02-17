@@ -422,7 +422,7 @@ gareal_blxCrossover_R <- function(object, parents)
 # References
 #
 # Deep K., Thakur M. (2007) A new crossover operator for real coded genetic
-#   algorithms, Applied Mathematics and Computation, 188, 895–912.
+#   algorithms, Applied Mathematics and Computation, 188, 895-912.
 # Deep K., Singh K.P., Kansal M.L., Mohan C. (2009) A real coded genetic
 #   algorithm for solving integer and mixed integer optimization problems.
 #   Applied Mathematics and Computation, 212(2), pp. 505-518.
@@ -532,7 +532,7 @@ gareal_rsMutation_R <- function(object, parent)
 #   algorithm for solving integer and mixed integer optimization problems.
 #   Applied Mathematics and Computation, 212(2), pp. 505-518.
 # Deep K., Thakur M. (2007) A new mutation operator for real coded genetic
-#  algorithms, Applied Mathematics and Computation, 193, pp. 211–230.
+#  algorithms, Applied Mathematics and Computation, 193, pp. 211-230.
 
 gareal_powMutation <- function(object, parent, pow = 10, ...)
 {

@@ -3,8 +3,10 @@ Version: 3.1
 Date: 2018-02-09
 Title: Genetic Algorithms
 Description: An R package for optimisation using genetic algorithms. The package provides a flexible general-purpose set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
-Authors@R: c(person("Luca", "Scrucca", role = c("aut", "cre"),
-                    email = "luca.scrucca@unipg.it"))
+Authors@R: c(
+  person("Luca", "Scrucca", role = c("aut", "cre"),
+         email = "luca.scrucca@unipg.it",
+         comment = c(ORCID = "0000-0003-3826-0484")))
 Depends: R (>= 3.0), methods, foreach, iterators
 Imports: stats, graphics, grDevices, utils, cli, crayon, Rcpp
 LinkingTo: Rcpp, RcppArmadillo
@@ -15,3 +17,4 @@ LazyLoad: yes
 VignetteBuilder: knitr
 URL: https://github.com/luca-scr/GA
 Repository: CRAN
+BugReports: https://github.com/luca-scr/GA/issues
