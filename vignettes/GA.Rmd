@@ -6,6 +6,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
     number_sections: false
+    #  highlight: null
     css: "vignette.css"
 vignette: >
   %\VignetteIndexEntry{A quick tour of GA}
@@ -114,6 +115,32 @@ GA <- ga(type = "real-valued",
          popSize = 50, maxiter = 100, 
          monitor = monitor)
 ```
+
+# Setting some members of the initial population
+
+The `suggestions` argument to `ga()` function call can be used to provide a matrix of solutions to be included in the initial population. 
+
+For example, consider the optimisation of the Rastrigin function introduced above:
+```{r}
+suggestedSol <- matrix(c(0.2,1.5,-1.5,0.5), nrow = 2, ncol = 2, byrow = TRUE)
+GA1 <- ga(type = "real-valued", 
+          fitness =  function(x) -Rastrigin(x[1], x[2]),
+          lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
+          suggestions = suggestedSol,
+          popSize = 50, maxiter = 1)
+head(GA1@population)
+```
+As it can be seen, the first two solutions considered are those provided, whereas the rest is filled randomly as usual.
+A full search can be obtained as follows:
+```{r}
+GA <- ga(type = "real-valued", 
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
+         suggestions = suggestedSol,
+         popSize = 50, maxiter = 100)
+summary(GA)
+```
+
 
 # Constrained optimisation
 

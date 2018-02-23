@@ -159,14 +159,14 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Return a list with the following elements:</p>
-<dt>persp</dt><dd><p>the viewing transformation matrix (see <code>link{persp}</code>);</p></dd>
+<dt>persp</dt><dd><p>the viewing transformation matrix (see <code>persp</code>);</p></dd>
 <dt>levels</dt><dd><p>a vector of values giving the levels used for plotting the surface;</p></dd>
 <dt>colors</dt><dd><p>a vector of strings giving the color used for plotting the surface.</p></dd>
 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>link{persp}</code></p>
+    <p><code>persp</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -174,10 +174,9 @@
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>,<span class='no'>y</span>) { <span class='no'>r</span> <span class='kw'>&lt;-</span> <span class='fu'>sqrt</span>(<span class='no'>x</span>^<span class='fl'>2</span>+<span class='no'>y</span>^<span class='fl'>2</span>); <span class='fl'>10</span> * <span class='fu'>sin</span>(<span class='no'>r</span>)/<span class='no'>r</span> }
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>outer</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>f</span>)
 <span class='fu'>persp3D</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='img'><img src='persp3D-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>persp3D</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>color.palette</span> <span class='kw'>=</span> <span class='no'>heat.colors</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>225</span>,
-        <span class='kw'>box</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>shade</span> <span class='kw'>=</span> <span class='fl'>.4</span>)</div><div class='img'><img src='persp3D-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
-<span class='no'>x1</span> <span class='kw'>=</span> <span class='fu'>seq</span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='no'>x2</span> <span class='kw'>=</span> <span class='fu'>seq</span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='no'>y</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>) <span class='fu'>sin</span>(<span class='no'>x1</span>)+<span class='fu'>cos</span>(<span class='no'>x2</span>)
+        <span class='kw'>box</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>shade</span> <span class='kw'>=</span> <span class='fl'>.4</span>)</div><div class='img'><img src='persp3D-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
+<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>) <span class='fu'>sin</span>(<span class='no'>x1</span>)+<span class='fu'>cos</span>(<span class='no'>x2</span>)
 <span class='fu'>persp3D</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='fu'>outer</span>(<span class='no'>x1</span>,<span class='no'>x2</span>,<span class='no'>y</span>), <span class='kw'>zlab</span><span class='kw'>=</span><span class='st'>"y"</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>150</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fl'>0.6</span>)</div><div class='img'><img src='persp3D-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

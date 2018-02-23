@@ -8,7 +8,6 @@ Algorithms**
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/GA)](https://cran.r-project.org/package=GA)
 [![CRAN\_MonthlyDownloads](http://cranlogs.r-pkg.org/badges/GA)](https://cran.r-project.org/package=GA)
-[![Rdoc](http://www.rdocumentation.org/badges/version/GA)](http://www.rdocumentation.org/packages/GA)
 
 The GA package provides a flexible general-purpose set of tools for
 implementing genetic algorithms search in both the continuous and

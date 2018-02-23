@@ -12,10 +12,10 @@ Imports: stats, graphics, grDevices, utils, cli, crayon, Rcpp
 LinkingTo: Rcpp, RcppArmadillo
 Suggests: parallel, doParallel, doRNG (>= 1.6), knitr (>= 1.8)
 License: GPL (>= 2)
+VignetteBuilder: knitr
+URL: https://luca-scr.github.io/GA/
+BugReports: https://github.com/luca-scr/GA/issues
+Repository: CRAN
 ByteCompile: true
 LazyLoad: yes
-VignetteBuilder: knitr
-URL: http://luca-scr.github.io/GA/
-Repository: CRAN
-BugReports: https://github.com/luca-scr/GA/issues
 RoxygenNote: 6.0.1

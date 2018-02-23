@@ -9,4 +9,5 @@ log$
 ^README\.Rmd$
 ^README-.*\.png$
 ^docs$
+pkgdown.md
 _pkgdown.yaml

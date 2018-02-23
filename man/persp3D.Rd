@@ -45,7 +45,7 @@ persp3D(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3,
 \details{This function enhances the default perspective plot for drawing 3-dimensional surfaces.}
 
 \value{Return a list with the following elements:
-\item{persp}{the viewing transformation matrix (see \code{link{persp}});}
+\item{persp}{the viewing transformation matrix (see \code{\link{persp}});}
 \item{levels}{a vector of values giving the levels used for plotting the surface;}
 \item{colors}{a vector of strings giving the color used for plotting the surface.}
 }
@@ -56,7 +56,7 @@ persp3D(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3,
 
 %\note{}
 
-\seealso{\code{link{persp}}}
+\seealso{\code{\link{persp}}}
 
 \examples{
 y <- x <- seq(-10, 10, length=60)
@@ -65,10 +65,9 @@ z <- outer(x, y, f)
 persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5)
 persp3D(x, y, z, color.palette = heat.colors, phi = 30, theta = 225, 
         box = TRUE, border = NA, shade = .4)
-
-x1 = seq(-3,3,length=50)
-x2 = seq(-3,3,length=50)
-y = function(x1, x2) sin(x1)+cos(x2)
+x1 <- seq(-3,3,length=50)
+x2 <- seq(-3,3,length=50)
+y <- function(x1, x2) sin(x1)+cos(x2)
 persp3D(x1, x2, outer(x1,x2,y), zlab="y", theta = 150, phi = 20, expand = 0.6)
 }
 
