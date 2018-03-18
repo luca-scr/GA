@@ -81,8 +81,8 @@ gareal_laCrossover_Rcpp <- function(object, parents) {
     .Call(`_GA_gareal_laCrossover_Rcpp`, object, parents)
 }
 
-gareal_blxCrossover_Rcpp <- function(object, parents) {
-    .Call(`_GA_gareal_blxCrossover_Rcpp`, object, parents)
+gareal_blxCrossover_Rcpp <- function(object, parents, a) {
+    .Call(`_GA_gareal_blxCrossover_Rcpp`, object, parents, a)
 }
 
 gareal_laplaceCrossover_Rcpp <- function(object, parents, a, b) {

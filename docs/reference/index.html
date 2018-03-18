@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -62,9 +65,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -105,6 +105,12 @@
         <tr>
           <!--  -->
           <td>
+            <p><code><a href="GA-package.html">GA-package</a></code> </p>
+          </td>
+          <td><p>Genetic Algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="binary2decimal.html">decimal2binary</a></code> <code><a href="binary2decimal.html">binary2decimal</a></code> </p>
           </td>
           <td><p>Binary encoding of decimal numbers and viceversa.</p></td>
@@ -117,45 +123,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="ga_Crossover.html">ga_Crossover</a></code> </p>
-          </td>
-          <td><p>Crossover operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Mutation.html">ga_Mutation</a></code> </p>
-          </td>
-          <td><p>Mutation operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_pmutation.html">ga_pmutation</a></code> </p>
-          </td>
-          <td><p>Variable mutation probability in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Population.html">gabin_Population</a></code> <code><a href="ga_Population.html">gareal_Population</a></code> <code><a href="ga_Population.html">gaperm_Population</a></code> </p>
-          </td>
-          <td><p>Population initialization in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Selection.html">ga_lrSelection</a></code> <code><a href="ga_Selection.html">ga_nlrSelection</a></code> <code><a href="ga_Selection.html">ga_rwSelection</a></code> <code><a href="ga_Selection.html">ga_tourSelection</a></code> <code><a href="ga_Selection.html">gabin_lrSelection</a></code> <code><a href="ga_Selection.html">gabin_nlrSelection</a></code> <code><a href="ga_Selection.html">gabin_rwSelection</a></code> <code><a href="ga_Selection.html">gabin_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lrSelection</a></code> <code><a href="ga_Selection.html">gareal_nlrSelection</a></code> <code><a href="ga_Selection.html">gareal_rwSelection</a></code> <code><a href="ga_Selection.html">gareal_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lsSelection</a></code> <code><a href="ga_Selection.html">gareal_sigmaSelection</a></code> <code><a href="ga_Selection.html">gaperm_lrSelection</a></code> <code><a href="ga_Selection.html">gaperm_nlrSelection</a></code> <code><a href="ga_Selection.html">gaperm_rwSelection</a></code> <code><a href="ga_Selection.html">gaperm_tourSelection</a></code> </p>
-          </td>
-          <td><p>Selection operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="ga-class.html">ga-class</a></code> </p>
           </td>
           <td><p>Class "ga"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="GA-package.html">GA-package</a></code> </p>
-          </td>
-          <td><p>Genetic Algorithms</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -171,18 +141,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="gaisl-class.html">gaisl-class</a></code> </p>
-          </td>
-          <td><p>Class "gaisl"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaisl.html">gaisl</a></code> </p>
-          </td>
-          <td><p>Islands Genetic Algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="gaMonitor.html">gaMonitor</a></code> </p>
           </td>
           <td><p>Monitor genetic algorithm evolution</p></td>
@@ -192,6 +150,48 @@
             <p><code><a href="gaSummary.html">gaSummary</a></code> </p>
           </td>
           <td><p>Summarize genetic algorithm evolution</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ga_Crossover.html">ga_Crossover</a></code> </p>
+          </td>
+          <td><p>Crossover operators in genetic algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ga_Mutation.html">ga_Mutation</a></code> </p>
+          </td>
+          <td><p>Mutation operators in genetic algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ga_Population.html">gabin_Population</a></code> <code><a href="ga_Population.html">gareal_Population</a></code> <code><a href="ga_Population.html">gaperm_Population</a></code> </p>
+          </td>
+          <td><p>Population initialization in genetic algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ga_Selection.html">ga_lrSelection</a></code> <code><a href="ga_Selection.html">ga_nlrSelection</a></code> <code><a href="ga_Selection.html">ga_rwSelection</a></code> <code><a href="ga_Selection.html">ga_tourSelection</a></code> <code><a href="ga_Selection.html">gabin_lrSelection</a></code> <code><a href="ga_Selection.html">gabin_nlrSelection</a></code> <code><a href="ga_Selection.html">gabin_rwSelection</a></code> <code><a href="ga_Selection.html">gabin_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lrSelection</a></code> <code><a href="ga_Selection.html">gareal_nlrSelection</a></code> <code><a href="ga_Selection.html">gareal_rwSelection</a></code> <code><a href="ga_Selection.html">gareal_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lsSelection</a></code> <code><a href="ga_Selection.html">gareal_sigmaSelection</a></code> <code><a href="ga_Selection.html">gaperm_lrSelection</a></code> <code><a href="ga_Selection.html">gaperm_nlrSelection</a></code> <code><a href="ga_Selection.html">gaperm_rwSelection</a></code> <code><a href="ga_Selection.html">gaperm_tourSelection</a></code> </p>
+          </td>
+          <td><p>Selection operators in genetic algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ga_pmutation.html">ga_pmutation</a></code> </p>
+          </td>
+          <td><p>Variable mutation probability in genetic algorithms</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gaisl-class.html">gaisl-class</a></code> </p>
+          </td>
+          <td><p>Class "gaisl"</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gaisl.html">gaisl</a></code> </p>
+          </td>
+          <td><p>Islands Genetic Algorithms</p></td>
         </tr><tr>
           <!--  -->
           <td>

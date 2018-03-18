@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,10 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Summary for Islands Genetic Algorithms — summary.gaisl-method" />
+
+<meta property="og:description" content="Summary method for class gaisl-class." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -62,9 +68,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -129,8 +132,46 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gaisl.html'>gaisl</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>,
             <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>f</span>(<span class='no'>x</span>),
             <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>run</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># CRAN check limits ncores = 2</span>
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
+            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># CRAN check limits ncores = 2</span></div><div class='output co'>#&gt; Islands GA | epoch = 1 
+#&gt; Mean = -2.533351 | Best = -1.044710 
+#&gt; Mean = -3.240238 | Best = -1.011332 
+#&gt; Mean = -2.129411 | Best = -1.000026 
+#&gt; Mean = -2.103206 | Best = -1.011947 
+#&gt; Islands GA | epoch = 2 
+#&gt; Mean = -3.002379 | Best = -1.000922 
+#&gt; Mean = -1.836892 | Best = -1.002404 
+#&gt; Mean = -3.201009 | Best = -1.000026 
+#&gt; Mean = -2.096590 | Best = -1.000026 
+#&gt; Islands GA | epoch = 3 
+#&gt; Mean = -2.197200 | Best = -1.000026 
+#&gt; Mean = -1.155922 | Best = -1.000922 
+#&gt; Mean = -2.251763 | Best = -1.000026 
+#&gt; Mean = -1.799951 | Best = -1.000026 
+#&gt; Islands GA | epoch = 4 
+#&gt; Mean = -1.674199 | Best = -1.000026 
+#&gt; Mean = -1.963850 | Best = -1.000026 
+#&gt; Mean = -2.498293 | Best = -1.000026 
+#&gt; Mean = -1.532814 | Best = -1.000003 
+#&gt; Islands GA | epoch = 5 
+#&gt; Mean = -1.806703 | Best = -1.000003 
+#&gt; Mean = -2.745763 | Best = -1.000026 
+#&gt; Mean = -2.455349 | Best = -1.000026 
+#&gt; Mean = -2.189915 | Best = -1.000003 
+#&gt; Islands GA | epoch = 6 
+#&gt; Mean = -2.188936 | Best = -1.000003 
+#&gt; Mean = -1.311417 | Best = -1.000003 
+#&gt; Mean = -1.615910 | Best = -1.000026 
+#&gt; Mean = -2.156924 | Best = -1.000003 
+#&gt; Islands GA | epoch = 7 
+#&gt; Mean = -1.391761 | Best = -1.000003 
+#&gt; Mean = -1.751078 | Best = -1.000003 
+#&gt; Mean = -1.218731 | Best = -1.000003 
+#&gt; Mean = -1.437053 | Best = -1.000003 
+#&gt; Islands GA | epoch = 8 
+#&gt; Mean = -1.117236 | Best = -1.000003 
+#&gt; Mean = -1.855110 | Best = -1.000003 
+#&gt; Mean = -1.251064 | Best = -1.000003 
+#&gt; Mean = -2.228851 | Best = -1.000003 </div><div class='input'><span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
 <span class='fu'>print</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; ── Islands Genetic Algorithm ─────────── 
 #&gt; 
 #&gt; GA settings: 
@@ -148,15 +189,15 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 #&gt; upper  20
 #&gt; 
 #&gt; GA results: 
-#&gt; Iterations              = 60 
-#&gt; Epochs                  = 6 
-#&gt; Fitness function values = -1.000028 -1.000028 -1.000028 -1.000028 
+#&gt; Iterations              = 80 
+#&gt; Epochs                  = 8 
+#&gt; Fitness function values = -1.000003 -1.000003 -1.000003 -1.000003 
 #&gt; Solutions = 
-#&gt;                 x1
-#&gt; [1,] -2.836022e-05
-#&gt; [2,] -2.836022e-05
-#&gt; [3,] -2.835691e-05
-#&gt; [4,] -2.836022e-05</div><div class='input'><span class='fu'>str</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; List of 13
+#&gt;                  x1
+#&gt; [1,] 0.000002570573
+#&gt; [2,] 0.000002570573
+#&gt; [3,] 0.000002570573
+#&gt; [4,] 0.000002570573</div><div class='input'><span class='fu'>str</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; List of 13
 #&gt;  $ type             : chr "real-valued"
 #&gt;  $ numIslands       : num 4
 #&gt;  $ popSizeIslands   : num 25
@@ -169,10 +210,10 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
 #&gt;   ..- attr(*, "dimnames")=List of 2
 #&gt;   .. ..$ : chr [1:2] "lower" "upper"
 #&gt;   .. ..$ : chr "x1"
-#&gt;  $ iter             : int 60
-#&gt;  $ epoch            : num 6
+#&gt;  $ iter             : int 80
+#&gt;  $ epoch            : num 8
 #&gt;  $ fitnessValues    : num [1:4] -1 -1 -1 -1
-#&gt;  $ solutions        : num [1:4, 1] -2.84e-05 -2.84e-05 -2.84e-05 -2.84e-05
+#&gt;  $ solutions        : num [1:4, 1] 0.00000257 0.00000257 0.00000257 0.00000257
 #&gt;   ..- attr(*, "dimnames")=List of 2
 #&gt;   .. ..$ : NULL
 #&gt;   .. ..$ : chr "x1"

@@ -56,7 +56,7 @@ gabin_uCrossover(object, parents, \dots)
 gareal_spCrossover(object, parents, \dots)
 gareal_waCrossover(object, parents, \dots)
 gareal_laCrossover(object, parents, \dots)
-gareal_blxCrossover(object, parents, \dots)
+gareal_blxCrossover(object, parents, a = 0.5, \dots)
 gareal_laplaceCrossover(object, parents, a = 0, b = 0.15, \dots)
 
 gaperm_cxCrossover(object, parents, \dots)

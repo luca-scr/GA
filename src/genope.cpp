@@ -583,13 +583,15 @@ List gareal_lsSelection_Rcpp(RObject object)
   NumericMatrix newpop(popSize, n);
   NumericVector f = clone(fitness);
   NumericVector fo = na_omit(f);
-  double fmin = min(f);
+  double fmin = min(fo);
   if(fmin < 0) 
-    { f = f - fmin;
-      fmin = min(f); 
+  { 
+    f = f - fmin;
+    fo = na_omit(f);
+    fmin = min(fo); 
   }
-  double fave = mean(f);
-  double fmax = max(f);
+  double fave = mean(fo);
+  double fmax = max(fo);
   double sfactor = 2.0; // scaling factor
   // transform f -> f' = a*f + b such that
   double delta, a, b;
@@ -607,7 +609,7 @@ List gareal_lsSelection_Rcpp(RObject object)
       a = fave/delta;
       b = -1.0*fmin*fave/delta;
     }
-  NumericVector fscaled = a*fo + b;
+  NumericVector fscaled = a*f + b;
   NumericVector prob = abs(fscaled); 
                 prob[is_na(prob)] = eps;
                 prob[is_infinite(prob)] = eps;
@@ -634,13 +636,13 @@ f <- function(x) { 20 + x[1]^2 + x[2]^2 - 10*(cos(2*pi*x[1]) + cos(2*pi*x[2])) }
 GA <- ga(type = "real-valued", fitness = f, lower = c(-5.12,-5.12), upper = c(5.12,5.12), maxiter = 10, seed = 1)
 
 set.seed(123)
-(out1 <- gareal_lsSelection_R(GA))
+(out1 <- GA:::gareal_lsSelection_R(GA))
 set.seed(123)
-(out2 <- gareal_lsSelection_Rcpp(GA))
+(out2 <- GA:::gareal_lsSelection_Rcpp(GA))
 identical(out1, out2)
 
-microbenchmark(gareal_lsSelection_R(GA),
-               gareal_lsSelection_Rcpp(GA),
+microbenchmark(GA:::gareal_lsSelection_R(GA),
+               GA:::gareal_lsSelection_Rcpp(GA),
                unit = "relative")
 */
 
@@ -763,14 +765,14 @@ microbenchmark(gareal_laCrossover_R(GA, 1:2),
 */
 
 // [[Rcpp::export]]
-List gareal_blxCrossover_Rcpp(RObject object, IntegerVector parents)
+List gareal_blxCrossover_Rcpp(RObject object, IntegerVector parents, double a)
 {
+  // double a = 0.5;
   NumericMatrix pop = object.slot("population");
   int           n = pop.ncol();
   NumericVector fitness(2, NA_REAL);
   NumericVector lower = object.slot("lower");
   NumericVector upper = object.slot("upper");
-  double a = 0.5;
   
   NumericMatrix children(2, n);
   for(int i=0; i < n; i++) 
@@ -908,7 +910,7 @@ NumericVector gareal_nraMutation_Rcpp(RObject object, int parent)
   NumericVector u = Rcpp::runif(2);
   NumericVector m = mutate[j];
   if(u[0] < 0.5)
-    { NumericVector sa = ( mutate[j] - upper[j] )*(1 - pow(u[1],g));
+    { NumericVector sa = ( mutate[j] - lower[j] )*(1 - pow(u[1],g));
       m += -sa;
     }
   else
@@ -929,13 +931,13 @@ GA <- ga(type = "real-valued", fitness = f, lower = c(-5.12,-5.12), upper = c(5.
 GA@maxiter <- 100
 
 set.seed(1234)
-(out1 = gareal_nraMutation_R(GA, 10))
+(out1 = GA:::gareal_nraMutation_R(GA, 10))
 set.seed(1234)
-(out2 = gareal_nraMutation_Rcpp(GA, 10))
+(out2 = GA:::gareal_nraMutation_Rcpp(GA, 10))
 identical(out1, out2)
 
-microbenchmark(gareal_nraMutation_R(GA, 10),
-               gareal_nraMutation_Rcpp(GA, 10),
+microbenchmark(GA:::gareal_nraMutation_R(GA, 10),
+               GA:::gareal_nraMutation_Rcpp(GA, 10),
                unit = "relative")
 */
 
@@ -1701,21 +1703,22 @@ NumericVector optimProbsel_Rcpp(NumericVector x, double q = NA_REAL)
                 q = std::min(std::max(eps, q), 1.0-eps);
   NumericVector r = as<NumericVector>(rank_asR(x, true));
   NumericVector prob = exp(log(q) + (r-1.0)*log(1.0-q));
-  prob[is_na(prob)] = eps;
+  prob[!is_finite(prob)] = 0.0;
   prob = prob/sum(prob);
   return prob;  
 }  
 
 /***
 library(GA)
-x = runif(100, 1, 10)
-prob1 = optimProbsel_R(x, q = 0.1)
-prob2 = optimProbsel_Rcpp(x, q = 0.1)
-sum(abs(prob1 - prob2))
+x <- runif(100, 1, 10)
+x[sample(1:100,10)] <- NA
+prob1 <- GA:::optimProbsel_R(x, q = 0.1)
+prob2 <- GA:::optimProbsel_Rcpp(x, q = 0.1)
+qcc::describe(abs(prob1 - prob2))
 plot(x, prob1)
 points(x, prob2, col = 4, pch = 0) 
  
-microbenchmark(optimProbsel_R(x),
-               optimProbsel_Rcpp(x),
+microbenchmark(GA:::optimProbsel_R(x),
+               GA:::optimProbsel_Rcpp(x),
                unit = "relative")
 */

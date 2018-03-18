@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • GA</title>
+<title>/Users/luca/R/GA/NEWS.md • GA</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,12 +22,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script>
+<script src="pkgdown.js"></script>
   
   
-<meta property="og:title" content="All news" />
+<meta property="og:title" content="/Users/luca/R/GA/NEWS.md" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -40,7 +40,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -50,24 +50,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <a class="navbar-brand" href="index.html">GA</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="articles/GA.html">Get Started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="news/index.html">News</a>
 </li>
       </ul>
       
@@ -82,14 +82,13 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="contents col-md-12">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>/Users/luca/R/GA/NEWS.md</h1>
     </div>
 
-    <div class="contents">
-    <div class="section level1">
+
+<div class="section level1">
 <h1>GA 3.1 (2018-02) NOT ON CRAN</h1>
 <ul>
 <li>Genetic operators available in C++ using <code>Rcpp</code> package.</li>
@@ -97,25 +96,25 @@
 <li>Renamed input parameters <code>min</code> and <code>max</code> to <code>lower</code> and <code>upper</code>. The old nomenclature is still accepted but deprecated.</li>
 <li>Add stopParallel() function to stop a cluster if parallel = TRUE, including registerDoSEQ() to avoid problems if foreach loop is used after.</li>
 <li>A parallel cluster is automatically stopped unless a registered parallel back end is provided as argument to <code>parallel</code> argument in the ga() or gaisl() function call.</li>
-<li>Bug fix in <code><a href="../reference/ga_Population.html">gaperm_Population()</a></code> when min &gt; 1. Thanks to Romero Barata.</li>
+<li>Bug fix in <code><a href="reference/ga_Population.html">gaperm_Population()</a></code> when min &gt; 1. Thanks to Romero Barata.</li>
 <li>Update “A quick tour of GA” vignette.</li>
 <li>Add README.Rmd that is shown in GitHub and CRAN.</li>
 <li>Create a sticker for the package.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 3.0.2 (2016-06)</h1>
 <ul>
 <li>In interactive sessions use different monitor functions depending on whether or not is an RStudio session. This is due to different capabilities of the several consoles from which R can be run.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 3.0.1 (2016-05)</h1>
 <ul>
 <li>doRNG moved from Depends to Suggests due to the unavailability of the binary version of the package on Windows. As a consequence, GA package can be installed even without doRNG being installed, but in this case results are not reproducible by setting the seed if GAs are executed in parallel.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 3.0 (2016-05)</h1>
 <ul>
 <li>Added option to provide a cluster for parallelisation.</li>
@@ -124,13 +123,13 @@
 <li>Rewrite of gaMonitor() to clear the previous output before printing the info about the current iteration. Old version is available in gaMonitor2(). Same behaviour for gaislMonitor() and gaislMonitor2().</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 2.3 (2015-07)</h1>
 <ul>
 <li>Added documentation vignettes.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 2.2 (2014-10)</h1>
 <ul>
 <li>Slight modification to plot method.</li>
@@ -139,7 +138,7 @@
 <li>pdf files (previously included as vignettes) moved to inst/doc with corresponding index.html.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 2.1 (2014-05)</h1>
 <ul>
 <li>.printShortMatrix is a function to print part of rows/columns of a matrix</li>
@@ -160,7 +159,7 @@
 <li>Parallel computing improving set up of clusters.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 2.0 (2013-08)</h1>
 <ul>
 <li>Option for parallel computing.</li>
@@ -168,40 +167,24 @@
 <li>Bug fix when using suggestions argument.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 1.1 (2013-04)</h1>
 <ul>
 <li>Update citation and references to JSS paper.</li>
 </ul>
 </div>
-    <div class="section level1">
+<div class="section level1">
 <h1>GA 1.0 (2012-06)</h1>
 <ul>
 <li>First release on CRAN.</li>
 </ul>
 </div>
-    </div>
-  </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#NA">3.1</a></li>
-        <li><a href="#NA">3.0.2</a></li>
-        <li><a href="#NA">3.0.1</a></li>
-        <li><a href="#NA">3.0</a></li>
-        <li><a href="#NA">2.3</a></li>
-        <li><a href="#NA">2.2</a></li>
-        <li><a href="#NA">2.1</a></li>
-        <li><a href="#NA">2.0</a></li>
-        <li><a href="#NA">1.1</a></li>
-        <li><a href="#NA">1.0</a></li>
-      </ul>
-    </div>
+
   </div>
 
 </div>
+
 
       <footer>
       <div class="copyright">

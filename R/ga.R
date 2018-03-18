@@ -366,8 +366,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
           Fitness[ord[1:elitism]] <- FitnessSorted[u[1:elitism]]
           object@population <- Pop
           object@fitness <- Fitness
-        } 
-
+      } 
+      
       if(is.function(monitor)) 
         { cat("\n"); flush.console() }
   }
@@ -400,7 +400,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                    ), silent = TRUE)
       if(is.function(monitor))
         { if(!inherits(opt, "try-error"))
-            cat("\b\b | Final local search =",
+            cat(" | Final local search =",
                 format(opt$value, digits = getOption("digits")))
           else cat(" |", opt[1])
         }
@@ -408,6 +408,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         { object@population[i,] <- opt$par
           object@fitness[i] <- opt$value }
   }
+
+  if(is.function(monitor)) 
+    { cat("\n"); flush.console() }
 
   # in case of premature convergence remove NAs from summary 
   # fitness evalutations

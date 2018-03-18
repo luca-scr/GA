@@ -212,6 +212,7 @@ Then
 ```{r}
 GA <- ga("real-valued", fitness = fitness, 
          lower = c(0,0), upper = c(1,13), 
+         # selection = GA:::gareal_lsSelection_R,
          maxiter = 1000, run = 200, seed = 123)
 summary(GA)
 

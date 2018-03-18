@@ -242,14 +242,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // gareal_blxCrossover_Rcpp
-List gareal_blxCrossover_Rcpp(RObject object, IntegerVector parents);
-RcppExport SEXP _GA_gareal_blxCrossover_Rcpp(SEXP objectSEXP, SEXP parentsSEXP) {
+List gareal_blxCrossover_Rcpp(RObject object, IntegerVector parents, double a);
+RcppExport SEXP _GA_gareal_blxCrossover_Rcpp(SEXP objectSEXP, SEXP parentsSEXP, SEXP aSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< RObject >::type object(objectSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type parents(parentsSEXP);
-    rcpp_result_gen = Rcpp::wrap(gareal_blxCrossover_Rcpp(object, parents));
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    rcpp_result_gen = Rcpp::wrap(gareal_blxCrossover_Rcpp(object, parents, a));
     return rcpp_result_gen;
 END_RCPP
 }

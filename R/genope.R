@@ -282,6 +282,7 @@ gareal_lsSelection_R <- function(object)
   fave <- mean(f, na.rm = TRUE)
   fmax <- max(f, na.rm = TRUE)
   sfactor <- 2 # scaling factor
+  eps <- sqrt(.Machine$double.eps)
   # transform f -> f' = a*f + b such that
   if(fmin > (sfactor*fave - fmax)/(sfactor-1))
     { # ave(f) = ave(f')
@@ -299,7 +300,8 @@ gareal_lsSelection_R <- function(object)
     }
   fscaled <- a*f + b
   prob <- abs(fscaled)/sum(abs(fscaled), na.rm = TRUE)
-  prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
+  prob[is.na(prob)] <- eps
+  prob <- pmin(pmax(0.0, prob/sum(prob)), 1.0)
   sel <- sample(1:object@popSize, size = object@popSize, 
                 prob = prob, replace = TRUE)
   out <- list(population = object@population[sel,,drop=FALSE],
@@ -382,19 +384,19 @@ gareal_laCrossover_R <- function(object, parents)
 
 # Blend crossover ----
 
-gareal_blxCrossover <- function(object, parents, ...)
+gareal_blxCrossover <- function(object, parents, a = 0.5, ...)
 {
   if(gaControl("useRcpp"))
-    gareal_blxCrossover_Rcpp(object, parents)
+    gareal_blxCrossover_Rcpp(object, parents, a)
   else
-    gareal_blxCrossover_R(object, parents)
+    gareal_blxCrossover_R(object, parents, a)
 }
 
-gareal_blxCrossover_R <- function(object, parents)
+gareal_blxCrossover_R <- function(object, parents, a)
 {
+  if(missing(a)) a <- 0.5
   parents <- object@population[parents,,drop = FALSE]
   n <- ncol(parents)
-  a <- 0.5
   x <- apply(parents, 2, range)
   xl <- pmax(x[1,] - a*(x[2,]-x[1,]), object@lower)
   xu <- pmin(x[2,] + a*(x[2,]-x[1,]), object@upper)
@@ -492,7 +494,7 @@ gareal_nraMutation_R <- function(object, parent, ...)
   j <- sample(1:n, 1)
   u <- runif(1)
   if(u < 0.5)
-    { mutate[j] <- parent[j] - sa(parent[j] - object@upper[j]) }
+    { mutate[j] <- parent[j] - sa(parent[j] - object@lower[j]) }
   else
     { mutate[j] <- parent[j] + sa(object@upper[j] - parent[j]) }
   return(mutate)
@@ -899,12 +901,12 @@ optimProbsel_R <- function(x, q)
   if(missing(q)) q <- 0.25
   x <- as.vector(x)
   n <- length(x)
+  eps <- sqrt(.Machine$double.eps)
   # selection pressure parameter
-  q <- min(max(sqrt(.Machine$double.eps), q), 
-           1 - sqrt(.Machine$double.eps))
-  rank <- (n + 1) - rank(x, ties.method = "first", na.last = FALSE)
-  # prob <- q*(1-q)^(rank-1) * 1/(1-(1-q)^n)
-  prob <- q*(1-q)^(rank-1)
+  q <- min(max(eps, q), 1 - eps)
+  r <- (n + 1) - rank(x, ties.method = "first", na.last = FALSE)
+  # prob <- q*(1-q)^(r-1) * 1/(1-(1-q)^n)
+  prob <- exp(log(q) + (r-1.0)*log(1.0-q));
   prob[is.na(x)] <- 0
   prob <- pmin(pmax(0, prob/sum(prob)), 1, na.rm = TRUE)
   return(prob)

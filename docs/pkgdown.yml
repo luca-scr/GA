@@ -1,6 +1,11 @@
+pandoc: 2.1.1
+pkgdown: 0.1.0.9000
+pkgdown_sha: 491a8fa339dcdd1aa466e8df2f0693f679fba4cc
+articles:
+  GA: GA.html
+  vignette.css: vignette.css
+  vignette2.css: vignette2.css
 urls:
   reference: https://github.com/luca-scr/GA/reference
   article: https://github.com/luca-scr/GA/articles
-articles:
-  GA: GA.html
 

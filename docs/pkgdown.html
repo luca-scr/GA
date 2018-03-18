@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Monitor genetic algorithm evolution — gaMonitor • GA</title>
+<title>/Users/luca/R/GA/pkgdown.md • GA</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,15 +22,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script>
+<script src="pkgdown.js"></script>
   
   
-<meta property="og:title" content="Monitor genetic algorithm evolution — gaMonitor" />
-
-<meta property="og:description" content="Functions to print summary statistics of fitness values at each iteration of a GA search." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="/Users/luca/R/GA/pkgdown.md" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -43,7 +40,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,21 +50,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <a class="navbar-brand" href="index.html">GA</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="articles/GA.html">Get Started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
       </ul>
       
@@ -82,56 +79,49 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-12">
     <div class="page-header">
-    <h1>Monitor genetic algorithm evolution</h1>
+      <h1>/Users/luca/R/GA/pkgdown.md</h1>
     </div>
 
-    
-    <p>Functions to print summary statistics of fitness values at each iteration of a GA search.</p>
-    
-
-    <pre class="usage">gaMonitor(object, digits = getOption("digits"), &#8230;)
-
-gaislMonitor(object, digits = getOption("digits"), &#8230;)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>an object of class <code>ga-class</code> or <code>gaisl-class</code>, usually resulting from a call to function <code><a href='ga.html'>ga</a></code> or <code><a href='gaisl.html'>gaisl</a></code>, respectively.</p></td>
-    </tr>
-    <tr>
-      <th>digits</th>
-      <td><p>minimal number of significant digits.</p></td>
-    </tr>
-    <tr>
-      <th>&#8230;</th>
-      <td><p>further arguments passed to or from other methods.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>These functions print a summary of current GA step on the console.
-By default, <code>gaMonitor</code> is called in interactive sessions by <code><a href='ga.html'>ga</a></code>. The old monitoring function, used as the default until version 2.2 of <span class="pkg">GA</span> package, is provided in <code>gaMonitor2</code>.
-By default, <code>gaislMonitor</code> is called in interactive sessions by <code><a href='gaisl.html'>gaisl</a></code>.</p>
-    
-
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
-
-    <h2>Author</h2>
-    Luca Scrucca
-  </div>
+<div class="section level1">
+<h1>How to create a package website using <code>pkgdown</code>
+</h1>
+<p><a href="https://lbusettspatialr.blogspot.it/2017/08/building-website-with-pkgdown-short.html" class="uri">https://lbusettspatialr.blogspot.it/2017/08/building-website-with-pkgdown-short.html</a></p>
+<div class="section level2">
+<h2>Prerequisites</h2>
+<pre class="{r}"><code>require(devtools)
+use_readme_rmd()
+use_news_md()
+use_github_links()
+use_cran_badge() </code></pre>
 </div>
+<div class="section level2">
+<h2>Getting Started</h2>
+<pre class="{r}"><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github("hadley/pkgdown")
+library(pkgdown)
+# build_site()
+pkgdown:::build_site_rstudio()</a></code></pre>
+</div>
+<div class="section level2">
+<h2>Customizing appearence and structure of the website</h2>
+<p>Crate and customize a text file named <code>_pkgdown.yaml</code> in the root folder of your project.</p>
+</div>
+<div class="section level2">
+<h2>Deploying the website to Git Hub and the web</h2>
+<ul>
+<li>Commit and push your changes to the remote;</li>
+<li>Login on GitHub, navigate to your repo and select “Settings”.</li>
+<li>Scroll down to find the “GitHub pages” subsection and, under “Source”, select “master branch/docs folder” (from this, you can see that it is fundamental that your website material is pushed to the master branch) and look for the url provided above “master branch/docs folder”.</li>
+<li>Click on the link of your website and… congratulations: you just published your new pkgdown website !</li>
+</ul>
+</div>
+</div>
+
+  </div>
+
+</div>
+
 
       <footer>
       <div class="copyright">
