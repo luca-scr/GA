@@ -33,7 +33,7 @@ extern SEXP _GA_gaperm_Population_Rcpp(SEXP);
 extern SEXP _GA_gaperm_scrMutation_Rcpp(SEXP, SEXP);
 extern SEXP _GA_gaperm_simMutation_Rcpp(SEXP, SEXP);
 extern SEXP _GA_gaperm_swMutation_Rcpp(SEXP, SEXP);
-extern SEXP _GA_gareal_blxCrossover_Rcpp(SEXP, SEXP);
+extern SEXP _GA_gareal_blxCrossover_Rcpp(SEXP, SEXP, SEXP);
 extern SEXP _GA_gareal_laCrossover_Rcpp(SEXP, SEXP);
 extern SEXP _GA_gareal_laplaceCrossover_Rcpp(SEXP, SEXP, SEXP, SEXP);
 extern SEXP _GA_gareal_lsSelection_Rcpp(SEXP);
@@ -73,7 +73,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_GA_gaperm_scrMutation_Rcpp",      (DL_FUNC) &_GA_gaperm_scrMutation_Rcpp,      2},
     {"_GA_gaperm_simMutation_Rcpp",      (DL_FUNC) &_GA_gaperm_simMutation_Rcpp,      2},
     {"_GA_gaperm_swMutation_Rcpp",       (DL_FUNC) &_GA_gaperm_swMutation_Rcpp,       2},
-    {"_GA_gareal_blxCrossover_Rcpp",     (DL_FUNC) &_GA_gareal_blxCrossover_Rcpp,     2},
+    {"_GA_gareal_blxCrossover_Rcpp",     (DL_FUNC) &_GA_gareal_blxCrossover_Rcpp,     3},
     {"_GA_gareal_laCrossover_Rcpp",      (DL_FUNC) &_GA_gareal_laCrossover_Rcpp,      2},
     {"_GA_gareal_laplaceCrossover_Rcpp", (DL_FUNC) &_GA_gareal_laplaceCrossover_Rcpp, 4},
     {"_GA_gareal_lsSelection_Rcpp",      (DL_FUNC) &_GA_gareal_lsSelection_Rcpp,      1},

@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -38,7 +42,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -54,23 +58,26 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>A quick tour of GA</h1>
                         <h4 class="author">Luca Scrucca</h4>
             
-            <h4 class="date">18 Mar 2018</h4>
-          </div>
+            <h4 class="date">07 May 2018</h4>
+      
+      
+      <div class="hidden name"><code>GA.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>Genetic algorithms (GAs) are stochastic search algorithms inspired by the basic principles of biological evolution and natural selection. GAs simulate the evolution of living organisms, where the fittest individuals dominate over the weaker ones, by mimicking the biological mechanisms of evolution, such as selection, crossover and mutation.</p>
 <p>The R package <strong>GA</strong> provides a collection of general purpose functions for optimization using genetic algorithms. The pakage includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.</p>
-<p>This document gives a quick tour of <strong>GA</strong> (version 3.1) functionalities. It was written in R Markdown, using the <a href="http://cran.r-project.org/package=knitr">knitr</a> package for production. Futher details are provided in the papers Scrucca (2013) and Scrucca (2017). See also <code>help(package="GA")</code> for a list of available functions and methods.</p>
+<p>This document gives a quick tour of <strong>GA</strong> (version 3.1) functionalities. It was written in R Markdown, using the <a href="https://cran.r-project.org/package=knitr">knitr</a> package for production. Futher details are provided in the papers Scrucca (2013) and Scrucca (2017). See also <code>help(package="GA")</code> for a list of available functions and methods.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(GA)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">##   ____    _    </a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">##  / ___|  / \     Genetic </a>
@@ -109,7 +116,7 @@
 <a class="sourceLine" id="cb3-20" data-line-number="20">## Fitness function value = 47.70562 </a>
 <a class="sourceLine" id="cb3-21" data-line-number="21">## Solution = </a>
 <a class="sourceLine" id="cb3-22" data-line-number="22">##           th</a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">## [1,] 6.56054</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">## [1,] 6.56055</a>
 <a class="sourceLine" id="cb3-24" data-line-number="24"><span class="kw">plot</span>(GA)</a></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-2-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
@@ -155,11 +162,11 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb7-18" data-line-number="18">## upper  5.12  5.12</a>
 <a class="sourceLine" id="cb7-19" data-line-number="19">## </a>
 <a class="sourceLine" id="cb7-20" data-line-number="20">## GA results: </a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">## Iterations             = 142 </a>
-<a class="sourceLine" id="cb7-22" data-line-number="22">## Fitness function value = -0.01677121 </a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">## Iterations             = 356 </a>
+<a class="sourceLine" id="cb7-22" data-line-number="22">## Fitness function value = -0.1391037 </a>
 <a class="sourceLine" id="cb7-23" data-line-number="23">## Solution = </a>
-<a class="sourceLine" id="cb7-24" data-line-number="24">##                x1          x2</a>
-<a class="sourceLine" id="cb7-25" data-line-number="25">## [1,] -0.006454874 0.006548433</a>
+<a class="sourceLine" id="cb7-24" data-line-number="24">##               x1         x2</a>
+<a class="sourceLine" id="cb7-25" data-line-number="25">## [1,] -0.01673005 0.02054507</a>
 <a class="sourceLine" id="cb7-26" data-line-number="26"><span class="kw">plot</span>(GA)</a></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">filled.contour</span>(x1, x2, f, <span class="dt">color.palette =</span> bl2gr.colors, </a>
@@ -195,13 +202,13 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb10-5" data-line-number="5">          <span class="dt">suggestions =</span> suggestedSol,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">          <span class="dt">popSize =</span> <span class="dv">50</span>, <span class="dt">maxiter =</span> <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="kw">head</span>(GA1<span class="op">@</span>population)</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">##            [,1]       [,2]</a>
-<a class="sourceLine" id="cb10-9" data-line-number="9">## [1,]  0.2000000  1.5000000</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">## [2,] -1.5000000  0.5000000</a>
-<a class="sourceLine" id="cb10-11" data-line-number="11">## [3,] -4.3660770  2.7531806</a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">## [4,] -0.4923078 -0.6003212</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">## [5,]  1.1888848 -2.8548922</a>
-<a class="sourceLine" id="cb10-14" data-line-number="14">## [6,]  3.7334742  4.1872905</a></code></pre></div>
+<a class="sourceLine" id="cb10-8" data-line-number="8">##            [,1]      [,2]</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">## [1,]  0.2000000  1.500000</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">## [2,] -1.5000000  0.500000</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">## [3,]  1.7115361 -4.806133</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">## [4,] -0.7827163 -0.124054</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">## [5,] -3.6634540 -3.850935</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">## [6,] -3.7826975  1.053740</a></code></pre></div>
 <p>As it can be seen, the first two solutions considered are those provided, whereas the rest is filled randomly as usual. A full search can be obtained as follows:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">GA &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ga.html">ga</a></span>(<span class="dt">type =</span> <span class="st">"real-valued"</span>, </a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">         <span class="dt">fitness =</span>  <span class="cf">function</span>(x) <span class="op">-</span><span class="kw">Rastrigin</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>]),</a>
@@ -229,10 +236,10 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb11-24" data-line-number="24">## </a>
 <a class="sourceLine" id="cb11-25" data-line-number="25">## GA results: </a>
 <a class="sourceLine" id="cb11-26" data-line-number="26">## Iterations             = 100 </a>
-<a class="sourceLine" id="cb11-27" data-line-number="27">## Fitness function value = -0.1008507 </a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">## Fitness function value = -0.003763826 </a>
 <a class="sourceLine" id="cb11-28" data-line-number="28">## Solution = </a>
-<a class="sourceLine" id="cb11-29" data-line-number="29">##                 x1         x2</a>
-<a class="sourceLine" id="cb11-30" data-line-number="30">## [1,] -0.0006664274 0.02255533</a></code></pre></div>
+<a class="sourceLine" id="cb11-29" data-line-number="29">##               x1          x2</a>
+<a class="sourceLine" id="cb11-30" data-line-number="30">## [1,] 0.000500083 0.004326969</a></code></pre></div>
 </div>
 <div id="constrained-optimisation" class="section level1">
 <h1 class="hasAnchor">
@@ -316,20 +323,20 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb17-18" data-line-number="18">## upper  1 13</a>
 <a class="sourceLine" id="cb17-19" data-line-number="19">## </a>
 <a class="sourceLine" id="cb17-20" data-line-number="20">## GA results: </a>
-<a class="sourceLine" id="cb17-21" data-line-number="21">## Iterations             = 691 </a>
+<a class="sourceLine" id="cb17-21" data-line-number="21">## Iterations             = 270 </a>
 <a class="sourceLine" id="cb17-22" data-line-number="22">## Fitness function value = -13677.7 </a>
 <a class="sourceLine" id="cb17-23" data-line-number="23">## Solution = </a>
 <a class="sourceLine" id="cb17-24" data-line-number="24">##             x1       x2</a>
-<a class="sourceLine" id="cb17-25" data-line-number="25">## [1,] 0.8096712 12.35072</a>
+<a class="sourceLine" id="cb17-25" data-line-number="25">## [1,] 0.8096711 12.35072</a>
 <a class="sourceLine" id="cb17-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb17-27" data-line-number="27"><span class="kw">fitness</span>(GA<span class="op">@</span>solution)</a>
 <a class="sourceLine" id="cb17-28" data-line-number="28">## [1] -13677.7</a>
 <a class="sourceLine" id="cb17-29" data-line-number="29"><span class="kw">f</span>(GA<span class="op">@</span>solution)</a>
 <a class="sourceLine" id="cb17-30" data-line-number="30">## [1] 13677.7</a>
 <a class="sourceLine" id="cb17-31" data-line-number="31"><span class="kw">c1</span>(GA<span class="op">@</span>solution)</a>
-<a class="sourceLine" id="cb17-32" data-line-number="32">## [1] -0.04102743</a>
+<a class="sourceLine" id="cb17-32" data-line-number="32">## [1] -0.04102852</a>
 <a class="sourceLine" id="cb17-33" data-line-number="33"><span class="kw">c2</span>(GA<span class="op">@</span>solution)</a>
-<a class="sourceLine" id="cb17-34" data-line-number="34">## [1] -2.451803e-05</a></code></pre></div>
+<a class="sourceLine" id="cb17-34" data-line-number="34">## [1] -2.349389e-05</a></code></pre></div>
 <p>A graph showing the solution found is obtained as:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">plot</span>(x1, x2, <span class="dt">type =</span> <span class="st">"n"</span>, <span class="dt">xaxs =</span> <span class="st">"i"</span>, <span class="dt">yaxs =</span> <span class="st">"i"</span>)</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">image</span>(x1, x2, <span class="kw">matrix</span>(<span class="kw">ifelse</span>(<span class="kw">apply</span>(x12, <span class="dv">1</span>, c1) <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">0</span>, <span class="ot">NA</span>), ngrid, ngrid), </a>
@@ -373,7 +380,7 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb20-19" data-line-number="19">## upper  5.12  5.12</a>
 <a class="sourceLine" id="cb20-20" data-line-number="20">## </a>
 <a class="sourceLine" id="cb20-21" data-line-number="21">## GA results: </a>
-<a class="sourceLine" id="cb20-22" data-line-number="22">## Iterations             = 112 </a>
+<a class="sourceLine" id="cb20-22" data-line-number="22">## Iterations             = 239 </a>
 <a class="sourceLine" id="cb20-23" data-line-number="23">## Fitness function value = 0 </a>
 <a class="sourceLine" id="cb20-24" data-line-number="24">## Solution = </a>
 <a class="sourceLine" id="cb20-25" data-line-number="25">##      x1 x2</a>
@@ -386,7 +393,7 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <h1 class="hasAnchor">
 <a href="#parallel-computing" class="anchor"></a>Parallel computing</h1>
 <p>By default searches performed using the <strong>GA</strong> package occour sequentially. In some cases, particularly when the evaluation of the fitness function is time consuming, parallelisation of the search algorithm may be able to speedup computing time. Starting with version 2.0, the <strong>GA</strong> package provides facilities for implementing parallelisation of genetic algorithms.</p>
-<p>Parallel computing with <strong>GA</strong> requires the following packages to be installed: <strong>parallel</strong> (available in base R), <a href="http://cran.r-project.org/package=doParallel">doParallel</a>, <a href="http://cran.r-project.org/package=foreach">foreach</a>, and <a href="http://cran.r-project.org/package=iterators">iterators</a>.</p>
+<p>Parallel computing with <strong>GA</strong> requires the following packages to be installed: <strong>parallel</strong> (available in base R), <a href="https://cran.r-project.org/package=doParallel">doParallel</a>, <a href="https://cran.r-project.org/package=foreach">foreach</a>, and <a href="https://cran.r-project.org/package=iterators">iterators</a>.</p>
 <p>To use parallel computing with the <strong>GA</strong> package on a <em>single machine with multiple cores</em> is simple as manipulating the optional argument <code>parallel</code> in the <code><a href="../reference/ga.html">ga()</a></code> function call.</p>
 <p>The argument <code>parallel</code> can be a logical argument specifying if parallel computing should be used (<code>TRUE</code>) or not (<code>FALSE</code>, default) for evaluating the fitness function. This argument could also be used to specify the number of cores to employ; by default, this is taken from <code>detectCores()</code> function in <strong>parallel</strong> package.</p>
 <p>Two types of parallel functionality are implemented depending on system OS: on Windows only <em>snow</em> type functionality is available, while on POSIX operating systems, such as Unix, GNU/Linux, and Mac OSX, both <em>snow</em> and <em>multicore</em> (default) functionalities are available. In the latter case a string can be used to specify which parallelisation method should be used.</p>
@@ -482,22 +489,22 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb28-16" data-line-number="16">## upper  5.12  5.12</a>
 <a class="sourceLine" id="cb28-17" data-line-number="17">## </a>
 <a class="sourceLine" id="cb28-18" data-line-number="18">## GA results: </a>
-<a class="sourceLine" id="cb28-19" data-line-number="19">## Iterations              = 600 </a>
-<a class="sourceLine" id="cb28-20" data-line-number="20">## Epochs                  = 12 </a>
-<a class="sourceLine" id="cb28-21" data-line-number="21">## Fitness function values = -0.01520187 -0.01520187 -0.01520187 -0.01520187 </a>
+<a class="sourceLine" id="cb28-19" data-line-number="19">## Iterations              = 550 </a>
+<a class="sourceLine" id="cb28-20" data-line-number="20">## Epochs                  = 11 </a>
+<a class="sourceLine" id="cb28-21" data-line-number="21">## Fitness function values = -0.001437932 -0.001437932 -0.001437932 -0.001437932 </a>
 <a class="sourceLine" id="cb28-22" data-line-number="22">## Solutions = </a>
-<a class="sourceLine" id="cb28-23" data-line-number="23">##                x1          x2</a>
-<a class="sourceLine" id="cb28-24" data-line-number="24">## [1,] -0.008321788 0.002718292</a>
-<a class="sourceLine" id="cb28-25" data-line-number="25">## [2,] -0.008321788 0.002718292</a>
-<a class="sourceLine" id="cb28-26" data-line-number="26">## [3,] -0.008321788 0.002718292</a>
-<a class="sourceLine" id="cb28-27" data-line-number="27">## [4,] -0.008321788 0.002718292</a>
+<a class="sourceLine" id="cb28-23" data-line-number="23">##                 x1          x2</a>
+<a class="sourceLine" id="cb28-24" data-line-number="24">## [1,] -5.997467e-05 0.002691561</a>
+<a class="sourceLine" id="cb28-25" data-line-number="25">## [2,] -5.997717e-05 0.002691567</a>
+<a class="sourceLine" id="cb28-26" data-line-number="26">## [3,] -5.997467e-05 0.002691561</a>
+<a class="sourceLine" id="cb28-27" data-line-number="27">## [4,] -5.997467e-05 0.002691561</a>
 <a class="sourceLine" id="cb28-28" data-line-number="28"><span class="kw">plot</span>(GA, <span class="dt">log =</span> <span class="st">"x"</span>)</a></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-24-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="memoization" class="section level1">
 <h1 class="hasAnchor">
 <a href="#memoization" class="anchor"></a>Memoization</h1>
-<p>In certain circumstances, particularly with binary GAs, <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> can be used to speed up calculations by using cached results. This is easily obtained using the <a href="http://cran.r-project.org/package=memoise">memoise</a> package.</p>
+<p>In certain circumstances, particularly with binary GAs, <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> can be used to speed up calculations by using cached results. This is easily obtained using the <a href="https://cran.r-project.org/package=memoise">memoise</a> package.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">"UsingR"</span>)</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(body.fat.siri <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>chest <span class="op">+</span><span class="st"> </span>abdomen <span class="op">+</span></a>
 <a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">          </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>knee <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>bicep <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</a>
@@ -534,13 +541,13 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/memoise/topics/forget">forget</a></span>(mfitness)</a></code></pre></div>
 <hr>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2">## R version 3.4.4 (2018-03-15)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">## R version 3.5.0 (2018-04-23)</a>
 <a class="sourceLine" id="cb36-3" data-line-number="3">## Platform: x86_64-apple-darwin15.6.0 (64-bit)</a>
 <a class="sourceLine" id="cb36-4" data-line-number="4">## Running under: macOS Sierra 10.12.5</a>
 <a class="sourceLine" id="cb36-5" data-line-number="5">## </a>
 <a class="sourceLine" id="cb36-6" data-line-number="6">## Matrix products: default</a>
-<a class="sourceLine" id="cb36-7" data-line-number="7">## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib</a>
-<a class="sourceLine" id="cb36-8" data-line-number="8">## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib</a>
 <a class="sourceLine" id="cb36-9" data-line-number="9">## </a>
 <a class="sourceLine" id="cb36-10" data-line-number="10">## locale:</a>
 <a class="sourceLine" id="cb36-11" data-line-number="11">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</a>
@@ -552,20 +559,21 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb36-17" data-line-number="17">## [1] GA_3.1          iterators_1.0.9 foreach_1.4.4   knitr_1.20     </a>
 <a class="sourceLine" id="cb36-18" data-line-number="18">## </a>
 <a class="sourceLine" id="cb36-19" data-line-number="19">## loaded via a namespace (and not attached):</a>
-<a class="sourceLine" id="cb36-20" data-line-number="20">##  [1] Rcpp_0.12.16     codetools_0.2-15 crayon_1.3.4     assertthat_0.2.0</a>
-<a class="sourceLine" id="cb36-21" data-line-number="21">##  [5] digest_0.6.15    rprojroot_1.3-2  backports_1.1.2  magrittr_1.5    </a>
-<a class="sourceLine" id="cb36-22" data-line-number="22">##  [9] evaluate_0.10.1  cli_1.0.0        stringi_1.1.7    rmarkdown_1.9   </a>
-<a class="sourceLine" id="cb36-23" data-line-number="23">## [13] tools_3.4.4      stringr_1.3.0    yaml_2.1.18      compiler_3.4.4  </a>
-<a class="sourceLine" id="cb36-24" data-line-number="24">## [17] htmltools_0.3.6</a></code></pre></div>
+<a class="sourceLine" id="cb36-20" data-line-number="20">##  [1] Rcpp_0.12.16     rstudioapi_0.7   xml2_1.2.0       magrittr_1.5    </a>
+<a class="sourceLine" id="cb36-21" data-line-number="21">##  [5] roxygen2_6.0.1   MASS_7.3-50      R6_2.2.2         rlang_0.2.0     </a>
+<a class="sourceLine" id="cb36-22" data-line-number="22">##  [9] stringr_1.3.0    tools_3.5.0      cli_1.0.0        htmltools_0.3.6 </a>
+<a class="sourceLine" id="cb36-23" data-line-number="23">## [13] commonmark_1.5   yaml_2.1.19      rprojroot_1.3-2  digest_0.6.15   </a>
+<a class="sourceLine" id="cb36-24" data-line-number="24">## [17] assertthat_0.2.0 pkgdown_1.0.0    crayon_1.3.4     codetools_0.2-15</a>
+<a class="sourceLine" id="cb36-25" data-line-number="25">## [21] fs_1.2.2         memoise_1.1.0    evaluate_0.10.1  rmarkdown_1.9   </a>
+<a class="sourceLine" id="cb36-26" data-line-number="26">## [25] stringi_1.1.7    compiler_3.5.0   desc_1.1.1       backports_1.1.2</a></code></pre></div>
 <hr>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <p>McCallum, E. and Weston, S. (2011) <em>Parallel R</em>. O’Reilly Media.</p>
-<p>Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. <em>Journal of Statistical Software</em>, 53/4, 1-37. URL <a href="http://www.jstatsoft.org/v53/i04/" class="uri">http://www.jstatsoft.org/v53/i04/</a></p>
+<p>Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. <em>Journal of Statistical Software</em>, 53/4, 1-37. URL <a href="https://www.jstatsoft.org/v53/i04/" class="uri">https://www.jstatsoft.org/v53/i04/</a></p>
 <p>Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. <em>The R Journal</em>, 9/1, 187–206. <a href="https://journal.r-project.org/archive/2017/RJ-2017-008" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-008</a></p>
-</div>
 </div>
   </div>
 
@@ -601,6 +609,8 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

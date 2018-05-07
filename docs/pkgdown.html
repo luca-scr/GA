@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>/Users/luca/R/GA/pkgdown.md • GA</title>
+<title>How to create a package website using pkgdown • GA</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,12 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-  
-  
-<meta property="og:title" content="/Users/luca/R/GA/pkgdown.md" />
+
+
+
+<meta property="og:title" content="How to create a package website using pkgdown" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -50,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -61,7 +68,7 @@
   </a>
 </li>
 <li>
-  <a href="articles/GA.html">Get Started</a>
+  <a href="articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -71,6 +78,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -78,37 +86,40 @@
       
       </header>
 
-      <div class="row">
-  <div class="contents col-md-12">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>/Users/luca/R/GA/pkgdown.md</h1>
+      <h1>How to create a package website using pkgdown</h1>
     </div>
 
-<div class="section level1">
-<h1>How to create a package website using <code>pkgdown</code>
-</h1>
+<div id="how-to-create-a-package-website-using-pkgdown" class="section level1">
+
 <p><a href="https://lbusettspatialr.blogspot.it/2017/08/building-website-with-pkgdown-short.html" class="uri">https://lbusettspatialr.blogspot.it/2017/08/building-website-with-pkgdown-short.html</a></p>
-<div class="section level2">
-<h2>Prerequisites</h2>
+<div id="prerequisites" class="section level2">
+<h2 class="hasAnchor">
+<a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
 <pre class="{r}"><code>require(devtools)
 use_readme_rmd()
 use_news_md()
 use_github_links()
 use_cran_badge() </code></pre>
 </div>
-<div class="section level2">
-<h2>Getting Started</h2>
+<div id="getting-started" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-started" class="anchor"></a>Getting Started</h2>
 <pre class="{r}"><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github("hadley/pkgdown")
 library(pkgdown)
 # build_site()
 pkgdown:::build_site_rstudio()</a></code></pre>
 </div>
-<div class="section level2">
-<h2>Customizing appearence and structure of the website</h2>
+<div id="customizing-appearence-and-structure-of-the-website" class="section level2">
+<h2 class="hasAnchor">
+<a href="#customizing-appearence-and-structure-of-the-website" class="anchor"></a>Customizing appearence and structure of the website</h2>
 <p>Crate and customize a text file named <code>_pkgdown.yaml</code> in the root folder of your project.</p>
 </div>
-<div class="section level2">
-<h2>Deploying the website to Git Hub and the web</h2>
+<div id="deploying-the-website-to-git-hub-and-the-web" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deploying-the-website-to-git-hub-and-the-web" class="anchor"></a>Deploying the website to Git Hub and the web</h2>
 <ul>
 <li>Commit and push your changes to the remote;</li>
 <li>Login on GitHub, navigate to your repo and select “Settings”.</li>
@@ -135,5 +146,8 @@ pkgdown:::build_site_rstudio()</a></code></pre>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

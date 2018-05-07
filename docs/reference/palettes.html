@@ -25,12 +25,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Colors palettes — palettes" />
 
 <meta property="og:description" content="Functions for creating a vector of colors from pre-speficied palettes." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -64,7 +71,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -74,6 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,15 +89,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Colors palettes</h1>
+    
+    <div class="hidden name"><code>palettes.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Functions for creating a vector of colors from pre-speficied palettes.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>jet.colors</span>(<span class='no'>n</span>)
 
@@ -97,7 +109,7 @@
 
 <span class='fu'>bl2gr.colors</span>(<span class='no'>n</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -108,8 +120,8 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>jet.colors()</code> creates a palette of colors which tend to have high brightness and not uniform luminance. Furthermore, the brightest colors, yellow and cyan, are used for intermediate data values, and this has the effect of emphasizing uninteresting (and arbitrary) values while demphasizing the extremes. For these reasons this popular palette is not recommended.
-<code>spectral.colors()</code> creates a palette based on ColorBrewer <a href='http://colorbrewer2.org'>http://colorbrewer2.org</a>, so the resulting colors have a much uniform luminance.
+    <p><code>jet.colors()</code> creates a palette of colors which tend to have high brightness and not uniform luminance. Furthermore, the brightest colors, yellow and cyan, are used for intermediate data values, and this has the effect of emphasizing uninteresting (and arbitrary) values while demphasizing the extremes. For these reasons this popular palette is not recommended.<br />
+<code>spectral.colors()</code> creates a palette based on ColorBrewer <a href='http://colorbrewer2.org'>http://colorbrewer2.org</a>, so the resulting colors have a much uniform luminance.<br />
 The <code>bl2gr.colors()</code> palette returns a palette of colors from blue to green.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -118,7 +130,7 @@ The <code>bl2gr.colors()</code> palette returns a palette of colors from blue to
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>colors</code>, <code>rgb</code>.</p>
+    <div class='dont-index'><p><code>colors</code>, <code>rgb</code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -133,7 +145,7 @@ The <code>bl2gr.colors()</code> palette returns a palette of colors from blue to
 <span class='fu'>image</span>(<span class='fl'>1</span>:<span class='fl'>21</span>, <span class='fl'>1</span>, <span class='fu'>as.matrix</span>(<span class='fl'>1</span>:<span class='fl'>21</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>spectral.colors</span>(<span class='fl'>21</span>),
       <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>yaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>bty</span> <span class='kw'>=</span> <span class='st'>"n"</span>)
 <span class='fu'>image</span>(<span class='fl'>1</span>:<span class='fl'>21</span>, <span class='fl'>1</span>, <span class='fu'>as.matrix</span>(<span class='fl'>1</span>:<span class='fl'>21</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>bl2gr.colors</span>(<span class='fl'>21</span>),
-      <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>yaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>bty</span> <span class='kw'>=</span> <span class='st'>"n"</span>)</div><div class='img'><img src='palettes-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+      <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>xaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>yaxt</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>bty</span> <span class='kw'>=</span> <span class='st'>"n"</span>)</div><div class='img'><img src='palettes-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -164,5 +176,8 @@ The <code>bl2gr.colors()</code> palette returns a palette of colors from blue to
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

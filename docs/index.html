@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -38,7 +42,7 @@
   </a>
 </li>
 <li>
-  <a href="articles/GA.html">Get Started</a>
+  <a href="articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -54,19 +58,18 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="ga" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#ga" class="anchor"></a>GA <img src="images/logo.png" align="right" width="100px">
 </h1></div>
-<p>An R package for optimisation using <strong>Genetic Algorithms</strong></p>
-<p><a href="https://cran.r-project.org/package=GA"><img src="http://www.r-pkg.org/badges/version/GA" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=GA"><img src="http://cranlogs.r-pkg.org/badges/GA" alt="CRAN_MonthlyDownloads"></a></p>
+
+<p>An R package for stochastic optimisation using <strong>Genetic Algorithms</strong></p>
 <p>The GA package provides a flexible general-purpose set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -94,29 +97,45 @@
 <p>Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. <strong>The R Journal</strong>, 9(1), 187–206. <a href="https://journal.r-project.org/archive/2017/RJ-2017-008" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-008</a></p>
 </div>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=GA">https://​cran.r-project.org/​package=GA</a>
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=GA">https://​cloud.r-project.org/​package=GA</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/luca-scr/GA/issues">https://​github.com/​luca-scr/​GA/​issues</a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p>GPL (&gt;= 2)</p>
+<ul class="list-unstyled">
+<li>GPL (&gt;= 2)</li>
+</ul>
+</div>
+<div class="citation">
 <h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing GA</a></li>
 </ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="http://www.stat.unipg.it/luca">Luca Scrucca</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3826-0484" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
+<a href="http://www.stat.unipg.it/luca">Luca Scrucca</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3826-0484" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 </ul>
+</div>
+
+      <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=GA"><img src="http://www.r-pkg.org/badges/version/GA" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=GA"><img src="http://cranlogs.r-pkg.org/badges/GA" alt="CRAN_MonthlyDownloads"></a></li>
+</ul>
+</div>
 </div>
 
 </div>
@@ -132,6 +151,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

@@ -6,9 +6,11 @@ log$
 ^.*\.Rproj$
 ^Makefile$
 ^revdep$
-^README\.Rmd$
-^README-.*\.png$
 ^docs$
 ^images$
-pkgdown.md
-_pkgdown.yaml
+^_pkgdown\.yml$
+^README\.Rmd$
+^README\.md$
+^README-.*\.png$
+^pkgdown$
+^cran-comments\.md$

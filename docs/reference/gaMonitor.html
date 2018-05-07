@@ -25,12 +25,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Monitor genetic algorithm evolution — gaMonitor" />
 
 <meta property="og:description" content="Functions to print summary statistics of fitness values at each iteration of a GA search." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -64,7 +71,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -74,6 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,21 +89,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Monitor genetic algorithm evolution</h1>
+    
+    <div class="hidden name"><code>gaMonitor.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Functions to print summary statistics of fitness values at each iteration of a GA search.</p>
     
+    </div>
 
     <pre class="usage">gaMonitor(object, digits = getOption("digits"), &#8230;)
 
 gaislMonitor(object, digits = getOption("digits"), &#8230;)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -114,8 +126,8 @@ gaislMonitor(object, digits = getOption("digits"), &#8230;)</pre>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>These functions print a summary of current GA step on the console.
-By default, <code>gaMonitor</code> is called in interactive sessions by <code><a href='ga.html'>ga</a></code>. The old monitoring function, used as the default until version 2.2 of <span class="pkg">GA</span> package, is provided in <code>gaMonitor2</code>.
+    <p>These functions print a summary of current GA step on the console.<br />
+By default, <code>gaMonitor</code> is called in interactive sessions by <code><a href='ga.html'>ga</a></code>. The old monitoring function, used as the default until version 2.2 of <span class="pkg">GA</span> package, is provided in <code>gaMonitor2</code>.<br />
 By default, <code>gaislMonitor</code> is called in interactive sessions by <code><a href='gaisl.html'>gaisl</a></code>.</p>
     
 
@@ -145,5 +157,8 @@ By default, <code>gaislMonitor</code> is called in interactive sessions by <code
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

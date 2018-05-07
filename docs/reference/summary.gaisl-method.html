@@ -25,12 +25,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Summary for Islands Genetic Algorithms — summary.gaisl-method" />
 
 <meta property="og:description" content="Summary method for class gaisl-class." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -64,7 +71,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -74,6 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,15 +89,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Summary for Islands Genetic Algorithms</h1>
+    
+    <div class="hidden name"><code>summary.gaisl-method.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Summary method for class <code><a href='gaisl-class.html'>gaisl-class</a></code>.</p>
     
+    </div>
 
     <pre class="usage"># S4 method for gaisl
 summary(object, &#8230;)
@@ -97,7 +109,7 @@ summary(object, &#8230;)
 # S3 method for summary.gaisl
 print(x, digits = getOption("digits"), &#8230;)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -124,100 +136,20 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='gaisl.html'>gaisl</a></code></p>
+    <div class='dont-index'><p><code><a href='gaisl.html'>gaisl</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  <span class='fu'>abs</span>(<span class='no'>x</span>)+<span class='fu'>cos</span>(<span class='no'>x</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  <span class='fu'>abs</span>(<span class='no'>x</span>)+<span class='fu'>cos</span>(<span class='no'>x</span>)
 <span class='no'>GA</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gaisl.html'>gaisl</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"real-valued"</span>,
             <span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>f</span>(<span class='no'>x</span>),
             <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>run</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='co'># CRAN check limits ncores = 2</span></div><div class='output co'>#&gt; Islands GA | epoch = 1 
-#&gt; Mean = -2.533351 | Best = -1.044710 
-#&gt; Mean = -3.240238 | Best = -1.011332 
-#&gt; Mean = -2.129411 | Best = -1.000026 
-#&gt; Mean = -2.103206 | Best = -1.011947 
-#&gt; Islands GA | epoch = 2 
-#&gt; Mean = -3.002379 | Best = -1.000922 
-#&gt; Mean = -1.836892 | Best = -1.002404 
-#&gt; Mean = -3.201009 | Best = -1.000026 
-#&gt; Mean = -2.096590 | Best = -1.000026 
-#&gt; Islands GA | epoch = 3 
-#&gt; Mean = -2.197200 | Best = -1.000026 
-#&gt; Mean = -1.155922 | Best = -1.000922 
-#&gt; Mean = -2.251763 | Best = -1.000026 
-#&gt; Mean = -1.799951 | Best = -1.000026 
-#&gt; Islands GA | epoch = 4 
-#&gt; Mean = -1.674199 | Best = -1.000026 
-#&gt; Mean = -1.963850 | Best = -1.000026 
-#&gt; Mean = -2.498293 | Best = -1.000026 
-#&gt; Mean = -1.532814 | Best = -1.000003 
-#&gt; Islands GA | epoch = 5 
-#&gt; Mean = -1.806703 | Best = -1.000003 
-#&gt; Mean = -2.745763 | Best = -1.000026 
-#&gt; Mean = -2.455349 | Best = -1.000026 
-#&gt; Mean = -2.189915 | Best = -1.000003 
-#&gt; Islands GA | epoch = 6 
-#&gt; Mean = -2.188936 | Best = -1.000003 
-#&gt; Mean = -1.311417 | Best = -1.000003 
-#&gt; Mean = -1.615910 | Best = -1.000026 
-#&gt; Mean = -2.156924 | Best = -1.000003 
-#&gt; Islands GA | epoch = 7 
-#&gt; Mean = -1.391761 | Best = -1.000003 
-#&gt; Mean = -1.751078 | Best = -1.000003 
-#&gt; Mean = -1.218731 | Best = -1.000003 
-#&gt; Mean = -1.437053 | Best = -1.000003 
-#&gt; Islands GA | epoch = 8 
-#&gt; Mean = -1.117236 | Best = -1.000003 
-#&gt; Mean = -1.855110 | Best = -1.000003 
-#&gt; Mean = -1.251064 | Best = -1.000003 
-#&gt; Mean = -2.228851 | Best = -1.000003 </div><div class='input'><span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
-<span class='fu'>print</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; ── Islands Genetic Algorithm ─────────── 
-#&gt; 
-#&gt; GA settings: 
-#&gt; Type                  =  real-valued 
-#&gt; Number of islands     =  4 
-#&gt; Islands pop. size     =  25 
-#&gt; Migration rate        =  0.1 
-#&gt; Migration interval    =  10 
-#&gt; Elitism               =  1 
-#&gt; Crossover probability =  0.8 
-#&gt; Mutation probability  =  0.1 
-#&gt; Search domain = 
-#&gt;        x1
-#&gt; lower -20
-#&gt; upper  20
-#&gt; 
-#&gt; GA results: 
-#&gt; Iterations              = 80 
-#&gt; Epochs                  = 8 
-#&gt; Fitness function values = -1.000003 -1.000003 -1.000003 -1.000003 
-#&gt; Solutions = 
-#&gt;                  x1
-#&gt; [1,] 0.000002570573
-#&gt; [2,] 0.000002570573
-#&gt; [3,] 0.000002570573
-#&gt; [4,] 0.000002570573</div><div class='input'><span class='fu'>str</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt; List of 13
-#&gt;  $ type             : chr "real-valued"
-#&gt;  $ numIslands       : num 4
-#&gt;  $ popSizeIslands   : num 25
-#&gt;  $ migrationRate    : num 0.1
-#&gt;  $ migrationInterval: num 10
-#&gt;  $ elitism          : num 1
-#&gt;  $ pcrossover       : num 0.8
-#&gt;  $ pmutation        : num 0.1
-#&gt;  $ domain           : num [1:2, 1] -20 20
-#&gt;   ..- attr(*, "dimnames")=List of 2
-#&gt;   .. ..$ : chr [1:2] "lower" "upper"
-#&gt;   .. ..$ : chr "x1"
-#&gt;  $ iter             : int 80
-#&gt;  $ epoch            : num 8
-#&gt;  $ fitnessValues    : num [1:4] -1 -1 -1 -1
-#&gt;  $ solutions        : num [1:4, 1] 0.00000257 0.00000257 0.00000257 0.00000257
-#&gt;   ..- attr(*, "dimnames")=List of 2
-#&gt;   .. ..$ : NULL
-#&gt;   .. ..$ : chr "x1"
-#&gt;  - attr(*, "class")= chr "summary.gaisl"</div></pre>
+            <span class='kw'>numIslands</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>summary</span>(<span class='no'>GA</span>)
+<span class='fu'>print</span>(<span class='no'>out</span>)
+<span class='fu'>str</span>(<span class='no'>out</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -248,5 +180,8 @@ print(x, digits = getOption("digits"), &#8230;)</pre>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

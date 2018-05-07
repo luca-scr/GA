@@ -25,12 +25,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Population initialization in genetic algorithms — ga_Population" />
 
 <meta property="og:description" content="Functions for creating a random initial population to be used in genetic algorithms." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -64,7 +71,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -74,6 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,15 +89,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Population initialization in genetic algorithms</h1>
+    
+    <div class="hidden name"><code>ga_Population.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Functions for creating a random initial population to be used in genetic algorithms.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>gabin_Population</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
@@ -97,7 +109,7 @@
 
 <span class='fu'>gaperm_Population</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -112,9 +124,9 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>gabin_Population</code> generates a random population of <code>object@nBits</code> binary values;
-    <code>gareal_Population</code> generates a random (uniform) population of real values in the range [<code>object@min</code>, <code>object@max</code>];
-    <code>gaperm_Population</code> generates a random (uniform) population of integer values in the range [<code>object@min</code>, <code>object@max</code>].</p>
+    <p><code>gabin_Population</code> generates a random population of <code>object@nBits</code> binary values;</p>
+<p><code>gareal_Population</code> generates a random (uniform) population of real values in the range [<code>object@min</code>, <code>object@max</code>];</p>
+<p><code>gaperm_Population</code> generates a random (uniform) population of integer values in the range [<code>object@min</code>, <code>object@max</code>].</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -122,7 +134,7 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='ga.html'>ga</a></code></p>
+    <div class='dont-index'><p><code><a href='ga.html'>ga</a></code></p></div>
     
 
   </div>
@@ -155,5 +167,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -25,12 +25,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Islands Genetic Algorithms — gaisl" />
 
 <meta property="og:description" content="Maximization of a fitness function using islands genetic algorithms (ISLGAs). This is a distributed multiple-population GA, where the population is partitioned into several subpopulations and assigned to separated islands. Independent GAs are executed in each island, and only occasionally sparse exchanges of individuals are performed among the islands. In principle islands can evolve sequentially, but increased computational efficiency is obtained by running GAs in parallel on each island. The latter is called island parallel GAs (ISLPGAs) and it is used by default." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -64,7 +71,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -74,6 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,15 +89,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Islands Genetic Algorithms</h1>
+    
+    <div class="hidden name"><code>gaisl.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Maximization of a fitness function using islands genetic algorithms (ISLGAs). This is a distributed multiple-population GA, where the population is partitioned into several subpopulations and assigned to separated islands. Independent GAs are executed in each island, and only occasionally sparse exchanges of individuals are performed among the islands. In principle islands can evolve sequentially, but increased computational efficiency is obtained by running GAs in parallel on each island. The latter is called island parallel GAs (ISLPGAs) and it is used by default.</p>
     
+    </div>
 
     <pre class="usage">gaisl(type = c("binary", "real-valued", "permutation"), 
       fitness, &#8230;,
@@ -121,7 +133,7 @@
       monitor = if(interactive()) gaislMonitor else FALSE,
       seed = NULL)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -187,12 +199,12 @@
     </tr>
     <tr>
       <th>updatePop</th>
-      <td><p>a logical defaulting to <code>FALSE</code>. If set at <code>TRUE</code> the first attribute attached to the value returned by the user-defined fitness function is used to update the population. 
+      <td><p>a logical defaulting to <code>FALSE</code>. If set at <code>TRUE</code> the first attribute attached to the value returned by the user-defined fitness function is used to update the population. <br />
 <em>Be careful though, this is an experimental feature!</em></p></td>
     </tr>
     <tr>
       <th>postFitness</th>
-      <td><p>a user-defined function which, if provided, receives the current <code>ga-class</code> object as input, performs post fitness-evaluation steps, then returns an updated version of the object which is used to update the GA search.
+      <td><p>a user-defined function which, if provided, receives the current <code>ga-class</code> object as input, performs post fitness-evaluation steps, then returns an updated version of the object which is used to update the GA search.<br />
 <em>Be careful though, this is an experimental feature!</em></p></td>
     </tr>
     <tr>
@@ -233,7 +245,8 @@
     </tr>
     <tr>
       <th>optimArgs</th>
-      <td><p>a list controlling the local search algorithm with the following components:</p><dl class='dl-horizontal'>
+      <td><p>a list controlling the local search algorithm with the following components:</p>
+<dl class='dl-horizontal'>
 <dt><code>method</code></dt><dd><p>a string specifying the general-purpose optimisation method to be used, by default is set to <code>"L-BFGS-B"</code>. Other possible methods are those reported in <code><a href='http://www.rdocumentation.org/packages/stats/topics/optim'>optim</a></code>.</p></dd>
 <dt><code>poptim</code></dt><dd><p>a value in the range [0,1] specifying the probability of performing a local search at each iteration of GA (default 0.1).</p></dd>
 <dt><code>pressel</code></dt><dd><p>a value in the range [0,1] specifying the pressure selection (default 0.5). The local search is started from a random solution selected with probability proportional to fitness. High values of <code>pressel</code> tend to select the solutions with the largest fitness, whereas low values of <code>pressel</code> assign quasi-uniform probabilities to any solution.</p></dd>
@@ -281,10 +294,10 @@ For more information on GAs see <code><a href='ga.html'>ga</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='summary.gaisl-method.html'>summary,gaisl-method</a></code>, 
+    <div class='dont-index'><p><code><a href='summary.gaisl-method.html'>summary,gaisl-method</a></code>, 
   <code><a href='plot.gaisl-method.html'>plot,gaisl-method</a></code>, 
   <code><a href='gaisl-class.html'>gaisl-class</a></code>,
-  <code><a href='ga.html'>ga</a></code></p>
+  <code><a href='ga.html'>ga</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -342,5 +355,8 @@ For more information on GAs see <code><a href='ga.html'>ga</a></code>.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

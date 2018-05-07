@@ -1,4 +1,4 @@
-Version 3.1 (2018-03) NOT ON CRAN
+Version 3.1 (2018-05)
 
 - Genetic operators available in C++ using `Rcpp` package.
 - Add parameter "useRcpp" in gaControl() to control if the C++ implementation of genetic operators should be used. By default is set to TRUE.

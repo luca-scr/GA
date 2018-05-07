@@ -25,9 +25,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -50,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -61,7 +68,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -71,6 +78,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -78,172 +86,167 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;3.1</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="GA-package.html">GA-package</a></code> </p>
-          </td>
-          <td><p>Genetic Algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="binary2decimal.html">decimal2binary</a></code> <code><a href="binary2decimal.html">binary2decimal</a></code> </p>
-          </td>
-          <td><p>Binary encoding of decimal numbers and viceversa.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="binary2gray.html">binary2gray</a></code> <code><a href="binary2gray.html">gray2binary</a></code> </p>
-          </td>
-          <td><p>Gray encoding for binary strings</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga-class.html">ga-class</a></code> </p>
-          </td>
-          <td><p>Class "ga"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga.html">ga</a></code> </p>
-          </td>
-          <td><p>Genetic Algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaControl.html">gaControl</a></code> </p>
-          </td>
-          <td><p>A function for setting or retrieving defaults genetic operators</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaMonitor.html">gaMonitor</a></code> </p>
-          </td>
-          <td><p>Monitor genetic algorithm evolution</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaSummary.html">gaSummary</a></code> </p>
-          </td>
-          <td><p>Summarize genetic algorithm evolution</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Crossover.html">ga_Crossover</a></code> </p>
-          </td>
-          <td><p>Crossover operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Mutation.html">ga_Mutation</a></code> </p>
-          </td>
-          <td><p>Mutation operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Population.html">gabin_Population</a></code> <code><a href="ga_Population.html">gareal_Population</a></code> <code><a href="ga_Population.html">gaperm_Population</a></code> </p>
-          </td>
-          <td><p>Population initialization in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_Selection.html">ga_lrSelection</a></code> <code><a href="ga_Selection.html">ga_nlrSelection</a></code> <code><a href="ga_Selection.html">ga_rwSelection</a></code> <code><a href="ga_Selection.html">ga_tourSelection</a></code> <code><a href="ga_Selection.html">gabin_lrSelection</a></code> <code><a href="ga_Selection.html">gabin_nlrSelection</a></code> <code><a href="ga_Selection.html">gabin_rwSelection</a></code> <code><a href="ga_Selection.html">gabin_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lrSelection</a></code> <code><a href="ga_Selection.html">gareal_nlrSelection</a></code> <code><a href="ga_Selection.html">gareal_rwSelection</a></code> <code><a href="ga_Selection.html">gareal_tourSelection</a></code> <code><a href="ga_Selection.html">gareal_lsSelection</a></code> <code><a href="ga_Selection.html">gareal_sigmaSelection</a></code> <code><a href="ga_Selection.html">gaperm_lrSelection</a></code> <code><a href="ga_Selection.html">gaperm_nlrSelection</a></code> <code><a href="ga_Selection.html">gaperm_rwSelection</a></code> <code><a href="ga_Selection.html">gaperm_tourSelection</a></code> </p>
-          </td>
-          <td><p>Selection operators in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ga_pmutation.html">ga_pmutation</a></code> </p>
-          </td>
-          <td><p>Variable mutation probability in genetic algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaisl-class.html">gaisl-class</a></code> </p>
-          </td>
-          <td><p>Class "gaisl"</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gaisl.html">gaisl</a></code> </p>
-          </td>
-          <td><p>Islands Genetic Algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="numericOrNA-class.html">numericOrNA-class</a></code> </p>
-          </td>
-          <td><p>Virtual Class "numericOrNA" - Simple Class for subassignment Values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="palettes.html">jet.colors</a></code> <code><a href="palettes.html">spectral.colors</a></code> <code><a href="palettes.html">bl2gr.colors</a></code> </p>
-          </td>
-          <td><p>Colors palettes</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="parNames-methods.html">parNames-methods</a></code> </p>
-          </td>
-          <td><p>Parameters or decision variables names from an object of class <code><a href='reference/ga-class.html'>ga-class</a></code>.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="persp3D.html">persp3D</a></code> </p>
-          </td>
-          <td><p>Perspective plot with colour levels</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.ga-method.html">plot.ga-method</a></code> </p>
-          </td>
-          <td><p>Plot of Genetic Algorithm search path</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.gaisl-method.html">plot.gaisl-method</a></code> </p>
-          </td>
-          <td><p>Plot of Islands Genetic Algorithm search path</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="summary.ga-method.html">summary.ga-method</a></code> </p>
-          </td>
-          <td><p>Summary for Genetic Algorithms</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="summary.gaisl-method.html">summary.gaisl-method</a></code> </p>
-          </td>
-          <td><p>Summary for Islands Genetic Algorithms</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="GA-package.html">GA-package</a></code> </p>
+        </td>
+        <td><p>Genetic Algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="binary2decimal.html">decimal2binary()</a></code> <code><a href="binary2decimal.html">binary2decimal()</a></code> </p>
+        </td>
+        <td><p>Binary encoding of decimal numbers and viceversa.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="binary2gray.html">binary2gray()</a></code> <code><a href="binary2gray.html">gray2binary()</a></code> </p>
+        </td>
+        <td><p>Gray encoding for binary strings</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga-class.html">ga-class</a></code> </p>
+        </td>
+        <td><p>Class "ga"</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga.html">ga()</a></code> </p>
+        </td>
+        <td><p>Genetic Algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gaControl.html">gaControl()</a></code> </p>
+        </td>
+        <td><p>A function for setting or retrieving defaults genetic operators</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gaMonitor.html">gaMonitor()</a></code> <code><a href="gaMonitor.html">gaislMonitor()</a></code> </p>
+        </td>
+        <td><p>Monitor genetic algorithm evolution</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gaSummary.html">gaSummary()</a></code> </p>
+        </td>
+        <td><p>Summarize genetic algorithm evolution</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga_Crossover.html">ga_spCrossover()</a></code> <code><a href="ga_Crossover.html">gabin_spCrossover()</a></code> <code><a href="ga_Crossover.html">gabin_uCrossover()</a></code> <code><a href="ga_Crossover.html">gareal_spCrossover()</a></code> <code><a href="ga_Crossover.html">gareal_waCrossover()</a></code> <code><a href="ga_Crossover.html">gareal_laCrossover()</a></code> <code><a href="ga_Crossover.html">gareal_blxCrossover()</a></code> <code><a href="ga_Crossover.html">gareal_laplaceCrossover()</a></code> <code><a href="ga_Crossover.html">gaperm_cxCrossover()</a></code> <code><a href="ga_Crossover.html">gaperm_pmxCrossover()</a></code> <code><a href="ga_Crossover.html">gaperm_oxCrossover()</a></code> <code><a href="ga_Crossover.html">gaperm_pbxCrossover()</a></code> </p>
+        </td>
+        <td><p>Crossover operators in genetic algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga_Mutation.html">gabin_raMutation()</a></code> <code><a href="ga_Mutation.html">gareal_raMutation()</a></code> <code><a href="ga_Mutation.html">gareal_nraMutation()</a></code> <code><a href="ga_Mutation.html">gareal_rsMutation()</a></code> <code><a href="ga_Mutation.html">gareal_powMutation()</a></code> <code><a href="ga_Mutation.html">gaperm_simMutation()</a></code> <code><a href="ga_Mutation.html">gaperm_ismMutation()</a></code> <code><a href="ga_Mutation.html">gaperm_swMutation()</a></code> <code><a href="ga_Mutation.html">gaperm_dmMutation()</a></code> <code><a href="ga_Mutation.html">gaperm_scrMutation()</a></code> </p>
+        </td>
+        <td><p>Mutation operators in genetic algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga_Population.html">gabin_Population()</a></code> <code><a href="ga_Population.html">gareal_Population()</a></code> <code><a href="ga_Population.html">gaperm_Population()</a></code> </p>
+        </td>
+        <td><p>Population initialization in genetic algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga_Selection.html">ga_lrSelection()</a></code> <code><a href="ga_Selection.html">ga_nlrSelection()</a></code> <code><a href="ga_Selection.html">ga_rwSelection()</a></code> <code><a href="ga_Selection.html">ga_tourSelection()</a></code> <code><a href="ga_Selection.html">gabin_lrSelection()</a></code> <code><a href="ga_Selection.html">gabin_nlrSelection()</a></code> <code><a href="ga_Selection.html">gabin_rwSelection()</a></code> <code><a href="ga_Selection.html">gabin_tourSelection()</a></code> <code><a href="ga_Selection.html">gareal_lrSelection()</a></code> <code><a href="ga_Selection.html">gareal_nlrSelection()</a></code> <code><a href="ga_Selection.html">gareal_rwSelection()</a></code> <code><a href="ga_Selection.html">gareal_tourSelection()</a></code> <code><a href="ga_Selection.html">gareal_lsSelection()</a></code> <code><a href="ga_Selection.html">gareal_sigmaSelection()</a></code> <code><a href="ga_Selection.html">gaperm_lrSelection()</a></code> <code><a href="ga_Selection.html">gaperm_nlrSelection()</a></code> <code><a href="ga_Selection.html">gaperm_rwSelection()</a></code> <code><a href="ga_Selection.html">gaperm_tourSelection()</a></code> </p>
+        </td>
+        <td><p>Selection operators in genetic algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ga_pmutation.html">ga_pmutation()</a></code> </p>
+        </td>
+        <td><p>Variable mutation probability in genetic algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gaisl-class.html">gaisl-class</a></code> </p>
+        </td>
+        <td><p>Class "gaisl"</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="gaisl.html">gaisl()</a></code> </p>
+        </td>
+        <td><p>Islands Genetic Algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="numericOrNA-class.html">numericOrNA-class</a></code> </p>
+        </td>
+        <td><p>Virtual Class "numericOrNA" - Simple Class for subassignment Values</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="palettes.html">jet.colors()</a></code> <code><a href="palettes.html">spectral.colors()</a></code> <code><a href="palettes.html">bl2gr.colors()</a></code> </p>
+        </td>
+        <td><p>Colors palettes</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="parNames-methods.html">parNames()</a></code> </p>
+        </td>
+        <td><p>Parameters or decision variables names from an object of class <code>ga-class</code>.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="persp3D.html">persp3D()</a></code> </p>
+        </td>
+        <td><p>Perspective plot with colour levels</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot.ga-method.html">plot(<i>&lt;ga&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of Genetic Algorithm search path</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot.gaisl-method.html">plot(<i>&lt;gaisl&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of Islands Genetic Algorithm search path</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="summary.ga-method.html">summary(<i>&lt;ga&gt;</i>)</a></code> <code><a href="summary.ga-method.html">print(<i>&lt;summary.ga&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Summary for Genetic Algorithms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="summary.gaisl-method.html">summary(<i>&lt;gaisl&gt;</i>)</a></code> <code><a href="summary.gaisl-method.html">print(<i>&lt;summary.gaisl&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Summary for Islands Genetic Algorithms</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -266,5 +269,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
