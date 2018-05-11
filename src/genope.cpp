@@ -112,8 +112,8 @@ double round_double(double x, int n)
   // round function for double
   // for vectors Rcpp sugar already has round 
 	int d = 0;
-	if( ((x * pow(10, n)) - floor(x * pow(10, n))) >= 0.5) d = 1;
-	x = floor(x * pow(10, n) + d) / pow(10, n);
+	if( ((x * pow(10.0, n)) - floor(x * pow(10.0, n))) >= 0.5) d = 1;
+	x = floor(x * pow(10.0, n) + d) / pow(10.0, n);
 	return x;
 }
 

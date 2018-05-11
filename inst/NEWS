@@ -1,3 +1,7 @@
+Version 3.1.1 (2018-05)
+
+- Bug fix in C++ code calling pow() function.
+
 Version 3.1 (2018-05)
 
 - Genetic operators available in C++ using `Rcpp` package.
