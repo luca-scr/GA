@@ -462,3 +462,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// gareal_de_Rcpp
+List gareal_de_Rcpp(RObject object, Function fitness, double F, double p);
+RcppExport SEXP _GA_gareal_de_Rcpp(SEXP objectSEXP, SEXP fitnessSEXP, SEXP FSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< RObject >::type object(objectSEXP);
+    Rcpp::traits::input_parameter< Function >::type fitness(fitnessSEXP);
+    Rcpp::traits::input_parameter< double >::type F(FSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(gareal_de_Rcpp(object, fitness, F, p));
+    return rcpp_result_gen;
+END_RCPP
+}

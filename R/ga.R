@@ -198,6 +198,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                 elitism = elitism, 
                 pcrossover = pcrossover, 
                 pmutation = if(is.numeric(pmutation)) pmutation else NA,
+                optim = optim,
                 fitness = Fitness, 
                 summary = fitnessSummary,
                 bestSol = bestSol)
@@ -252,6 +253,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       
       # Local search optimisation
       if(optim & (type == "real-valued"))
+      {
         if(optimArgs$poptim > runif(1))
         { # perform local search from random selected solution
           # with prob proportional to fitness
@@ -267,18 +269,13 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                      upper = optimArgs$upper,
                                      control = optimArgs$control), 
                                 callArgs))
-                      # optim(fn = fitness, ...,
-                      #      par = Pop[i,],
-                      #      method = optimArgs$method,
-                      #      lower = optimArgs$lower,
-                      #      upper = optimArgs$upper,
-                      #      control = optimArgs$control)
                       ), silent = TRUE)
           if(is.function(monitor))
             { if(!inherits(opt, "try-error"))
-                cat("\b\b | Local search =", 
+                cat("\b | Local search =", 
                     format(opt$value, digits = getOption("digits")))
-              else cat(" |", opt[1]) 
+              else cat("\b |", opt[1])
+              cat("\n")
             }
           if(!inherits(opt, "try-error"))
             { Pop[i,] <- opt$par
@@ -289,6 +286,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
           # update iterations summary
           fitnessSummary[iter,] <- gaSummary(object@fitness)
           object@summary <- fitnessSummary
+        }
       }
       
       if(keepBest) 
@@ -368,8 +366,6 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
           object@fitness <- Fitness
       } 
       
-      if(is.function(monitor)) 
-        { cat("\n"); flush.console() }
   }
   
   # if optim is required perform a local search from the best 
@@ -391,26 +387,20 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                 upper = optimArgs$upper,
                                 control = optimArgs$control), 
                            callArgs))
-                 # optim(fn = fitness, ...,
-                 #       par = object@population[i,],
-                 #       method = optimArgs$method,
-                 #       lower = optimArgs$lower,
-                 #       upper = optimArgs$upper,
-                 #       control = optimArgs$control)
                    ), silent = TRUE)
       if(is.function(monitor))
         { if(!inherits(opt, "try-error"))
-            cat(" | Final local search =",
+            cat("\b | Final local search =",
                 format(opt$value, digits = getOption("digits")))
-          else cat(" |", opt[1])
+          else cat("\b |", opt[1])
         }
       if(!inherits(opt, "try-error"))
         { object@population[i,] <- opt$par
           object@fitness[i] <- opt$value }
   }
 
-  if(is.function(monitor)) 
-    { cat("\n"); flush.console() }
+  # if(is.function(monitor)) 
+  #   { cat("\n"); flush.console() }
 
   # in case of premature convergence remove NAs from summary 
   # fitness evalutations
@@ -453,6 +443,7 @@ setClass(Class = "ga",
                         elitism = "numeric", 
                         pcrossover = "numeric", 
                         pmutation = "numericOrNA",
+                        optim = "logical",
                         fitness = "numericOrNA",
                         summary = "matrix",
                         bestSol = "list",

@@ -153,3 +153,7 @@ optimProbsel_Rcpp <- function(x, q = NA_real_) {
     .Call(`_GA_optimProbsel_Rcpp`, x, q)
 }
 
+gareal_de_Rcpp <- function(object, fitness, F = NA_real_, p = NA_real_) {
+    .Call(`_GA_gareal_de_Rcpp`, object, fitness, F, p)
+}
+

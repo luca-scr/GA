@@ -1,5 +1,7 @@
-Version 3.1.1 (2018-05)
+Version 3.1.2 (2018-06)
 
+- Added function gade() implementing Differential Evolution based on the 
+  description in Simon (2013) Evolutionary Optimization Algorithms. 
 - Bug fix in C++ code calling pow() function.
 
 Version 3.1 (2018-05)
