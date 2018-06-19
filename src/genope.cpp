@@ -1796,8 +1796,8 @@ library(GA)
 library(microbenchmark)
 Rastrigin <- function(x1, x2) 20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
 fitness <- function(x) -Rastrigin(x[1], x[2])
-obj <- gade(fitness = fitness, lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
-            popSize = 10, maxiter = 1, seed = 1)
+obj <- de(fitness = fitness, lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 
+          popSize = 10, maxiter = 1, seed = 1)
 
 set.seed(123)
 out1 = GA:::gareal_de_R(obj, fitness, F = 0.8, p = 0.5)
@@ -1808,7 +1808,7 @@ identical(out1, out2)
 cbind(out1$population, out2$population)
 cbind(out1$fitness, out2$fitness)
  
-microbenchmark(ga_lrSelection_R(GA),
-               ga_lrSelection_Rcpp(GA),
+microbenchmark(GA:::gareal_de_R(GA),
+               GA:::gareal_de_Rcpp(GA),
                unit = "relative")
 */

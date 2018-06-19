@@ -1,9 +1,17 @@
-gade <- function(type = "real-valued",
-                 fitness, ...,
-                 lower, upper,
-                 selection = gareal_de,
-                 pcrossover = 0.5,
-                 stepsize = 0.8) 
+##############################################################################
+#                                                                            #
+#         DIFFERENTIAL EVOLUTION via GENETIC ALGORITHMS in R                 #
+#                                                                            #
+##############################################################################
+
+# Note: this file must be named to alphabetically follow ga.R
+
+de <- function(type = "real-valued",
+               fitness, ...,
+               lower, upper,
+               selection = gareal_de,
+               pcrossover = 0.5,
+               stepsize = 0.8) 
 {
 
   call <- match.call()
@@ -11,9 +19,12 @@ gade <- function(type = "real-valued",
   args$nBits <- NULL
   args$selection <- function(...) selection(..., F = stepsize, p = pcrossover)
   args$pcrossover <- 0
+  if(is.null(args$elitism))
+    args$elitism <- 0
   if(is.null(args$pmutation))
     args$pmutation <- 0 
-  args$optim <- NULL
+  if(is.null(args$optim))
+    args$optim <- FALSE
   if(is.null(args$monitor) & interactive())
     args$monitor <- deMonitor 
   
@@ -22,7 +33,7 @@ gade <- function(type = "real-valued",
                                  fitness = fitness, 
                                  lower = lower, 
                                  upper = upper)))
-  object <- as(object, "gade")
+  object <- as(object, "de")
   object@call <- call
   object@pcrossover <- pcrossover
   object@stepsize <- stepsize
@@ -30,7 +41,7 @@ gade <- function(type = "real-valued",
   return(object)
 }
 
-setClass(Class = "gade", 
+setClass(Class = "de", 
          representation(call = "language",
                         type = "character",
                         lower = "numericOrNA", 
@@ -56,7 +67,7 @@ setClass(Class = "gade",
 ) 
 
 # register conversion function
-setAs("ga", "gade", function(from, to) 
+setAs("ga", "de", function(from, to) 
 {
   to <- new(to)
   for (n in slotNames(from)) 
@@ -67,17 +78,17 @@ setAs("ga", "gade", function(from, to)
   to
 })
 
-setMethod("print", "gade", function(x, ...) str(x))
+setMethod("print", "de", function(x, ...) str(x))
 
-setMethod("show", "gade",
+setMethod("show", "de",
 function(object)
- { cat("An object of class \"gade\"\n")
+ { cat("An object of class \"de\"\n")
    cat("\nCall:\n", deparse(object@call), "\n\n",sep="")
    cat("Available slots:\n")
    print(slotNames(object))
 }) 
 
-summary.gade <- function(object, ...)
+summary.de <- function(object, ...)
 {
   nvars <- ncol(object@population)
   varnames <- parNames(object)
@@ -104,13 +115,13 @@ summary.gade <- function(object, ...)
               iter = object@iter,
               fitness = object@fitnessValue,
               solution = object@solution)
-  class(out) <- "summary.gade"
+  class(out) <- "summary.de"
   return(out)
 }
 
-setMethod("summary", "gade", summary.gade)
+setMethod("summary", "de", summary.de)
 
-print.summary.gade <- function(x, digits = getOption("digits"), ...)
+print.summary.de <- function(x, digits = getOption("digits"), ...)
 {
   dotargs <- list(...)
   if(is.null(dotargs$head)) dotargs$head <- 10
@@ -156,9 +167,9 @@ print.summary.gade <- function(x, digits = getOption("digits"), ...)
   invisible()
 }
 
-setMethod("plot", "gade", plot.ga)
+setMethod("plot", "de", plot.ga)
 
-setMethod("parNames", "gade",
+setMethod("parNames", "de",
 function(object, ...)
 { 
   names <- object@names
