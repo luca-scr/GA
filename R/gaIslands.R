@@ -124,6 +124,7 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
         { suggestions <- as.matrix(suggestions) }
       if(nvars != ncol(suggestions))
         stop("Provided suggestions (ncol) matrix do not match number of variables of the problem!")
+      suggestions <- suggestions[seq(popSize),,drop=FALSE]
     }
 
   # check monitor arg
@@ -184,7 +185,11 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
   # initialise
   GAs <- vector(mode = "list", length = numIslands)
   # POPs <- vector(mode = "list", length = numIslands)
-  POPs <- rep(list(suggestions), times = numIslands)
+  # POPs <- rep(list(suggestions), times = numIslands)
+  POPs <- split.data.frame(suggestions, 
+                           rep(seq(numIslands), 
+                               each = floor(nrow(suggestions)/numIslands)))
+
   sumryStat <- rep(list(matrix(as.double(NA), 
                                nrow = numiter*migrationInterval, ncol = 6, 
                                dimnames = list(NULL, 

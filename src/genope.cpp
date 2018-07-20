@@ -1805,10 +1805,7 @@ set.seed(123)
 out2 = GA:::gareal_de_Rcpp(obj, fitness, F = 0.8, p = 0.5)
 identical(out1, out2)
 
-cbind(out1$population, out2$population)
-cbind(out1$fitness, out2$fitness)
- 
-microbenchmark(GA:::gareal_de_R(GA),
-               GA:::gareal_de_Rcpp(GA),
+microbenchmark(GA:::gareal_de_R(GA, fitness, F = 0.8, p = 0.5),
+               GA:::gareal_de_Rcpp(GA, fitness, F = 0.8, p = 0.5),
                unit = "relative")
 */
