@@ -184,12 +184,14 @@ gaisl <- function(type = c("binary", "real-valued", "permutation"),
   
   # initialise
   GAs <- vector(mode = "list", length = numIslands)
-  # POPs <- vector(mode = "list", length = numIslands)
+  POPs <- vector(mode = "list", length = numIslands)
   # POPs <- rep(list(suggestions), times = numIslands)
-  POPs <- split.data.frame(suggestions, 
-                           rep(seq(numIslands), 
-                               each = floor(nrow(suggestions)/numIslands)))
-
+  if(nrow(suggestions) > 0)
+  {
+    POPs <- split.data.frame(suggestions, 
+                             rep(seq(numIslands), 
+                                 each = floor(nrow(suggestions)/numIslands)))
+  }
   sumryStat <- rep(list(matrix(as.double(NA), 
                                nrow = numiter*migrationInterval, ncol = 6, 
                                dimnames = list(NULL, 

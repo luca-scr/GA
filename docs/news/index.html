@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • GA</title>
+<title>Changelog • GA</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,13 +21,19 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
-<meta property="og:title" content="All news" />
+
+
+
+<meta property="og:title" content="Changelog" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -50,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">GA</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">GA</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -61,19 +71,20 @@
   </a>
 </li>
 <li>
-  <a href="../articles/GA.html">Get Started</a>
+  <a href="../articles/GA.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,122 +92,155 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Changelog <small></small></h1>
+      
     </div>
 
-    <div class="contents">
-    <div class="section level1">
-<h1>GA 3.1 (2018-02) NOT ON CRAN</h1>
+    <div id="version-3-1-2-2018-07-not-on-cran" class="section level1">
+<h1 class="page-header">
+<a href="#version-3-1-2-2018-07-not-on-cran" class="anchor"></a>Version 3.1.2 (2018-07) NOT ON CRAN<small> Unreleased </small>
+</h1>
 <ul>
-<li>Genetic operators available in C++ using <code>Rcpp</code> package.</li>
-<li>Add parameter “useRcpp” in gaControl() to control if the C++ implementation of genetic operators should be used. By default is set to TRUE.</li>
-<li>Renamed input parameters <code>min</code> and <code>max</code> to <code>lower</code> and <code>upper</code>. The old nomenclature is still accepted but deprecated.</li>
-<li>Add stopParallel() function to stop a cluster if parallel = TRUE, including registerDoSEQ() to avoid problems if foreach loop is used after.</li>
-<li>A parallel cluster is automatically stopped unless a registered parallel back end is provided as argument to <code>parallel</code> argument in the ga() or gaisl() function call.</li>
-<li>Bug fix in <code><a href="../reference/ga_Population.html">gaperm_Population()</a></code> when min &gt; 1. Thanks to Romero Barata.</li>
-<li>Update “A quick tour of GA” vignette.</li>
-<li>Add README.Rmd that is shown in GitHub and CRAN.</li>
-<li>Create a sticker for the package.</li>
+<li>Added function <code>de()</code> implementing Differential Evolution based on the description in Simon (2013) Evolutionary Optimization Algorithms.</li>
+<li>Bug fix in C++ code calling <code>pow()</code> function.</li>
+<li>Bug fix in <code>gails()</code> when suggestions are provided.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 3.0.2 (2016-06)</h1>
+    <div id="version-3-1-2018-05" class="section level1">
+<h1 class="page-header">
+<a href="#version-3-1-2018-05" class="anchor"></a>Version 3.1 (2018-05)<small> 2018-05-09 </small>
+</h1>
+<ul>
+<li>Genetic operators available in C++ using <strong>Rcpp</strong> package.</li>
+<li>Add parameter <code>"useRcpp"</code> in <code><a href="../reference/gaControl.html">gaControl()</a></code> to control if the C++ implementation of genetic operators should be used. By default is set to TRUE.</li>
+<li>Renamed input parameters <code>min</code> and <code>max</code> to <code>lower</code> and <code>upper</code>. The old nomenclature is still accepted but deprecated.</li>
+<li>Added <code><a href="../reference/GA-internal.html">stopParallel()</a></code> function to stop a cluster if <code>parallel = TRUE</code>, including <code>registerDoSEQ()</code> to avoid problems if foreach loop is used after.</li>
+<li>A parallel cluster is automatically stopped unless a registered parallel back end is provided as argument to <code>parallel</code> argument in the <code><a href="../reference/ga.html">ga()</a></code> or <code><a href="../reference/gaisl.html">gaisl()</a></code> function call.</li>
+<li>Bug fix in <code><a href="../reference/ga_Population.html">gaperm_Population()</a></code> when <code>min</code> &gt; 1. Thanks to Romero Barata.</li>
+<li>Update “A quick tour of GA” vignette.</li>
+<li>Add <code>README.Rmd</code> that is shown in GitHub and CRAN.</li>
+<li>Create a sticker for the <strong>GA</strong> package.</li>
+</ul>
+</div>
+    <div id="version-3-0-2-2016-06" class="section level1">
+<h1 class="page-header">
+<a href="#version-3-0-2-2016-06" class="anchor"></a>Version 3.0.2 (2016-06)<small> 2016-06-07 </small>
+</h1>
 <ul>
 <li>In interactive sessions use different monitor functions depending on whether or not is an RStudio session. This is due to different capabilities of the several consoles from which R can be run.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 3.0.1 (2016-05)</h1>
+    <div id="version-3-0-1-2016-05" class="section level1">
+<h1 class="page-header">
+<a href="#version-3-0-1-2016-05" class="anchor"></a>Version 3.0.1 (2016-05)<small> 2016-05-16 </small>
+</h1>
 <ul>
-<li>doRNG moved from Depends to Suggests due to the unavailability of the binary version of the package on Windows. As a consequence, GA package can be installed even without doRNG being installed, but in this case results are not reproducible by setting the seed if GAs are executed in parallel.</li>
+<li>
+<strong>doRNG</strong> package moved from Depends to Suggests due to the unavailability of the binary version of the package on Windows. As a consequence, GA package can be installed even without <strong>doRNG</strong> being installed, but in this case results are not reproducible by setting the seed if GAs are executed in parallel.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 3.0 (2016-05)</h1>
+    <div id="version-3-0-2016-05" class="section level1">
+<h1 class="page-header">
+<a href="#version-3-0-2016-05" class="anchor"></a>Version 3.0 (2016-05)<small> 2016-05-10 </small>
+</h1>
 <ul>
 <li>Added option to provide a cluster for parallelisation.</li>
-<li>Added GA-hybrid using optim() for local search.</li>
-<li>Added GA Islands model in gaisl().</li>
-<li>Rewrite of gaMonitor() to clear the previous output before printing the info about the current iteration. Old version is available in gaMonitor2(). Same behaviour for gaislMonitor() and gaislMonitor2().</li>
+<li>Added GA-hybrid using <code>optim()</code> for local search.</li>
+<li>Added GA Islands model in <code><a href="../reference/gaisl.html">gaisl()</a></code>.</li>
+<li>Rewrite of <code><a href="../reference/gaMonitor.html">gaMonitor()</a></code> to clear the previous output before printing the info about the current iteration. Old version is available in <code>gaMonitor2()</code>. Same behaviour for <code><a href="../reference/gaMonitor.html">gaislMonitor()</a></code> and <code>gaislMonitor2()</code>.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 2.3 (2015-07)</h1>
+    <div id="version-2-3-2015-07" class="section level1">
+<h1 class="page-header">
+<a href="#version-2-3-2015-07" class="anchor"></a>Version 2.3 (2015-07)<small> Unreleased </small>
+</h1>
 <ul>
 <li>Added documentation vignettes.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 2.2 (2014-10)</h1>
+    <div id="version-2-2-2014-10" class="section level1">
+<h1 class="page-header">
+<a href="#version-2-2-2014-10" class="anchor"></a>Version 2.2 (2014-10)<small> 2014-10-15 </small>
+</h1>
 <ul>
 <li>Slight modification to plot method.</li>
 <li>Included link in main ga documentation to genetic operators.</li>
-<li>Added ga_pmutation() function to allow GAs having variable mutation probability.</li>
-<li>pdf files (previously included as vignettes) moved to inst/doc with corresponding index.html.</li>
+<li>Added <code><a href="../reference/ga_pmutation.html">ga_pmutation()</a></code> function to allow GAs having variable mutation probability.</li>
+<li>pdf files (previously included as vignettes) moved to <code>inst/doc</code> with corresponding index.html.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 2.1 (2014-05)</h1>
+    <div id="version-2-1-2014-05" class="section level1">
+<h1 class="page-header">
+<a href="#version-2-1-2014-05" class="anchor"></a>Version 2.1 (2014-05)<small> 2014-05-06 </small>
+</h1>
 <ul>
-<li>.printShortMatrix is a function to print part of rows/columns of a matrix</li>
-<li>print.summary.ga accept arguments to be passed to .printShortMatrix. This allow to shorten the printed output in case of large dimensions for the matrices containing the suggestions and the final solutions.</li>
-<li>plot.ga now shadowed the area between the max and the median of fitness values at each iteration. Changed to pch from 17 to 1 for means.</li>
-<li>Function gaSummary() is embedded in the code, so it cannot be defined by the user.</li>
-<li>Added function ga_pmutation for computing variable mutation probability.</li>
-<li>Modified main function ga() to allow for pmutation to be a function. This enables the use of variable mutation rate.</li>
-<li>Export plot.ga class in NAMESPACE and used as S4 method.</li>
-<li>Computing summaries at each step is done by function gaSummary(), but it may be defined by the user.</li>
-<li>Export summary.ga class in NAMESPACE and used as S4 method.</li>
-<li>Default for suggestions argument in ga() is set to NULL.</li>
-<li>Fixed a bug in gabin_uCrossover.</li>
-<li>Added description of slots in the help page for ga-class.</li>
+<li>
+<code>.printShortMatrix</code> is a function to print part of rows/columns of a matrix</li>
+<li>
+<code>print.summary.ga</code> accept arguments to be passed to <code>.printShortMatrix</code>. This allow to shorten the printed output in case of large dimensions for the matrices containing the suggestions and the final solutions.</li>
+<li>
+<code>plot.ga</code> now shadowed the area between the max and the median of fitness values at each iteration. Changed to pch from 17 to 1 for means.</li>
+<li>Function <code><a href="../reference/gaSummary.html">gaSummary()</a></code> is embedded in the code, so it cannot be defined by the user.</li>
+<li>Added function <code><a href="../reference/ga_pmutation.html">ga_pmutation()</a></code> for computing variable mutation probability.</li>
+<li>Modified main function <code><a href="../reference/ga.html">ga()</a></code> to allow for pmutation to be a function. This enables the use of variable mutation rate.</li>
+<li>Export <code>plot.ga</code> class in <code>NAMESPACE</code> and used as S4 method.</li>
+<li>Computing summaries at each step is done by function <code><a href="../reference/gaSummary.html">gaSummary()</a></code>, but it may be defined by the user.</li>
+<li>Export <code>summary.ga</code> class in NAMESPACE and used as S4 method.</li>
+<li>Default for suggestions argument in <code><a href="../reference/ga.html">ga()</a></code> is set to NULL.</li>
+<li>Fixed a bug in <code><a href="../reference/ga_Crossover.html">gabin_uCrossover()</a></code>.</li>
+<li>Added description of slots in the help page for <code>ga-class</code>.</li>
 <li>Bug fix on setting maxfitness.</li>
 <li>Bug fix on passing seed argument when “snow” parallel is used.</li>
 <li>Add explicitly stop clusters if parallel is used.</li>
 <li>Parallel computing improving set up of clusters.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 2.0 (2013-08)</h1>
+    <div id="version-2-0-2013-08" class="section level1">
+<h1 class="page-header">
+<a href="#version-2-0-2013-08" class="anchor"></a>Version 2.0 (2013-08)<small> 2013-08-20 </small>
+</h1>
 <ul>
 <li>Option for parallel computing.</li>
 <li>Added argument keepBest to include the best solution at each iteration.</li>
 <li>Bug fix when using suggestions argument.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 1.1 (2013-04)</h1>
+    <div id="version-1-1-2013-04" class="section level1">
+<h1 class="page-header">
+<a href="#version-1-1-2013-04" class="anchor"></a>Version 1.1 (2013-04)<small> 2013-04-08 </small>
+</h1>
 <ul>
 <li>Update citation and references to JSS paper.</li>
 </ul>
 </div>
-    <div class="section level1">
-<h1>GA 1.0 (2012-06)</h1>
+    <div id="version-1-0-2012-06" class="section level1">
+<h1 class="page-header">
+<a href="#version-1-0-2012-06" class="anchor"></a>Version 1.0 (2012-06)<small> 2012-06-22 </small>
+</h1>
 <ul>
 <li>First release on CRAN.</li>
 </ul>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#NA">3.1</a></li>
-        <li><a href="#NA">3.0.2</a></li>
-        <li><a href="#NA">3.0.1</a></li>
-        <li><a href="#NA">3.0</a></li>
-        <li><a href="#NA">2.3</a></li>
-        <li><a href="#NA">2.2</a></li>
-        <li><a href="#NA">2.1</a></li>
-        <li><a href="#NA">2.0</a></li>
-        <li><a href="#NA">1.1</a></li>
-        <li><a href="#NA">1.0</a></li>
+        <li><a href="#version-3-1-2-2018-07-not-on-cran">3.1.2</a></li>
+        <li><a href="#version-3-1-2018-05">3.1</a></li>
+        <li><a href="#version-3-0-2-2016-06">3.0.2</a></li>
+        <li><a href="#version-3-0-1-2016-05">3.0.1</a></li>
+        <li><a href="#version-3-0-2016-05">3.0</a></li>
+        <li><a href="#version-2-3-2015-07">2.3</a></li>
+        <li><a href="#version-2-2-2014-10">2.2</a></li>
+        <li><a href="#version-2-1-2014-05">2.1</a></li>
+        <li><a href="#version-2-0-2013-08">2.0</a></li>
+        <li><a href="#version-1-1-2013-04">1.1</a></li>
+        <li><a href="#version-1-0-2012-06">1.0</a></li>
       </ul>
     </div>
   </div>
@@ -215,5 +259,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
