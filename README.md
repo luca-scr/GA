@@ -1,4 +1,4 @@
-# GA <img src="images/logo.png" align="right" width="100px" />
+# GA <img src="images/logo.png" align="right" width="100px " alt=""/>
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/GA)](https://cran.r-project.org/package=GA)
 [![CRAN\_MonthlyDownloads](http://cranlogs.r-pkg.org/badges/GA)](https://cran.r-project.org/package=GA)
