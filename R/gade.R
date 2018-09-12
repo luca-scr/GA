@@ -131,7 +131,6 @@ print.summary.de <- function(x, digits = getOption("digits"), ...)
   
   cat(cli::rule(left = crayon::bold("Differential Evolution"), 
                 width = min(getOption("width"),40)), "\n\n")
-
   cat("DE settings: \n")
   cat(paste("Type                  = ", x$type, "\n"))
   cat(paste("Population size       = ", x$popSize, "\n"))

@@ -1,9 +1,11 @@
-# Version 3.1.2 (2018-07) NOT ON CRAN
+# Version 3.1.2 (2018-09) NOT ON CRAN
 
 - Added function `de()` implementing Differential Evolution based on the 
   description in Simon (2013) Evolutionary Optimization Algorithms. 
 - Bug fix in C++ code calling `pow()` function.
 - Bug fix in `gails()` when suggestions are provided.
+- Long outputs in summary() function calls are shortened.
+- Fix a bug in gaperm_pbxCrossover()
 
 # Version 3.1 (2018-05)
 

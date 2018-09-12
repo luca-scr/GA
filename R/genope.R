@@ -723,7 +723,7 @@ gaperm_pbxCrossover_R <- function(object, parents)
   #
   for(j in 1:2)
      { pos <- which(is.na(children[j,]))
-       val <- setdiff(parents[-j,], children[j,cxPoints])
+       val <- setdiff(parents[j,], children[j,cxPoints])
        children[j,pos] <- val
      }
   #

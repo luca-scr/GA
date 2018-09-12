@@ -1345,8 +1345,7 @@ List gaperm_pbxCrossover_Rcpp(RObject object, IntegerVector parents)
   { 
     IntegerVector ch  = children(j,_);
     IntegerVector pos = which_asR(is_na(ch));
-    IntegerVector po = parentsPop(abs(j-1),_); 
-    IntegerVector val = as<IntegerVector>(setdiff_asR(po, ch[cxPoints]));
+    IntegerVector val = as<IntegerVector>(setdiff_asR(parentsPop(j,_), ch[cxPoints]));
     ch[pos] = val;
     children(j,_) = ch;
   }
@@ -1374,17 +1373,17 @@ GA <- ga(type = "permutation",
          fitness = tspFitness, distMatrix = D,
          lower = 1, upper = attr(eurodist, "Size"), 
          # popSize = 50, maxiter = 5000, run = 500, 
-         popSize = 10, maxiter = 1)
+         popSize = 10, maxiter = 2)
 
 i = c(1,5); GA@population[i,]
 set.seed(1)
-out1 = gaperm_pbxCrossover_R(GA, i)
+out1 = GA:::gaperm_pbxCrossover_R(GA, i)
 set.seed(1)
-out2 = gaperm_pbxCrossover_Rcpp(GA, i)
+out2 = GA:::gaperm_pbxCrossover_Rcpp(GA, i)
 out1$children - out2$children
 
-microbenchmark(gaperm_pbxCrossover_R(GA, i),
-               gaperm_pbxCrossover_Rcpp(GA, i),
+microbenchmark(GA:::gaperm_pbxCrossover_R(GA, i),
+               GA:::gaperm_pbxCrossover_Rcpp(GA, i),
                unit = "relative")
 */
 
