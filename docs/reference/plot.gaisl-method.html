@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.1.3</span>
       </span>
     </div>
 
@@ -158,12 +158,12 @@ plot(x, y, &#8230;)</pre>
 <span class='fu'>library</span>(<span class='no'>reshape2</span>)
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/reshape2/topics/melt'>melt</a></span>(<span class='no'>out</span>, <span class='kw'>id.var</span> <span class='kw'>=</span> <span class='st'>"iter"</span>)
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>df</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>iter</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>variable</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>variable</span>)) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>xlab</a></span>(<span class='st'>"Generation"</span>) +  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>ylab</a></span>(<span class='st'>"Fitness values"</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_path'>geom_line</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.8</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_brewer'>scale_colour_brewer</a></span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"Paired"</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_bw</a></span>() +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>theme</a></span>(<span class='kw'>legend.title</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/element'>element_blank</a></span>())
+<span class='fu'><a href='ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>df</span>, <span class='fu'><a href='ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>iter</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>variable</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>variable</span>)) +
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span>(<span class='st'>"Generation"</span>) +  <span class='fu'><a href='ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span>(<span class='st'>"Fitness values"</span>) +
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.8</span>) +
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"Paired"</span>) +
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span>() +
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>legend.title</span> <span class='kw'>=</span> <span class='fu'><a href='ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span>())
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

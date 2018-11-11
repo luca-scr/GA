@@ -1,6 +1,6 @@
 Package: GA
-Version: 3.1.2
-Date: 2018-09-12
+Version: 3.1.3
+Date: 2018-11-11
 Title: Genetic Algorithms
 Description: Flexible general-purpose toolbox implementing genetic algorithms (GAs) for stochastic optimisation. Binary, real-valued, and permutation representations are available to optimize a fitness function, i.e. a function provided by users depending on their objective function. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 Authors@R: c(
@@ -18,4 +18,4 @@ BugReports: https://github.com/luca-scr/GA/issues
 Repository: CRAN
 ByteCompile: true
 LazyLoad: yes
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
