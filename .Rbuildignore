@@ -1,4 +1,5 @@
 .DS_Store
+.Rhistory
 ^misc$
 aux$
 log$
@@ -6,7 +7,7 @@ log$
 ^.*\.Rproj$
 ^Makefile$
 ^revdep$
+^cran-comments\.md$
 ^docs$
-^_pkgdown\.yml$
 ^pkgdown$
 ^cran-comments\.md$

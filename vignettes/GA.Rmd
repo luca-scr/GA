@@ -17,9 +17,9 @@ vignette: >
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(fig.align = "center", 
-               # out.width = "90%",
-               fig.width = 5, fig.height = 4.5,
-               dev.args=list(pointsize=8),
+               out.width = "80%",
+               fig.width = 6, fig.height = 5,
+               dev.args=list(pointsize=10),
                par = TRUE, # needed for setting hook 
                collapse = TRUE, # collapse input & ouput code in chunks
                warning = FALSE)

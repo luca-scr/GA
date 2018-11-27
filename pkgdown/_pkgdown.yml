@@ -1,0 +1,31 @@
+title: GA
+
+url: https://github.com/luca-scr/GA
+
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  left:
+    - text: "Vignettes"
+      href: articles/index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/luca-scr/GA
+     
+figures:
+  dev: grDevices::png
+  dpi: 72
+  dev.args: []
+  fig.ext: png
+  fig.width: 7
+  fig.height: 6
+
+authors:
+  Luca Scrucca:
+    href: http://www.stat.unipg.it/luca

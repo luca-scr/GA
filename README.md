@@ -1,9 +1,9 @@
-# GA <img src="images/logo.png" align="right" width="100px " alt=""/>
+# GA <img src="man/figures/logo.png" align="right" width="100px " alt=""/>
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/GA)](https://cran.r-project.org/package=GA)
 [![CRAN\_MonthlyDownloads](http://cranlogs.r-pkg.org/badges/GA)](https://cran.r-project.org/package=GA)
 
-An R package for stochastic optimisation using **Genetic Algorithms**
+An [R](https://www.r-project.org/) package for stochastic optimisation using **Genetic Algorithms**
 
 The GA package provides a flexible general-purpose set of tools for
 implementing genetic algorithms search in both the continuous and
