@@ -24,7 +24,7 @@
 \value{
 The method invisibly return a list with the following components:
 
-\item{iter}{a vector of values specifying the interation.}
+\item{iter}{a vector of values specifying the iteration.}
 \item{summary}{a matrix of best fitness values for each island along the columns.}
 }
 
@@ -36,22 +36,6 @@ The method invisibly return a list with the following components:
 
 \examples{
 # See examples in help(gaisl)
-
-# The following code shows how to obtain graphs using the 
-# ggplot2 plotting system 
-\dontrun{
-GA <- gaisl(...)
-out <- plot(GA)
-library(reshape2)
-df <- melt(out, id.var = "iter")
-library(ggplot2)
-ggplot(df, aes(x = iter, y = value, group = variable, colour = variable)) +
-  xlab("Generation") +  ylab("Fitness values") +
-  geom_line(size = 0.8) +
-  scale_colour_brewer(palette = "Paired") +
-  theme_bw() +
-  theme(legend.title = element_blank())
-}
 }
 
 \keyword{methods}

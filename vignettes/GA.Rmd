@@ -6,7 +6,6 @@ output:
   rmarkdown::html_vignette:
     toc: true
     number_sections: false
-    #  highlight: null
     css: "vignette.css"
 vignette: >
   %\VignetteIndexEntry{A quick tour of GA}
@@ -35,10 +34,10 @@ knit_hooks$set(par = function(before, options, envir)
 
 Genetic algorithms (GAs) are stochastic search algorithms inspired by the basic principles of biological evolution and natural selection. GAs simulate the evolution of living organisms, where the fittest individuals dominate over the weaker ones, by mimicking the biological mechanisms of evolution, such as selection, crossover and mutation.
 
-The R package **GA** provides a collection of general purpose functions for optimization using genetic algorithms. The pakage includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
+The R package **GA** provides a collection of general purpose functions for optimization using genetic algorithms. The package includes a flexible set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 
 This document gives a quick tour of **GA** (version `r packageVersion("GA")`) functionalities. It was written in R Markdown, using the [knitr](https://cran.r-project.org/package=knitr) package for production. 
-Futher details are provided in the papers Scrucca (2013) and Scrucca (2017). See also `help(package="GA")` for a list of available functions and methods. 
+Further details are provided in the papers Scrucca (2013) and Scrucca (2017). See also `help(package="GA")` for a list of available functions and methods. 
 
 ```{r, message = FALSE, echo=1}
 library(GA)
@@ -77,7 +76,7 @@ Rastrigin <- function(x1, x2)
 
 x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
 f <- outer(x1, x2, Rastrigin)
-persp3D(x1, x2, f, theta = 50, phi = 20, color.palette = bl2gr.colors)
+persp3D(x1, x2, f, theta = 50, phi = 20, col.palette = bl2gr.colors)
 filled.contour(x1, x2, f, color.palette = bl2gr.colors)
 ```
 
@@ -419,7 +418,7 @@ Note the improved solution obtained.
 
 # Parallel computing
 
-By default searches performed using the **GA** package occour sequentially. In some cases, particularly when the evaluation of the fitness function is time consuming, parallelisation of the search algorithm may be able to speedup computing time. 
+By default searches performed using the **GA** package occur sequentially. In some cases, particularly when the evaluation of the fitness function is time consuming, parallelisation of the search algorithm may be able to speed up computing time. 
 Starting with version 2.0, the **GA** package provides facilities for implementing parallelisation of genetic algorithms. 
 
 Parallel computing with **GA** requires the following packages to be installed: 
@@ -467,8 +466,6 @@ out <- benchmark(
   replications = 10)
 out$average <- with(out, average <- elapsed/replications)
 out[,c(1:3,5,4)]
-```
-```{r, eval=FALSE}
 ##   test replications elapsed average relative
 ## 1  GA1           10 565.075 56.5075    3.975
 ## 2  GA2           10 142.174 14.2174    1.000
@@ -481,7 +478,7 @@ The results above have been obtained on an iMac, Intel Core i5 at 2.8GHz, with 4
 If a *cluster of multiple machines* is available, `ga()` can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
 
 For instance, suppose that we want to create a cluster of two computers having IP addresses `141.250.100.1` and `141.250.105.3`, respectively. For each computer we require 8 cores, so we aim at having a cluster of 16 cores evenly distributed on the two machines.
-Note that comunication between the master worker and the cluster nodes is done via SSH, so you should configure ssh to use password-less login. For more details see McCallum and Weston (2011, Chapter 2). 
+Note that communication between the master worker and the cluster nodes is done via SSH, so you should configure ssh to use password-less login. For more details see McCallum and Weston (2011, Chapter 2). 
 
 ```{r, eval=FALSE}
 library(doParallel)
@@ -503,7 +500,7 @@ GA5 <- ga(type = "real-valued",
           popSize = 50, maxiter = 100, monitor = FALSE,
           seed = 12345, parallel = cl)
 ```
-Note that in this case the cluster must be explicitely stopped with the command:
+Note that in this case the cluster must be explicitly stopped with the command:
 ```{r, eval=FALSE}
 stopCluster(cl)
 ```
@@ -511,7 +508,7 @@ stopCluster(cl)
 
 # Island evolution
 
-GAs can be designed to evolve using an Island evolution approach. Here the population is partitioned in a set of subpopulations (islands) in which isolated GAs are executed on separated processor runs. Occasionally, some individuals from an island migrate to another island, thus allowing subpopulations to share genetic material
+GAs can be designed to evolve using an Island evolution approach. Here the population is partitioned in a set of sub-populations (islands) in which isolated GAs are executed on separated processor runs. Occasionally, some individuals from an island migrate to another island, thus allowing sub-populations to share genetic material
 
 This approach is implemented in the `gaisl()` function, which has the same input arguments as the `ga()` function, with the addition of the following argument:
 
@@ -597,12 +594,6 @@ forget(mfitness)
 ```
 
 
---------------------
-```{r}
-sessionInfo()
-```
---------------------
-
 # References
 
 McCallum, E. and Weston, S. (2011) *Parallel R*. O’Reilly Media.
@@ -612,3 +603,8 @@ Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. *Journal of Statis
 Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. *The R Journal*, 9/1, 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008
 
 
+----
+
+```{r}
+sessionInfo()
+```

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
   background-color: #fff;
   margin: 1em auto;
@@ -5,7 +7,7 @@ body {
   overflow: visible;
   padding-left: 2em;
   padding-right: 2em;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.35;
 }
@@ -16,7 +18,7 @@ body {
 
 #TOC {
   clear: both;
-  margin: 0 0 10px 10px;
+  margin: 10px 10px 20px 10px;
   padding: 4px;
   width: 400px;
   border: 1px solid #CCCCCC;
@@ -42,33 +44,36 @@ body {
   }
   #TOC li {
     line-height: 16px;
+    list-style: square outside;
   }
 
 table {
   margin: 1em auto;
   border-width: 1px;
   border-color: #DDDDDD;
-  border-style: outset;
-  border-collapse: collapse;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
 }
+
+th {
+  border-bottom: 1px solid #111;
+}
+
 table th {
-  border-width: 2px;
+  border-width: 1px;
   padding: 5px;
-  border-style: inset;
 }
+
 table td {
   border-width: 1px;
-  border-style: inset;
-  line-height: 18px;
+  line-height: 16px;
   padding: 5px 5px;
 }
-table, table th, table td {
-  border-left-style: none;
-  border-right-style: none;
-}
+
 table thead, table tr.even {
   background-color: #f7f7f7;
 }
+
 
 p {
   margin: 0.5em 0;
@@ -127,47 +132,52 @@ img {
 
 h1 {
   padding-top: 10px;
-  border-bottom: 4px solid #f7f7f7;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #f7f7f7;
   margin-top: 0;
-  font-size: 150%;
-  line-height: 30px;
+  font-size: 120%;
+  line-height: 10px;
+  color: rgb(33,33,33);
 }
 
 h1.title {
-  color: rgb(46,90,136);
   font-size: 200%;
   line-height: 40px;
 }
 
 
 h2 {
-  border-bottom: 3px solid #f7f7f7;
   padding-top: 10px;
-  padding-bottom: 2px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #f7f7f7;
   margin-left: 4px;
-  font-size: 120%;
+  font-size: 110%;
+  color: rgb(33,33,33);
+}
+
+h2.title {
+  font-size: 110%;
+  line-height: 10px;
 }
 
 h3 {
   border-bottom: 2px solid #f7f7f7;
   padding-top: 10px;
   margin-left: 8px;
-  font-size: 110%;
-}
-
-h3.subtitle {
-  color: rgb(16,78,139);
+  font-size: 105%;
+  color: rgb(33,33,33);
 }
 
 h4 {
   border-bottom: 1px solid #f7f7f7;
   margin-left: 12px;
   font-size: 100%;
+  color: rgb(33,33,33);
 }
 
 h4.author { 
   border-bottom: 0;
-  color: rgb(77,77,77);  
+  color: rgb(77,77,77);
 }
 
 h4.date { 
@@ -179,6 +189,7 @@ h4.date {
 h5, h6 {
   border-bottom: 1px solid #ccc;
   font-size: 105%;
+  color: rgb(33,33,33);
 }
 
 address{
@@ -204,7 +215,7 @@ a {
     text-decoration: underline; }
 
 code {
-  font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', Consolas, Monaco, monospace;
+  font-family: 'DejaVu Sans Mono', Consolas, Monaco, monospace;
   color: rgb(77,77,77);
   font-size: 85%;
 }
@@ -216,7 +227,7 @@ p > code, li > code {
 pre, code {
   background-color: #F8F8F8;
   border-radius: 3px;
-  color: #333;
+  color: #333333;
 }
 pre {
   white-space: pre-wrap;    /* Wrap long lines */
@@ -239,17 +250,22 @@ hi {
 }
 
 /* Class described in https://benjeffrey.com/posts/pandoc-syntax-highlighting-css
-   Colours from https://gist.github.com/robsimmons/1172277 */
-code > span.kw { color: rgb(23,74,133); font-weight: bold; } /* Keyword */
-code > span.dt { color: #4075AD; } /* DataType */
-code > span.dv { color: #555; } /* DecVal (decimal values) */
-/* code > span.bn { color: #d14; } /* BaseN */
-/* code > span.fl { color: #d14; } /* Float */
-/* code > span.ch { color: #d14; } /* Char */
-code > span.st { color: #407546; } /* String */
-code > span.co { color: #888888; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* OtherToken */
-code > span.al { color: #ff0000; font-weight: bold; } /* AlertToken /*
-code > span.fu { color: #900; font-weight: bold; } /* Function calls */ 
-code > span.er { color: #a61717; background-color: #e3d2d2; } /* ErrorTok */
+   Colours from https://gist.github.com/robsimmons/1172277 
+*/
+code span.al { color: rgb(255,255,255); font-weight: bold; } /* Alert */
+code span.an { font-style: italic; } /* Annotation */
+code span.cf { font-weight: bold; } /* ControlFlow */
+code span.co { color: rgb(112,112,112); font-style: normal; } /* Comment */
+code span.cv { font-style: italic; } /* CommentVar */
+code span.do { font-style: italic; } /* Documentation */
+code span.dt { color: #4075AD; }  /* DataType */
+/* code span.dt { text-decoration: underline; } */
+code span.dv { color: rgb(85,85,85); } /* DecVal (decimal values) */
+code span.er { color: rgb(166,23,23); font-weight: bold; } /* Error */
+code span.in { font-style: italic; } /* Information */
+code span.kw { font-weight: bold; color: rgb(23,74,133);} /* Keyword */
+/* code span.ot { color: #007020; } /* OtherToken */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.st { color: rgb(85,85,85); font-style: italic; } /* String */
+code span.wa { font-style: italic; } /* Warning */
 

@@ -2,7 +2,7 @@
 \docType{class}
 \alias{numericOrNA-class}
 
-\title{Virtual Class "numericOrNA" - Simple Class for subassignment Values}
+\title{Virtual Class "numericOrNA" - Simple Class for sub-assignment Values}
 
 \description{The class \code{"numericOrNA"} is a simple class union 
   (\code{\link{setClassUnion}}) of \code{"numeric"} and \code{"logical"}.

@@ -6,19 +6,21 @@
 
 # Note: this file must be named to alphabetically follow ga.R
 
-de <- function(type = "real-valued",
-               fitness, ...,
+de <- function(fitness,
                lower, upper,
-               selection = gareal_de,
+               popSize = 10*d,
+               stepsize = 0.8,
                pcrossover = 0.5,
-               stepsize = 0.8) 
+               ...) 
 {
-
   call <- match.call()
   args <- list(...)
+  args$type <- "real-valued"
   args$nBits <- NULL
-  args$selection <- function(...) selection(..., F = stepsize, p = pcrossover)
-  args$pcrossover <- 0
+  # DE selection including crossover
+  args$selection <- function(...) 
+    gareal_de(..., F = stepsize, p = pcrossover)
+  args$pcrossover <- 0 # skip GA crossover
   if(is.null(args$elitism))
     args$elitism <- 0
   if(is.null(args$pmutation))
@@ -28,11 +30,17 @@ de <- function(type = "real-valued",
   if(is.null(args$monitor) & interactive())
     args$monitor <- deMonitor 
   
+  lower <- as.vector(lower)
+  upper <- as.vector(upper)
+  stopifnot(length(lower) == length(upper))
+  d <- length(lower)
+  popSize <- as.numeric(popSize)
+  
   object <- do.call("ga", c(args, 
-                            list(type = type, 
-                                 fitness = fitness, 
+                            list(fitness = fitness, 
                                  lower = lower, 
-                                 upper = upper)))
+                                 upper = upper,
+                                 popSize = popSize)))
   object <- as(object, "de")
   object@call <- call
   object@pcrossover <- pcrossover
@@ -54,9 +62,10 @@ setClass(Class = "de",
                         suggestions = "matrix",
                         population = "matrix",
                         elitism = "numeric", 
+                        stepsize = "numericOrNA",
                         pcrossover = "numeric",
                         pmutation = "numeric", 
-                        stepsize = "numericOrNA",
+                        optim = "logical",
                         fitness = "numericOrNA",
                         summary = "matrix",
                         bestSol = "list",
@@ -107,9 +116,10 @@ summary.de <- function(object, ...)
               popSize = object@popSize,
               maxiter = object@maxiter,
               elitism = object@elitism,
+              stepsize = if(is.na(object@stepsize)) 
+                            "runif(0.5,1.0)" else object@stepsize,
               pcrossover = object@pcrossover,
               pmutation = object@pmutation,
-              stepsize = if(is.na(object@stepsize)) "runif(0.5,1.0)" else object@stepsize,
               domain = domain,
               suggestions = suggestions,
               iter = object@iter,
@@ -136,9 +146,9 @@ print.summary.de <- function(x, digits = getOption("digits"), ...)
   cat(paste("Population size       = ", x$popSize, "\n"))
   cat(paste("Number of generations = ", x$maxiter, "\n"))
   cat(paste("Elitism               = ", x$elitism, "\n"))
+  cat(paste("Stepsize              = ", format(x$stepsize, digits = digits), "\n"))
   cat(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
   cat(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
-  cat(paste("Stepsize              = ", format(x$stepsize, digits = digits), "\n"))
   #
   cat(paste("Search domain = \n"))
   do.call(".printShortMatrix", 

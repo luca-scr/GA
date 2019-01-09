@@ -290,18 +290,18 @@ bl2gr.colors <- function (n)
   palette(n)
 }
 
-persp3D <- function(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3, xlim = range(x, finite = TRUE), ylim = range(y, finite = TRUE), zlim = range(z, finite = TRUE), levels = pretty(zlim, nlevels), nlevels = 20, color.palette = jet.colors, border = NA, ticktype = "detailed", xlab = NULL, ylab = NULL, zlab = NULL, ...)
+persp3D <- function(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3, xlim = range(x, finite = TRUE), ylim = range(y, finite = TRUE), zlim = range(z, finite = TRUE), levels = pretty(zlim, nlevels), nlevels = 20, col.palette = jet.colors, border = NA, ticktype = "detailed", xlab = NULL, ylab = NULL, zlab = NULL, ...)
 {
 #----------------------------------------------------------------------------#  
-# 3D plot, i.e. perspective plot, with different levels in different colors
+# 3D plot, i.e. perspective plot, with different levels in different colours
 #
 # Example
 # y <- x <- seq(-10, 10, length=60)
 # f <- function(x,y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
 # z <- outer(x, y, f)
 # persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5)
-# persp3D(x, y, z, color.palette = heat.colors, phi = 30, theta = 225, box = TRUE, border = NA, shade = .4)
-# persp3D(x, y, z, color.palette = terrain.colors, phi = 30, theta = 225, box = FALSE, border = NA, shade = .4)
+# persp3D(x, y, z, col.palette = heat.colors, phi = 30, theta = 225, box = TRUE, border = NA, shade = .4)
+# persp3D(x, y, z, col.palette = terrain.colors, phi = 30, theta = 225, box = FALSE, border = NA, shade = .4)
 #
 # x1 = seq(-3,3,length=50)
 # x2 = seq(-3,3,length=50)
@@ -343,7 +343,7 @@ persp3D <- function(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3, xlim = r
   # getting the value of the midpoint
   zz <- (z[-1,-1] + z[-1,-ncol(z)] + z[-nrow(z),-1] + z[-nrow(z),-ncol(z)])/4
   # set colors for levels
-  cols <- color.palette(length(levels)-1)
+  cols <- col.palette(length(levels)-1)
   zzz <- cut(zz, breaks = levels, labels = cols)
   # plot
   out <- persp(x, y, z, theta = theta, phi = phi, d = d, expand = expand,
@@ -351,7 +351,7 @@ persp3D <- function(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3, xlim = r
                xlim = xlim, ylim = ylim, zlim = zlim,
                border = border, ticktype = ticktype, 
                xlab = xlab, ylab = ylab, zlab = zlab, ...)
-  # add breaks and colors for a legend
+  # add breaks and colours for a legend
   out <- list(persp = out, levels = levels, colors = cols)
   invisible(out)
 }

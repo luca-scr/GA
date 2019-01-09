@@ -3,9 +3,9 @@
 \alias{spectral.colors}
 \alias{bl2gr.colors}
 
-\title{Colors palettes}
+\title{Colours palettes}
 
-\description{Functions for creating a vector of colors from pre-speficied palettes.}
+\description{Functions for creating a vector of colours from pre-specified palettes.}
 
 \usage{
 jet.colors(n)
@@ -16,15 +16,15 @@ bl2gr.colors(n)
 }
 
 \arguments{
-  \item{n}{a numerical value specifying the number of colors in the palette.}
+  \item{n}{a numerical value specifying the number of colours in the palette.}
 }
 
-\details{\code{jet.colors()} creates a palette of colors which tend to have high brightness and not uniform luminance. Furthermore, the brightest colors, yellow and cyan, are used for intermediate data values, and this has the effect of emphasizing uninteresting (and arbitrary) values while demphasizing the extremes. For these reasons this popular palette is not recommended.\cr
-\code{spectral.colors()} creates a palette based on ColorBrewer \url{http://colorbrewer2.org}, so the resulting colors have a much uniform luminance.\cr
-The \code{bl2gr.colors()} palette returns a palette of colors from blue to green.
+\details{\code{jet.colors()} creates a palette of colours which tend to have high brightness and not uniform luminance. Furthermore, the brightest colours, yellow and cyan, are used for intermediate data values, and this has the effect of emphasizing uninteresting (and arbitrary) values while de-emphasizing the extremes. For these reasons this popular palette is not recommended.\cr
+\code{spectral.colors()} creates a palette based on ColorBrewer \url{http://colorbrewer2.org}, so the resulting colours have a much uniform luminance.\cr
+The \code{bl2gr.colors()} palette returns a palette of colours from blue to green.
 }
 
-\value{Returns a character vector of colors encoded in hexadecimal values.} 
+\value{Returns a character vector of colours encoded in hexadecimal values.} 
 
 %\references{}
 %\author{}

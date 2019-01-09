@@ -29,7 +29,8 @@ Objects can be created by calls to the \code{\link{gaisl}} function.
     \item{\code{elitism}}{the number of best fitness individuals to survive at each generation;}
     \item{\code{pcrossover}}{the crossover probability;}
     \item{\code{pmutation}}{the mutation probability;}
-    \item{\code{islands}}{a list containing the "ga" objects corresponding to each island GA evolution;}
+    \item{\code{optim}}{a logical specifying whether or not a local search using general-purpose optimisation algorithms should be used;}
+    \item{\code{islands}}{a list containing the objects of class \code{ga} corresponding to each island GA evolution;}
     \item{\code{summary}}{a list of matrices of summary statistics for fitness values at each iteration (along the rows). Each element of the list corresponds to the evolution of an island;}
     \item{\code{fitnessValues}}{a list of best fitness values found in each island at the final iteration;}
     \item{\code{solutions}}{a list of matrices, one for each island, containing the values of the decision variables giving the best fitness at the final iteration;}

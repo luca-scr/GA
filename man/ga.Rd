@@ -113,7 +113,7 @@ For a single machine with multiple cores, possible values are:
 In all the cases described above, at the end of the search the cluster is automatically stopped by shutting down the workers.
 
 If a cluster of multiple machines is available, evaluation of the fitness function can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
-In this case the cluster must be explicitely stopped with \code{\link[parallel]{stopCluster}}.
+In this case the cluster must be explicitly stopped with \code{\link[parallel]{stopCluster}}.
 }
 
 \item{monitor}{a logical or an R function which takes as input the current state of the \code{ga-class} object and show the evolution of the search. By default, for interactive sessions the function \code{\link{gaMonitor}} prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
@@ -225,8 +225,8 @@ Rastrigin <- function(x1, x2)
 
 x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
 f <- outer(x1, x2, Rastrigin)
-persp3D(x1, x2, f, theta = 50, phi = 20)
-filled.contour(x1, x2, f, color.palette = jet.colors)
+persp3D(x1, x2, f, theta = 50, phi = 20, col.palette = bl2gr.colors)
+filled.contour(x1, x2, f, color.palette = bl2gr.colors)
 
 GA <- ga(type = "real-valued", fitness =  function(x) -Rastrigin(x[1], x[2]),
          lower = c(-5.12, -5.12), upper = c(5.12, 5.12), 

@@ -120,7 +120,7 @@ For a single machine with multiple cores, possible values are:
 In all the cases described above, at the end of the search the cluster is automatically stopped by shutting down the workers.
 
 If a cluster of multiple machines is available, evolution of GAs on each island can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
-In this case the cluster must be explicitely stopped with \code{\link[parallel]{stopCluster}}.
+In this case the cluster must be explicitly stopped with \code{\link[parallel]{stopCluster}}.
 }
 
 \item{monitor}{a logical or an R function which takes as input the current state of the \code{gaisl-class} object and show the evolution of the search in different epochs. By default, for interactive sessions, the function \code{\link{gaislMonitor}} prints the average and best fitness values at each epoch for each island. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}

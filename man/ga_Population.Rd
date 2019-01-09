@@ -18,11 +18,11 @@
 \description{Functions for creating a random initial population to be used in genetic algorithms.}
 
 \usage{
-gabin_Population(object, ...)
+gabin_Population(object, \dots)
 
-gareal_Population(object, ...)
+gareal_Population(object, \dots)
 
-gaperm_Population(object, ...) 
+gaperm_Population(object, \dots)
 }
 
 \arguments{

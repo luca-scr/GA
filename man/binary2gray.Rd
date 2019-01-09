@@ -31,7 +31,7 @@ Gray encoding allows to obtain binary strings not affected by the well-known Ham
 # binary coding
 decimal2binary(15, 5)
 decimal2binary(16, 5)
-# Moving from 15 to 16 (or viceversa) all five bits need to be changed,
+# Moving from 15 to 16 (or vice versa) all five bits need to be changed,
 # but using Gray encoding the two binary strings differ by one bit.
 binary2gray(decimal2binary(15, 5))
 binary2gray(decimal2binary(16, 5))

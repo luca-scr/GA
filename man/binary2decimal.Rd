@@ -2,9 +2,9 @@
 \alias{binary2decimal}
 \alias{decimal2binary}
 
-\title{Binary encoding of decimal numbers and viceversa.}
+\title{Binary encoding of decimal numbers and vice versa.}
 
-\description{Functions for computing binary to decimal conversion of numbers and viceversa.}
+\description{Functions for computing binary to decimal conversion of numbers and vice versa.}
 
 \usage{
 decimal2binary(x, length)

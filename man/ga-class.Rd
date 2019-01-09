@@ -27,6 +27,7 @@ Objects can be created by calls to the \code{\link{ga}} function.
     \item{\code{elitism}}{the number of best fitness individuals to survive at each generation;}
     \item{\code{pcrossover}}{the crossover probability;}
     \item{\code{pmutation}}{the mutation probability;}
+    \item{\code{optim}}{a logical specifying whether or not a local search using general-purpose optimisation algorithms should be used;}
     \item{\code{fitness}}{the values of fitness function for the current (or final) population;}
     \item{\code{summary}}{a matrix of summary statistics for fitness values at each iteration (along the rows);}
     \item{\code{bestSol}}{if \code{keepBest = TRUE}, the best solutions at each iteration;}

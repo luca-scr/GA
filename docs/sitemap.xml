@@ -16,6 +16,12 @@
     <loc>https://github.com/luca-scr/GA/reference/binary2gray.html</loc>
   </url>
   <url>
+    <loc>https://github.com/luca-scr/GA/reference/de-class.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/reference/de.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/luca-scr/GA/reference/ga-class.html</loc>
   </url>
   <url>
@@ -64,10 +70,16 @@
     <loc>https://github.com/luca-scr/GA/reference/persp3D.html</loc>
   </url>
   <url>
+    <loc>https://github.com/luca-scr/GA/reference/plot.de-method.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/luca-scr/GA/reference/plot.ga-method.html</loc>
   </url>
   <url>
     <loc>https://github.com/luca-scr/GA/reference/plot.gaisl-method.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/reference/summary.de-method.html</loc>
   </url>
   <url>
     <loc>https://github.com/luca-scr/GA/reference/summary.ga-method.html</loc>

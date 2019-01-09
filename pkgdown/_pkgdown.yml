@@ -1,3 +1,12 @@
+# pkgdown definition file <http://pkgdown.r-lib.org>
+#
+# Install:
+# install.packages("pkgdown")
+#
+# Usage:
+# pkgdown::build_site()
+# 
+
 title: GA
 
 url: https://github.com/luca-scr/GA
@@ -8,8 +17,8 @@ template:
 
 navbar:
   left:
-    - text: "Vignettes"
-      href: articles/index.html
+    - text: "Vignette"
+      href: articles/GA.html
     - text: "Reference"
       href: reference/index.html
     - text: "News"
