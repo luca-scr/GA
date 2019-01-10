@@ -296,7 +296,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       if(is.function(postFitness))
         { 
           # object <- postFitness(object, ...) 
-          object <- do.call(postFitness, c(object, callArgs)) 
+          object <- do.call(postFitness, c(object, callArgs))
           Fitness <- object@fitness
           Pop <- object@population
       }

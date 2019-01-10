@@ -67,8 +67,9 @@ ggplot(out) +
   scale_fill_manual(breaks = "median",
                     values = adjustcolor("green3", alpha.f = 0.1)) +
   guides(fill = "none", 
-         colour = guide_legend(override.aes = list(fill = c(NA, NA, adjustcolor("green3", alpha.f = 0.1)),
-                                                   pch = c(19,1,NA)))) +
+         colour = guide_legend(override.aes = 
+                                 list(fill = c(NA, NA, adjustcolor("green3", alpha.f = 0.1)),
+                                       pch = c(19,1,NA)))) +
   theme_bw() +
   theme(legend.title = element_blank(), 
         legend.pos = "top",

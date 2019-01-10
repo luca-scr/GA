@@ -7,7 +7,6 @@ log$
 ^.*\.Rproj$
 ^Makefile$
 ^revdep$
-^cran-comments\.md$
 ^docs$
 ^pkgdown$
 ^cran-comments\.md$

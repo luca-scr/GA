@@ -1,5 +1,6 @@
-# GA 3.1.2 (2019-01)
+# GA 3.2 (2019-01)
 
+- Added website using pkgdown.
 - Added a section to vignette on integer optimisation.
 - Added function `de()` implementing Differential Evolution based on the description in Simon (2013) Evolutionary Optimization Algorithms. 
 - Bug fix in C++ code calling `pow()` function.
