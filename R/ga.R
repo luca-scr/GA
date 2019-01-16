@@ -52,6 +52,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
     { stop("The maximum number of iterations must be at least 1.") }
   if(elitism > popSize) 
     { stop("The elitism cannot be larger that population size.") }
+  elitism <- as.integer(elitism)
   if(pcrossover < 0 | pcrossover > 1)
     { stop("Probability of crossover must be between 0 and 1.") }
   if(is.numeric(pmutation))

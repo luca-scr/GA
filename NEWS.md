@@ -1,3 +1,7 @@
+# GA 3.2.1 (2019-01)
+
+- Force `elitism` argument to integer.
+
 # GA 3.2 (2019-01)
 
 - Added website using pkgdown.
