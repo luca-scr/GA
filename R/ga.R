@@ -315,7 +315,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         
       # selection
       if(is.function(selection))
-        { sel <- selection(object)
+        { 
+          # sel <- selection(object)
+          sel <- do.call(selection, c(object, callArgs))
           Pop <- sel$population
           Fitness <- sel$fitness
         }

@@ -28,14 +28,14 @@ de <- function(fitness,
   if(is.null(args$optim))
     args$optim <- FALSE
   if(is.null(args$monitor) & interactive())
-    args$monitor <- deMonitor 
+    args$monitor <- deMonitor
   
   lower <- as.vector(lower)
   upper <- as.vector(upper)
   stopifnot(length(lower) == length(upper))
   d <- length(lower)
   popSize <- as.numeric(popSize)
-  
+
   object <- do.call("ga", c(args, 
                             list(fitness = fitness, 
                                  lower = lower, 
@@ -191,13 +191,15 @@ function(object, ...)
 
 gareal_de <- function(object, F = 0.8, p = 0.5, ...)
 {
-  if(gaControl("useRcpp"))
-    gareal_de_Rcpp(object, fitness = object@call$fitness, F, p)
-  else
-    gareal_de_R(object, fitness = object@call$fitness, F, p)
+  # browser()
+
+  # if(gaControl("useRcpp"))
+  #   gareal_de_Rcpp(object, fitness = object@call$fitness, F, p, ...)
+  # else
+    gareal_de_R(object, fitness = object@call$fitness, ..., F = F, p = p)
 }
 
-gareal_de_R <- function(object, fitness,
+gareal_de_R <- function(object, fitness, ...,
                         F = 0.8, p = 0.5)
 {
 # Differential Evolution operator based on the description in Simon (2013)
@@ -210,9 +212,9 @@ gareal_de_R <- function(object, fitness,
 # F = stepsize from the interval [0,2]; if NA a random value is selected in
 #     [0.5, 1.0] (dithering)
 
+  callArgs <- list(...)
   p <- max(0, min(p, 1))
   F <- max(0, min(F, 2))
-  
   pop <- object@population
   f   <- object@fitness
   # fitness <- eval(object@call$fitness) # extract the fitness function
@@ -222,28 +224,27 @@ gareal_de_R <- function(object, fitness,
   nseq <- seq_len(n)
   lb <- object@lower
   ub <- object@upper
-  
   for(i in popseq)
   {
     r <- sample(popseq, size = 3, replace = FALSE)
     Fi <- if(is.na(F)) runif(1, 0.5, 1) else F
     v <- pop[r[1],] + Fi*(pop[r[2],] - pop[r[3],])
     J <- sample(nseq, size = 1)
-    x <- pop[i,]
+    sol <- pop[i,]
     for(j in nseq)
     {
-      if(runif(1) < p | j == J) x[j] <- v[j]
+      if(runif(1) < p | j == J) sol[j] <- v[j]
       # reset to random amount if outside the bounds
-      if(x[j] < lb[j])
-        x[j] <- lb[j] + runif(1)*(ub[j] - lb[j])
-      if(x[j] > ub[j])
-        x[j] <- ub[j] - runif(1)*(ub[j] - lb[j])
+      if(sol[j] < lb[j])
+        sol[j] <- lb[j] + runif(1)*(ub[j] - lb[j])
+      if(sol[j] > ub[j])
+        sol[j] <- ub[j] - runif(1)*(ub[j] - lb[j])
     }
-    fx <- fitness(x)
-    if(fx > f[i])
+    fsol <- do.call(fitness, c(list(sol), callArgs))
+    if(fsol > f[i])
     {
-      f[i] <- fx
-      pop[i,] <- x
+      f[i] <- fsol
+      pop[i,] <- sol
     }
   }
   out <- list(population = pop, fitness = f)

@@ -45,7 +45,7 @@ The DE selection operator is defined by \code{\link{gareal_de}} with parameters 
 
 \references{
 
-Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
+Scrucca L. (2013) GA: A Package for Genetic Algorithms in R.
 \emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
 
 Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
@@ -133,6 +133,23 @@ filled.contour(x1, x2, f, color.palette = bl2gr.colors,
                plot.axes = { axis(1); axis(2); 
                              points(DE@solution, 
                                     col = "yellow", pch = 3, lwd = 2) })
+                                    
+# 5) Curve fitting example from JSS paper (Scrucca, 2013)
+
+\dontrun{
+data(trees, package = "spuRs")
+tree <- trees[trees$ID=="1.3.11", 2:3] 
+richards <- function(x, theta) 
+  { theta[1]*(1 - exp(-theta[2]*x))^theta[3] }
+fitnessL2 <- function(theta, x, y) 
+  { -sum((y - richards(x, theta))^2) }
+DE <- de(fitness = fitnessL2, x = tree$Age, y = tree$Vol, 
+         lower = c(3000, 0, 2), upper = c(4000, 1, 4),
+         popSize = 500, maxiter = 1000, run = 100, 
+         names = c("a", "b", "c"))
+summary(DE)
+}
+
 }
 
 \keyword{optimize}

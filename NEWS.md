@@ -1,6 +1,7 @@
-# GA 3.2.1 (2019-01)
+# GA 3.2.1 (2019-01) NOT ON CRAN
 
-- Force `elitism` argument to integer.
+- Forced `elitism` argument to be an integer.
+- Fixed passing further fitness function arguments in `de()`.
 
 # GA 3.2 (2019-01)
 

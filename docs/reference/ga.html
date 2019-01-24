@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.2.1</span>
       </span>
     </div>
 
@@ -337,10 +337,10 @@ In this case the cluster must be explicitly stopped with <code><a href='https://
 #&gt; 
 #&gt; GA results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -1.000007 
+#&gt; Fitness function value = -1.00179 
 #&gt; Solution = 
-#&gt;                x1
-#&gt; [1,] 7.301569e-06</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-2.png' alt='' width='504' height='432' /></div><div class='input'>
+#&gt;               x1
+#&gt; [1,] 0.001791815</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-2.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/curve'>curve</a></span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/abline'>abline</a></span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-3.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='co'># 2) one-dimensional function</span>
 <span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  (<span class='no'>x</span>^<span class='fl'>2</span>+<span class='no'>x</span>)*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='no'>x</span>) <span class='co'># -10 &lt; x &lt; 10</span>
@@ -375,7 +375,7 @@ In this case the cluster must be explicitly stopped with <code><a href='https://
 #&gt; Fitness function value = 47.70562 
 #&gt; Solution = 
 #&gt;            x1
-#&gt; [1,] 6.560779</div><div class='input'>
+#&gt; [1,] 6.560508</div><div class='input'>
 <span class='fu'>monitor</span>(<span class='no'>GA</span>)</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/abline'>abline</a></span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>GA</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='ga-5.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='co'># 3) two-dimensional Rastrigin function</span>
 
@@ -406,10 +406,10 @@ In this case the cluster must be explicitly stopped with <code><a href='https://
 #&gt; 
 #&gt; GA results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -2.392461e-06 
+#&gt; Fitness function value = -9.644702e-06 
 #&gt; Solution = 
-#&gt;                 x1           x2
-#&gt; [1,] -0.0001023414 3.981818e-05</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-8.png' alt='' width='504' height='432' /></div><div class='input'>
+#&gt;                x1            x2
+#&gt; [1,] 0.0001818754 -0.0001246423</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>GA</span>)</div><div class='img'><img src='ga-8.png' alt='' width='504' height='432' /></div><div class='input'>
 # 4) Parallel GA
 # Simple example of an expensive fitness function obtained artificially by
 # introducing a pause statement. 
