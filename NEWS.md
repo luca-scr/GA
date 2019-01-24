@@ -2,6 +2,7 @@
 
 - Forced `elitism` argument to be an integer.
 - Fixed passing further fitness function arguments in `de()`.
+- Fixed passing suggestions in `gaisl()`.
 
 # GA 3.2 (2019-01)
 

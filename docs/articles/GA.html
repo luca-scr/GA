@@ -122,7 +122,7 @@
 <a class="sourceLine" id="cb3-20" title="20"><span class="co">## Fitness function value = 47.70562 </span></a>
 <a class="sourceLine" id="cb3-21" title="21"><span class="co">## Solution = </span></a>
 <a class="sourceLine" id="cb3-22" title="22"><span class="co">##            th</span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">## [1,] 6.560538</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">## [1,] 6.560546</span></a>
 <a class="sourceLine" id="cb3-24" title="24"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(GA)</a></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-2-2.png" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"></a>
@@ -168,11 +168,11 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb7-18" title="18"><span class="co">## upper  5.12  5.12</span></a>
 <a class="sourceLine" id="cb7-19" title="19"><span class="co">## </span></a>
 <a class="sourceLine" id="cb7-20" title="20"><span class="co">## GA results: </span></a>
-<a class="sourceLine" id="cb7-21" title="21"><span class="co">## Iterations             = 276 </span></a>
-<a class="sourceLine" id="cb7-22" title="22"><span class="co">## Fitness function value = -1.117193e-09 </span></a>
+<a class="sourceLine" id="cb7-21" title="21"><span class="co">## Iterations             = 309 </span></a>
+<a class="sourceLine" id="cb7-22" title="22"><span class="co">## Fitness function value = -7.952813e-07 </span></a>
 <a class="sourceLine" id="cb7-23" title="23"><span class="co">## Solution = </span></a>
-<a class="sourceLine" id="cb7-24" title="24"><span class="co">##                 x1           x2</span></a>
-<a class="sourceLine" id="cb7-25" title="25"><span class="co">## [1,] -1.871486e-06 1.459034e-06</span></a>
+<a class="sourceLine" id="cb7-24" title="24"><span class="co">##                x1          x2</span></a>
+<a class="sourceLine" id="cb7-25" title="25"><span class="co">## [1,] 6.319582e-05 -3.8445e-06</span></a>
 <a class="sourceLine" id="cb7-26" title="26"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(GA)</a></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/filled.contour">filled.contour</a></span>(x1, x2, f, <span class="dt">color.palette =</span> bl2gr.colors, </a>
@@ -208,13 +208,13 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb10-5" title="5">          <span class="dt">suggestions =</span> suggestedSol,</a>
 <a class="sourceLine" id="cb10-6" title="6">          <span class="dt">popSize =</span> <span class="dv">50</span>, <span class="dt">maxiter =</span> <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb10-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(GA1<span class="op">@</span>population)</a>
-<a class="sourceLine" id="cb10-8" title="8"><span class="co">##            [,1]       [,2]</span></a>
-<a class="sourceLine" id="cb10-9" title="9"><span class="co">## [1,]  0.2000000  1.5000000</span></a>
-<a class="sourceLine" id="cb10-10" title="10"><span class="co">## [2,] -1.5000000  0.5000000</span></a>
-<a class="sourceLine" id="cb10-11" title="11"><span class="co">## [3,]  1.3757824  0.7345527</span></a>
-<a class="sourceLine" id="cb10-12" title="12"><span class="co">## [4,]  0.5711733  4.8904904</span></a>
-<a class="sourceLine" id="cb10-13" title="13"><span class="co">## [5,]  1.2126961 -1.3124224</span></a>
-<a class="sourceLine" id="cb10-14" title="14"><span class="co">## [6,] -4.9245390 -2.7350876</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-8" title="8"><span class="co">##           [,1]     [,2]</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">## [1,]  0.200000 1.500000</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co">## [2,] -1.500000 0.500000</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="co">## [3,] -3.458683 2.868580</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="co">## [4,]  3.754096 4.689448</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="co">## [5,] -1.796528 1.693326</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co">## [6,]  2.259350 2.057640</span></a></code></pre></div>
 <p>As it can be seen, the first two solutions considered are those provided, whereas the rest is filled randomly as usual. A full search can be obtained as follows:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">GA &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ga.html">ga</a></span>(<span class="dt">type =</span> <span class="st">"real-valued"</span>, </a>
 <a class="sourceLine" id="cb11-2" title="2">         <span class="dt">fitness =</span>  <span class="cf">function</span>(x) <span class="op">-</span><span class="kw">Rastrigin</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>]),</a>
@@ -242,10 +242,10 @@ f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
 <a class="sourceLine" id="cb11-24" title="24"><span class="co">## </span></a>
 <a class="sourceLine" id="cb11-25" title="25"><span class="co">## GA results: </span></a>
 <a class="sourceLine" id="cb11-26" title="26"><span class="co">## Iterations             = 100 </span></a>
-<a class="sourceLine" id="cb11-27" title="27"><span class="co">## Fitness function value = -1.180178e-06 </span></a>
+<a class="sourceLine" id="cb11-27" title="27"><span class="co">## Fitness function value = -2.768691e-08 </span></a>
 <a class="sourceLine" id="cb11-28" title="28"><span class="co">## Solution = </span></a>
-<a class="sourceLine" id="cb11-29" title="29"><span class="co">##                 x1           x2</span></a>
-<a class="sourceLine" id="cb11-30" title="30"><span class="co">## [1,] -4.246831e-06 -7.70092e-05</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-29" title="29"><span class="co">##                 x1            x2</span></a>
+<a class="sourceLine" id="cb11-30" title="30"><span class="co">## [1,] -5.097473e-06 -1.065703e-05</span></a></code></pre></div>
 </div>
 <div id="constrained-optimisation" class="section level1">
 <h1 class="hasAnchor">
