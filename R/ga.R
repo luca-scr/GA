@@ -245,13 +245,6 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       object@population <- Pop
       object@fitness <- Fitness
       
-      # update iterations summary
-      fitnessSummary[iter,] <- gaSummary(object@fitness)
-      object@summary <- fitnessSummary
-  
-      if(is.function(monitor)) 
-        { monitor(object) }
-      
       # Local search optimisation
       if(optim & (type == "real-valued"))
       {
@@ -290,17 +283,22 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         }
       }
       
-      if(keepBest) 
-        { object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),,drop=FALSE]) }
-      
       # apply a user's defined function to update the GA object
       if(is.function(postFitness))
         { 
-          # object <- postFitness(object, ...) 
           object <- do.call(postFitness, c(object, callArgs))
           Fitness <- object@fitness
           Pop <- object@population
       }
+
+      # update iterations summary
+      fitnessSummary[iter,] <- gaSummary(object@fitness)
+      object@summary <- fitnessSummary
+      if(keepBest) 
+        { object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),,drop=FALSE]) }
+
+      if(is.function(monitor)) 
+        { monitor(object) }
 
       # check stopping criteria
       if(iter > 1)

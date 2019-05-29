@@ -134,11 +134,14 @@ filled.contour(x1, x2, f, color.palette = bl2gr.colors,
                              points(DE@solution, 
                                     col = "yellow", pch = 3, lwd = 2) })
                                     
-# 5) Curve fitting example from JSS paper (Scrucca, 2013)
+# 5) Curve fitting example (see Scrucca JSS 2013)
 
 \dontrun{
-data(trees, package = "spuRs")
-tree <- trees[trees$ID=="1.3.11", 2:3] 
+# subset of data from data(trees, package = "spuRs")
+tree <- data.frame(Age = c(2.44, 12.44, 22.44, 32.44, 42.44, 52.44, 62.44, 
+                           72.44, 82.44, 92.44, 102.44, 112.44),
+                   Vol = c(2.2, 20, 93, 262, 476, 705, 967, 1203, 1409, 
+                           1659, 1898, 2106))
 richards <- function(x, theta) 
   { theta[1]*(1 - exp(-theta[2]*x))^theta[3] }
 fitnessL2 <- function(theta, x, y) 
