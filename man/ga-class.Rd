@@ -33,6 +33,8 @@ Objects can be created by calls to the \code{\link{ga}} function.
     \item{\code{bestSol}}{if \code{keepBest = TRUE}, the best solutions at each iteration;}
     \item{\code{fitnessValue}}{the best fitness value at the final iteration;}
     \item{\code{solution}}{the value(s) of the decision variables giving the best fitness at the final iteration.}
+    \item{\code{stud}}{if \code{studLogic = TRUE}, the best individual (the stud) to date;}
+    \item{\code{studFitness}}{if \code{studLogic = TRUE}, the stud's fitness;}
   }
 }
 

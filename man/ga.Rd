@@ -18,7 +18,8 @@ ga(type = c("binary", "real-valued", "permutation"),
    popSize = 50, 
    pcrossover = 0.8, 
    pmutation = 0.1, 
-   elitism = base::max(1, round(popSize*0.05)), 
+   elitism = base::max(1, round(popSize*0.05)),
+   studLogic = FALSE,
    updatePop = FALSE,
    postFitness = NULL,
    maxiter = 100,
@@ -33,6 +34,7 @@ ga(type = c("binary", "real-valued", "permutation"),
                     control = list(fnscale = -1, maxit = 100)),
    keepBest = FALSE,
    parallel = FALSE,
+   vectorize = FALSE,
    monitor = if(interactive()) gaMonitor else FALSE,
    seed = NULL)
 }
@@ -78,6 +80,8 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \item{elitism}{the number of best fitness individuals to survive at each generation. By default the top 5\% individuals will survive at each iteration.}
 
+\item{studLogic}{a logical defaulting to \code{FALSE}. If set at \code{TRUE} the best performing individual (the stud) is always used for crossover operations}
+
 \item{maxiter}{the maximum number of iterations to run before the GA search is halted.}
 
 \item{run}{the number of consecutive generations without any improvement in the best fitness value before the GA is stopped.}
@@ -114,6 +118,10 @@ In all the cases described above, at the end of the search the cluster is automa
 
 If a cluster of multiple machines is available, evaluation of the fitness function can be executed in parallel using all, or a subset of, the cores available to the machines belonging to the cluster. However, this option requires more work from the user, who needs to set up and register a parallel back end. 
 In this case the cluster must be explicitly stopped with \code{\link[parallel]{stopCluster}}.
+}
+
+\item{vectorize}{
+An optional logical argument which allows to specify if the fitness evaluation of the Genetic Algorithm shoud be run by calling \code{apply(X, MARGIN=1, ...)} instead of the explicit \code{for} loop.
 }
 
 \item{monitor}{a logical or an R function which takes as input the current state of the \code{ga-class} object and show the evolution of the search. By default, for interactive sessions the function \code{\link{gaMonitor}} prints the average and best fitness values at each iteration. If set to \code{plot} these information are plotted on a graphical device. Other functions can be written by the user and supplied as argument. In non interactive sessions, by default \code{monitor = FALSE} so any output is suppressed.}
