@@ -8,21 +8,36 @@
 
 <title>Differential Evolution via Genetic Algorithms — de • GA</title>
 
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,13 +45,12 @@
 
 
 
-<meta property="og:title" content="Differential Evolution via Genetic Algorithms — de" />
 
+<meta property="og:title" content="Differential Evolution via Genetic Algorithms — de" />
 <meta property="og:description" content="Maximization of a fitness function using Differential Evolution (DE).
 DE is a population-based evolutionary algorithm for optimisation of fitness functions defined over a continuous parameter space." />
-
 <meta property="og:image" content="https://github.com/luca-scr/GA/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -50,9 +64,10 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,11 +97,10 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/luca-scr/GA">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,6 +111,7 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -108,19 +123,17 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
     </div>
 
     <div class="ref-description">
-    
     <p>Maximization of a fitness function using Differential Evolution (DE).
 DE is a population-based evolutionary algorithm for optimisation of fitness functions defined over a continuous parameter space.</p>
-    
     </div>
 
-    <pre class="usage">de(fitness,
-   lower, upper,
-   popSize = 10*d,
-   stepsize = 0.8,
-   pcrossover = 0.5,
-   &#8230;)</pre>
-    
+    <pre class="usage"><span class='fu'>de</span><span class='op'>(</span><span class='va'>fitness</span>,
+   <span class='va'>lower</span>, <span class='va'>upper</span>,
+   popSize <span class='op'>=</span> <span class='fl'>10</span><span class='op'>*</span><span class='va'>d</span>,
+   stepsize <span class='op'>=</span> <span class='fl'>0.8</span>,
+   pcrossover <span class='op'>=</span> <span class='fl'>0.5</span>,
+   <span class='va'>...</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -149,42 +162,45 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
       <td><p>the stepsize or weighting factor. A value in the interval [0,2], by default set to 0.8. If set at <code>NA</code> a random value is selected in the interval [0.5, 1.0] (so called dithering).</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
-      <td><p>additional arguments to be passed to the fitness function. This allows to write fitness functions that keep some variables fixed during the search.</p></td>
+      <th>...</th>
+      <td><p>additional arguments to be passed to the <code><a href='ga.html'>ga</a></code> function.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Differential Evolution (DE) is a stochastic evolutionary algorithm that optimises multidimensional real-valued fitness functions without requiring the optimisation problem to be differentiable.</p>
 <p>This implimentation follows the description in Simon (2013; Sec. 12.4, and Fig. 12.12) and uses the functionalities available in the <code><a href='ga.html'>ga</a></code> function for Genetic Algorithms.</p>
 <p>The DE selection operator is defined by <code><a href='ga_Selection.html'>gareal_de</a></code> with parameters <code>p = pcrossover</code> and <code>F = stepsize</code>.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Returns an object of class <code>de-class</code>. See <code><a href='de-class.html'>de-class</a></code> for a description of available slots information.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     
-    <p>Scrucca L. (2013) GA: A Package for Genetic Algorithms in R.
-<em>Journal of Statistical Software</em>, 53(4), 1-37, <a href='http://www.jstatsoft.org/v53/i04/'>http://www.jstatsoft.org/v53/i04/</a>.</p>
+
+<p>Scrucca L. (2013) GA: A Package for Genetic Algorithms in R.
+<em>Journal of Statistical Software</em>, 53(4), 1-37, <a href='https://www.jstatsoft.org/v53/i04/'>https://www.jstatsoft.org/v53/i04/</a>.</p>
 <p>Simon D. (2013) <em>Evolutionary Optimization Algorithms</em>. John Wiley &amp; Sons.</p>
 <p>Price K., Storn R.M., Lampinen J.A. (2005) <em>Differential Evolution: A Practical Approach to Global Optimization</em>. Springer.</p>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Luca Scrucca <a href='mailto:luca.scrucca@unipg.it'>luca.scrucca@unipg.it</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='summary.de-method.html'>summary,de-method</a></code>, 
   <code><a href='plot.de-method.html'>plot,de-method</a></code>, 
   <code><a href='de-class.html'>de-class</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># 1) one-dimensional function</span>
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>)  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>abs</a></span>(<span class='no'>x</span>)+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='no'>x</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/curve'>curve</a></span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>)</div><div class='img'><img src='de-1.png' alt='' width='504' height='432' /></div><div class='input'>
-<span class='no'>DE</span> <span class='kw'>&lt;-</span> <span class='fu'>de</span>(<span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>f</span>(<span class='no'>x</span>), <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>20</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>20</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>DE</span>)</div><div class='img'><img src='de-2.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>DE</span>)</div><div class='output co'>#&gt; ── <span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>  <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/curve.html'>curve</a></span><span class='op'>(</span><span class='va'>f</span>, <span class='op'>-</span><span class='fl'>20</span>, <span class='fl'>20</span><span class='op'>)</span>
+</div><div class='img'><img src='de-1.png' alt='' width='504' height='432' /></div><div class='input'>
+<span class='va'>DE</span> <span class='op'>&lt;-</span> <span class='fu'>de</span><span class='op'>(</span>fitness <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>-</span><span class='fu'>f</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>20</span>, upper <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='img'><img src='de-2.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ── <span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
 #&gt; 
 #&gt; DE settings: 
 #&gt; Type                  =  real-valued 
@@ -205,18 +221,24 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 #&gt; Solution = 
 #&gt;      x1
 #&gt; [1,]  0</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/curve'>curve</a></span>(<span class='no'>f</span>, -<span class='fl'>20</span>, <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/abline'>abline</a></span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>DE</span>@<span class='kw'>solution</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='de-3.png' alt='' width='504' height='432' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/curve.html'>curve</a></span><span class='op'>(</span><span class='va'>f</span>, <span class='op'>-</span><span class='fl'>20</span>, <span class='fl'>20</span>, n <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v <span class='op'>=</span> <span class='va'>DE</span><span class='op'>@</span><span class='va'>solution</span>, lty <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='img'><img src='de-3.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='co'># 2) "Wild" function, global minimum at about -15.81515</span>
 
-<span class='no'>wild</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fl'>10</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='fl'>0.3</span>*<span class='no'>x</span>)*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='fl'>1.3</span>*<span class='no'>x</span>^<span class='fl'>2</span>) + <span class='fl'>0.00001</span>*<span class='no'>x</span>^<span class='fl'>4</span> + <span class='fl'>0.2</span>*<span class='no'>x</span> + <span class='fl'>80</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>wild</span>, -<span class='fl'>50</span>, <span class='fl'>50</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</div><div class='img'><img src='de-4.png' alt='' width='504' height='432' /></div><div class='input'>
+<span class='va'>wild</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>10</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='fl'>0.3</span><span class='op'>*</span><span class='va'>x</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='fl'>1.3</span><span class='op'>*</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0.00001</span><span class='op'>*</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>4</span> <span class='op'>+</span> <span class='fl'>0.2</span><span class='op'>*</span><span class='va'>x</span> <span class='op'>+</span> <span class='fl'>80</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>wild</span>, <span class='op'>-</span><span class='fl'>50</span>, <span class='fl'>50</span>, n <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
+</div><div class='img'><img src='de-4.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='co'># from help("optim")</span>
-<span class='no'>SANN</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/optim'>optim</a></span>(<span class='fl'>50</span>, <span class='kw'>fn</span> <span class='kw'>=</span> <span class='no'>wild</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"SANN"</span>,
-              <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>maxit</span> <span class='kw'>=</span> <span class='fl'>20000</span>, <span class='kw'>temp</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>parscale</span> <span class='kw'>=</span> <span class='fl'>20</span>))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>SANN</span>[<span class='fl'>1</span>:<span class='fl'>2</span>])</div><div class='output co'>#&gt;       par     value 
-#&gt; -15.81535  67.46807 </div><div class='input'>
-<span class='no'>DE</span> <span class='kw'>&lt;-</span> <span class='fu'>de</span>(<span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>...</span>) -<span class='fu'>wild</span>(<span class='no'>...</span>), <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>50</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>50</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>DE</span>)</div><div class='img'><img src='de-5.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>DE</span>)</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
+<span class='va'>SANN</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/optim.html'>optim</a></span><span class='op'>(</span><span class='fl'>50</span>, fn <span class='op'>=</span> <span class='va'>wild</span>, method <span class='op'>=</span> <span class='st'>"SANN"</span>,
+              control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>maxit <span class='op'>=</span> <span class='fl'>20000</span>, temp <span class='op'>=</span> <span class='fl'>20</span>, parscale <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>SANN</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       par     value 
+#&gt; -15.81545  67.46849 </div><div class='input'>
+<span class='va'>DE</span> <span class='op'>&lt;-</span> <span class='fu'>de</span><span class='op'>(</span>fitness <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span> <span class='op'>-</span><span class='fu'>wild</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>50</span>, upper <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='img'><img src='de-5.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
 #&gt; 
 #&gt; DE settings: 
 #&gt; Type                  =  real-valued 
@@ -233,24 +255,27 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 #&gt; 
 #&gt; DE results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -67.4703 
+#&gt; Fitness function value = -67.70926 
 #&gt; Solution = 
 #&gt;             x1
-#&gt; [1,] -15.66161</div><div class='input'>
+#&gt; [1,] -15.03178</div><div class='input'>
 <span class='co'># 3) two-dimensional Rastrigin function</span>
 
-<span class='no'>Rastrigin</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>)
-{
-  <span class='fl'>20</span> + <span class='no'>x1</span>^<span class='fl'>2</span> + <span class='no'>x2</span>^<span class='fl'>2</span> - <span class='fl'>10</span>*(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='fl'>2</span>*<span class='no'>pi</span>*<span class='no'>x1</span>) + <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='fl'>2</span>*<span class='no'>pi</span>*<span class='no'>x2</span>))
-}
+<span class='va'>Rastrigin</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
+<span class='op'>{</span>
+  <span class='fl'>20</span> <span class='op'>+</span> <span class='va'>x1</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>+</span> <span class='va'>x2</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>-</span> <span class='fl'>10</span><span class='op'>*</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>x1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>x2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 
-<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(-<span class='fl'>5.12</span>, <span class='fl'>5.12</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/outer'>outer</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>Rastrigin</span>)
-<span class='fu'><a href='persp3D.html'>persp3D</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>col.palette</span> <span class='kw'>=</span> <span class='no'>bl2gr.colors</span>)</div><div class='img'><img src='de-6.png' alt='' width='504' height='432' /></div><div class='input'>
-<span class='no'>DE</span> <span class='kw'>&lt;-</span> <span class='fu'>de</span>(<span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>Rastrigin</span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>]),
-         <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>5.12</span>, -<span class='fl'>5.12</span>), <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>5.12</span>, <span class='fl'>5.12</span>),
-         <span class='kw'>popSize</span> <span class='kw'>=</span> <span class='fl'>50</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>DE</span>)</div><div class='img'><img src='de-7.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>DE</span>)</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
+<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>5.12</span>, <span class='fl'>5.12</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/outer.html'>outer</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>Rastrigin</span><span class='op'>)</span>
+<span class='fu'><a href='persp3D.html'>persp3D</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>f</span>, theta <span class='op'>=</span> <span class='fl'>50</span>, phi <span class='op'>=</span> <span class='fl'>20</span>, col.palette <span class='op'>=</span> <span class='va'>bl2gr.colors</span><span class='op'>)</span>
+</div><div class='img'><img src='de-6.png' alt='' width='504' height='432' /></div><div class='input'>
+<span class='va'>DE</span> <span class='op'>&lt;-</span> <span class='fu'>de</span><span class='op'>(</span>fitness <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>-</span><span class='fu'>Rastrigin</span><span class='op'>(</span><span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>,
+         lower <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>5.12</span>, <span class='op'>-</span><span class='fl'>5.12</span><span class='op'>)</span>, upper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5.12</span>, <span class='fl'>5.12</span><span class='op'>)</span>,
+         popSize <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='img'><img src='de-7.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
 #&gt; 
 #&gt; DE settings: 
 #&gt; Type                  =  real-valued 
@@ -267,29 +292,33 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 #&gt; 
 #&gt; DE results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -6.465939e-13 
+#&gt; Fitness function value = -1.225686e-12 
 #&gt; Solution = 
-#&gt;                 x1          x2
-#&gt; [1,] -5.148943e-08 -2.4592e-08</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/filled.contour'>filled.contour</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>color.palette</span> <span class='kw'>=</span> <span class='no'>bl2gr.colors</span>,
-               <span class='kw'>plot.axes</span> <span class='kw'>=</span> { <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/axis'>axis</a></span>(<span class='fl'>1</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/axis'>axis</a></span>(<span class='fl'>2</span>);
-                             <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>(<span class='no'>DE</span>@<span class='kw'>solution</span>,
-                                    <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"yellow"</span>, <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>2</span>) })</div><div class='img'><img src='de-8.png' alt='' width='504' height='432' /></div><div class='input'>
+#&gt;                 x1            x2
+#&gt; [1,] -3.095027e-08 -7.239395e-08</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/filled.contour.html'>filled.contour</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>f</span>, color.palette <span class='op'>=</span> <span class='va'>bl2gr.colors</span>,
+               plot.axes <span class='op'>=</span> <span class='op'>{</span> <span class='fu'><a href='https://rdrr.io/r/graphics/axis.html'>axis</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/graphics/axis.html'>axis</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>; 
+                             <span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>@</span><span class='va'>solution</span>, 
+                                    col <span class='op'>=</span> <span class='st'>"yellow"</span>, pch <span class='op'>=</span> <span class='fl'>3</span>, lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>}</span><span class='op'>)</span>
+</div><div class='img'><img src='de-8.png' alt='' width='504' height='432' /></div><div class='input'>
 <span class='co'># 4) two-dimensional Ackley function</span>
 
-<span class='no'>Ackley</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>)
-{
-  -<span class='fl'>20</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(-<span class='fl'>0.2</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fl'>0.5</span>*(<span class='no'>x1</span>^<span class='fl'>2</span> + <span class='no'>x2</span>^<span class='fl'>2</span>))) -
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(<span class='fl'>0.5</span>*(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='fl'>2</span>*<span class='no'>pi</span>*<span class='no'>x1</span>) + <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='fl'>2</span>*<span class='no'>pi</span>*<span class='no'>x2</span>))) + <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(<span class='fl'>1</span>) + <span class='fl'>20</span>
-}
+<span class='va'>Ackley</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
+<span class='op'>{</span>
+  <span class='op'>-</span><span class='fl'>20</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.2</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>*</span><span class='op'>(</span><span class='va'>x1</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>+</span> <span class='va'>x2</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-</span> 
+  <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>*</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>x1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>*</span><span class='va'>x2</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>20</span>
+<span class='op'>}</span>
 
-<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(-<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/outer'>outer</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>Ackley</span>)
-<span class='fu'><a href='persp3D.html'>persp3D</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>col.palette</span> <span class='kw'>=</span> <span class='no'>bl2gr.colors</span>)</div><div class='img'><img src='de-9.png' alt='' width='504' height='432' /></div><div class='input'>
-<span class='no'>DE</span> <span class='kw'>&lt;-</span> <span class='fu'>de</span>(<span class='kw'>fitness</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) -<span class='fu'>Ackley</span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>]),
-         <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>3</span>, -<span class='fl'>3</span>), <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>),
-         <span class='kw'>stepsize</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>DE</span>)</div><div class='img'><img src='de-10.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>DE</span>)</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
+<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>, <span class='fl'>3</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/outer.html'>outer</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>Ackley</span><span class='op'>)</span>
+<span class='fu'><a href='persp3D.html'>persp3D</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>f</span>, theta <span class='op'>=</span> <span class='fl'>50</span>, phi <span class='op'>=</span> <span class='fl'>20</span>, col.palette <span class='op'>=</span> <span class='va'>bl2gr.colors</span><span class='op'>)</span>
+</div><div class='img'><img src='de-9.png' alt='' width='504' height='432' /></div><div class='input'>
+<span class='va'>DE</span> <span class='op'>&lt;-</span> <span class='fu'>de</span><span class='op'>(</span>fitness <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>-</span><span class='fu'>Ackley</span><span class='op'>(</span><span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>,
+         lower <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>3</span><span class='op'>)</span>, upper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>3</span><span class='op'>)</span>,
+         stepsize <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='img'><img src='de-10.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ── </span><span style='font-weight: bold;'>Differential Evolution</span><span> ────────────── 
 #&gt; 
 #&gt; DE settings: 
 #&gt; Type                  =  real-valued 
@@ -306,51 +335,43 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 #&gt; 
 #&gt; DE results: 
 #&gt; Iterations             = 100 
-#&gt; Fitness function value = -2.468521e-09 
+#&gt; Fitness function value = -7.141104e-09 
 #&gt; Solution = 
-#&gt;                x1            x2
-#&gt; [1,] -8.63554e-10 -1.263904e-10</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/filled.contour'>filled.contour</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>f</span>, <span class='kw'>color.palette</span> <span class='kw'>=</span> <span class='no'>bl2gr.colors</span>,
-               <span class='kw'>plot.axes</span> <span class='kw'>=</span> { <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/axis'>axis</a></span>(<span class='fl'>1</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/axis'>axis</a></span>(<span class='fl'>2</span>);
-                             <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>(<span class='no'>DE</span>@<span class='kw'>solution</span>,
-                                    <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"yellow"</span>, <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>2</span>) })</div><div class='img'><img src='de-11.png' alt='' width='504' height='432' /></div><div class='input'>                                    
-# 5) Curve fitting example from JSS paper (Scrucca, 2013)
+#&gt;                 x1            x2
+#&gt; [1,] -2.198764e-09 -1.240912e-09</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/filled.contour.html'>filled.contour</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>f</span>, color.palette <span class='op'>=</span> <span class='va'>bl2gr.colors</span>,
+               plot.axes <span class='op'>=</span> <span class='op'>{</span> <span class='fu'><a href='https://rdrr.io/r/graphics/axis.html'>axis</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/graphics/axis.html'>axis</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>; 
+                             <span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>@</span><span class='va'>solution</span>, 
+                                    col <span class='op'>=</span> <span class='st'>"yellow"</span>, pch <span class='op'>=</span> <span class='fl'>3</span>, lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>}</span><span class='op'>)</span>
+</div><div class='img'><img src='de-11.png' alt='' width='504' height='432' /></div><div class='input'>                                    
+<span class='co'># 5) Curve fitting example (see Scrucca JSS 2013)</span>
 
-</div></span><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>trees</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"spuRs"</span>)
-<span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='no'>trees</span>[<span class='no'>trees</span>$<span class='no'>ID</span><span class='kw'>==</span><span class='st'>"1.3.11"</span>, <span class='fl'>2</span>:<span class='fl'>3</span>]
-<span class='no'>richards</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>theta</span>)
-  { <span class='no'>theta</span>[<span class='fl'>1</span>]*(<span class='fl'>1</span> - <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(-<span class='no'>theta</span>[<span class='fl'>2</span>]*<span class='no'>x</span>))^<span class='no'>theta</span>[<span class='fl'>3</span>] }
-<span class='no'>fitnessL2</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>theta</span>, <span class='no'>x</span>, <span class='no'>y</span>)
-  { -<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>((<span class='no'>y</span> - <span class='fu'>richards</span>(<span class='no'>x</span>, <span class='no'>theta</span>))^<span class='fl'>2</span>) }
-<span class='no'>DE</span> <span class='kw'>&lt;-</span> <span class='fu'>de</span>(<span class='kw'>fitness</span> <span class='kw'>=</span> <span class='no'>fitnessL2</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>tree</span>$<span class='no'>Age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>tree</span>$<span class='no'>Vol</span>,
-         <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3000</span>, <span class='fl'>0</span>, <span class='fl'>2</span>), <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4000</span>, <span class='fl'>1</span>, <span class='fl'>4</span>),
-         <span class='kw'>popSize</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>run</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-         <span class='kw'>names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>DE</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># subset of data from data(trees, package = "spuRs")</span>
+<span class='va'>tree</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2.44</span>, <span class='fl'>12.44</span>, <span class='fl'>22.44</span>, <span class='fl'>32.44</span>, <span class='fl'>42.44</span>, <span class='fl'>52.44</span>, <span class='fl'>62.44</span>, 
+                           <span class='fl'>72.44</span>, <span class='fl'>82.44</span>, <span class='fl'>92.44</span>, <span class='fl'>102.44</span>, <span class='fl'>112.44</span><span class='op'>)</span>,
+                   Vol <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2.2</span>, <span class='fl'>20</span>, <span class='fl'>93</span>, <span class='fl'>262</span>, <span class='fl'>476</span>, <span class='fl'>705</span>, <span class='fl'>967</span>, <span class='fl'>1203</span>, <span class='fl'>1409</span>, 
+                           <span class='fl'>1659</span>, <span class='fl'>1898</span>, <span class='fl'>2106</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>richards</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>theta</span><span class='op'>)</span> 
+  <span class='op'>{</span> <span class='va'>theta</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>*</span><span class='op'>(</span><span class='fl'>1</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>theta</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>*</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>^</span><span class='va'>theta</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>}</span>
+<span class='va'>fitnessL2</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>theta</span>, <span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span> 
+  <span class='op'>{</span> <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='fu'>richards</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>theta</span><span class='op'>)</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>}</span>
+<span class='va'>DE</span> <span class='op'>&lt;-</span> <span class='fu'>de</span><span class='op'>(</span>fitness <span class='op'>=</span> <span class='va'>fitnessL2</span>, x <span class='op'>=</span> <span class='va'>tree</span><span class='op'>$</span><span class='va'>Age</span>, y <span class='op'>=</span> <span class='va'>tree</span><span class='op'>$</span><span class='va'>Vol</span>, 
+         lower <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3000</span>, <span class='fl'>0</span>, <span class='fl'>2</span><span class='op'>)</span>, upper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4000</span>, <span class='fl'>1</span>, <span class='fl'>4</span><span class='op'>)</span>,
+         popSize <span class='op'>=</span> <span class='fl'>500</span>, maxiter <span class='op'>=</span> <span class='fl'>1000</span>, run <span class='op'>=</span> <span class='fl'>100</span>, 
+         names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>DE</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Luca Scrucca <a href='mailto:luca.scrucca@unipg.it'>luca.scrucca@unipg.it</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -358,13 +379,16 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

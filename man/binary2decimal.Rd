@@ -19,7 +19,7 @@ binary2decimal(x)
 \details{
 \code{decimal2binary} converts a numerical value (which is forced to be an integer) to a binary representation, i.e. a vector of 0s and 1s. For real numerical values see the example below.
 
-\code{binary2binary} converts a binary value, i.e. a vector of 0s and 1s, to a decimal representation.
+\code{binary2decimal} converts a binary value, i.e. a vector of 0s and 1s, to a decimal representation.
 }
 
 %\value{}

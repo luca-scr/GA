@@ -1,8 +1,10 @@
-# GA 3.2.1 (2019-01) NOT ON CRAN
+# GA 3.2.1 (2021-04)
 
 - Forced `elitism` argument to be an integer.
 - Fixed passing further fitness function arguments in `de()`.
 - Fixed passing suggestions in `gaisl()`.
+- Added an example of `postFitness` usage in the vignette.
+- Added **rmarkdown** in the list of suggested package (as required by CRAN).
 
 # GA 3.2 (2019-01)
 

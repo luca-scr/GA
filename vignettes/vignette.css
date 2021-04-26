@@ -214,23 +214,13 @@ a {
   a[href^="https:"] {
     text-decoration: underline; }
 
-code {
-  font-family: 'DejaVu Sans Mono', Consolas, Monaco, monospace;
-  color: rgb(77,77,77);
-  font-size: 85%;
-}
-
-p > code, li > code {
-  padding: 2px 0;
-}
-
 pre, code {
   background-color: #F8F8F8;
   border-radius: 3px;
   color: #333333;
+  white-space: pre-wrap;    /* Wrap long lines */
 }
 pre {
-  white-space: pre-wrap;    /* Wrap long lines */
   border-radius: 3px;
   margin: 5px 0px 10px 0px;
   padding: 10px;
@@ -238,6 +228,16 @@ pre {
 
 pre:not([class]) {
   background-color: #F8F8F8;
+}
+
+code {
+  font-family: Consolas, Monaco, monospace;
+  color: rgb(0,0,0);
+  font-size: 85%;
+}
+
+p > code, li > code {
+  padding: 2px 0;
 }
 
 strong { 
@@ -250,22 +250,23 @@ hi {
 }
 
 /* Class described in https://benjeffrey.com/posts/pandoc-syntax-highlighting-css
-   Colours from https://gist.github.com/robsimmons/1172277 
-*/
-code span.al { color: rgb(255,255,255); font-weight: bold; } /* Alert */
+   Colours from https://gist.github.com/robsimmons/1172277 */
+code span.co { color: rgb(112,112,112); font-style: normal; } /* Comment */
+code span.do { color: rgb(50,50,50); font-style: normal; } /* Documentation */
 code span.an { font-style: italic; } /* Annotation */
 code span.cf { font-weight: bold; } /* ControlFlow */
-code span.co { color: rgb(112,112,112); font-style: normal; } /* Comment */
 code span.cv { font-style: italic; } /* CommentVar */
-code span.do { font-style: italic; } /* Documentation */
 code span.dt { color: #4075AD; }  /* DataType */
-/* code span.dt { text-decoration: underline; } */
+code span.at { color: #4075AD; }  /* Function args */
 code span.dv { color: rgb(85,85,85); } /* DecVal (decimal values) */
 code span.er { color: rgb(166,23,23); font-weight: bold; } /* Error */
 code span.in { font-style: italic; } /* Information */
-code span.kw { font-weight: bold; color: rgb(23,74,133);} /* Keyword */
-/* code span.ot { color: #007020; } /* OtherToken */
+code span.kw { color: rgb(23,74,133); font-weight: bold; } /* Keyword */
+code span.fu { color: rgb(23,74,133); font-weight: bold; } /* Function calls */
+code span.al { color: rgb(255,255,255); font-weight: bold; } /* Alert */
 code span.pp { font-weight: bold; } /* Preprocessor */
+code span.cn { color: rgb(0,0,0); font-weight: normal; } /* Logical */
 code span.st { color: rgb(85,85,85); font-style: italic; } /* String */
+code span.ot { color: rgb(0,0,0); font-style: normal; } /* R code */
 code span.wa { font-style: italic; } /* Warning */
 

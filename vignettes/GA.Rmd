@@ -18,9 +18,9 @@ library(knitr)
 opts_chunk$set(fig.align = "center", 
                out.width = "80%",
                fig.width = 6, fig.height = 5,
-               dev.args=list(pointsize=10),
+               dev = "svg", fig.ext = "svg",
                par = TRUE, # needed for setting hook 
-               collapse = TRUE, # collapse input & ouput code in chunks
+               collapse = TRUE, # collapse input & output code in chunks
                warning = FALSE)
 
 knit_hooks$set(par = function(before, options, envir)
@@ -143,7 +143,7 @@ summary(GA)
 
 # Constrained optimisation
 
-This example shows how to minimize an objective function subject to nonlinear inequality constraints and bounds using GAs. Source: http://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html
+This example shows how to minimize an objective function subject to nonlinear inequality constraints and bounds using GAs. Source: https://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html
 
 We want to minimize a simple function of two variables $x_1$ and $x_2$
 $$
@@ -593,6 +593,57 @@ tab
 forget(mfitness)
 ```
 
+# Miscellanea
+
+## Applying a post-fitness function evaluation
+
+In some circumstances we may want to apply a specific procedure after the evaluation of the fitness function but before applying the genetic operators. 
+The optional argument `postFitness` can be used for this task.
+
+In the `ga()` function call the argument `postFitness` can be used to specify a user-defined function which, if provided, receives the current ga-class object as input, performs post fitness-evaluation steps, and then returns the (eventually updated version of) input object that will be employed in the following GA search.
+
+As an example, consider to save the GA population at each iteration steps to draw a graph of GA evolution. The following code implements the idea:
+
+```{r, fig.width=6, fig.height=8}
+Rastrigin <- function(x1, x2)
+{
+  20 + x1^2 + x2^2 - 10*(cos(2*pi*x1) + cos(2*pi*x2))
+}
+
+postfit <- function(object, ...)
+{
+  pop <- object@population
+  # update info
+  if(!exists(".pop", envir = globalenv()))
+    assign(".pop", NULL, envir = globalenv())
+  .pop <- get(".pop", envir = globalenv())
+  assign(".pop", append(.pop, list(pop)), envir = globalenv()) 
+  # output the input ga object (this is needed!!)
+  object 
+}
+
+GA <- ga(type = "real-valued",
+         fitness =  function(x) -Rastrigin(x[1], x[2]),
+         lower = c(-5.12, -5.12), upper = c(5.12, 5.12),
+         popSize = 50, maxiter = 100, seed = 1,
+         postFitness = postfit)
+
+str(.pop, max.level = 1, list.len = 5)
+
+x1 <- x2 <- seq(-5.12, 5.12, by = 0.1)
+f <- outer(x1, x2, Rastrigin)
+iter_to_show = c(1,5,10,20,50,100)
+par(mfrow = c(3,2), mar = c(2,2,2,1),
+    mgp = c(1, 0.4, 0), tck = -.01)
+for(i in seq(iter_to_show))
+{
+  contour(x1, x2, f, drawlabels = FALSE, col = "grey50")
+  title(paste("Iter =", iter_to_show[i]))
+  points(.pop[[iter_to_show[i]]], pch = 20, col = "forestgreen")
+}
+```
+
+<br><br>
 
 # References
 
@@ -600,7 +651,7 @@ McCallum, E. and Weston, S. (2011) *Parallel R*. O’Reilly Media.
 
 Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. *Journal of Statistical Software*, 53/4, 1-37. URL https://www.jstatsoft.org/v53/i04/
 
-Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. *The R Journal*, 9/1, 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. *The R Journal*, 9/1, 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008/
 
 
 ----

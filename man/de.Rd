@@ -30,7 +30,7 @@ de(fitness,
 
 \item{stepsize}{the stepsize or weighting factor. A value in the interval [0,2], by default set to 0.8. If set at \code{NA} a random value is selected in the interval [0.5, 1.0] (so called dithering).}
 
-\item{\dots}{additional arguments to be passed to the fitness function. This allows to write fitness functions that keep some variables fixed during the search.}
+\item{\dots}{additional arguments to be passed to the \code{\link{ga}} function.}
 }
 
 \details{
@@ -46,7 +46,7 @@ The DE selection operator is defined by \code{\link{gareal_de}} with parameters 
 \references{
 
 Scrucca L. (2013) GA: A Package for Genetic Algorithms in R.
-\emph{Journal of Statistical Software}, 53(4), 1-37, \url{http://www.jstatsoft.org/v53/i04/}.
+\emph{Journal of Statistical Software}, 53(4), 1-37, \url{https://www.jstatsoft.org/v53/i04/}.
 
 Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
 

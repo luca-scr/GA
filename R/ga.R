@@ -283,19 +283,22 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         }
       }
       
+      if(keepBest) 
+      { 
+        object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),, drop=FALSE]) 
+      }
+
       # apply a user's defined function to update the GA object
       if(is.function(postFitness))
-        { 
-          object <- do.call(postFitness, c(object, callArgs))
-          Fitness <- object@fitness
-          Pop <- object@population
+      { 
+        object <- do.call(postFitness, c(object, callArgs))
+        Fitness <- object@fitness
+        Pop <- object@population
       }
 
       # update iterations summary
       fitnessSummary[iter,] <- gaSummary(object@fitness)
       object@summary <- fitnessSummary
-      if(keepBest) 
-        { object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),,drop=FALSE]) }
 
       if(is.function(monitor)) 
         { monitor(object) }
@@ -314,8 +317,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       # selection
       if(is.function(selection))
         { 
-          # sel <- selection(object)
-          sel <- do.call(selection, c(object, callArgs))
+          sel <- selection(object)
+          # sel <- do.call(selection, c(object, callArgs))
           Pop <- sel$population
           Fitness <- sel$fitness
         }

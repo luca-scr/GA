@@ -20,7 +20,7 @@ bl2gr.colors(n)
 }
 
 \details{\code{jet.colors()} creates a palette of colours which tend to have high brightness and not uniform luminance. Furthermore, the brightest colours, yellow and cyan, are used for intermediate data values, and this has the effect of emphasizing uninteresting (and arbitrary) values while de-emphasizing the extremes. For these reasons this popular palette is not recommended.\cr
-\code{spectral.colors()} creates a palette based on ColorBrewer \url{http://colorbrewer2.org}, so the resulting colours have a much uniform luminance.\cr
+\code{spectral.colors()} creates a palette based on ColorBrewer \url{https://colorbrewer2.org}, so the resulting colours have a much uniform luminance.\cr
 The \code{bl2gr.colors()} palette returns a palette of colours from blue to green.
 }
 

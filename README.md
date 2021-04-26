@@ -20,7 +20,7 @@ or the development version from GitHub:
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("luca-scr/GA", build_vignettes = TRUE)
+devtools::install_github("luca-scr/GA", build = TRUE, build_opts = c("--no-resave-data", "--no-manual"))
 ```
 
 ## Usage
@@ -42,4 +42,4 @@ GitHub web page of the package at http://luca-scr.github.io/GA/.
 Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. **Journal of Statistical Software**, 53(4), 1-37. https://www.jstatsoft.org/article/view/v053i0
 
 Scrucca, L. (2017) On some extensions to GA package: hybrid
-optimisation, parallelisation and islands evolution. **The R Journal**, 9(1), 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008
+optimisation, parallelisation and islands evolution. **The R Journal**, 9(1), 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008/

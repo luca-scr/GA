@@ -1,6 +1,6 @@
 Package: GA
 Version: 3.2.1
-Date: 2019-05-29
+Date: 2021-04-20
 Title: Genetic Algorithms
 Description: Flexible general-purpose toolbox implementing genetic algorithms (GAs) for stochastic optimisation. Binary, real-valued, and permutation representations are available to optimize a fitness function, i.e. a function provided by users depending on their objective function. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 Authors@R: c(
@@ -10,12 +10,10 @@ Authors@R: c(
 Depends: R (>= 3.4), methods, foreach, iterators
 Imports: stats, graphics, grDevices, utils, cli, crayon, Rcpp
 LinkingTo: Rcpp, RcppArmadillo
-Suggests: parallel, doParallel, doRNG (>= 1.6), knitr (>= 1.8)
+Suggests: parallel, doParallel, doRNG (>= 1.6), knitr (>= 1.8), rmarkdown (>= 2.0)
 License: GPL (>= 2)
 VignetteBuilder: knitr
 URL: https://luca-scr.github.io/GA/
 BugReports: https://github.com/luca-scr/GA/issues
 Repository: CRAN
 ByteCompile: true
-LazyData: yes
-RoxygenNote: 6.1.1

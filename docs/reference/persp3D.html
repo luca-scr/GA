@@ -8,21 +8,36 @@
 
 <title>Perspective plot with colour levels — persp3D • GA</title>
 
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,12 +45,11 @@
 
 
 
+
 <meta property="og:title" content="Perspective plot with colour levels — persp3D" />
-
 <meta property="og:description" content="This function draws a perspective plot of a surface with different levels in different colours." />
-
 <meta property="og:image" content="https://github.com/luca-scr/GA/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -49,9 +63,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,11 +96,10 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/luca-scr/GA">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -96,6 +110,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -107,18 +122,16 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function draws a perspective plot of a surface with different levels in different colours.</p>
-    
     </div>
 
-    <pre class="usage">persp3D(x, y, z, theta = 30, phi = 20, d = 5, expand = 2/3,
-        xlim = range(x, finite = TRUE), ylim = range(y, finite = TRUE), 
-        zlim = range(z, finite = TRUE), levels = pretty(zlim, nlevels),
-        nlevels = 20, col.palette = jet.colors, border = NA, 
-        ticktype = "detailed", xlab = NULL, ylab = NULL, zlab = NULL, 
-        &#8230;)</pre>
-    
+    <pre class="usage"><span class='fu'>persp3D</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>z</span>, theta <span class='op'>=</span> <span class='fl'>30</span>, phi <span class='op'>=</span> <span class='fl'>20</span>, d <span class='op'>=</span> <span class='fl'>5</span>, expand <span class='op'>=</span> <span class='fl'>2</span><span class='op'>/</span><span class='fl'>3</span>,
+        xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>x</span>, finite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>y</span>, finite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, 
+        zlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>z</span>, finite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/pretty.html'>pretty</a></span><span class='op'>(</span><span class='va'>zlim</span>, <span class='va'>nlevels</span><span class='op'>)</span>,
+        nlevels <span class='op'>=</span> <span class='fl'>20</span>, col.palette <span class='op'>=</span> <span class='va'>jet.colors</span>, border <span class='op'>=</span> <span class='cn'>NA</span>, 
+        ticktype <span class='op'>=</span> <span class='st'>"detailed"</span>, xlab <span class='op'>=</span> <span class='cn'>NULL</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, zlab <span class='op'>=</span> <span class='cn'>NULL</span>, 
+        <span class='va'>...</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -171,56 +184,48 @@
       <td><p>character strings specifying the titles for the axes.</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
-      <td><p>Further arguments passed to the function <code><a href='https://www.rdocumentation.org/packages/graphics/topics/persp'>persp</a></code>.</p></td>
+      <th>...</th>
+      <td><p>Further arguments passed to the function <code><a href='https://rdrr.io/r/graphics/persp.html'>persp</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function enhances the default perspective plot for drawing 3-dimensional surfaces.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Return a list with the following elements:</p>
-<dt>persp</dt><dd><p>the viewing transformation matrix (see <code><a href='https://www.rdocumentation.org/packages/graphics/topics/persp'>persp</a></code>);</p></dd>
+<dt>persp</dt><dd><p>the viewing transformation matrix (see <code><a href='https://rdrr.io/r/graphics/persp.html'>persp</a></code>);</p></dd>
 <dt>levels</dt><dd><p>a vector of values giving the levels used for plotting the surface;</p></dd>
 <dt>colors</dt><dd><p>a vector of strings giving the colour used for plotting the surface.</p></dd>
 
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Luca Scrucca</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/graphics/topics/persp'>persp</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/graphics/persp.html'>persp</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(-<span class='fl'>10</span>, <span class='fl'>10</span>, <span class='kw'>length</span><span class='kw'>=</span><span class='fl'>60</span>)
-<span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>,<span class='no'>y</span>) { <span class='no'>r</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='no'>x</span>^<span class='fl'>2</span>+<span class='no'>y</span>^<span class='fl'>2</span>); <span class='fl'>10</span> * <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='no'>r</span>)/<span class='no'>r</span> }
-<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/outer'>outer</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>f</span>)
-<span class='fu'>persp3D</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='img'><img src='persp3D-1.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'>persp3D</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>col.palette</span> <span class='kw'>=</span> <span class='no'>heat.colors</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>225</span>,
-        <span class='kw'>box</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>shade</span> <span class='kw'>=</span> <span class='fl'>.4</span>)</div><div class='img'><img src='persp3D-2.png' alt='' width='504' height='432' /></div><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(-<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='kw'>length</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x1</span>, <span class='no'>x2</span>) <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='no'>x1</span>)+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>cos</a></span>(<span class='no'>x2</span>)
-<span class='fu'>persp3D</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/outer'>outer</a></span>(<span class='no'>x1</span>,<span class='no'>x2</span>,<span class='no'>y</span>), <span class='kw'>zlab</span><span class='kw'>=</span><span class='st'>"y"</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>150</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fl'>0.6</span>)</div><div class='img'><img src='persp3D-3.png' alt='' width='504' height='432' /></div></pre>
+    <pre class="examples"><div class='input'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>10</span>, length<span class='op'>=</span><span class='fl'>60</span><span class='op'>)</span>
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span><span class='op'>)</span> <span class='op'>{</span> <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>+</span><span class='va'>y</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>; <span class='fl'>10</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span><span class='op'>/</span><span class='va'>r</span> <span class='op'>}</span>
+<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/outer.html'>outer</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>f</span><span class='op'>)</span>
+<span class='fu'>persp3D</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>z</span>, theta <span class='op'>=</span> <span class='fl'>30</span>, phi <span class='op'>=</span> <span class='fl'>30</span>, expand <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</div><div class='img'><img src='persp3D-1.png' alt='' width='504' height='432' /></div><div class='input'><span class='fu'>persp3D</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>z</span>, col.palette <span class='op'>=</span> <span class='va'>heat.colors</span>, phi <span class='op'>=</span> <span class='fl'>30</span>, theta <span class='op'>=</span> <span class='fl'>225</span>, 
+        box <span class='op'>=</span> <span class='cn'>TRUE</span>, border <span class='op'>=</span> <span class='cn'>NA</span>, shade <span class='op'>=</span> <span class='fl'>.4</span><span class='op'>)</span>
+</div><div class='img'><img src='persp3D-2.png' alt='' width='504' height='432' /></div><div class='input'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>,<span class='fl'>3</span>,length<span class='op'>=</span><span class='fl'>50</span><span class='op'>)</span>
+<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>,<span class='fl'>3</span>,length<span class='op'>=</span><span class='fl'>50</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>x1</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='va'>x2</span><span class='op'>)</span>
+<span class='fu'>persp3D</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='fu'><a href='https://rdrr.io/r/base/outer.html'>outer</a></span><span class='op'>(</span><span class='va'>x1</span>,<span class='va'>x2</span>,<span class='va'>y</span><span class='op'>)</span>, zlab<span class='op'>=</span><span class='st'>"y"</span>, theta <span class='op'>=</span> <span class='fl'>150</span>, phi <span class='op'>=</span> <span class='fl'>20</span>, expand <span class='op'>=</span> <span class='fl'>0.6</span><span class='op'>)</span>
+</div><div class='img'><img src='persp3D-3.png' alt='' width='504' height='432' /></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Luca Scrucca</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -228,13 +233,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

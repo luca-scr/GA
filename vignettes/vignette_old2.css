@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+body {
+  background-color: #fff;
+  margin: 1em auto;
+  max-width: 700px;
+  overflow: visible;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+#header {
+  text-align: center;
+}
+
+#TOC {
+  clear: both;
+  margin: 10px 10px 20px 10px;
+  padding: 4px;
+  width: 400px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  font-size: 12px;
+  line-height: 1.3;
+}
+  #TOC .toctitle {
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 5px;
+  }
+
+  #TOC ul {
+    padding-left: 40px;
+    margin-left: -1.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  #TOC ul ul {
+    margin-left: -2em;
+  }
+  #TOC li {
+    line-height: 16px;
+    list-style: square outside;
+  }
+
+table {
+  margin: 1em auto;
+  border-width: 1px;
+  border-color: #DDDDDD;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+th {
+  border-bottom: 1px solid #111;
+}
+
+table th {
+  border-width: 1px;
+  padding: 5px;
+}
+
+table td {
+  border-width: 1px;
+  line-height: 16px;
+  padding: 5px 5px;
+}
+
+table thead, table tr.even {
+  background-color: #f7f7f7;
+}
+
+
+p {
+  margin: 0.5em 0;
+}
+
+blockquote {
+  background-color: #f6f6f6;
+  padding: 0.25em 0.75em;
+}
+
+hr {
+  border-style: solid;
+  border: none;
+  border-top: 1px solid #777;
+  margin: 28px 0;
+}
+
+dl {
+  margin-left: 0;
+}
+  dl dd {
+    margin-bottom: 13px;
+    margin-left: 13px;
+  }
+  dl dt {
+    font-weight: bold;
+  }
+
+ul {
+  margin-top: 0;
+}
+  ul li {
+    list-style: circle outside;
+  }
+  ul ul {
+    margin-bottom: 0;
+  }
+
+figure {
+  margin: 0;
+  text-align: center;
+} 
+
+div.figure {
+  text-align: center;
+}
+
+img {
+  background-color: #FFFFFF;
+  padding: 2px;
+  border: 1px solid #DDDDDD;
+  border-radius: 3px;
+/*   border: 1px solid #CCCCCC; */
+  margin: 0 5px;
+}
+
+h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #f7f7f7;
+  margin-top: 0;
+  font-size: 120%;
+  line-height: 10px;
+  color: rgb(33,33,33);
+}
+
+h1.title {
+  font-size: 200%;
+  line-height: 40px;
+}
+
+
+h2 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #f7f7f7;
+  margin-left: 4px;
+  font-size: 110%;
+  color: rgb(33,33,33);
+}
+
+h2.title {
+  font-size: 110%;
+  line-height: 10px;
+}
+
+h3 {
+  border-bottom: 2px solid #f7f7f7;
+  padding-top: 10px;
+  margin-left: 8px;
+  font-size: 105%;
+  color: rgb(33,33,33);
+}
+
+h4 {
+  border-bottom: 1px solid #f7f7f7;
+  margin-left: 12px;
+  font-size: 100%;
+  color: rgb(33,33,33);
+}
+
+h4.author { 
+  border-bottom: 0;
+  color: rgb(77,77,77);
+}
+
+h4.date { 
+  border-bottom: 1px solid #f7f7f7;
+  font-size: 100%;
+  color: rgb(77,77,77);  
+}
+
+h5, h6 {
+  border-bottom: 1px solid #ccc;
+  font-size: 105%;
+  color: rgb(33,33,33);
+}
+
+address{
+  font-weight: bold;
+  color: rgb(77,77,77);
+  margin-left: 8px;
+  font-size: 100%;
+}
+
+a {
+  color: rgb(24,116,205);
+  text-decoration: none;
+}
+  a:hover {
+    color: rgb(28,134,238); }
+  a:visited {
+    color: rgb(24,116,205); }
+  a:visited:hover {
+    color: rgb(28,134,238); }
+  a[href^="http:"] {
+    text-decoration: underline; }
+  a[href^="https:"] {
+    text-decoration: underline; }
+
+code {
+  font-family: 'DejaVu Sans Mono', Consolas, Monaco, monospace;
+  color: rgb(77,77,77);
+  font-size: 85%;
+}
+
+p > code, li > code {
+  padding: 2px 0;
+}
+
+pre, code {
+  background-color: #F8F8F8;
+  border-radius: 3px;
+  color: #333333;
+}
+pre {
+  white-space: pre-wrap;    /* Wrap long lines */
+  border-radius: 3px;
+  margin: 5px 0px 10px 0px;
+  padding: 10px;
+}
+
+pre:not([class]) {
+  background-color: #F8F8F8;
+}
+
+strong { 
+    font-weight: bold;
+}
+
+hi { 
+    font-weight: bold;
+    color: rgb(28,134,238);
+}
+
+/* Class described in https://benjeffrey.com/posts/pandoc-syntax-highlighting-css
+   Colours from https://gist.github.com/robsimmons/1172277 
+*/
+code span.al { color: rgb(255,255,255); font-weight: bold; } /* Alert */
+code span.an { font-style: italic; } /* Annotation */
+code span.cf { font-weight: bold; } /* ControlFlow */
+code span.co { color: rgb(112,112,112); font-style: normal; } /* Comment */
+code span.cv { font-style: italic; } /* CommentVar */
+code span.do { font-style: italic; } /* Documentation */
+code span.dt { color: #4075AD; }  /* DataType */
+/* code span.dt { text-decoration: underline; } */
+code span.dv { color: rgb(85,85,85); } /* DecVal (decimal values) */
+code span.er { color: rgb(166,23,23); font-weight: bold; } /* Error */
+code span.in { font-style: italic; } /* Information */
+code span.kw { font-weight: bold; color: rgb(23,74,133);} /* Keyword */
+/* code span.ot { color: #007020; } /* OtherToken */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.st { color: rgb(85,85,85); font-style: italic; } /* String */
+code span.wa { font-style: italic; } /* Warning */
+
