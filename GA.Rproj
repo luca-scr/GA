@@ -15,4 +15,4 @@ LaTeX: pdfLaTeX
 BuildType: Package
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageBuildArgs: --compact-vignettes --force
-PackageCheckArgs: --timings --as-cran
+PackageCheckArgs: --timings --as-cran --run-dontrun --run-donttest

@@ -1,3 +1,7 @@
+# GA 3.2.2 (2021-10)
+
+- Fixed doi in JSS and RJ publication.
+
 # GA 3.2.1 (2021-04)
 
 - Forced `elitism` argument to be an integer.

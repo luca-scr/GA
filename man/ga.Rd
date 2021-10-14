@@ -154,9 +154,9 @@ Haupt R. L., Haupt S. E. (2004). \emph{Practical Genetic Algorithms}. 2nd editio
 Luke S. (2013) \emph{Essentials of Metaheuristics}, 2nd edition. Lulu. 
 
 Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
-\emph{Journal of Statistical Software}, 53(4), 1-37, \url{https://www.jstatsoft.org/v53/i04/}.
+\emph{Journal of Statistical Software}, 53(4), 1-37, \doi{10.18637/jss.v053.i04}.
 
-Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187-206. \url{https://journal.r-project.org/archive/2017/RJ-2017-008/}
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. \emph{The R Journal}, 9/1, 187-206, \doi{10.32614/RJ-2017-008}.
 
 Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
 

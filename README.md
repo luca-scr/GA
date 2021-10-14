@@ -39,7 +39,7 @@ GitHub web page of the package at http://luca-scr.github.io/GA/.
 
 ## References
 
-Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. **Journal of Statistical Software**, 53(4), 1-37. https://www.jstatsoft.org/article/view/v053i0
+Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. *Journal of Statistical Software*, 53/4, 1-37. https://doi.org/10.18637/jss.v053.i04
 
-Scrucca, L. (2017) On some extensions to GA package: hybrid
-optimisation, parallelisation and islands evolution. **The R Journal**, 9(1), 187–206. https://journal.r-project.org/archive/2017/RJ-2017-008/
+Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. *The R Journal*, 9/1, 187–206. https://doi.org/10.32614/RJ-2017-008
+

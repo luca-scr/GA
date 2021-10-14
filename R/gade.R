@@ -18,9 +18,16 @@ de <- function(fitness,
   args$type <- "real-valued"
   args$nBits <- NULL
 
+  # browser()
+  fitnessArgs <- args[setdiff(names(args), names(eval(formals(ga))))]
+       
   # DE selection including crossover
-  args$selection <- function(...) 
-    gareal_de(..., F = stepsize, p = pcrossover)
+  args$selection <- function(object, ...) 
+  {
+    do.call("gareal_de", c(object, fitnessArgs, 
+                           list(F = stepsize, p = pcrossover)))
+  }
+    # do.call("gareal_de", c(args, list(F = stepsize, p = pcrossover)))
   args$pcrossover <- 0 # skip GA crossover
   if(is.null(args$elitism))
     args$elitism <- 0
@@ -195,7 +202,7 @@ gareal_de <- function(object, F = 0.8, p = 0.5, ...)
   # if(gaControl("useRcpp"))
   #   gareal_de_Rcpp(object, fitness = object@call$fitness, F, p, ...)
   # else
-    gareal_de_R(object, fitness = object@call$fitness, ..., F = F, p = p)
+  gareal_de_R(object, fitness = object@call$fitness, ..., F = F, p = p)
 }
 
 gareal_de_R <- function(object, fitness, ...,
