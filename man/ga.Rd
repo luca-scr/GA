@@ -101,6 +101,10 @@ ga(type = c("binary", "real-valued", "permutation"),
 
 \item{keepBest}{a logical argument specifying if best solutions at each iteration should be saved in a slot called \code{bestSol}. See \code{\link{ga-class}}.}
 
+\item{batch}{
+An optional arguments which allows the fitness function to be called once for an entire population (vs. iteratively per child in the population). This is useful if the fixed cost of calling the fitness function is high but the variable cost is low, which is often the case in ML inference. The fitness function \code{fitness} will be called with a matrix of parameters. Each row represents a single child in the population and each column is the i-th element of all children.
+}
+
 \item{parallel}{
 An optional argument which allows to specify if the Genetic Algorithm should be run sequentially or in parallel. 
 

@@ -1,6 +1,6 @@
 Package: GA
-Version: 3.2.2
-Date: 2021-10-14
+Version: 3.2.3
+Date: 2022-08-31
 Title: Genetic Algorithms
 Description: Flexible general-purpose toolbox implementing genetic algorithms (GAs) for stochastic optimisation. Binary, real-valued, and permutation representations are available to optimize a fitness function, i.e. a function provided by users depending on their objective function. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
 Authors@R: c(
