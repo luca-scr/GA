@@ -29,6 +29,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                                 control = list(fnscale = -1, maxit = 100)),
                keepBest = FALSE,
                parallel = FALSE,
+               batch = FALSE,
                monitor = if(interactive()) gaMonitor else FALSE,
                seed = NULL) 
 {
@@ -154,6 +155,10 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
       if(optimArgs$control$fnscale > 0)
         optimArgs$control$fnscale <- -1*optimArgs$control$fnscale
   }
+  
+  if(batch) {
+    message('Batch processing fitness function. Will ignore parallel argument if set.')
+  }
 
   # Start parallel computing (if needed)
   if(is.logical(parallel))
@@ -222,8 +227,11 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
      {
       object@iter <- iter
 
-      # evalute fitness function (when needed) 
-      if(!parallel)
+      if(batch) {
+        fit <- do.call(fitness, c(list(Pop), callArgs))
+        Fitness <- fit
+      } else if(!parallel)
+        # evalute fitness function (when needed)
         { for(i in seq_len(popSize))
              if(is.na(Fitness[i]))
                { fit <- do.call(fitness, c(list(Pop[i,]), callArgs)) 
