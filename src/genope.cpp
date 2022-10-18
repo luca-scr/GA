@@ -960,7 +960,7 @@ NumericVector gareal_rsMutation_Rcpp(RObject object, int parent)
   for(int j=0; j < n; j++) 
   {
     mutate[j] += direction*dempeningFactor*value[j];
-    if((mutate[j] < lower[j]) | (mutate[j] > upper[j]))
+    if((mutate[j] < lower[j]) || (mutate[j] > upper[j]))
       { 
         NumericVector m = Rcpp::runif(1, lower[j], upper[j]);
         mutate[j] = m[0];
@@ -1397,7 +1397,7 @@ IntegerVector gaperm_simMutation_Rcpp(RObject object, int parent)
   IntegerVector m = Rcpp::sample(seq, 2, false);
                 m = Rcpp::seq(min(m), max(m));
   IntegerVector i(n);
-  if((min(m) == 0) & (max(m) == n-1)) 
+  if((min(m) == 0) && (max(m) == n-1)) 
   { 
     i = rev(m);
   } else 

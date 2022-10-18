@@ -1,3 +1,7 @@
+# GA 3.2.3 (2022-10)
+
+- Fixed warnings in C++ code under CRAN request.
+
 # GA 3.2.2 (2021-10)
 
 - Fixed doi in JSS and RJ publication.

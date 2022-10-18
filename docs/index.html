@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
       </span>
     </div>
 
@@ -73,88 +75,91 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ga-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#ga-" class="anchor"></a>GA <img src="reference/figures/logo.png" align="right" width="100px " alt="">
+<div class="section level1">
+<div class="page-header"><h1 id="ga-">GA <img src="reference/figures/logo.png" align="right" width="100px " alt=""><a class="anchor" aria-label="anchor" href="#ga-"></a>
 </h1></div>
 
-<p>An <a href="https://www.r-project.org/">R</a> package for stochastic optimisation using <strong>Genetic Algorithms</strong>.</p>
+<p>An <a href="https://www.r-project.org/" class="external-link">R</a> package for stochastic optimisation using <strong>Genetic Algorithms</strong>.</p>
 <p>The <strong>GA</strong> package provides a flexible general-purpose set of tools for implementing genetic algorithms search in both the continuous and discrete case, whether constrained or not. Users can easily define their own objective function depending on the problem at hand. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the released version of <strong>GA</strong> from CRAN:</p>
-<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("GA")</a></code></pre>
+<pre class="{r}"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"GA"</span><span class="op">)</span></span></code></pre>
 <p>or the development version from GitHub:</p>
-<pre class="{r}"><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html"># install.packages("devtools")
-devtools::install_github("luca-scr/GA", build = TRUE, build_opts = c("--no-resave-data", "--no-manual"))</a></code></pre>
+<pre class="{r}"><code><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"luca-scr/GA"</span>, build <span class="op">=</span> <span class="cn">TRUE</span>, build_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--no-resave-data"</span>, <span class="st">"--no-manual"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>Usage of the main functions and several examples are included in the papers shown in the references section below.</p>
 <p>For an intro see the vignette <strong>A quick tour of GA</strong>, which is available as</p>
-<pre class="{r}"><code><a href="articles/GA.html">vignette("GA")</a></code></pre>
-<p>The vignette is also available in the <em>Get Started</em> section on the GitHub web page of the package at <a href="http://luca-scr.github.io/GA/" class="uri">http://luca-scr.github.io/GA/</a>.</p>
+<pre class="{r}"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"GA"</span><span class="op">)</span></span></code></pre>
+<p>The vignette is also available in the <em>Get Started</em> section on the GitHub web page of the package at <a href="http://luca-scr.github.io/GA/" class="external-link uri">http://luca-scr.github.io/GA/</a>.</p>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<p>Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. <em>Journal of Statistical Software</em>, 53/4, 1-37. <a href="https://doi.org/10.18637/jss.v053.i04" class="uri">https://doi.org/10.18637/jss.v053.i04</a></p>
-<p>Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. <em>The R Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" class="uri">https://doi.org/10.32614/RJ-2017-008</a></p>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>Scrucca, L. (2013) GA: A Package for Genetic Algorithms in R. <em>Journal of Statistical Software</em>, 53/4, 1-37. <a href="https://doi.org/10.18637/jss.v053.i04" class="external-link uri">https://doi.org/10.18637/jss.v053.i04</a></p>
+<p>Scrucca, L. (2017) On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution. <em>The R Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" class="external-link uri">https://doi.org/10.32614/RJ-2017-008</a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=GA">https://​cloud.r-project.org/​package=GA</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/luca-scr/GA/">https://​github.com/​luca-scr/​GA/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/luca-scr/GA/issues">https://​github.com/​luca-scr/​GA/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=GA" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/luca-scr/GA/">Browse source code</a></li>
+<li><a href="https://github.com/luca-scr/GA/issues">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>GPL (&gt;= 2)</li>
 </ul>
 </div>
+
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing GA</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="http://www.stat.unipg.it/luca">Luca Scrucca</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3826-0484" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing GA</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=GA"><img src="http://www.r-pkg.org/badges/version/GA" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://cran.r-project.org/package=GA"><img src="http://cranlogs.r-pkg.org/badges/GA" alt="CRAN_MonthlyDownloads"></a></li>
+<li>
+<a href="http://www.stat.unipg.it/luca" class="external-link">Luca Scrucca</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3826-0484" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=GA" class="external-link"><img src="http://www.r-pkg.org/badges/version/GA" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=GA" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/GA" alt="CRAN_MonthlyDownloads"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://www.stat.unipg.it/luca">Luca Scrucca</a>.</p>
+  <p></p>
+<p>Developed by <a href="http://www.stat.unipg.it/luca" class="external-link">Luca Scrucca</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -162,6 +167,8 @@ devtools::install_github("luca-scr/GA", build = TRUE, build_opts = c("--no-resav
 
   
 
+
+  
 
   </body>
 </html>

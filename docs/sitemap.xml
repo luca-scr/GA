@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/luca-scr/GA/404.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/articles/GA.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/authors.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/luca-scr/GA/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/luca-scr/GA/news/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/luca-scr/GA/reference/GA-internal.html</loc>
@@ -58,6 +73,9 @@
     <loc>https://github.com/luca-scr/GA/reference/gaisl.html</loc>
   </url>
   <url>
+    <loc>https://github.com/luca-scr/GA/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/luca-scr/GA/reference/numericOrNA-class.html</loc>
   </url>
   <url>
@@ -86,8 +104,5 @@
   </url>
   <url>
     <loc>https://github.com/luca-scr/GA/reference/summary.gaisl-method.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/luca-scr/GA/articles/GA.html</loc>
   </url>
 </urlset>
