@@ -18,7 +18,7 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.4</span>
       </span>
     </div>
 
@@ -177,7 +177,7 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 <span class="r-in"><span>              control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxit <span class="op">=</span> <span class="fl">20000</span>, temp <span class="op">=</span> <span class="fl">20</span>, parscale <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">SANN</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       par     value </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -15.81478  67.46890 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -15.81505  67.46782 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">DE</span> <span class="op">&lt;-</span> <span class="fu">de</span><span class="op">(</span>fitness <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">-</span><span class="fu">wild</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">50</span>, upper <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">DE</span><span class="op">)</span></span></span>
@@ -200,10 +200,10 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DE results: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Iterations             = 100 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -67.46773 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -67.49512 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Solution = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             x1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -15.81515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -15.50653</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3) two-dimensional Rastrigin function</span></span></span>
 <span class="r-in"><span></span></span>
@@ -240,10 +240,10 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DE results: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Iterations             = 100 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -7.945289e-11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -4.369838e-13 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Solution = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                x1           x2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.785416e-08 6.325766e-07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               x1            x2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 4.58929e-08 -9.880176e-09</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/filled.contour.html" class="external-link">filled.contour</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span>, <span class="va">f</span>, color.palette <span class="op">=</span> <span class="va">bl2gr.colors</span>,</span></span>
 <span class="r-in"><span>               plot.axes <span class="op">=</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>; </span></span>
@@ -287,10 +287,10 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DE results: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Iterations             = 100 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -1.402007e-09 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitness function value = -5.340475e-10 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Solution = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 x1          x2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -4.924013e-10 5.69587e-11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 x1           x2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -1.086033e-10 1.544546e-10</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/filled.contour.html" class="external-link">filled.contour</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span>, <span class="va">f</span>, color.palette <span class="op">=</span> <span class="va">bl2gr.colors</span>,</span></span>
 <span class="r-in"><span>               plot.axes <span class="op">=</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>; </span></span>
@@ -331,7 +331,7 @@ DE is a population-based evolutionary algorithm for optimisation of fitness func
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

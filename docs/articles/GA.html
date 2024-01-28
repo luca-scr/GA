@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.4</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
                         <h4 data-toc-skip class="author">Luca
 Scrucca</h4>
             
-            <h4 data-toc-skip class="date">18 Oct 2022</h4>
+            <h4 data-toc-skip class="date">28 Jan 2024</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/luca-scr/GA/blob/HEAD/vignettes/GA.Rmd"><code>vignettes/GA.Rmd</code></a></small>
       <div class="hidden name"><code>GA.Rmd</code></div>
@@ -110,7 +110,7 @@ can be applied stochastically to exploit interesting regions. GAs can be
 run sequentially or in parallel, using an explicit master-slave
 parallelisation or a coarse-grain islands approach.</p>
 <p>This document gives a quick tour of <strong>GA</strong> (version
-3.2.3) functionalities. It was written in R Markdown, using the <a href="https://cran.r-project.org/package=knitr" class="external-link">knitr</a> package for
+3.2.4) functionalities. It was written in R Markdown, using the <a href="https://cran.r-project.org/package=knitr" class="external-link">knitr</a> package for
 production. Further details are provided in the papers Scrucca (2013)
 and Scrucca (2017). See also <code><a href="https://github.com/luca-scr/GA/reference">help(package="GA")</a></code> for a list
 of available functions and methods.</p>
@@ -120,7 +120,7 @@ of available functions and methods.</p>
 <span><span class="co">##  / ___|  / \     Genetic </span></span>
 <span><span class="co">## | |  _  / _ \    Algorithms</span></span>
 <span><span class="co">## | |_| |/ ___ \   </span></span>
-<span><span class="co">##  \____/_/   \_\  version 3.2.3</span></span>
+<span><span class="co">##  \____/_/   \_\  version 3.2.4</span></span>
 <span><span class="co">## Type 'citation("GA")' for citing this R package in publications.</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -153,10 +153,10 @@ of available functions and methods.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
 <span><span class="co">## Iterations             = 100 </span></span>
-<span><span class="co">## Fitness function value = 47.70562 </span></span>
+<span><span class="co">## Fitness function value = 47.7056 </span></span>
 <span><span class="co">## Solution = </span></span>
 <span><span class="co">##            th</span></span>
-<span><span class="co">## [1,] 6.560507</span></span>
+<span><span class="co">## [1,] 6.561333</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">GA</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-2-2.svg" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -212,11 +212,11 @@ used in the definition of the local fitness function):</p>
 <span><span class="co">## upper  5.12  5.12</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations             = 364 </span></span>
-<span><span class="co">## Fitness function value = -2.102512e-07 </span></span>
+<span><span class="co">## Iterations             = 336 </span></span>
+<span><span class="co">## Fitness function value = -2.093615e-06 </span></span>
 <span><span class="co">## Solution = </span></span>
-<span><span class="co">##                x1            x2</span></span>
-<span><span class="co">## [1,] -3.14136e-05 -8.541778e-06</span></span>
+<span><span class="co">##                 x1            x2</span></span>
+<span><span class="co">## [1,] -0.0001025647 -5.722046e-06</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">GA</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-4-1.svg" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -262,10 +262,10 @@ introduced above:</p>
 <span><span class="co">##            [,1]      [,2]</span></span>
 <span><span class="co">## [1,]  0.2000000  1.500000</span></span>
 <span><span class="co">## [2,] -1.5000000  0.500000</span></span>
-<span><span class="co">## [3,]  0.9173773  2.279250</span></span>
-<span><span class="co">## [4,] -1.8294924 -4.883364</span></span>
-<span><span class="co">## [5,] -4.9451095 -2.823999</span></span>
-<span><span class="co">## [6,] -3.4600209 -1.178466</span></span></code></pre></div>
+<span><span class="co">## [3,] -0.5253744  4.155704</span></span>
+<span><span class="co">## [4,] -1.5497869 -3.581185</span></span>
+<span><span class="co">## [5,] -2.4671956 -1.474031</span></span>
+<span><span class="co">## [6,]  2.3149524 -1.269667</span></span></code></pre></div>
 <p>As it can be seen, the first two solutions considered are those
 provided, whereas the rest is filled randomly as usual. A full search
 can be obtained as follows:</p>
@@ -296,10 +296,10 @@ can be obtained as follows:</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
 <span><span class="co">## Iterations             = 100 </span></span>
-<span><span class="co">## Fitness function value = -1.485033e-06 </span></span>
+<span><span class="co">## Fitness function value = -1.661264e-07 </span></span>
 <span><span class="co">## Solution = </span></span>
-<span><span class="co">##                x1           x2</span></span>
-<span><span class="co">## [1,] 3.219976e-05 8.030266e-05</span></span></code></pre></div>
+<span><span class="co">##                 x1            x2</span></span>
+<span><span class="co">## [1,] -1.501772e-05 -2.473524e-05</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="constrained-optimisation">Constrained optimisation<a class="anchor" aria-label="anchor" href="#constrained-optimisation"></a>
@@ -977,32 +977,42 @@ Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" cla
 <hr>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">## R version 4.2.1 (2022-06-23)</span></span>
-<span><span class="co">## Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
-<span><span class="co">## Running under: macOS Big Sur ... 10.16</span></span>
+<span><span class="co">## R version 4.3.0 (2023-04-21)</span></span>
+<span><span class="co">## Platform: x86_64-apple-darwin20 (64-bit)</span></span>
+<span><span class="co">## Running under: macOS Ventura 13.6</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
-<span><span class="co">## BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib</span></span>
-<span><span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib</span></span>
+<span><span class="co">## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib </span></span>
+<span><span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
 <span><span class="co">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## time zone: Europe/Rome</span></span>
+<span><span class="co">## tzcode source: internal</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## attached base packages:</span></span>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] GA_3.2.3         iterators_1.0.14 foreach_1.5.2    knitr_1.40      </span></span>
+<span><span class="co">## [1] GA_3.2.4         iterators_1.0.14 foreach_1.5.2    knitr_1.45      </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##  [1] Rcpp_1.0.9       rstudioapi_0.14  magrittr_2.0.3   R6_2.5.1        </span></span>
-<span><span class="co">##  [5] rlang_1.0.6      fastmap_1.1.0    highr_0.9        stringr_1.4.1   </span></span>
-<span><span class="co">##  [9] tools_4.2.1      xfun_0.33        cli_3.4.1        jquerylib_0.1.4 </span></span>
-<span><span class="co">## [13] htmltools_0.5.3  yaml_2.3.5       digest_0.6.29    rprojroot_2.0.3 </span></span>
-<span><span class="co">## [17] crayon_1.5.2     pkgdown_2.0.6    purrr_0.3.5      sass_0.4.2      </span></span>
-<span><span class="co">## [21] fs_1.5.2         codetools_0.2-18 memoise_2.0.1    cachem_1.0.6    </span></span>
-<span><span class="co">## [25] evaluate_0.17    rmarkdown_2.17   stringi_1.7.8    compiler_4.2.1  </span></span>
-<span><span class="co">## [29] bslib_0.4.0      desc_1.4.2       jsonlite_1.8.2</span></span></code></pre></div>
+<span><span class="co">##  [1] generics_0.1.3     sass_0.4.8         utf8_1.2.4         stringi_1.8.3     </span></span>
+<span><span class="co">##  [5] digest_0.6.34      magrittr_2.0.3     evaluate_0.23      grid_4.3.0        </span></span>
+<span><span class="co">##  [9] fastmap_1.1.1      jsonlite_1.8.8     pkgbuild_1.4.3     gridExtra_2.3     </span></span>
+<span><span class="co">## [13] purrr_1.0.2        fansi_1.0.6        QuickJSR_1.0.9     scales_1.3.0      </span></span>
+<span><span class="co">## [17] codetools_0.2-19   jquerylib_0.1.4    cli_3.6.2          rlang_1.1.3       </span></span>
+<span><span class="co">## [21] crayon_1.5.2       munsell_0.5.0      cachem_1.0.8       yaml_2.3.8        </span></span>
+<span><span class="co">## [25] StanHeaders_2.32.5 parallel_4.3.0     tools_4.3.0        rstan_2.32.5      </span></span>
+<span><span class="co">## [29] inline_0.3.19      memoise_2.0.1      dplyr_1.1.4        colorspace_2.1-0  </span></span>
+<span><span class="co">## [33] ggplot2_3.4.4      curl_5.2.0         vctrs_0.6.5        R6_2.5.1          </span></span>
+<span><span class="co">## [37] matrixStats_1.2.0  stats4_4.3.0       lifecycle_1.0.4    stringr_1.5.1     </span></span>
+<span><span class="co">## [41] V8_4.4.1           fs_1.6.3           pkgconfig_2.0.3    desc_1.4.3        </span></span>
+<span><span class="co">## [45] pkgdown_2.0.7      RcppParallel_5.1.7 bslib_0.6.1        pillar_1.9.0      </span></span>
+<span><span class="co">## [49] gtable_0.3.4       loo_2.6.0          glue_1.7.0         Rcpp_1.0.12       </span></span>
+<span><span class="co">## [53] highr_0.10         tidyselect_1.2.0   xfun_0.41          tibble_3.2.1      </span></span>
+<span><span class="co">## [57] rstudioapi_0.15.0  htmltools_0.5.7    rmarkdown_2.25     compiler_4.3.0</span></span></code></pre></div>
 </div>
   </div>
 
@@ -1023,7 +1033,7 @@ Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" cla
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

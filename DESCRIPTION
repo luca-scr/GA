@@ -1,12 +1,24 @@
 Package: GA
-Version: 3.2.3
-Date: 2022-10-18
+Version: 3.2.4
+Date: 2024-01-28
 Title: Genetic Algorithms
-Description: Flexible general-purpose toolbox implementing genetic algorithms (GAs) for stochastic optimisation. Binary, real-valued, and permutation representations are available to optimize a fitness function, i.e. a function provided by users depending on their objective function. Several genetic operators are available and can be combined to explore the best settings for the current task. Furthermore, users can define new genetic operators and easily evaluate their performances. Local search using general-purpose optimisation algorithms can be applied stochastically to exploit interesting regions. GAs can be run sequentially or in parallel, using an explicit master-slave parallelisation or a coarse-grain islands approach.
-Authors@R: c(
-  person("Luca", "Scrucca", role = c("aut", "cre"),
-         email = "luca.scrucca@unipg.it",
-         comment = c(ORCID = "0000-0003-3826-0484")))
+Description: Flexible general-purpose toolbox implementing genetic 
+  algorithms (GAs) for stochastic optimisation. Binary, real-valued, and
+  permutation representations are available to optimize a fitness 
+  function, i.e. a function provided by users depending on their 
+  objective function. Several genetic operators are available and can be
+  combined to explore the best settings for the current task. 
+  Furthermore, users can define new genetic operators and easily 
+  evaluate their performances. Local search using general-purpose 
+  optimisation algorithms can be applied stochastically to exploit 
+  interesting regions. GAs can be run sequentially or in parallel, using
+  an explicit master-slave parallelisation or a coarse-grain islands 
+  approach. For more details see Scrucca (2013) 
+  <doi:10.18637/jss.v053.i04> and Scrucca (2017) 
+  <doi:10.32614/RJ-2017-008>.
+Authors@R: c(person("Luca", "Scrucca", role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0003-3826-0484"),
+                    email = "luca.scrucca@unipg.it"))
 Depends: R (>= 3.4), methods, foreach, iterators
 Imports: stats, graphics, grDevices, utils, cli, crayon, Rcpp
 LinkingTo: Rcpp, RcppArmadillo

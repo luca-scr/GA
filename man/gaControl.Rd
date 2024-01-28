@@ -10,44 +10,47 @@ gaControl(\dots)
 }
 
 \arguments{
-  \item{\dots}{
-  no arguments, a single character vector, or a named list with components.
-}}
+  \item{\dots}{no arguments, a single character vector, or a named list 
+  with components.}
+}
 
 \details{
-If the function is called with no arguments returns the current default settings, i.e., a list with the following default components:
-\itemize{
-\item{\code{"binary"}}{
+If the function is called with no arguments returns the current default 
+settings, i.e., a list with the following default components:
+\describe{
+\item{\code{binary}}{
   \itemize{
-  \item{\code{population}} = \code{"gabin_Population"}
-  \item{\code{selection}} = \code{"gabin_lrSelection"}
-  \item{\code{crossover}} = \code{"gabin_spCrossover"}
-  \item{\code{mutation}} = \code{"gabin_raMutation"}
+  \item \code{population} = \code{"gabin_Population"}
+  \item \code{selection} = \code{"gabin_lrSelection"}
+  \item \code{crossover} = \code{"gabin_spCrossover"}
+  \item \code{mutation} = \code{"gabin_raMutation"}
   }
 }
-\item{\code{"real-valued"}}{
+\item{\code{real-valued}}{
   \itemize{
-  \item{\code{population}} = \code{"gareal_Population"}
-  \item{\code{selection}} = \code{"gareal_lsSelection"}
-  \item{\code{crossover}} = \code{"gareal_laCrossover"}
-  \item{\code{mutation}} = \code{"gareal_raMutation"}
+  \item \code{population} = \code{"gareal_Population"}
+  \item \code{selection} = \code{"gareal_lsSelection"}
+  \item \code{crossover} = \code{"gareal_laCrossover"}
+  \item \code{mutation} = \code{"gareal_raMutation"}
   }
 }
-\item{\code{"permutation"}}{
+\item{\code{permutation}}{
   \itemize{
-  \item{\code{population}} = \code{"gaperm_Population"}
-  \item{\code{selection}} = \code{"gaperm_lrSelection"}
-  \item{\code{crossover}} = \code{"gaperm_oxCrossover"}
-  \item{\code{mutation}} = \code{"gaperm_simMutation"}
+  \item \code{population} = \code{"gaperm_Population"}
+  \item \code{selection} = \code{"gaperm_lrSelection"}
+  \item \code{crossover} = \code{"gaperm_oxCrossover"}
+  \item \code{mutation} = \code{"gaperm_simMutation"}
   }
 }
 
-\item{\code{"eps"} = }{the tolerance value used by the package functions. By default set at \code{sqrt(.Machine$double.eps)}.}
+\item{\code{eps}}{the tolerance value used by the package functions. By default set at \code{sqrt(.Machine$double.eps)}.}
+
+\item{\code{useRcpp}}{a logical specifying if a faster C++ implementation of genetic operators should be used (\code{TRUE} by default), or an R implementation.}
 }
 
 The function may be called with a single string specifying the name of the component. In this case the function returns the current default settings.
 
-To change the default values, a named component must be followed by a single value (in case of \code{"eps"}) or a list of component(s) specifying the name of the function for a genetic operator. See the Examples section.
+To change the default values, a named component must be followed by a single value (in case of \code{eps} or \code{useRcpp}) or a list of component(s) specifying the name of the function for a genetic operator. See the Examples section.
 }
 
 \value{

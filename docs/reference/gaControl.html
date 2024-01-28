@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.4</span>
       </span>
     </div>
 
@@ -62,31 +62,45 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
-<dd><p>no arguments, a single character vector, or a named list with components.</p></dd>
+<dd><p>no arguments, a single character vector, or a named list 
+  with components.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>If the function is called with no arguments returns the current default settings, i.e., a list with the following default components:</p><ul><li><p><code>"binary"</code>
-  </p><ul><li><p><code>population</code> = <code>"gabin_Population"</code></p></li>
+    <p>If the function is called with no arguments returns the current default 
+settings, i.e., a list with the following default components:</p><dl><dt><code>binary</code></dt>
+<dd><p></p><ul><li><p><code>population</code> = <code>"gabin_Population"</code></p></li>
 <li><p><code>selection</code> = <code>"gabin_lrSelection"</code></p></li>
 <li><p><code>crossover</code> = <code>"gabin_spCrossover"</code></p></li>
 <li><p><code>mutation</code> = <code>"gabin_raMutation"</code></p></li>
-</ul></li>
-<li><p><code>"real-valued"</code>
-  </p><ul><li><p><code>population</code> = <code>"gareal_Population"</code></p></li>
+</ul></dd>
+
+<dt><code>real-valued</code></dt>
+<dd><p></p><ul><li><p><code>population</code> = <code>"gareal_Population"</code></p></li>
 <li><p><code>selection</code> = <code>"gareal_lsSelection"</code></p></li>
 <li><p><code>crossover</code> = <code>"gareal_laCrossover"</code></p></li>
 <li><p><code>mutation</code> = <code>"gareal_raMutation"</code></p></li>
-</ul></li>
-<li><p><code>"permutation"</code>
-  </p><ul><li><p><code>population</code> = <code>"gaperm_Population"</code></p></li>
+</ul></dd>
+
+<dt><code>permutation</code></dt>
+<dd><p></p><ul><li><p><code>population</code> = <code>"gaperm_Population"</code></p></li>
 <li><p><code>selection</code> = <code>"gaperm_lrSelection"</code></p></li>
 <li><p><code>crossover</code> = <code>"gaperm_oxCrossover"</code></p></li>
 <li><p><code>mutation</code> = <code>"gaperm_simMutation"</code></p></li>
-</ul></li>
-<li><p><code>"eps"</code> = the tolerance value used by the package functions. By default set at <code>sqrt(.Machine$double.eps)</code>.</p></li>
-</ul><p>The function may be called with a single string specifying the name of the component. In this case the function returns the current default settings.</p>
-<p>To change the default values, a named component must be followed by a single value (in case of <code>"eps"</code>) or a list of component(s) specifying the name of the function for a genetic operator. See the Examples section.</p>
+</ul></dd>
+
+
+<dt><code>eps</code></dt>
+<dd><p>the tolerance value used by the package functions. By default set at <code>sqrt(.Machine$double.eps)</code>.</p></dd>
+
+
+<dt><code>useRcpp</code></dt>
+<dd><p>a logical specifying if a faster C++ implementation of genetic operators should be used (<code>TRUE</code> by default), or an R implementation.</p></dd>
+
+
+</dl><p>The function may be called with a single string specifying the name of the component. In this case the function returns the current default settings.</p>
+<p>To change the default values, a named component must be followed by a single value (in case of <code>eps</code> or <code>useRcpp</code>) or a list of component(s) specifying the name of the function for a genetic operator. See the Examples section.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
@@ -271,7 +285,7 @@ If the argument list is not empty, the returned list is invisible.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

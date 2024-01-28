@@ -1,35 +1,25 @@
 citHeader("To cite 'GA' R package in publications, please use:")
 
-citEntry(entry = "Article",
+bibentry(
+  bibtype      = "Article",
   title        = "{GA}: A Package for Genetic Algorithms in {R}",
-  author       = personList(person(given="Luca", family="Scrucca")),
+  author       = person(given="Luca", family="Scrucca"),
   journal      = "Journal of Statistical Software",
   year         = "2013",
   volume       = "53",
   number       = "4",
   pages        = "1--37",
-  doi          = "10.18637/jss.v053.i04",
-  #
-  textVersion  =
-  paste("Luca Scrucca (2013).",
-        "GA: A Package for Genetic Algorithms in R.",
-        "Journal of Statistical Software, 53(4), 1-37.",
-        "https://doi.org/10.18637/jss.v053.i04")
+  doi          = "10.18637/jss.v053.i04"
 )
 
-citEntry(entry = "Article",
+bibentry(
+  bibtype      = "Article",
   title        = "On some extensions to {GA} package: hybrid optimisation, parallelisation and islands evolution",
-  author       = personList(as.person("Luca Scrucca")),
+  author       = person(given="Luca", family="Scrucca"),
   journal      = "The R Journal",
   year         = "2017",
   volume       = "9",
   number       = "1",
   pages        = "187--206",
-	doi          = "10.32614/RJ-2017-008",
-	#
-  textVersion  =
-  paste("Luca Scrucca (2017).",
-        "On some extensions to GA package: hybrid optimisation, parallelisation and islands evolution.",
-        "The R Journal,  9/1, 187-206.",
-        "https://doi.org/10.32614/RJ-2017-008")
+	doi          = "10.32614/RJ-2017-008"
 )

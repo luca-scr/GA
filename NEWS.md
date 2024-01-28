@@ -1,3 +1,7 @@
+# GA 3.2.4 (2024-01)
+
+- Fixed CRAN issues.
+
 # GA 3.2.3 (2022-10)
 
 - Fixed warnings in C++ code under CRAN request.

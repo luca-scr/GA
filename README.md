@@ -12,13 +12,13 @@ discrete case, whether constrained or not. Users can easily define their own obj
 
 You can install the released version of **GA** from CRAN:
 
-```{r}
+```r
 install.packages("GA")
 ```
 
 or the development version from GitHub:
 
-```{r}
+```r
 # install.packages("devtools")
 devtools::install_github("luca-scr/GA", build = TRUE, build_opts = c("--no-resave-data", "--no-manual"))
 ```
@@ -30,7 +30,7 @@ papers shown in the references section below.
 
 For an intro see the vignette **A quick tour of GA**, which is available as
 
-```{r}
+```r
 vignette("GA")
 ```
 
