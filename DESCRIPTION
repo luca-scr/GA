@@ -1,6 +1,6 @@
 Package: GA
-Version: 3.2.4
-Date: 2024-01-28
+Version: 3.2.5
+Date: 2024-09-11
 Title: Genetic Algorithms
 Description: Flexible general-purpose toolbox implementing genetic 
   algorithms (GAs) for stochastic optimisation. Binary, real-valued, and

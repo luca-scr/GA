@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // rank_asR
-IntegerVector rank_asR(NumericVector x, bool decreasing);
+NumericVector rank_asR(NumericVector x, bool decreasing);
 RcppExport SEXP _GA_rank_asR(SEXP xSEXP, SEXP decreasingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

@@ -14,12 +14,40 @@ using namespace Rcpp;
 // Miscellaneous functions
 //
 
+// IntegerVector rank_asR(NumericVector x, bool decreasing = false)
+// {  
+//   IntegerVector rank = match(x, clone(x).sort());
+//   if(decreasing) rank = rank.length()+1 - rank; 
+//   return rank;
+// }
+
 // [[Rcpp::export]]
-IntegerVector rank_asR(NumericVector x, bool decreasing = false)
-{  
-  IntegerVector rank = match(x, clone(x).sort());
-  if(decreasing) rank = rank.length()+1 - rank; 
-  return rank;
+NumericVector rank_asR(NumericVector x, bool decreasing = false) 
+{
+  int n = x.size();
+  NumericVector rank(n);
+  IntegerVector idx = seq_len(n) - 1; // Create indices vector
+  
+  // Create a sorted index vector based on values and their indices
+  std::sort(idx.begin(), idx.end(), [&x](int i1, int i2) 
+  {
+    if (x[i1] != x[i2]) {
+      return x[i1] < x[i2];
+    } else {
+      return i1 < i2;
+    }
+  });
+  
+  // Assign ranks
+  for (int i = 0; i < n; ++i) 
+  {
+    rank[idx[i]] = i + 1;
+  }
+  
+ if(decreasing)
+   rank = rank.length()+1 - rank; 
+
+ return rank;
 }
 
 /***

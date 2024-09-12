@@ -18,7 +18,6 @@ de <- function(fitness,
   args$type <- "real-valued"
   args$nBits <- NULL
 
-  # browser()
   fitnessArgs <- args[setdiff(names(args), names(eval(formals(ga))))]
        
   # DE selection including crossover

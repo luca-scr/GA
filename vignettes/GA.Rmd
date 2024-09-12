@@ -256,9 +256,10 @@ text(LTPD, beta, labels=expression(paste("(", LTPD, ", ", beta, ")")), pos=4)
 ```
 
 
-**Binary search solution**
+## Binary search solution
 
-```{r}
+```{r, echo=-1}
+set.seed(20181111)
 decode1 <- function(x)
 { 
   x <- gray2binary(x)
@@ -310,9 +311,10 @@ lines(p, Pa, col = 2)
 ```
 
 
-**Real-valued search solution**
+## Real-valued search solution
 
-```{r}
+```{r, echo=-1}
+set.seed(20181111)
 decode2 <- function(x)
 { 
   n <- floor(x[1])         # sample size
@@ -340,7 +342,7 @@ t(apply(GA2@solution, 1, decode2))
 ```
 
 
-**A comparison**
+## A comparison
 
 ```{r, eval=FALSE, echo=-(1:2)}
 set.seed(20181111)
