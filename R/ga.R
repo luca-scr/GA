@@ -214,7 +214,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
     { Pop[1:ng,] <- suggestions }
   # fill the rest with a random population
   if(popSize > ng)
-    { Pop[(ng+1):popSize,] <- population(object)[1:(popSize-ng),] }
+    { Pop[(ng+1):popSize,] <- population(object, ...)[1:(popSize-ng),] }
   object@population <- Pop
 
   # start iterations
