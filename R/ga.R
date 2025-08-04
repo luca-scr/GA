@@ -218,160 +218,163 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   object@population <- Pop
 
   # start iterations
-  for(iter in seq_len(maxiter))
-     {
-      object@iter <- iter
-
-      # evalute fitness function (when needed) 
-      if(!parallel)
-        { for(i in seq_len(popSize))
-             if(is.na(Fitness[i]))
-               { fit <- do.call(fitness, c(list(Pop[i,]), callArgs)) 
-                 if(updatePop)
-                   Pop[i,] <- attributes(fit)[[1]]
-                 Fitness[i] <- fit
-               }
-      }
-      else
-        { Fitness <- foreach(i. = seq_len(popSize), .combine = "c") %DO%
-                     { if(is.na(Fitness[i.])) 
-                         do.call(fitness, c(list(Pop[i.,]), callArgs)) 
-                       else                   
-                         Fitness[i.] 
-                     }
-        }
-      
-      # update object
-      object@population <- Pop
-      object@fitness <- Fitness
-      
-      # Local search optimisation
-      if(optim & (type == "real-valued"))
-      {
-        if(optimArgs$poptim > runif(1))
-        { # perform local search from random selected solution
-          # with prob proportional to fitness
-          i <- sample(1:popSize, size = 1, 
-                      prob = optimProbsel(Fitness, q = optimArgs$pressel))
-          # run local search
-          opt <- try(suppressWarnings(
-                      do.call(stats::optim, 
-                              c(list(fn = fitness,
-                                     par = Pop[i,],
-                                     method = optimArgs$method,
-                                     lower = optimArgs$lower,
-                                     upper = optimArgs$upper,
-                                     control = optimArgs$control), 
-                                callArgs))
-                      ), silent = TRUE)
-          if(is.function(monitor))
-            { if(!inherits(opt, "try-error"))
-                cat("\b | Local search =", 
-                    format(opt$value, digits = getOption("digits")))
-              else cat("\b |", opt[1])
-              cat("\n")
-            }
-          if(!inherits(opt, "try-error"))
-            { Pop[i,] <- opt$par
-              Fitness[i] <- opt$value }
-          # update object
-          object@population <- Pop
-          object@fitness <- Fitness
-          # update iterations summary
-          fitnessSummary[iter,] <- gaSummary(object@fitness)
-          object@summary <- fitnessSummary
-        }
-      }
-      
-      if(keepBest) 
-      { 
-        object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),, drop=FALSE]) 
-      }
-
-      # apply a user's defined function to update the GA object
-      if(is.function(postFitness))
-      { 
-        object <- do.call(postFitness, c(object, callArgs))
-        Fitness <- object@fitness
-        Pop <- object@population
-      }
-
-      # update iterations summary
-      fitnessSummary[iter,] <- gaSummary(object@fitness)
-      object@summary <- fitnessSummary
-
-      if(is.function(monitor)) 
-        { monitor(object) }
-
-      # check stopping criteria
-      if(iter > 1)
-        object@run <- garun(fitnessSummary[seq(iter),1])
-      if(object@run >= run) break  
-      if(max(Fitness, na.rm = TRUE) >= maxFitness) break
-      if(object@iter == maxiter) break  
-
-      ord <- order(Fitness, decreasing = TRUE)
-      PopSorted <- Pop[ord,,drop=FALSE]
-      FitnessSorted <- Fitness[ord]
-        
-      # selection
-      if(is.function(selection))
-        { 
-          sel <- selection(object)
-          # sel <- do.call(selection, c(object, callArgs))
-          Pop <- sel$population
-          Fitness <- sel$fitness
-        }
-      else
-        { sel <- sample(1:popSize, size = popSize, replace = TRUE)
-          Pop <- object@population[sel,]
-          Fitness <- object@fitness[sel]
-        }
-      object@population <- Pop
-      object@fitness <- Fitness
-    
-      # crossover
-      if(is.function(crossover) & pcrossover > 0)
-        { nmating <- floor(popSize/2)
-          mating <- matrix(sample(1:(2*nmating), size = (2*nmating)), ncol = 2)
-          for(i in seq_len(nmating))
-             { if(pcrossover > runif(1))
-                 { parents <- mating[i,]
-                   Crossover <- crossover(object, parents)
-                   Pop[parents,] <- Crossover$children
-                   Fitness[parents] <- Crossover$fitness
-                 }
-             }             
-          object@population <- Pop
-          object@fitness <- Fitness
-        }
-
-      # mutation
-      pm <- if(is.function(pmutation)) pmutation(object) else pmutation
-      if(is.function(mutation) & pm > 0)
-        { for(i in seq_len(popSize)) 
-             { if(pm > runif(1)) 
-                 { Mutation <- mutation(object, i)
-                   Pop[i,] <- Mutation
-                   Fitness[i] <- NA
-                 }
-             }
-          object@population <- Pop
-          object@fitness <- Fitness
-        }
-
-      # elitism
-      if(elitism > 0) # (elitism > 0 & iter > 1) 
-        { ord <- order(object@fitness, na.last = TRUE)
-          u <- which(!duplicated(PopSorted, margin = 1))
-          Pop[ord[1:elitism],] <- PopSorted[u[1:elitism],]
-          Fitness[ord[1:elitism]] <- FitnessSorted[u[1:elitism]]
-          object@population <- Pop
-          object@fitness <- Fitness
-      } 
-      
-  }
+  tryCatch({
+    for(iter in seq_len(maxiter))
+       {
+        object@iter <- iter
   
+        # evalute fitness function (when needed) 
+        if(!parallel)
+          { for(i in seq_len(popSize))
+               if(is.na(Fitness[i]))
+                 { fit <- do.call(fitness, c(list(Pop[i,]), callArgs)) 
+                   if(updatePop)
+                     Pop[i,] <- attributes(fit)[[1]]
+                   Fitness[i] <- fit
+                 }
+        }
+        else
+          { Fitness <- foreach(i. = seq_len(popSize), .combine = "c") %DO%
+                       { if(is.na(Fitness[i.])) 
+                           do.call(fitness, c(list(Pop[i.,]), callArgs)) 
+                         else                   
+                           Fitness[i.] 
+                       }
+          }
+        
+        # update object
+        object@population <- Pop
+        object@fitness <- Fitness
+        
+        # Local search optimisation
+        if(optim & (type == "real-valued"))
+        {
+          if(optimArgs$poptim > runif(1))
+          { # perform local search from random selected solution
+            # with prob proportional to fitness
+            i <- sample(1:popSize, size = 1, 
+                        prob = optimProbsel(Fitness, q = optimArgs$pressel))
+            # run local search
+            opt <- try(suppressWarnings(
+                        do.call(stats::optim, 
+                                c(list(fn = fitness,
+                                       par = Pop[i,],
+                                       method = optimArgs$method,
+                                       lower = optimArgs$lower,
+                                       upper = optimArgs$upper,
+                                       control = optimArgs$control), 
+                                  callArgs))
+                        ), silent = TRUE)
+            if(is.function(monitor))
+              { if(!inherits(opt, "try-error"))
+                  cat("\b | Local search =", 
+                      format(opt$value, digits = getOption("digits")))
+                else cat("\b |", opt[1])
+                cat("\n")
+              }
+            if(!inherits(opt, "try-error"))
+              { Pop[i,] <- opt$par
+                Fitness[i] <- opt$value }
+            # update object
+            object@population <- Pop
+            object@fitness <- Fitness
+            # update iterations summary
+            fitnessSummary[iter,] <- gaSummary(object@fitness)
+            object@summary <- fitnessSummary
+          }
+        }
+        
+        if(keepBest) 
+        { 
+          object@bestSol[[iter]] <- unique(Pop[Fitness == max(Fitness, na.rm = TRUE),, drop=FALSE]) 
+        }
+  
+        # apply a user's defined function to update the GA object
+        if(is.function(postFitness))
+        { 
+          object <- do.call(postFitness, c(object, callArgs))
+          Fitness <- object@fitness
+          Pop <- object@population
+        }
+  
+        # update iterations summary
+        fitnessSummary[iter,] <- gaSummary(object@fitness)
+        object@summary <- fitnessSummary
+  
+        if(is.function(monitor)) 
+          { monitor(object) }
+  
+        # check stopping criteria
+        if(iter > 1)
+          object@run <- garun(fitnessSummary[seq(iter),1])
+        if(object@run >= run) break  
+        if(max(Fitness, na.rm = TRUE) >= maxFitness) break
+        if(object@iter == maxiter) break  
+  
+        ord <- order(Fitness, decreasing = TRUE)
+        PopSorted <- Pop[ord,,drop=FALSE]
+        FitnessSorted <- Fitness[ord]
+          
+        # selection
+        if(is.function(selection))
+          { 
+            sel <- selection(object)
+            # sel <- do.call(selection, c(object, callArgs))
+            Pop <- sel$population
+            Fitness <- sel$fitness
+          }
+        else
+          { sel <- sample(1:popSize, size = popSize, replace = TRUE)
+            Pop <- object@population[sel,]
+            Fitness <- object@fitness[sel]
+          }
+        object@population <- Pop
+        object@fitness <- Fitness
+      
+        # crossover
+        if(is.function(crossover) & pcrossover > 0)
+          { nmating <- floor(popSize/2)
+            mating <- matrix(sample(1:(2*nmating), size = (2*nmating)), ncol = 2)
+            for(i in seq_len(nmating))
+               { if(pcrossover > runif(1))
+                   { parents <- mating[i,]
+                     Crossover <- crossover(object, parents)
+                     Pop[parents,] <- Crossover$children
+                     Fitness[parents] <- Crossover$fitness
+                   }
+               }             
+            object@population <- Pop
+            object@fitness <- Fitness
+          }
+  
+        # mutation
+        pm <- if(is.function(pmutation)) pmutation(object) else pmutation
+        if(is.function(mutation) & pm > 0)
+          { for(i in seq_len(popSize)) 
+               { if(pm > runif(1)) 
+                   { Mutation <- mutation(object, i)
+                     Pop[i,] <- Mutation
+                     Fitness[i] <- NA
+                   }
+               }
+            object@population <- Pop
+            object@fitness <- Fitness
+          }
+  
+        # elitism
+        if(elitism > 0) # (elitism > 0 & iter > 1) 
+          { ord <- order(object@fitness, na.last = TRUE)
+            u <- which(!duplicated(PopSorted, margin = 1))
+            Pop[ord[1:elitism],] <- PopSorted[u[1:elitism],]
+            Fitness[ord[1:elitism]] <- FitnessSorted[u[1:elitism]]
+            object@population <- Pop
+            object@fitness <- Fitness
+        } 
+        
+    }
+  }, interrupt = function(e) {
+    message("Interrupting ga() ...")
+  })
   # if optim is required perform a local search from the best 
   # solution at the end of GA iterations
   if(optim & (type == "real-valued"))
