@@ -30,7 +30,8 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
                keepBest = FALSE,
                parallel = FALSE,
                monitor = if(interactive()) gaMonitor else FALSE,
-               seed = NULL) 
+               seed = NULL,
+               user_fit = NULL) 
 {
 
   call <- match.call()
@@ -224,7 +225,13 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         object@iter <- iter
   
         # evalute fitness function (when needed) 
-        if(!parallel)
+        if(!is.null(user_fit))
+          {
+            tmp_ret <- parallel_fit(Pop,Fitness)
+            Pop = tmp_ret$Pop
+            Fitness = tmp_ret$Fitness
+            rm(tmp_ret)
+        }else if(!parallel)
           { for(i in seq_len(popSize))
                if(is.na(Fitness[i]))
                  { fit <- do.call(fitness, c(list(Pop[i,]), callArgs)) 
