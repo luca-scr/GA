@@ -43,10 +43,10 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   if(!is.function(crossover))  crossover  <- get(crossover)
   if(!is.function(mutation))   mutation   <- get(mutation)
   
-  if(missing(fitness))
-    { stop("A fitness function must be provided") }
-  if(!is.function(fitness)) 
-    { stop("A fitness function must be provided") }
+  if(missing(fitness) && !missing(user_fit))
+    { stop("A fitness or user_fit function must be provided") }
+  if(!is.function(fitness) && !is.function(user_fit)) 
+    { stop("A fitness or user_fit function must be provided") }
   if(popSize < 10) 
     { warning("The population size is less than 10.") }
   if(maxiter < 1) 
@@ -227,7 +227,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         # evalute fitness function (when needed) 
         if(!is.null(user_fit))
           {
-            tmp_ret <- parallel_fit(Pop,Fitness)
+            tmp_ret <- user_fit(Pop,Fitness)
             Pop = tmp_ret$Pop
             Fitness = tmp_ret$Fitness
             rm(tmp_ret)
