@@ -227,9 +227,12 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
         # evalute fitness function (when needed) 
         if(!is.null(user_fit))
           {
-            tmp_ret <- user_fit(Pop,Fitness)
-            Pop = tmp_ret$Pop
-            Fitness = tmp_ret$Fitness
+            tmp_ret <- user_fit(Pop, Fitness)
+            for(i in seq_len(popSize)){
+              if(updatePop)
+                Pop[i] = tmp_ret$Pop[i]
+              Fitness[i] = tmp_ret$Fitness[i]
+            }
             rm(tmp_ret)
         }else if(!parallel)
           { for(i in seq_len(popSize))
