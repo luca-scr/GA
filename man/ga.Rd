@@ -166,7 +166,7 @@ Yu X., Gen M. (2010). \emph{Introduction to Evolutionary Algorithms}. Springer-V
 
 }
   
-\author{Luca Scrucca \email{luca.scrucca@unipg.it}}
+\author{Luca Scrucca \email{luca.scrucca@unibo.it}}
 
 %\note{}
 

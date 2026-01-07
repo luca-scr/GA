@@ -1,32 +1,28 @@
-## Test environments
+Please note the change of email of the maintainer due to a new academic affiliation.
 
-* local macOS 13.6, R 4.3.0
-* R-hub debian-gcc-release (Debian Linux, R-release, GCC)
-* R-hub ubuntu-gcc-devel (Ubuntu Linux 20.04.1 LTS, R-devel, GCC)
-* R-hub windows-x86_64-devel (Windows Server 2022, R-devel, 64 bit)
-* R-hub windows-x86_64-release (Windows Server 2022, R-release, 32/64 bit)
-  
-## R CMD check results
+## Test environments and check results
 
-* local macOS 13.6, R 4.3.0
-0 errors | 0 warnings | 3 notes
-
-* R-hub debian-gcc-release
-0 errors | 0 warnings | 3 notes
-
-* R-hub ubuntu-gcc-devel
-0 errors | 0 warnings | 4 notes
-
-* R-hub windows-x86_64-release
-0 errors | 0 warnings | 4 notes
-
-* R-hub windows-x86_64-release
-0 errors | 0 warnings | 4 notes
+* local macOS Sequoia 15.6.1, R version 4.5.2
+  0 errors ✔ | 0 warnings ✔ | 0 notes ✖
+* R-hub m1-san (R-devel)
+  macOS Sequoia 15.7.3, R Under development (unstable) (2026-01-06 r89281)
+  0 errors ✔ | 0 warnings ✔ | 0 notes ✖
+* R-hub macos-arm64 (R-devel)
+  macOS Sequoia 15.7.2, R Under development (unstable) (2026-01-06 r89281)
+  0 errors ✔ | 0 warnings ✔ | 0 notes ✖
+* R-hub ubuntu-release
+  Ubuntu 24.04.3 LTS, R version 4.5.2 (2025-10-31)
+* R-hub linux (R-devel) 
+  Ubuntu 24.04.3 LTS, R Under development (unstable) (2026-01-05 r89278)
+  0 errors ✔ | 0 warnings ✔ | 0 notes ✖
+* R-hub windows (R-devel)
+  Windows Server 2022 x64 (build 26100), R Under development (unstable) (2026-01-06 r89281 ucrt)
+  0 errors ✔ | 0 warnings ✔ | 0 notes ✖
 
 ## Reverse dependency checking via revdepcheck package
 
-We checked 46 reverse dependencies (44 from CRAN + 2 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 48 reverse dependencies (46 from CRAN + 2 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
-* We saw 0 new problems
-* We failed to check 0 packages
- 
+ * We saw 0 new problems
+ * We failed to check 0 packages
+

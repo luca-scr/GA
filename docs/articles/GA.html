@@ -6,27 +6,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A quick tour of GA • GA</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="A quick tour of GA">
-<meta property="og:description" content="GA">
-<meta property="og:image" content="https://github.com/luca-scr/GA/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -40,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.5</span>
       </span>
     </div>
 
@@ -60,7 +57,7 @@
 <li>
   <a href="https://github.com/luca-scr/GA">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -71,7 +68,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -80,7 +77,7 @@
                         <h4 data-toc-skip class="author">Luca
 Scrucca</h4>
             
-            <h4 data-toc-skip class="date">28 Jan 2024</h4>
+            <h4 data-toc-skip class="date">07 Jan 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/luca-scr/GA/blob/HEAD/vignettes/GA.Rmd"><code>vignettes/GA.Rmd</code></a></small>
       <div class="hidden name"><code>GA.Rmd</code></div>
@@ -110,7 +107,7 @@ can be applied stochastically to exploit interesting regions. GAs can be
 run sequentially or in parallel, using an explicit master-slave
 parallelisation or a coarse-grain islands approach.</p>
 <p>This document gives a quick tour of <strong>GA</strong> (version
-3.2.4) functionalities. It was written in R Markdown, using the <a href="https://cran.r-project.org/package=knitr" class="external-link">knitr</a> package for
+3.2.5) functionalities. It was written in R Markdown, using the <a href="https://cran.r-project.org/package=knitr" class="external-link">knitr</a> package for
 production. Further details are provided in the papers Scrucca (2013)
 and Scrucca (2017). See also <code><a href="https://github.com/luca-scr/GA/reference">help(package="GA")</a></code> for a list
 of available functions and methods.</p>
@@ -120,14 +117,16 @@ of available functions and methods.</p>
 <span><span class="co">##  / ___|  / \     Genetic </span></span>
 <span><span class="co">## | |  _  / _ \    Algorithms</span></span>
 <span><span class="co">## | |_| |/ ___ \   </span></span>
-<span><span class="co">##  \____/_/   \_\  version 3.2.4</span></span>
+<span><span class="co">##  \____/_/   \_\  version 3.2.5</span></span>
 <span><span class="co">## Type 'citation("GA")' for citing this R package in publications.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="function-optimisation-in-one-dimension">Function optimisation in one dimension<a class="anchor" aria-label="anchor" href="#function-optimisation-in-one-dimension"></a>
 </h2>
-<p>Consider the function <span class="math inline">\(f(x) =
-(x^2+x)\cos(x)\)</span> defined over the range <span class="math inline">\(-10 \le x \le 10\)</span>:</p>
+<p>Consider the function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x) = (x^2+x)\cos(x)</annotation></semantics></math>
+defined over the range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>10</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">-10 \le x \le 10</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="va">x</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">lbound</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">10</span>; <span class="va">ubound</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -155,8 +154,8 @@ of available functions and methods.</p>
 <span><span class="co">## Iterations             = 100 </span></span>
 <span><span class="co">## Fitness function value = 47.7056 </span></span>
 <span><span class="co">## Solution = </span></span>
-<span><span class="co">##            th</span></span>
-<span><span class="co">## [1,] 6.561333</span></span>
+<span><span class="co">##           th</span></span>
+<span><span class="co">## [1,] 6.55971</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">GA</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-2-2.svg" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -171,11 +170,17 @@ of available functions and methods.</p>
 <p>Consider the <em>Rastrigin function</em>, a non-convex function often
 used as a test problem for optimization algorithms because it is a
 difficult problem due to its large number of local minima. In two
-dimensions it is defined as <span class="math display">\[
+dimensions it is defined as
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>20</mn><mo>+</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>x</mi><mn>2</mn><mn>2</mn></msubsup><mo>−</mo><mn>10</mn><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
 f(x_1, x_2) = 20 + x_1^2 + x_2^2 - 10(\cos(2\pi x_1) + \cos(2\pi x_2)),
-\]</span> with <span class="math inline">\(x_i \in [-5.12,
-5.12]\)</span> for <span class="math inline">\(i=1,2\)</span>. It has a
-global minimum at <span class="math inline">\((0,0)\)</span> where <span class="math inline">\(f(0,0) = 0\)</span>.</p>
+</annotation></semantics></math> with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>5.12</mn><mo>,</mo><mn>5.12</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">x_i \in [-5.12, 5.12]</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=1,2</annotation></semantics></math>.
+It has a global minimum at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(0,0) = 0</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Rastrigin</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
@@ -212,11 +217,11 @@ used in the definition of the local fitness function):</p>
 <span><span class="co">## upper  5.12  5.12</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations             = 336 </span></span>
-<span><span class="co">## Fitness function value = -2.093615e-06 </span></span>
+<span><span class="co">## Iterations             = 253 </span></span>
+<span><span class="co">## Fitness function value = -1.708944e-06 </span></span>
 <span><span class="co">## Solution = </span></span>
 <span><span class="co">##                 x1            x2</span></span>
-<span><span class="co">## [1,] -0.0001025647 -5.722046e-06</span></span>
+<span><span class="co">## [1,] -1.608155e-05 -9.140764e-05</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">GA</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-4-1.svg" width="80%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -262,10 +267,10 @@ introduced above:</p>
 <span><span class="co">##            [,1]      [,2]</span></span>
 <span><span class="co">## [1,]  0.2000000  1.500000</span></span>
 <span><span class="co">## [2,] -1.5000000  0.500000</span></span>
-<span><span class="co">## [3,] -0.5253744  4.155704</span></span>
-<span><span class="co">## [4,] -1.5497869 -3.581185</span></span>
-<span><span class="co">## [5,] -2.4671956 -1.474031</span></span>
-<span><span class="co">## [6,]  2.3149524 -1.269667</span></span></code></pre></div>
+<span><span class="co">## [3,]  0.8969867 -3.146516</span></span>
+<span><span class="co">## [4,] -1.7124756  3.832536</span></span>
+<span><span class="co">## [5,] -4.9327131 -1.587470</span></span>
+<span><span class="co">## [6,]  3.5326557 -4.079108</span></span></code></pre></div>
 <p>As it can be seen, the first two solutions considered are those
 provided, whereas the rest is filled randomly as usual. A full search
 can be obtained as follows:</p>
@@ -296,35 +301,38 @@ can be obtained as follows:</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
 <span><span class="co">## Iterations             = 100 </span></span>
-<span><span class="co">## Fitness function value = -1.661264e-07 </span></span>
+<span><span class="co">## Fitness function value = -2.78036e-06 </span></span>
 <span><span class="co">## Solution = </span></span>
-<span><span class="co">##                 x1            x2</span></span>
-<span><span class="co">## [1,] -1.501772e-05 -2.473524e-05</span></span></code></pre></div>
+<span><span class="co">##                 x1          x2</span></span>
+<span><span class="co">## [1,] -8.851972e-05 7.86049e-05</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="constrained-optimisation">Constrained optimisation<a class="anchor" aria-label="anchor" href="#constrained-optimisation"></a>
 </h2>
 <p>This example shows how to minimize an objective function subject to
 nonlinear inequality constraints and bounds using GAs. Source: <a href="https://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html" class="external-link uri">https://www.mathworks.it/it/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html</a></p>
-<p>We want to minimize a simple function of two variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> <span class="math display">\[
+<p>We want to minimize a simple function of two variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>2</mn></msub><annotation encoding="application/x-tex">x_2</annotation></semantics></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">min</mi><mi>x</mi></munder><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>100</mn><mo stretchy="false" form="prefix">(</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>;</mo></mrow><annotation encoding="application/x-tex">
 \min_x f(x) = 100 (x_1^2 - x_2)^2 + (1 - x_1)^2;
-\]</span> subject to the following nonlinear inequality constraints and
-bounds:</p>
+</annotation></semantics></math> subject to the following nonlinear
+inequality constraints and bounds:</p>
 <ul>
 <li>
-<span class="math inline">\(x_1x_2 + x_1 - x_2 + 1.5 \le 0\)</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1.5</mn><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_1x_2 + x_1 - x_2 + 1.5 \le 0</annotation></semantics></math>
 (<em>inequality constraint</em>),<br>
 </li>
 <li>
-<span class="math inline">\(10 - x_1x_2 \le 0\)</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">10 - x_1x_2 \le 0</annotation></semantics></math>
 (<em>inequality constraint</em>),<br>
 </li>
 <li>
-<span class="math inline">\(0 \le x_1 \le 1\)</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mn>1</mn></msub><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \le x_1 \le 1</annotation></semantics></math>
 (<em>bounds</em>), and<br>
 </li>
 <li>
-<span class="math inline">\(0 \le x_2 \le 13\)</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mn>2</mn></msub><mo>≤</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">0 \le x_2 \le 13</annotation></semantics></math>
 (<em>bounds</em>).</li>
 </ul>
 <p>The above fitness function is known as “cam” as described in L.C.W.
@@ -433,10 +441,14 @@ using binary GA search, and one using real-valued GA search. In both
 cases an appropriate decoding function is used to convert the encoding
 of the decision variables to the natural encoding of the problem.</p>
 <p>Consider the <em>acceptance sampling</em> example described in
-Scrucca (2013, Sec. 4.6). In essence, we must find the integers <span class="math inline">\(n\)</span> (sample size) and <span class="math inline">\(c\)</span> (acceptance number) that minimise a
-loss function measuring the difference between the objective and the
-achieved probability of acceptance of a lot. For more details see
-Scrucca (2013, Sec. 4.6) and references therein.</p>
+Scrucca (2013, Sec. 4.6). In essence, we must find the integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+(sample size) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+(acceptance number) that minimise a loss function measuring the
+difference between the objective and the achieved probability of
+acceptance of a lot. For more details see Scrucca (2013, Sec. 4.6) and
+references therein.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">AQL</span>   <span class="op">&lt;-</span> <span class="fl">0.01</span>; <span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">LTPD</span>  <span class="op">&lt;-</span> <span class="fl">0.06</span>; <span class="va">beta</span>  <span class="op">&lt;-</span> <span class="fl">0.10</span></span>
@@ -450,7 +462,9 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">AQL</span>, <span class="fl">1</span><span class="op">-</span><span class="va">alpha</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"("</span>, <span class="va">AQL</span>, <span class="st">", "</span>, <span class="fl">1</span><span class="op">-</span><span class="va">alpha</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span>, pos<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">LTPD</span>, <span class="va">beta</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"("</span>, <span class="va">LTPD</span>, <span class="st">", "</span>, <span class="va">beta</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span>, pos<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-16-1.svg" width="80%" style="display: block; margin: auto;"></p>
-<p><strong>Binary search solution</strong></p>
+<div class="section level3">
+<h3 id="binary-search-solution">Binary search solution<a class="anchor" aria-label="anchor" href="#binary-search-solution"></a>
+</h3>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">decode1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">{</span> </span>
@@ -494,7 +508,7 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <span><span class="co">## Mutation probability  =  0.1 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations             = 119 </span></span>
+<span><span class="co">## Iterations             = 140 </span></span>
 <span><span class="co">## Fitness function value = -5.049435e-05 </span></span>
 <span><span class="co">## Solution = </span></span>
 <span><span class="co">##      x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13</span></span>
@@ -517,7 +531,10 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <span><span class="va">Pa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">87</span>, <span class="va">p</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">Pa</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-18-1.svg" width="80%" style="display: block; margin: auto;"></p>
-<p><strong>Real-valued search solution</strong></p>
+</div>
+<div class="section level3">
+<h3 id="real-valued-search-solution">Real-valued search solution<a class="anchor" aria-label="anchor" href="#real-valued-search-solution"></a>
+</h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">decode2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">{</span> </span>
@@ -557,16 +574,16 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <span><span class="co">## upper 201 21</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations             = 146 </span></span>
+<span><span class="co">## Iterations             = 111 </span></span>
 <span><span class="co">## Fitness function value = -5.049435e-05 </span></span>
 <span><span class="co">## Solutions = </span></span>
 <span><span class="co">##            x1       x2</span></span>
-<span><span class="co">## [1,] 87.10144 2.880684</span></span>
-<span><span class="co">## [2,] 87.22478 2.914317</span></span>
-<span><span class="co">## [3,] 87.94009 2.890449</span></span>
-<span><span class="co">## [4,] 87.76376 2.869063</span></span>
-<span><span class="co">## [5,] 87.79984 2.915490</span></span>
-<span><span class="co">## [6,] 87.79108 2.903100</span></span>
+<span><span class="co">## [1,] 87.89259 2.728577</span></span>
+<span><span class="co">## [2,] 87.78124 2.799476</span></span>
+<span><span class="co">## [3,] 87.81596 2.751274</span></span>
+<span><span class="co">## [4,] 87.88560 2.621085</span></span>
+<span><span class="co">## [5,] 87.88535 2.649951</span></span>
+<span><span class="co">## [6,] 87.90579 2.802553</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">GA2</span><span class="op">@</span><span class="va">solution</span>, <span class="fl">1</span>, <span class="va">decode2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##       n c</span></span>
 <span><span class="co">## [1,] 87 2</span></span>
@@ -575,7 +592,10 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <span><span class="co">## [4,] 87 2</span></span>
 <span><span class="co">## [5,] 87 2</span></span>
 <span><span class="co">## [6,] 87 2</span></span></code></pre></div>
-<p><strong>A comparison</strong></p>
+</div>
+<div class="section level3">
+<h3 id="a-comparison">A comparison<a class="anchor" aria-label="anchor" href="#a-comparison"></a>
+</h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nrep</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">systime</span> <span class="op">&lt;-</span> <span class="va">loss</span> <span class="op">&lt;-</span> <span class="va">niter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="va">nrep</span>, ncol <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -617,6 +637,7 @@ Scrucca (2013, Sec. 4.6) and references therein.</p>
 <p>Based on this small example, real-valued GA search is about 50%
 faster, converges in fewer iterations, and has the same accuracy as
 binary search.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="hybrid-gas">Hybrid GAs<a class="anchor" aria-label="anchor" href="#hybrid-gas"></a>
@@ -665,7 +686,7 @@ defined previously. A HGA search is obtained as follows:</p>
 <span><span class="co">## upper  5.12  5.12</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations             = 120 </span></span>
+<span><span class="co">## Iterations             = 109 </span></span>
 <span><span class="co">## Fitness function value = 0 </span></span>
 <span><span class="co">## Solution = </span></span>
 <span><span class="co">##      x1 x2</span></span>
@@ -840,15 +861,15 @@ function</em>. An Island GA search is obtained as follows:</p>
 <span><span class="co">## upper  5.12  5.12</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## GA results: </span></span>
-<span><span class="co">## Iterations              = 750 </span></span>
-<span><span class="co">## Epochs                  = 15 </span></span>
-<span><span class="co">## Fitness function values = -2.062144e-09 -2.062144e-09 -2.062144e-09 -2.062144e-09 </span></span>
+<span><span class="co">## Iterations              = 500 </span></span>
+<span><span class="co">## Epochs                  = 10 </span></span>
+<span><span class="co">## Fitness function values = -2.026812e-09 -2.026812e-09 -1.025768e-08 -1.559301e-08 </span></span>
 <span><span class="co">## Solutions = </span></span>
-<span><span class="co">##                x1          x2</span></span>
-<span><span class="co">## [1,] 2.154279e-06 2.39862e-06</span></span>
-<span><span class="co">## [2,] 2.154279e-06 2.39862e-06</span></span>
-<span><span class="co">## [3,] 2.154279e-06 2.39862e-06</span></span>
-<span><span class="co">## [4,] 2.154279e-06 2.39862e-06</span></span>
+<span><span class="co">##                 x1            x2</span></span>
+<span><span class="co">## [1,]  2.518296e-06 -1.966953e-06</span></span>
+<span><span class="co">## [2,]  2.518296e-06 -1.966953e-06</span></span>
+<span><span class="co">## [3,]  5.434794e-07 -7.169985e-06</span></span>
+<span><span class="co">## [4,] -3.805585e-06 -8.007151e-06</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">GA</span>, log <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GA_files/figure-html/unnamed-chunk-29-1.svg" width="80%" style="display: block; margin: auto;"></p>
 </div>
@@ -977,13 +998,13 @@ Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" cla
 <hr>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">## R version 4.3.0 (2023-04-21)</span></span>
-<span><span class="co">## Platform: x86_64-apple-darwin20 (64-bit)</span></span>
-<span><span class="co">## Running under: macOS Ventura 13.6</span></span>
+<span><span class="co">## R version 4.5.2 (2025-10-31)</span></span>
+<span><span class="co">## Platform: aarch64-apple-darwin20</span></span>
+<span><span class="co">## Running under: macOS Sequoia 15.6.1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
-<span><span class="co">## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib </span></span>
-<span><span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0</span></span>
+<span><span class="co">## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
+<span><span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
 <span><span class="co">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
@@ -995,32 +1016,34 @@ Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" cla
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] GA_3.2.4         iterators_1.0.14 foreach_1.5.2    knitr_1.45      </span></span>
+<span><span class="co">## [1] GA_3.2.5         iterators_1.0.14 foreach_1.5.2    knitr_1.50      </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##  [1] generics_0.1.3     sass_0.4.8         utf8_1.2.4         stringi_1.8.3     </span></span>
-<span><span class="co">##  [5] digest_0.6.34      magrittr_2.0.3     evaluate_0.23      grid_4.3.0        </span></span>
-<span><span class="co">##  [9] fastmap_1.1.1      jsonlite_1.8.8     pkgbuild_1.4.3     gridExtra_2.3     </span></span>
-<span><span class="co">## [13] purrr_1.0.2        fansi_1.0.6        QuickJSR_1.0.9     scales_1.3.0      </span></span>
-<span><span class="co">## [17] codetools_0.2-19   jquerylib_0.1.4    cli_3.6.2          rlang_1.1.3       </span></span>
-<span><span class="co">## [21] crayon_1.5.2       munsell_0.5.0      cachem_1.0.8       yaml_2.3.8        </span></span>
-<span><span class="co">## [25] StanHeaders_2.32.5 parallel_4.3.0     tools_4.3.0        rstan_2.32.5      </span></span>
-<span><span class="co">## [29] inline_0.3.19      memoise_2.0.1      dplyr_1.1.4        colorspace_2.1-0  </span></span>
-<span><span class="co">## [33] ggplot2_3.4.4      curl_5.2.0         vctrs_0.6.5        R6_2.5.1          </span></span>
-<span><span class="co">## [37] matrixStats_1.2.0  stats4_4.3.0       lifecycle_1.0.4    stringr_1.5.1     </span></span>
-<span><span class="co">## [41] V8_4.4.1           fs_1.6.3           pkgconfig_2.0.3    desc_1.4.3        </span></span>
-<span><span class="co">## [45] pkgdown_2.0.7      RcppParallel_5.1.7 bslib_0.6.1        pillar_1.9.0      </span></span>
-<span><span class="co">## [49] gtable_0.3.4       loo_2.6.0          glue_1.7.0         Rcpp_1.0.12       </span></span>
-<span><span class="co">## [53] highr_0.10         tidyselect_1.2.0   xfun_0.41          tibble_3.2.1      </span></span>
-<span><span class="co">## [57] rstudioapi_0.15.0  htmltools_0.5.7    rmarkdown_2.25     compiler_4.3.0</span></span></code></pre></div>
+<span><span class="co">##  [1] sass_0.4.10           generics_0.1.4        digest_0.6.39        </span></span>
+<span><span class="co">##  [4] magrittr_2.0.4        evaluate_1.0.5        grid_4.5.2           </span></span>
+<span><span class="co">##  [7] RColorBrewer_1.1-3    fastmap_1.2.0         jsonlite_2.0.0       </span></span>
+<span><span class="co">## [10] pkgbuild_1.4.8        gridExtra_2.3         QuickJSR_1.8.1       </span></span>
+<span><span class="co">## [13] scales_1.4.0          codetools_0.2-20      jquerylib_0.1.4      </span></span>
+<span><span class="co">## [16] cli_3.6.5             rlang_1.1.6           crayon_1.5.3         </span></span>
+<span><span class="co">## [19] cachem_1.1.0          yaml_2.3.12           StanHeaders_2.32.10  </span></span>
+<span><span class="co">## [22] parallel_4.5.2        tools_4.5.2           rstan_2.32.7         </span></span>
+<span><span class="co">## [25] inline_0.3.21         dplyr_1.1.4           colorspace_2.1-1     </span></span>
+<span><span class="co">## [28] ggplot2_4.0.1         curl_7.0.0            vctrs_0.6.5          </span></span>
+<span><span class="co">## [31] R6_2.6.1              matrixStats_1.5.0     stats4_4.5.2         </span></span>
+<span><span class="co">## [34] lifecycle_1.0.4       V8_8.0.1              fs_1.6.6             </span></span>
+<span><span class="co">## [37] htmlwidgets_1.6.4     pkgconfig_2.0.3       desc_1.4.3           </span></span>
+<span><span class="co">## [40] pkgdown_2.1.3         RcppParallel_5.1.11-1 bslib_0.9.0          </span></span>
+<span><span class="co">## [43] pillar_1.11.1         gtable_0.3.6          loo_2.9.0            </span></span>
+<span><span class="co">## [46] glue_1.8.0            Rcpp_1.1.0            xfun_0.54            </span></span>
+<span><span class="co">## [49] tibble_3.3.0          tidyselect_1.2.1      rstudioapi_0.17.1    </span></span>
+<span><span class="co">## [52] farver_2.1.2          htmltools_0.5.9       rmarkdown_2.30       </span></span>
+<span><span class="co">## [55] compiler_4.5.2        S7_0.2.1</span></span></code></pre></div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -1033,16 +1056,16 @@ Journal</em>, 9/1, 187–206. <a href="https://doi.org/10.32614/RJ-2017-008" cla
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

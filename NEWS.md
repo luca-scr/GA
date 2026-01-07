@@ -1,4 +1,4 @@
-# GA 3.2.5 (NOT ON CRAN)
+# GA 3.2.5
 
 - Fixed bug in C++ code for `optimProbsel_Rcpp()` by rewriting `rank_asR()`.
 

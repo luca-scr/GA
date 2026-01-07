@@ -26,7 +26,7 @@ NumericVector rank_asR(NumericVector x, bool decreasing = false)
 {
   int n = x.size();
   NumericVector rank(n);
-  IntegerVector idx = seq_len(n) - 1; // Create indices vector
+  IntegerVector idx = Rcpp::seq(0, n-1); // Create indices vector
   
   // Create a sorted index vector based on values and their indices
   std::sort(idx.begin(), idx.end(), [&x](int i1, int i2) 
@@ -52,10 +52,7 @@ NumericVector rank_asR(NumericVector x, bool decreasing = false)
 
 /***
 x = round(runif(10), 2)
-identical(rank(x, ties.method = "min"), rank_asR(x))
-identical(rank(x, ties.method = "random"), rank_asR(x))
 # with no ties are identical
- 
 rank(x, ties.method = "min") - rank_asR(x)
 length(x)+1-rank(x, ties.method = "min") - rank_asR(x, decreasing = TRUE)
 

@@ -55,7 +55,7 @@ Simon D. (2013) \emph{Evolutionary Optimization Algorithms}. John Wiley & Sons.
 Price K., Storn R.M., Lampinen J.A. (2005) \emph{Differential Evolution: A Practical Approach to Global Optimization}. Springer. 
 }
   
-\author{Luca Scrucca \email{luca.scrucca@unipg.it}}
+\author{Luca Scrucca \email{luca.scrucca@unibo.it}}
 
 %\note{}
 

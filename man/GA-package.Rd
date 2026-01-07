@@ -16,7 +16,7 @@ For a quick intro to GA package see the \href{../doc/index.html}{vignette} accom
 %Using parallel computing in GA package  \url{../doc/GAparallel.pdf}
 }
 
-\author{Luca Scrucca \email{luca.scrucca@unipg.it}}
+\author{Luca Scrucca \email{luca.scrucca@unibo.it}}
 
 \section{References}{
 Scrucca L. (2013). GA: A Package for Genetic Algorithms in R.
